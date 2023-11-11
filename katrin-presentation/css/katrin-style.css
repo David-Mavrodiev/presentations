@@ -1,0 +1,55 @@
+.container{
+    display: flex;
+}
+
+.col {
+    flex: 1;
+}
+
+.black-box {
+    border-radius: 20px;
+    opacity: 0.7;
+    background-color: grey;
+    padding: 20px;
+    color: black;
+    font-size: 12px;
+}
+
+.medium-text {
+    color: white;
+    font-size: 35px !important;
+}
+
+.small-text {
+    color: white;
+    font-size: 20px !important;
+}
+
+.black-text {
+    color: black;
+}
+
+.title span {
+    font-weight: bold;
+    font-size: 1.0em;
+    -webkit-text-stroke: 2px darkgrey;
+    -webkit-text-stroke: 2px darkgrey;
+    -webkit-text-fill-color: white;
+}
+
+.katrin-title {
+    font-weight: bold;
+    font-size: 3.0em !important;
+    -webkit-text-stroke: 2px darkgrey;
+    -webkit-text-stroke: 2px darkgrey;
+    -webkit-text-fill-color: white;
+    display: block;
+}
+
+.step-desc {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    width: 100%;
+    padding: 20px !important;
+}

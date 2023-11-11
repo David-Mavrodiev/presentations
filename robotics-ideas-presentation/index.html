@@ -1,0 +1,356 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Презентация</title>
+
+    <link rel="stylesheet" href="./lib/reset.css">
+    <link rel="stylesheet" href="./lib/reveal.css">
+    <link rel="stylesheet" href="./lib/theme/black.css">
+
+    <style>
+        body * {
+            font-family: 'Brush Script MT', cursive !important;
+        }
+
+        .slides {
+            width: 100% !important;
+        }
+
+        .list-without-bullets li {
+            list-style-type: none;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .col {
+            margin: 10px;
+            flex: 1;
+        }
+
+        .not-bold {
+            font-weight: 100 !important;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .center {
+            text-align: center !important;
+        }
+
+        .italic {
+            font-style: italic !important;
+        }
+
+        .underline {
+            text-decoration: underline !important;
+        }
+
+        .regular-text {
+            font-size: 1.3rem;
+            text-align: left;
+        }
+
+        .medium-text {
+            font-size: 1.1rem !important;
+        }
+
+        .big-text {
+            font-size: 1.5rem;
+        }
+
+        .big-text2 {
+            font-size: 2rem;
+        }
+
+        .very-small-text {
+            font-size: 0.7rem !important;
+        }
+
+        .no-border {
+            border: none !important;
+        }
+
+        .quote {
+            font-size: 1.7rem !important;
+            text-align: right !important;
+        }
+
+        .quote > .author {
+            margin-top: 10px;
+            font-style: italic !important;
+            font-size: 1.3rem !important;
+        }
+
+        .image-container {
+            align-self: center;
+        }
+
+        .image-container > img {
+            border: 10px solid snow;
+        }
+
+        .image-container > .author {
+            margin-top: 10px;
+            font-style: italic !important;
+            font-size: 1rem !important;
+        }
+
+        #digital-twins-demo-wrapper {
+            margin-left: 10%;
+            width: 800px;
+            height: 700px;
+            background-color: black;
+            background-color:rgba(0, 0, 0, 0.25);
+        }
+    </style>
+</head>
+
+<body id="net">
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3 class="italic">ИДЕЙНИ ПРОЕКТИ</h3>
+                <h4>
+                    <span class="big-text">за</span> сезон 2 <span class="big-text">на</span> PARA Robotics Incubator
+                </h4>
+                <img width="200px" src="./images/Authors.gif" />
+            </section>
+            <section>
+                <h4>ВИЗИТНА КАРТИЧКА НА ЕКИПА</h4>
+                <div class="container" style="margin: 30px; text-align: left;">
+                    <div class="col big-text2">
+                        <h6>Давид Мавродиев, 21 г., от София</h4>
+                        <p>
+                            Софтуерен инженер (Senior back-end) в израелската продуктова компания “SolarEdge”, с 6-годишен трудов стаж.
+                        </p>
+                        <p>
+                            Студент 4-ти курс в специалността “Информатика и компютърни науки”, даваща професионалната образователно- квалификационна степен “Бакалавър по компютърни науки”.
+                        </p>
+                    </div>
+                    <div class="col big-text2">
+                        <h6>Валери Иванчев, 18 г., от София</h4>
+                        <p>
+                            Софтуерен инженер (Regular Full Stack) в българската компания “LimeChain”, с 2-годишен трудов стаж.
+                        </p>
+                        <p>
+                            Студент 1-ви курс в специалността “Информатика” на НБУ, даваща професионалната квалификация “Информатик”.
+                        </p>
+                    </div>
+            </section>
+            <section>
+                <section>
+                    <h3 class="not-bold italic">ЧАСТ I: </h3>
+                    <h4>
+                        <span class="not-bold">Идеен проект</span> <span class="bold italic">Pet Feeder Robot (PFR)</span>
+                    </h4>
+                    <div class="image-container">
+                        <img src="./images/Pets.jpg" />
+                    </div>
+                </section>
+                <section>
+                    <h3>I. Pet Feeder Robot (PFR)</h3>
+                    <div>
+                        <h5>1. Каква е идеята?</h5>
+                        <p style="margin: 50px">
+                            Роботизирана хранилка за домашни любимци, контролирана от алгоритъм, следящ за хранителния режим на животните и редовния им прием на вода, съобразно техния вид, порода и възраст, както и грижещ се за теглото им и тяхната двигателна активност. 
+                        </p>
+                    </div>
+                </section>
+                <section>
+                    <h3>I. Pet Feeder Robot (PFR)</h3>
+                    <div>
+                        <h5>2. Какви проблеми решава?</h5>
+                        <div class="container big-text2" style="text-align: left;">
+                            <div class="col">
+                                <h6>За домашните любимци:</h6>
+                                <ul>
+                                    <li>Здравословни (затлъстяване или недохранване).</li>
+                                    <li>Физически (обездвижване или слаба двигателна активност).</li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <h6>За стопанина:</h6>
+                                <ul>
+                                    <li>Да храни и пои домашния любимец в свое отсъствие.</li>
+                                    <li>Да намира дома си в безпорядък, защото животното е нямало с кого да си играе.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3>I. Pet Feeder Robot (PFR)</h3>
+                    <h5>3. Как работи?</h5>
+                    <div class="big-text2">
+                        <h6>Роботизираната хранилка включва пет модула:</h6>
+                        <ul>
+                            <li>Хранилище/Резервоар.</li>
+                            <li>Система за дистрибутиране.</li>
+                            <li>Кантарна плоскост.</li>
+                            <li>Спортна секция.</li>
+                            <li>Софтуерно приложение.</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <h3>I. Pet Feeder Robot (PFR)</h3>
+                    <h5>4. С какви технологии?</h5>
+                    <div class="container big-text2">
+                        <div class="col">
+                            <h6>Software:</h6>
+                            <ul>
+                                <li>REST BE API (AWS/GCP).</li>
+                                <li>MariaDB/MongoDB/DynamoDB.</li>
+                                <li>Electron Application (for GUI).</li>
+                            </ul>
+                        </div>
+                        <div class="col">
+                            <h6>Hardware:</h6>
+                            <ul>
+                                <li>Ротори.</li>
+                                <li>Контролери.</li>
+                                <li>Ел. сензори за тегло.</li>
+                                <li>Wi-fi модул и др.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section data-background-video="./images/videos/PFR.mp4" 
+                        data-background-video-loop data-background-video-muted>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3 class="not-bold italic">ЧАСТ II: </h3>
+                    <h4>
+                        <span class="not-bold">Идеен проект</span> <span class="bold italic">Kid’s Assistant “READY”</span>
+                    </h4>
+                    <div class="image-container">
+                        <img src="./images/Ready.jpg" />
+                    </div>
+                </section>
+                <section>
+                    <h3>II. Kid’s Assistant “READY”</h3>
+                    <div>
+                        <h5>1. Каква е идеята?</h5>
+                        <p style="margin: 50px">
+                            Обучителен робот, под формата на мека играчка, подпомагащ умственото развитие на детето от най-ранна възраст- първите 7 години, ангажирайки вниманието му с активности, спомагащи неговата мисловна дейност, вербална комуникативност и креативна памет.
+                        </p>
+                    </div>
+                </section>
+                <section>
+                    <h3>II. Kid’s Assistant “READY”</h3>
+                    <div>
+                        <h5>2. Какви проблеми решава?</h5>
+                        <div class="container big-text2" style="text-align: left;">
+                            <div class="col">
+                                <h6>За децата:</h6>
+                                <ul>
+                                    <li>Дефицит на внимание и концентрация.</li>
+                                    <li>Липса на автоматизирани пособия за обучение от най-ранна възраст.</li>
+                                    <li>Недостиг на информирани и квалифицирани кадри, с нужното ниво на съвременни познания и образователни компетенции.</li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <h6>За родителите:</h6>
+                                <ul>
+                                    <li>Пряк поглед върху ежедневието на детето.</li>
+                                    <li>Системно структурирани по дни и часове обучителни занимания, с авторско съдържание от страна на родителите.</li>
+                                    <li>Избор на активности под формата на игра, спомагащи менталното развитие, творческите заложби, речевите умения и потенциала за абстрактно мислене на детето.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3>II. Kid’s Assistant “READY”</h3>
+                    <h5>3. Как работи?</h5>
+                    <div class="big-text2">
+                        <h6>Дейността на роботизираната плюшена играчка се осъществява чрез следните компоненти:</h6>
+                        <ul>
+                            <li>Аудио система.</li>
+                            <li>Система за наблюдение.</li>
+                            <li>Система за обработка.</li>
+                            <li>Софтуерно приложение.</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <h3>II. Kid’s Assistant “READY”</h3>
+                    <h5>4. С какви технологии?</h5>
+                    <div class="container big-text2">
+                        <div class="col">
+                            <h6>Software:</h6>
+                            <ul>
+                                <li>Web Socket Backend API.</li>
+                                <li>Speech recognition API.</li>
+                                <li>Text-to-Speech API.</li>
+                                <li>MariaDB/MongoDB/DynamoDB.</li>
+                                <li>Electron Application (for GUI).</li>
+                            </ul>
+                        </div>
+                        <div class="col">
+                            <h6>Hardware:</h6>
+                            <ul>
+                                <li>Камери.</li>
+                                <li>Тонколони.</li>
+                                <li>Микрофони.</li>
+                                <li>Контролер.</li>
+                                <li>Wi-fi модул и др.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section data-background-video="./images/videos/ready.mp4" 
+                        data-background-video-loop data-background-video-muted>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal.js"></script>
+    <script src="./lib/animations/three.min.js"></script>
+    <script src="./lib/animations/vanta.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script>
+        // Bootstrap the presentation
+        Reveal.initialize({
+            hash: true
+        });
+
+        // Background network
+        VANTA.NET({
+          el: "#net",
+          color: 0x3447d2,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          points: 20.00,
+          maxDistance: 40.00,
+          spacing: 15.00
+        });
+
+        // 3D slides effect
+        window.onload = function () {
+            $("body").on("mousemove", ".present", function(e) {
+                var $el = $(this);
+                let xAxis = (window.innerWidth / 2 - e.pageX) / 300;
+                let yAxis = (window.innerHeight / 2 - e.pageY) / 300;
+                $el.css("transform", `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`);
+            });
+        };
+    </script>
+</body>
+
+</html>

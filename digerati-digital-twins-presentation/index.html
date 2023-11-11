@@ -1,0 +1,1030 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Презентация</title>
+
+    <link rel="stylesheet" href="./lib/reset.css">
+    <link rel="stylesheet" href="./lib/reveal.css">
+    <link rel="stylesheet" href="./lib/theme/black.css">
+
+    <style>
+        body * {
+            font-family: 'Brush Script MT', cursive !important;
+        }
+
+        .slides {
+            width: 100% !important;
+        }
+
+        .list-without-bullets li {
+            list-style-type: none;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .col {
+            margin: 10px;
+            flex: 1;
+        }
+
+        .not-bold {
+            font-weight: 100 !important;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .center {
+            text-align: center !important;
+        }
+
+        .italic {
+            font-style: italic !important;
+        }
+
+        .underline {
+            text-decoration: underline !important;
+        }
+
+        .regular-text {
+            font-size: 1.3rem;
+            text-align: left;
+        }
+
+        .medium-text {
+            font-size: 1.1rem !important;
+        }
+
+        .title {
+            font-size: 1.5rem;
+        }
+
+        .very-small-text {
+            font-size: 0.7rem !important;
+        }
+
+        .no-border {
+            border: none !important;
+        }
+
+        .quote {
+            font-size: 1.7rem !important;
+            text-align: right !important;
+        }
+
+        .quote > .author {
+            margin-top: 10px;
+            font-style: italic !important;
+            font-size: 1.3rem !important;
+        }
+
+        .image-container {
+            align-self: center;
+        }
+
+        .image-container > img {
+            border: 10px solid snow;
+        }
+
+        .image-container > .author {
+            margin-top: 10px;
+            font-style: italic !important;
+            font-size: 1rem !important;
+        }
+
+        #digital-twins-demo-wrapper {
+            margin-left: 10%;
+            width: 800px;
+            height: 700px;
+            background-color: black;
+            background-color:rgba(0, 0, 0, 0.25);
+        }
+    </style>
+</head>
+
+<body id="net">
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h6 class="not-bold italic">ЕКИПЕН КУРСОВ ПРОЕКТ НА ТЕМА: </h6>
+                <h4>
+                    “ДИГИТАЛНИ ТРАНСФОРМАЦИИ: <br />
+                    <span class="not-bold">ИТ-секторът в дигиратното измерение на виртуални пространства с близнаци”</span>
+                </h4>
+                <!--<small class="very-small-text" style="font-style: italic; padding-top: 2rem;">
+                    <span class="bold underline">Участници в Екип №10:</span> <br />
+                    <ul>
+                        <li>Ралица Людмилова, Ф№200110022</li>
+                        <li>Андрей Георгиев, Ф№203010022</li>
+                        <li>Красимир Рангелов, Ф№200410005</li>
+                        <li>Марин Луков, Ф№200110016</li>
+                        <li>Недко Колев, Ф№200110031</li>
+                        <li>Станислава Жекова, Ф№200410007</li>
+                        <li>Давид Мавродиев, Ф№203010012</li>
+                        <li>Янина Великова, Ф№200410004</li>
+                    </ul>
+                </small>-->
+                <div class="image-container center">
+                    <img height="220px" src="./images/real/zaglavna.gif" />
+                </div>
+            </section>
+            <section>
+                <h6 class="title">СЪДЪРЖАНИЕ</h6>
+                <ul style="max-width: 95%;" class="medium-text list-without-bullets">
+                    <li>
+                        I. Теоретична рамка: Що е то “дигирати” и “дигитални близнаци”? </br>
+                        <span class="italic">Въведение в проблематиката</span>
+                        <ul class="very-small-text">
+                            <li>1. Определение за дигирати и дефиниция за цифрови близнаци</li>
+                            <li>
+                                2. Типове клониране на близнаци в пространствено приложение
+                                <ul class="very-small-text">
+                                    <li>2.1. Digital Twin Prototype</li>
+                                    <li>2.2. Digital Twin Instance</li>
+                                    <li>2.3. Digital Twin Aggregate</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        II. Аналитична рамка: Кои са “дигирати с дигитални близнаци”?
+                        <ul class="very-small-text">
+                            <li>
+                                1. Сравнителен анализ (benchmarking) на “облачни” и “космически” дигирати
+                                <ul class="very-small-text">
+                                    <li>1.1. Позициониране на предоставящи Cloud-услуги дигирати</li>
+                                    <li>1.2. Класация на разработващи софтуер за Cloud-дигирати</li>
+                                    <li>1.3. Ранкинг на дигирати с “космически” виртуални близнаци</li>
+                                </ul>
+                            </li>
+                            <li>
+                                2. SWOT-анализ на дигиратите с виртуални близнаци
+                                <ul class="very-small-text">
+                                    <li>2.1. Същност на метода за изследване</li>
+                                    <li>2.2. Силни и слаби страни на дигирати с дигитални близнаци</li>
+                                    <li>2.3. Възможности и заплахи пред дигирати с цифрови близнаци</li>
+                                </ul>
+                            </li>
+                            <li>
+                                3. PEST-анализ на дигирати с дигитални близнаци в ИТ-сектора
+                                <ul class="very-small-text">
+                                    <li>3.1. Същност на методологията за проучване </li>
+                                    <li>3.2. Политически и икономически аспекти на външната бизнес среда за дигирати с цифрови близнаци</li>
+                                    <li>3.3. Социални и технологични аспекти на външната бизнес среда за дигиратите с виртуални близнаци</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        III. Практическа рамка: Дигиталната трансформация- а сега накъде?
+                        <ul class="very-small-text">
+                            <li>
+                                1. Съпоставка между ползващи и предлагащи облачни решения дигирати
+                                <ul>
+                                    <li class="very-small-text">
+                                        1.1. Казусът “Теленор”- представяне на дигирата
+                                        <ul>
+                                            <li>1.1.1. Развитие на дигитализацията през годините</li>
+                                            <li>1.1.2. Ползване на облачно пространство (видео)</li>
+                                        </ul>
+                                    </li>
+                                    <li class="very-small-text">
+                                        1.2. Случаят “Amazon”- описание на дигирата 
+                                        <ul>
+                                            <li>1.2.1. Развитие на дигитализацията във времето</li>
+                                            <li>1.2.2. Предлагане на облачни услуги</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                2. Case study: Примерът "VMware"- създаване на софтуер за облачни цифрови близнаци
+                                <ul class="very-small-text">
+                                    <li>2.1. Дигитална трансформация "ad hoc"</li>
+                                    <li>2.2. Digital Twin Aggregate в действие (демо)</li>
+                                    <li>2.3. Виртуализация & Оптимизация (видео)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="italic">Заключение на тематиката</span>
+                        <ul class="very-small-text">
+                            <li>1. Социологическият елемент в статистически аспект</li>
+                            <li>2. Резюмирано обобщение и основни изводи</li>
+                            <li>
+                                3. Прогноза за бъдещото развитие
+                                <ul>
+                                    <li>3.1. Песимистичен сценарий</li>
+                                    <li>3.2. Реалистичен сценарий</li>
+                                    <li>3.3. Оптимистичен сценарий</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="italic">Библиография</span>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <blockquote class="quote">
+                        <span>„Когато ние с теб умрем, нашите деца няма да дойдат на гробовете ни. Те ще отидат и ще пуснат нашите цифрови колеги и ще говорят с тях “.</span>
+                        <div class="author">(Джон Смарт, идеолог на създаването на цифрови близнаци)</div>
+                    </blockquote>
+                    <h4>
+                        I. Теоретична рамка: <br />
+                        <span class="not-bold">Що е то “дигирати” и “дигитални близнаци”?</span>
+                    </h4>
+                </section>
+                <section>
+                    <div style="margin: 30px;" class="container">
+                        <div class="col">
+                            <h4>
+                                Въведение в проблематиката
+                            </h4>
+                            <p class="regular-text">
+                                <span class="italic">Дигиталната трансформация</span> е интеграция на нови дигитални технологии във всички сфери на бизнеса,
+                                водеща до фундаментална промяна на начина, по който организацията работи.
+                            </p>
+                            <div class="regular-text">
+                                <div class="bold">1. Определение за дигирати и дефиниция за цифрови близнаци</div>
+                                <p>
+                                    <span class="italic">Digerati</span> е термин, използван за обозначаване на „дигиталния елит“, или това е онази част от обществото,
+                                    която проявява професионализъм в познаваемостта на компютърната сфера.
+                                </p>
+                                <p>
+                                    Дигиталните близнаци са по-често срещани под термина <span class="italic">цифров близнак</span>,
+                                    чрез който се отбелязва т. нар. генериране или събиране на цифрови данни, представляващи обект.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col image-container">
+                            <img src="./images/real/ralitsa-1.jpg" />
+                            <div class="author">Авторски колаж на Ралица Людмилова</div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div style="margin: 30px;" class="container">
+                        <div class="col image-container">
+                            <img width="500px" src="./images/real/ralitsa-2.jpg" />
+                            <div class="author">Авторски колаж на Ралица Людмилова</div>
+                        </div>
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    2. Типове клониране на близнаци в пространствено приложение 
+                                </div>
+                                <p>
+                                    <span class="italic">Digital Twin Environment</span>, представляваща интегрирано многостепенно физическо пространствено приложение,
+                                    за решаване на прогнозни задачи и извършване на интерполации.
+                                </p>
+                                <p>
+                                    <span class="bold">2.1. Digital Twin Prototype</span>- <span class="italic">прототипен виртуален близнак</span>, дефиниращ изделието в процеса на неговото създаване и съдържащ информационните комплекти,
+                                    необходими за създаване на физическа версия, която дублира виртуалната.
+                                </p>
+                                <p>
+                                    <span class="bold">2.2. Digital Twin Instance</span>- <span class="italic">инстантен виртуален близнак</span>, описващ физическия си близнак, тоест вече произведеното изделие, и представен като самостоятелен,
+                                    но оставащ свързан с физическия си близнак през целия му живот.
+                                </p>
+                                <p> 
+                                    <span class="bold">2.3. Digital Twin Aggregate</span>- <span class="italic">обединяващ виртуален близнак</span>, можещ да не бъде самостоятелна структура от данни, а изчислителна конструкция,
+                                    която има достъп до всички инстантни виртуални близнаци и ги използва за специални задачи. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section class="animation">
+                    <blockquote class="quote">
+                        <span>"До края на 2021 година 50% от големите индустриални компании ще използват цифрови близнаци, в резултат на което тези организации ще получат 10-процентно подобрение на ефективността".</span>
+                        <div class="author">(Прогноза на агенцията за изследвания и консултации в областта на високите технологии “Gartner”)</div>
+                    </blockquote>
+                    <h4> 
+                         II. Аналитична рамка: <br />
+                        <span class="not-bold">Кои са “дигирати с дигитални близнаци”?</span>
+                    </h2>
+                </section>
+                <section>
+                    <section class="animation">
+                        <div style="margin: 20px;" class="container">
+                            <div class="col">
+                                <div class="regular-text">
+                                    <div class="bold">
+                                        1. Сравнителен анализ (benchmarking) на “облачни” и “космически” дигирати 
+                                    </div>
+                                    <p>
+                                        <span class="italic">Сравнителният анализ (benchmarking)</span> е метод за непрекъснато усъвършенстване на дейности от всякакъв вид и ниво, чрез сравнение с еталон.
+                                    </p>
+                                    <p>
+                                        <span class="italic">“Облачна услуга”</span> е термин, използващ се за различни технологии,
+                                        свързани с облачни изчисления <span class="italic">(Cloud computing)</span> или облачни хранилища на данни <span class="italic">(Cloud storage)</span>,
+                                        и изразяващ начините за предоставяне на компютърни ресурси, софтуер и информация при наличие на интернет. 
+                                    </p>
+                                </div>
+                                <div class="image-container">
+                                    <img width="500px" src="./images/real/andrei-2.png" />
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="regular-text bold">
+                                    1.1. Позициониране на предоставящи Cloud-услуги дигирати
+                                </div>
+                                <div class="image-container">
+                                    <img src="./images/real/andrei-1.png" />
+                                    <div class="author">Авторски снимка и колаж на Андрей Георгиев</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section class="animation">
+                    <div class="regular-text bold center">1.2. Класация на разработващи софтуер за Cloud-дигирати</div>
+                    <div style="margin: 20px;" class="container">
+                        <div class="col">
+                            <div class="image-container">
+                                <img height="405px" src="./images/real/andrei-3.png" />
+                                <div class="author">Авторска снимка на Андрей Георгиев</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="image-container">
+                                <img width="700px" src="./images/real/andrei-4.png" />
+                                <div class="author">Авторски колаж на Андрей Георгиев</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="animation">
+                    <div class="regular-text bold center">1.3. Ранкинг на дигирати с “космически” виртуални близнаци</div>
+                    <div style="margin: 20px;" class="container">
+                        <div class="col">
+                            <div class="image-container">
+                                <img width="700px" src="./images/real/andrei-6.png" />
+                                <div class="author">Авторски колаж на Андрей Георгиев</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="image-container">
+                                <img height="405px" src="./images/real/andrei-5.png" />
+                                <div class="author">Авторска снимка на Андрей Георгиев</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section class="animation">
+                    <blockquote class="quote">
+                        <span>
+                         "Дигиталната зрялост дава на организациите широк набор от предимства. Част от тях, като повишено качество на продукцията и
+                         удовлетворението на клиентите, водят до много по-добро финансово представяне. Други, като редукцията на екологичния отпечатък и подобряване
+                         на диверсификацията на работната сила, могат да отговорят на повишените очаквания за социално отговорен бизнес."
+                        </span>
+                        <div class="author">(Oт доклад на водещата консултантска компания “Deloitte”)</div>
+                    </blockquote>
+                </section>
+                <section class="animation">
+                    <div style="margin: 30px;" class="container">
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    2. SWOT-анализ на дигиратите с виртуални близнаци
+                                </div>
+                                <p>
+                                    <span class="italic">SWOT (Strengths, Weaknesses, Opportunities and Threats)</span> е популярна техника от стратегическото управление, подходяща за създаване на конкретна стратегия за предприятие, фирма, услуга или продукт. 
+                                </p>
+                                <p class="bold">
+                                    2.1. Същност на метода за изследване
+                                </p>
+                                <p>
+                                    <span class="italic">SWOT-анализът</span> разглежда специфични характеристики, като основната задача е разработване
+                                    на бизнес стратегия за развитие, гарантираща отчитане на главните движещи сили за успешен растеж. 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col image-container">
+                            <img height="350px" src="./images/real/krasimir-1.jpg" />
+                            <div class="author">Авторска снимка на Красимир Рангелов</div>
+                        </div>
+                    </div>
+                </section>
+                <section class="animation">
+                    <div style="margin: 30px;" class="container">
+                        <div class="col image-container">
+                            <img height="350px" src="./images/real/krasimir-2.jpg" />
+                            <div class="author">Авторска снимка на Красимир Рангелов</div>
+                        </div>
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    2.2. Силни и слаби страни на дигирати с дигитални близнаци
+                                </div>
+                                <p>
+                                    <span class="italic">Силните страни</span> са, че намаляват разходите, имат повишена надеждност и ефективност,
+                                    дават по-бърза, лесна и точна обратна връзка, прогнозируемост и диагностика, актуални са и търсени, с бъдещ потенциал за развитие,
+                                    не остават отпадъчен продукт и могат да използват възобновяеми източници на енергия, което допринася за опазване на природата,
+                                    но най-същественото им предимство бива потреблението при криза. 
+                                </p>
+                                <p>
+                                    <span class="italic">Слабите страни</span> се явяват недостигът на квалифицирани кадри, строго профилирани,
+                                    с нужните високи познания, експертни умения и професионален опит на специализация, зависимост от интернет свързаността или
+                                    локалната мрежа на компанията, възможността за компрометираност на структурата, чрез хакерски атаки, нуждата от първоначална
+                                    голяма инвестиция, както и масовото неразбиране какво представляват дигиталните близнаци. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="animation">
+                    <div style="margin: 30px;" class="container">
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    2.3. Възможности и заплахи пред дигирати с цифрови близнаци
+                                </div>
+                                <p>
+                                    <span class="italic">Възможностите</span> биват свързани с предприемаческата екосистема, развитието на стартъпната среда,
+                                    повишената нужда от надеждност на клъстърите и алтернативата новата версия на продукта да се превърне в доминиращ дизайн на
+                                    масовия пазар.  
+                                </p>
+                                <p>
+                                    <span class="italic">Заплахите</span> се изразяват в регулация, изискваща изграждането на специфична локална инфраструктура,
+                                    опасност от финансова криза, пречеща на скъпата първоначална инвестиция, законови промени на национално ниво,
+                                    технологични несигурности, при пробив, както и поява на друг ноу-хау продукт или услуга от конкурентна компания. 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col image-container">
+                            <img width="400px" height="350px" src="./images/real/krasimir-3.jpg" />
+                            <div class="author">Авторска снимка на Красимир Рангелов</div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <blockquote class="quote">
+                        <span>„В свят, който се променя наистина бързо, единствената стратегия, която ви гарантира неуспех, е да не поемате никакви рискове.“</span>
+                        <div class="author">(Марк Закърбърг, създател на Facebook)</div>
+                    </blockquote>
+                </section>
+                <section class="animation">
+                    <div style="margin: 30px;" class="container">
+                        <div class="col image-container">
+                            <img height="350px" src="./images/real/marin-1.jpg" />
+                            <div class="author">Авторски колаж на Марин Луков</div>
+                        </div>
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    3. PEST-анализ на дигирати с дигитални близнаци в ИТ-сектора
+                                </div>
+                                <p>
+                                    <span class="italic">PEST-анализът (Policy, Economy, Society, Technology)</span> е рамка, която стратезите използват,
+                                    за да сканират външната макро среда, в която компанията оперира.  
+                                </p>
+                                <p class="bold">
+                                    3.1. Същност на методологията за проучване
+                                </p>
+                                <p>
+                                    Методологията на PEST-анализа разкрива политическите, икономическите, социалните и технологичните аспекти на външната среда,
+                                    важни за разработване на ефективната стратегия на дигирата. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="animation">
+                    <div style="margin: 30px;" class="container">
+                        <div class="col image-container">
+                            <img height="350px" src="./images/real/marin-2.jpg" />
+                            <div class="author">Авторски снимки на Марин Луков</div>
+                        </div>
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    3.2. Политически и икономически аспекти на външната бизнес среда за дигирати с цифрови близнаци
+                                </div>
+                                <p>
+                                    <span class="italic">Политическите фактори</span> биват свързани главно с дейността на държавната администрация.
+                                </p>
+                                <p>
+                                    <span class="italic">Икономическите фактори</span> обуславят състоянието на националната икономика.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="animation">
+                    <div style="margin: 30px;" class="container">
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    3.3. Социални и технологични аспекти на външната бизнес среда за дигиратите с виртуални близнаци
+                                </div>
+                                <p>
+                                    <span class="italic">Социалните фактори</span> базисно формират социалното обкръжение на стопанската организация във всяка една индустрия.  
+                                </p>
+                                <p>
+                                    <span class="italic">Технологичните фактори</span> оказват значително влияние върху дейността на компаниите в ерата на дигиталните трансформации.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col image-container">
+                            <img height="350px" src="./images/real/marin-3.jpg" />
+                            <div class="author">Авторски снимки на Марин Луков</div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section class="animation">
+                    <blockquote class="quote">
+                        <span>„Πpoтивнo нa oбщoпpиeтoтo мнeниe, дигитaлнaтa тpaнcфopмaция e пo-мaлĸo cвъpзaнa c тexнoлoгиятa и пoвeчe c xopaтa“.</span>
+                        <div class="author">(Из анaлиз на “Наrvаrd Вuѕіnеѕѕ Rеvіеw”)</div>
+                    </blockquote>
+                    <h4>
+                        III. Практическа рамка: <br />
+                        <span class="not-bold">Дигиталната трансформация- а сега накъде?</span>
+                    </h4>
+                </section>
+                <section class="animation">
+                    <div style="margin: 30px;" class="container">
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    1. Съпоставка между ползващи и предлагащи облачни решения дигирати
+                                </div>
+                                <p class="bold">
+                                    1.1. Казусът “Теленор”- представяне на дигирата
+                                </p>
+                                <p>
+                                    <span class="italic">“Telenor”</span>, предоставяйки пълен спектър от телекомуникационни услуги- мобилни,
+                                    фиксирани и пренос на данни, е водеща телекомуникационна компания, с над 3,1 млн. потребители в България, наследник на
+                                    “Космо България Мобайл”- вторият GSM оператор в страната след “Мобилтел”, извършващ търговска дейност от 2001 г. с марката “Глобул”. 
+                                </p>
+                                <p>
+                                    През 2013 г. норвежката компания “Telenor Group” купува 100% от акциите на компанията за 717 млн. евро, а от 2018 г. “Теленор- България”
+                                    е част от “PPF Group”, оперираща в 22 страни в Европа, Азия и Северна Америка и реализираща инвестиции в редица пазарни области,
+                                    като банков и финансов сектор, телекомуникационен, биотехнологичен, застрахователен, селскостопански и недвижимо имущество,
+                                    с общо активи на стойност над 38 млрд. евро и с повече от 170 000 служители в световен мащаб. 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col image-container">
+                            <img height="350px" src="./images/real/nedko-1.jpg" />
+                            <div class="author">Авторска снимка на Недко Колев</div>
+                        </div>
+                    </div>
+                </section>
+                <section class="animation">
+                    <div style="margin: 30px;" class="container">
+                        <div class="col">
+                            <div class="image-container">
+                                <img width="400px" height="350px" src="./images/real/nedko-2.jpg" />
+                                <div class="author">Авторски снимки на Недко Колев</div>
+                            </div>
+                            <div class="regular-text">
+                                През 2015 г. “Теленор” пръв в България пуска в мрежата си услугата 4G LTE, достъпна в 53 града и 2 курорта,
+                                покривайки 56,73% от населението на страната, като скоростта на Интернет достига до 75 Mbps. 
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    1.1.1. Развитие на дигитализацията през годините
+                                </div>
+                                <p>
+                                    През годините компанията преминава през различни етапи на дигитална трансформация, успешно интегрирайки дигитализацията
+                                    както за вътрешни целеви потребности, така и за външни публики- своите клиенти, превръщайки се ефективно в един от дигиратите
+                                    на телекомуникациионната сфера в ИТ-сектора, с водещи дигитални продукти и услуги като <span class="italic">SurveyОnTablet,
+                                    Интерактивно гласово меню (IVR), Бизнес контактен център, Автопарк Решения, Digital Office</span> и др. 
+                                </p>
+                            </div>
+                            <div class="image-container">
+                                <img height="350px" src="./images/real/nedko-3.png" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="animation">
+                    <div style="margin: 30px;" class="container">
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    1.1.2. Ползване на облачно пространство
+                                </div>
+                                <p>
+                                    През 2016 г., като част от глобалната си дигитална трансформация, “Теленор” прави стратегически избор с ползването на
+                                    облачно пространство и въвеждането на дизайн-мисленето в услугите си като ключов актив, интегрирайки в работния процес облачните
+                                    продукти <span class="italic">Office 365</span> на Microsoft (Azure), <span class="italic">HeRMeS®</span> на VMware,
+                                    <span class="italic">SuccessFactors</span> на SAP и самостоятално роботизирайки част от вътрешните дейности на компанията.
+                                </p>
+                                <p>
+                                    Първите роботизирани виртуално асистенти от 2020 г. работят успешно в отделите по финанси, кол център и “campaign management”,
+                                    като целта е потенциалът им да се разгърне и в други направления на работния процес,
+                                    доказвайки бъдещите възможности на роботизираната цифрова асистенция в помощ на човека. 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col image-container">
+                            <video width="500" controls>
+                                <source src="./images/real/nedko-4.mp4" type="video/mp4">
+                              Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section class="animation">
+                    <blockquote class="quote">
+                        <span>„Нашите клиенти трябва да имат правилните умения, ако искат да преминат през дигитална трансформация.“</span>
+                        <div class="author">(Тереза Карлсън, вицепрезидент на Amazon Web Services)</div>
+                    </blockquote>
+                </section>
+                <section class="animation">
+                    <div style="margin: 30px;" class="container">
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    1.2. Случаят “Амазон”- описание на дигирата
+                                </div>
+                                <p>
+                                    <span class="italic">Amazon.com</span>, със седалище в Сиатъл, Вашингтон, е сред най-популярните онлайн търговци на дребно,
+                                    производител на Kindle четци за електронни книги и доставчик на уеб услуги, като интернет-базираното предприятие за електронна
+                                    търговия продава книги, музика, филми, домашни потреби, електроника, играчки и други стоки, пряко или като посредник. 
+                                </p>
+                                <p>
+                                    Бизнес уеб-услугите на компанията включват отдаване под наем на пространства за съхранение на данни и изчислителни ресурси,
+                                    така наречените “облачни услуги”.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col image-container">
+                            <img height="350px" src="./images/real/stanislava-1.jpg" />
+                            <div class="author">Авторски снимки на Станислава Жекова</div>
+                        </div>
+                    </div>
+                </section>
+                <section class="animation">
+                    <div style="margin: 30px;" class="container">
+                        <div class="col image-container">
+                            <img height="350px" src="./images/real/stanislava-2.jpg" />
+                            <div class="author">Авторски снимки на Станислава Жекова</div>
+                        </div>
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    1.2.1. Развитие на дигитализацията във времето
+                                </div>
+                                <p>
+                                    През 1994  г. Джеф Безос, бивш изпълнителен директор на хедж фонд на Уолстрийт, стартира Amazon.com, която нараства бързо,
+                                    достигайки 180 000 клиентски акаунта в края на 1996 г., а през 1997 г. те са вече 1 000 000. 
+                                </p>
+                                <p>
+                                    Компанията далеч не е единствено електронен магазин за почти всеки продукт, но и производител, доставчик на облачни услуги, верига за органични храни,
+                                    стрийминг платформа и много други дейности, развили се през годините и създали продукти и услуги като
+                                    <span class="italic">Associates, Amazon Encore, Amazon Publishing, Kindle Fire, Amazon Drive, Amazon Relay App, Amazon Fresh, Amazon Go, Amazon Prime and Music,
+                                    Amazon Echo, Dot</span>  и др.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="animation">
+                    <div style="margin: 30px;" class="container">
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    1.2.2. Предлагане на облачни услуги
+                                </div>
+                                <p>
+                                    След разширяването на VMware Cloud on AWS, най-печелившият “асортимент” на компанията става AWS <span class="italic">(Amazon Web Services)</span>,
+                                    първоначално предлагайки данни за моделите на интернет трафик, популярност на уеб сайтове и други статистически данни,
+                                    а на по-късен етап разширявайки портфолиото си с <span class="italic">AWS Elastic Compute Cloud</span>,
+                                    отдавайки компютърна обработваща мощност и със <span class="italic">Simple Storage</span>, даващ под наем съхранение на данни в “облака”,
+                                    за да достигне до амбициозния план за развитие на цифрови близнаци,
+                                    поставяйки началото с мобилното приложение, свързано със системата за разплащания чрез умния агент <span class="italic">Alexa</span>.  
+                                </p>
+                                <p>
+                                    В края на 2020 г. Амазон обяви новата си цел- да помогне на 29 млн. души по света да се преквалифицират до 2025 г.,
+                                    давайки им безплатно нужните знания за позиции в областта на облачните технологии в момент,
+                                    в който пандемията слага край на много кариери. 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col image-container">
+                            <img height="350px" src="./images/real/stanislava-3.jpg" />
+                            <div class="author">Авторски снимки на Станислава Жекова</div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <blockquote class="quote">
+                        <span>
+                            "VMware- България" е в основата на иновативните технологии, с които правим дигиталната трансформация на бизнесите на клиентите ни възможна.
+                            Това се дължи на две причини- първата е заради таланта на кадрите, а втората е, че в България се разработват именно продуктите за управление.
+                            Така разширяваме успеха, но заедно с това и свързваме клиентите ни по-лесно със самите разработчици."
+                        </span>
+                        <div class="author">(Пат Гелсингър, бивш главен изпълнителен директор на компанията)</div>
+                    </blockquote>
+                </section>
+                <section>
+                    <div style="margin: 30px;" class="container">
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    2. Case study: Примерът "VMware"- създаване на софтуер за облачни цифрови близнаци
+                                </div>
+                                <p>
+                                    Разглеждането на отделен случай или примерен казус е методология за конкретно проучване в научната сфера,
+                                    изразяващо се в целенасочено изучаване и представяне на единичен реален случай от практиката,
+                                    като целта е да се разбере сложен въпрос или обект и да се обогати чрез надграждане вече съществуващо познание от предходни изследвания.   
+                                </p>
+                                <p>
+                                    “VMware” е глобален лидер в сферата на облачните инфраструктури и технологии за бизнес мобилност,
+                                    предоставяйки софтуер, платформа за виртуализация и услуги за изчислителни облаци и за виртуализация на платформите,
+                                    на които работят водещите доставчици на Cloud услуги Google, Amazon, Microsoft (Azure), SAP, IBM и др., както и hosting provider-и,
+                                    ползващи абонамент и софтуер услугата (SaaS), като компанията прави големи инвестиции в развиващи се пазари (Kubernetes, хибриден облак,
+                                    крайни изчисления) и e eдинcтвeнaта, пpeдлaгaща “вгpaдeнa” cигypнocт- oт инфpacтpyĸтypaтa зa виpтyaлизaция, пpeз мpeжи, дo ĸpaйни ycтpoйcтвa,
+                                    а пpoдyĸтите й Саrbоn Вlасk, NЅХ и АіrWаtсh cа пазарни фаворити.  
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col image-container">
+                            <img height="350px" src="./images/real/david-1.gif" />
+                            <div class="author">Авторски дизайн, снимки и анимация на Давид Мавродиев</div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div style="margin: 30px;" class="container">
+                        <div class="col image-container">
+                            <img class="no-border" height="350px" src="./images/real/david-2.gif" />
+                            <div class="author">Авторски дизайн, снимки и анимация на Давид Мавродиев</div>
+                        </div>
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    2.1. Дигитална трансформация "ad hoc"
+                                </div>
+                                <p>
+                                    Базирано в Пало Алто, Калифорния, САЩ, VMware Inc. е дъщерно публично търгувано дружество на “Dell Technologies” за софтуерна
+                                    виртуализация, листвано на Нюйоркската фондова борса и генериращо приходи от близо 9 млрд. долара, има 31 000 служители за 2020 г.,
+                                    над 500 000 клиенти, повече от 75 000 партньори и 42 свои дъщерни дружества по света, като новите му продукти са за управление на
+                                    виртуализацията и софтуерно дефинирани мрежи, голяма част от тях разработени в софийския център, най-големият в Европа
+                                    (подобни има само в Индия и Китай).
+                                </p>
+                                <p>
+                                    “VMware-България” съществува от 14 години и е стратегически мултифункционален хъб с богато портфолио от продукти,
+                                    персонализирани решения и широк спектър от бизнес дейности, чиито служители са специализирани във виртуализация,
+                                    управление и автоматизация на виртуални инфраструктури, възстановяване на данни при бедствие, анализиране на големи масиви от данни,
+                                    с oтдeл зa инoвaционни изcлeдвaния и paбoтa пo пpoeĸти в oблacтите АІ, blосkсhаіn, cигypнocт и еdgе соmрutіng, носейки годишни
+                                    приходи на компанията от 1 млрд. $.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div style="margin: 30px;" class="container">
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    2.2. Digital Twin Aggregate в действие
+                                </div>
+                                <p>
+                                    VMware, най-големият разработчик на софтуер за виртуализация в ИТ-сектора, доминира на пазара за виртуализиращ софтуер още от своето създаване,
+                                    предоставяйки начини за клониране на съществуваща виртуална машина във VMware среда, чрез VMware vCenter или VMware vSphere клиент-
+                                    vSphere е продуктов пакет, комбинация от софтуерните компоненти vCenter, ESXi, vSphere и др., като VMware vCenter сървърът е централизирано
+                                    приложение за управление на виртуални машини и ESXi хостове централно, ESXi е хипервизор, инсталиран на физическа машина, а vSphere клиентът
+                                    се използва за достъп директно до ESXi сървъра в малка среда, а в по-голяма- за достъп до vCenter сървър за управление на ESXi сървър.
+                                </p>
+                                <p>
+                                    VMware vSAN е иновативна технология, разширяваща функционалността на VMware vSphere в посока обединяване и ефективно използване,
+                                    както на сървърни ресурси, и на обвързания с тях сторидж, благодарение на което се създават виртуални дата масиви,
+                                    обединяващи сървърните дискове и софтуерните им реплики – така виртуалните машини получават достъп до високопроизводителни,
+                                    надеждни и споделени ресурси за съхранение. 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col image-container">
+                            <img height="350px" src="./images/real/david-3.gif" />
+                            <div class="author">Авторски дизайн, снимки и анимация на Давид Мавродиев</div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div id="digital-twins-demo-wrapper">
+                        <h4>Демо</h4>
+                        <div class="container">
+                            <div class="col">
+                                <canvas id="digital-twins-demo" width="800px" height="600px"></canvas>
+                            </div>
+                            <div class="col">
+                                <div id="gui-container" class="col"></div>
+                                <img src="./images/real/david-4.gif" /> 
+                            </div>
+                        </div>
+                        <script src="./lib/gui.js"></script>
+                        <script src="./canvas.js"></script>
+                    </div>
+                </section>
+                <section>
+                    <h5 class="center">Виртуализация & Оптимизация</h5>
+                    <div class="container">
+                        <div class="col image-container">
+                            <video width="500" controls>
+                                <source src="./images/real/create-vm-optimized.m4v" type="video/mp4">
+                              Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="col image-container">
+                            <img height="350px" src="./images/real/david-5.gif" />
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <blockquote class="quote">
+                        <span>
+                            “Иновативността се различава по водача и последователя.”
+                        </span>
+                        <div class="author">(Стив Джобс, основател на Apple)</div>
+                    </blockquote>
+                </section>
+                <section>
+                    <div style="margin: 30px;" class="container">
+                        <div class="col">
+                            <h4>
+                                Заключение на тематиката
+                            </h4>
+                            <div class="regular-text">
+                                <p>
+                                    Все повече предприятия се преориентират към дигитализация на производството си,
+                                    като в бъдеще цифровите близнаци ще се утвърдят като ключов ИТ-инструментариум за голяма част от индустриите,
+                                    понеже всеки продукт би могъл да има свой собствен виртуален близнак,
+                                    стига да генерира по някакъв начин данни, които могат да бъдат снети и обработени. 
+                                </p>
+                                <div class="bold">1. Социологическият елемент в статистически аспект</div>
+                                <p>
+                                    Настоящият екипен курсов проект се явява вид социологическо проучване на нагласите на част от студентите,
+                                    първи курс в дистанционна форма на обучение, в различни специалности и професионални направления,
+                                    тъй като сондира мненията им по конкретната тема на разработката,
+                                    тоест изследването притежава и статистически аспект.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">
+                                    2. Резюмирано обобщение и основни изводи
+                                </div>
+                                <p>
+                                    Тезите на студентите, участващи в проекта, засягат теоретичната, аналитична и практическа рамка на дискурса,
+                                    разглеждайки както парадигми, отнасящи се до дигиратите, цифровите близнаци, клониране на виртуални пространства,
+                                    в контекста на дигиталната трансформация, така и конкретни казуси,
+                                    давайки примери от своята професионална дейност. 
+                                </p>
+                            </div>
+                            <div class="image-container">
+                                <img width="350px" height="300px" src="./images/real/qnina-1.jpg" />
+                                <div class="author">Авторски колаж на Янина Великова</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div style="margin: 30px;" class="container">
+                        <div class="col image-container">
+                            <img src="./images/real/qnina-2.png" />
+                        </div>
+                        <div class="col">
+                            <div class="regular-text">
+                                <div class="bold">3. Прогноза за бъдещото развитие</div>
+                                <p>
+                                    Сценарийното планиране се използва за валидиране на прогнози, направени с помощта на различни конвенционални средства
+                                    или за концентриране на усилията и ресурсите за предотвратяване на нежелани събития,
+                                    включени в съдържанието на сценария за описание на бъдещото състояние.
+                                </p>
+                                <p class="bold">
+                                    3.1. <span class="italic">Песимистичен сценарий</span>: Основният проблем е липсата на висококвалифицирани кадри, строго специализирани и с нужната професионална експертиза.
+                                </p>
+                                <p class="bold">
+                                    3.2. <span class="italic">Реалистичен сценарий</span>: ИТ-гигантите ще запазят водещата си роля, ако съумеят да развият още силните си страни, да отстранят слабостите си,
+                                    да използват наличните възможности и да реагират адекватно на потенциалните заплахи. 
+                                </p>
+                                <p class="bold">
+                                    3.3. <span class="italic">Оптимистичен сценарий</span>:  Днешната реалност на извънредно положение, порадено от световен здравен проблем, показва необходимостта от бързо и гъвкаво развитие на дигиталните близнаци,
+                                    за да преминат те на следващия еволюционен етап от развитието си- “дигиталните тризнаци”. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section class="animation">
+                <h4> Библиография</h4>
+                <ul style="max-width: 95%;" class="very-small-text">
+                    <li>Craver, R. Triad woos Amazon in bid for second headquarters, Winston-Salem Journal, October 20, 2017.</li>
+                    <li>Merced, M., "Walmart to Buy Bonobos, Men's Wear Company, for $310 Million", The New York Times, June 16, 2017.</li>
+                    <li>Robert K. Yin. Case Study Research. Design and Methods. Third Edition. Applied social research method series Volume 5. Sage Publications. California, 2002.</li>
+                    <li>Amazon.com, Inc. History, http://www.fundinguniverse.com/company-histories/amazon-com-inc-history/ (22.01.2021)</li>
+                    <li>"Amazon donates space in headquarters to Seattle nonprofit", 790 KGMI, May 12, 2017, https://kgmi.com/news/007700-leonard-wont-play-in-game-6-for-spurs-tonight/ (22.01.2021)</li>
+                    <li>Ovide, Sh., "Amazon Captures 5 Percent of American Retail Spending. Is That a Lot?", Bloomberg Businessweek, 2018, https://www.bloomberg.com/news/articles/2018-08-08/amazon-captures-5-of-american-retail-spending-is-that-a-lot (22.01.2021) </li>
+                    <li>Digerati, Wikipedia. https://en.m.wikipedia.org/wiki/Digerati (17.01.2021)</li>
+                    <li>Labservicetech.com, Digerati. https://bul.labservicetech.com/digerati-804423 (17.01.2021)</li>
+                    <li>ДигиталнаИндустрия.БГ, Виртуалните близнаци или как една идея да оживее в пространството. https://xn--80aahddubcb0awc4bnhip4t.bg/tema/industriya-4.0/virtualnite-bliznatsi-ideya-ozhivee-prostranstvoto (19.01.2021)</li>
+                    <li>Amazon Web Service. https://aws.amazon.com/ (18.01.2021)</li>
+                    <li>Micosoft Azure. https://azure.microsoft.com/en-us/ (18.01.2021)</li>
+                    <li>Google Cloud Platform. https://cloud.google.com/ (22.01.2021)</li>
+                    <li>Vmware. https://www.vmware.com/cloud-solutions.html (20.01.2021)</li>
+                    <li>Salesforce. https://www.salesforce.com/ (23.01.2021)</li>
+                    <li>Servicenow. https://www.servicenow.com/ (21.01.2021)</li>
+                    <li>NASA. https://www.nasa.gov/ (19.01.2021)</li>
+                    <li>SpaceX. https://www.spacex.com/ (24.01.2021)</li>
+                    <li>European space agency- https://www.esa.int/ (17.01.2021)</li>
+                    <li>4meahc.com, Какво е цифров близнак. https://bul.4meahc.com/what-is-digital-twin-70962#menu-1 (25.01.2021)</li>
+                    <li>CIO, Значението на дигиталните близнаци за индустриите. https://www.cio.bg/pr/2019/10/25/3982010_znachenieto_na_digitalnite_bliznaci_za_industriite/ (20.01.2021)</li>
+                    <li>Grand View Research, Digital Twin Market Size, Share & Trends Analysis Report By End-use (Automotive & Transport, Retail & Consumer Goods, Agriculture), By Region (Europe, North America, Asia Pacific), And Segment Forecasts, 2018- 2025. https://www.grandviewresearch.com/industry-analysis/digital-twin-market (21.01.2021)</li>
+                    <li>Investopedia. Supply Side Tempers 2021 Housing Outlook. https://www.investopedia.com/ (26.01.2021)</li>
+                    <li>4subsea. Delivering Critical Decision Support to Energy Providers. https://www.4subsea.com/ (13.01.2021)</li>
+                    <li>Identity Management Institute. Overview. https://www.identitymanagementinstitute.org/ (24.01.2021)</li>
+                    <li>Комисия за защита на личните данни- https://www.cpdp.bg/?fbclid=IwAR0kxrCXNfS2uxSD1alhLXfSG8la34F7ZnPCWyfv2UmiiexiunWTgGsbQOI (22.01.2021)</li>
+                    <li>Telenor.https://www.telenor.bg/?fbclid=IwAR1oa_MdNuqZUGYuVLGdRbP10LRcYxootcZHFCEot3ZaVbRiIRtJigIvEio (24.01.2021)</li>
+                    <li>Launch’abs. https://launchlabs.bg/ (20.01.2021)</li>
+                </ul>
+            </section>
+            <section>
+                <!--<h4>БЛАГОДАРИМ ЗА ВНИМАНИЕТО!</h4>-->
+                <div class="center regular-text">
+                    Изготвил презентацията:
+                </div>
+                <div class="image-container">
+                    <img height="300px" src="./images/real/david.jpg" />
+                </div>
+                <div class="image-container">
+                    <img height="200px" src="./images/real/blagodarq.gif" />
+                </div>
+            </section>
+            <section class="image-container">
+                <img height="550px" src="./images/real/pechat.gif" />
+                <div class="author">Автор на фоновата снимка: Андрей Георгиев</div>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal.js"></script>
+    <script src="./lib/animations/three.min.js"></script>
+    <script src="./lib/animations/vanta.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script>
+        // Bootstrap the presentation
+        Reveal.initialize({
+            hash: true
+        });
+
+        // Background network
+        VANTA.NET({
+          el: "#net",
+          color: 0x3447d2,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          points: 20.00,
+          maxDistance: 40.00,
+          spacing: 15.00
+        });
+
+        // 3D slides effect
+        window.onload = function () {
+            $("body").on("mousemove", ".present", function(e) {
+                var $el = $(this);
+                let xAxis = (window.innerWidth / 2 - e.pageX) / 300;
+                let yAxis = (window.innerHeight / 2 - e.pageY) / 300;
+                $el.css("transform", `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`);
+            });
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>K.A.T.R.I.N.</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/katrin-style.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName('head')[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<span class="katrin-title">K.A.T.R.I.N.</span>
+					<span class="title"><span>K</span>eyboard <span>A</span>ssisted <span>TR</span>aversal and <span>IN</span>spection</span>
+				</section>
+
+				<section data-background="#dddddd" data-transition="slide" data-background-transition="zoom" class="has-light-background present" style="top: 42.5px; display: block;">
+					<h4>Table of contents</h4>
+					<ul>
+						<li>
+							What is it?
+						</li>
+						<li>
+							What problems does the plugin solve?
+						</li>
+						<li>
+							Custom settings and features for vSphere H5 client
+						</li>
+						<li>
+							Fully configurable plugin controls
+						</li>
+						<li>
+							Iframes and modals. How to deal with it?
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h4>What is it?</h4>
+
+						<blockquote class="fragment" cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+							Plugin based solution that allows the user to conveniently and efficiently "navigate to" and "interact"
+							with any element/item on the web page, using only the keyboard
+						</blockquote>
+					</section>
+					<section>
+						<img src="./images/short_demo.gif" width="800">
+					</section>
+				</section>
+
+				<section style="height: 90%;">
+					<h4>What problems does the plugin solve?</h4>
+
+					<div class="container">
+						<div class="col">
+							<canvas class="fragment" data-fragment-index="2" id="accessabillity-chart" width="450" height="450"></canvas>
+						</div>
+
+						<div class="col">
+							<span class="fragment medium-text" data-fragment-index="1">Improves accessabillity<span>
+							<div class="fragment" data-fragment-index="3">
+								<p class="small-text">
+									Dexterity difficulties: 7% of working age adults have a severe dexterity difficulty (source: The Wide Range of Abilities and Its Impact on Computer Technology - Microsoft / Forrester). Severe dexterity difficulties mean users are unlikely to use a mouse, and rely on the keyboard instead.
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h4>Fully configurable plugin controls</h4>
+					<div class="container fragment">
+						<div class="col">
+							<img  src="images/config-panel.png" width="70%"  />
+						</div>
+						<div class="col">
+							<span class="medium-text">Global configurations</span>
+							<p class="small-text">
+								Applied for all sites. For example navigation controls, search trigger keys, searchbox position,
+								live-reloading, focus-remove keys and ex.
+							</p>
+							<span class="medium-text">Local configurations</span>
+							<p class="small-text">
+								Applied per domain. Fox example turn-off and immediate search trigger options.
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h4>Custom features for vSphere H5 client</h4>
+
+					<p class="medium-text">
+						Plugin has a lot settings and features for vSphere H5 client.
+						For example controls associacion which helps you to use near-by controls which are associaciated with some
+						text match that you made.
+					</p>
+
+					<div class="container">
+						<div class="col">
+							<p class="small-text">Recognize checkboxes that is near to searched text...</p>
+							<img src="./images/diff-controls-associacion.png">
+							<img src="./images/tree-arrow.png">
+						</div>
+						<div class="col">
+
+						</div>
+						<div class="col">
+							<p class="small-text">Find icons which contains search-term in some label...</p>
+							<img src="./images/icon-match.png">
+							<img src="./images/icons-menu.png">
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h4>Modals</h4>
+					<div class="container">
+						<div class="col">
+							<img src="./images/modal.png"/>
+						</div>
+						<div class="col">
+							<div class="fragment">
+								<span class="medium-text step-desc">Open modal on page...</span>
+							</div>
+							<div class="fragment">
+								<span class="medium-text step-desc">Plugin detect it...</span>
+							</div>
+							<div class="fragment">
+								<span class="medium-text step-desc">Change context of search...</span>
+							</div>
+							<div class="fragment">
+								<span class="medium-text step-desc">Search works in modal ONLY...</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<section>
+						<h2>IFrames</h2>
+					</section>
+					<section>
+						<h4>What is special about Iframes?</h4>
+						<div class="container">
+							<div class="col">
+								<p class="medium-text">
+									Every iframe is threat like different document, so browser inject plugin in every document/iframe.
+									So this means that every iframe has his own search...
+								</p>
+							</div>
+							<div class="col">
+								<img src="./images/iframe.png" />
+							</div>
+						</div>
+					</section>
+					<section>
+						<h4>Solution: Communication between iframes</h4>
+						<div id="network"></div>
+					</section>
+				</section>
+
+				<section>
+					<h2>Live demo</h2>
+				</section>
+
+				<section>
+					<h2>Questions</h2>
+					Thank you for your attention
+				</section>
+			</div>
+		</div>
+
+		<script src="./node_modules/chart.js/dist/Chart.min.js"></script>
+		<script src="./node_modules/chartjs-plugin-labels/build/chartjs-plugin-labels.min.js"></script>
+		<script src="js/katrin.js"></script>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				parallaxBackgroundImage: 'images/background.png',
+				parallaxBackgroundSize: '2100px 900px',
+				parallaxBackgroundHorizontal: 200,
+				parallaxBackgroundVertical: 50,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+
+			Reveal.addEventListener('fragmentshown', function( event ) {
+				if (event.fragment.id === "accessabillity-chart") {
+					drawChart();
+				}
+			});
+
+			Reveal.addEventListener('slidechanged', function( event ) {
+				if (event.indexh === 3) {
+
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,594 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Bazel</title>
+
+    <link rel="stylesheet" href="./lib/reset.css">
+    <link rel="stylesheet" href="./lib/reveal.css">
+    <link rel="stylesheet" href="./lib/theme/black.css">
+
+    <style>
+        /* @import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap'); */
+
+        body * {
+            /*font-family: 'Sigmar One', cursive !important;*/
+        }
+
+        .slides {
+            width: 100% !important;
+        }
+
+        .list-without-bullets li {
+            list-style-type: none;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .col {
+            margin: 10px;
+            flex: 1;
+        }
+
+        .not-bold {
+            font-weight: 100 !important;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .center {
+            text-align: center !important;
+        }
+
+        .italic {
+            font-style: italic !important;
+        }
+
+        .underline {
+            text-decoration: underline !important;
+        }
+
+        .very-big-text {
+            font-size: 2.1rem !important;
+        }
+
+        .big-text {
+            font-size: 1.7rem !important;
+        }
+
+        .regular-text {
+            font-size: 1.3rem;
+            text-align: left;
+        }
+
+        .medium-text {
+            font-size: 1.1rem !important;
+        }
+
+        .very-small-text {
+            font-size: 0.7rem !important;
+        }
+
+        .title {
+            font-size: 1.5rem;
+        }
+
+        .no-border {
+            border: none !important;
+        }
+
+        .quote {
+            font-size: 1.7rem !important;
+            text-align: center !important;
+        }
+
+        .quote > .author {
+            margin-top: 10px;
+            font-style: italic !important;
+            font-size: 1.3rem !important;
+        }
+
+        .image-container {
+            align-self: center;
+        }
+
+        .image-container > img {
+            border: 10px solid snow;
+        }
+
+        .image-container > .author {
+            margin-top: 10px;
+            font-style: italic !important;
+            font-size: 1rem !important;
+        }
+
+        #digital-twins-demo-wrapper {
+            margin-left: 10%;
+            width: 800px;
+            height: 700px;
+            background-color: black;
+        }
+
+        .green {
+            color: greenyellow !important;
+        }
+
+        .blue {
+            color: deepskyblue !important;
+        }
+
+        .fit-and-center {
+            margin: auto;
+            width: fit-content;
+            max-width: 60%;
+        }
+
+        .code {
+            font-weight: 700;
+            background-color: black;
+            color: greenyellow;
+            font-family: 'Fira Code', monospace !important;
+        }
+
+        .file {
+            color: greenyellow;
+            font-family: 'Fira Code', monospace !important;
+        }
+    </style>
+</head>
+
+<body id="net">
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <div class="bold very-big-text">
+                    ИЗЧИСЛИТЕЛЕН МОДЕЛ ЗА ОПТИМИЗАЦИЯ НА ТЕКСТ:
+                </div>
+                <div class="bold very-big-text" style="margin-left: 5%; margin-right: 5%;">
+                    СЪДЪРЖАТЕЛНО РЕДУЦИРАНЕ ЗА ПОДОБРЯВАНЕ НА СМИСЛОВОТО ВЪЗПРИЯТИЕ НА ИНФОРМАЦИЯТА
+                </div>
+                <br/>
+                <ul class="not-bold big-text">
+                    <li><span class="bold italic">Дипломант:</span> Давид Мавродиев</li>
+                    <li><span class="bold italic">Научен ръководител:</span> проф. д-р Теодора Бакърджиева</li>
+                    <li><span class="bold italic">Консултант:</span> Salman Khan, PhD</li>
+                </ul>
+            </section>
+
+            <section>
+                <ul class="not-bold big-text">
+                    <li>
+                        <span class="bold">Основна цел:</span> 
+                        <br/>
+                        <span>Създаване на изчислителен модел (алгоритъм) за оптимизация на текст.</span>
+                    </li>
+                    <li>
+                        <span class="bold">Условие:</span>
+                        <br/> 
+                        <span>Моделът да редуцира текст без да се губи съдържателна информация.</span>
+                    </li>
+                    <li>
+                        <span class="bold">Следствие:</span>
+                        <br/>
+                        <span>Редуцирането да подобри смисловото възприятие на информацията.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <ul class="not-bold big-text">
+                    <li>
+                        <span class="bold">Главна задача:</span>
+                        <br/>
+                        <span>Чрез валидиране на хипотези да се докаже нужда от разработване на модела.</span>
+                    </li>
+                    <li>
+                        <span class="bold">Допусната вероятност (<span class="italic">хипотези</span>):</span>
+                        <ul>
+                            Необходим е изчислителен модел за текстова оптимизация:
+                            <li class="italic">Решаващ проблеми на читателската аудитория.</li>
+                            <li class="italic">В помощ на медийната информационна среда.</li>
+                            <li class="italic">Ако в практиката не съществува подобен модел.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <section>
+                    <div class="bold very-big-text">I. КОНЦЕПТУАЛНА РАМКА: <span class="italic">ИНФОРМАЦИОННО МОДЕЛИРАНЕ</span></div>
+                    <ul class="not-bold big-text">
+                        В първа част се разглеждат от информационна гледна точка:
+                        <li><span class="bold">актуални проблеми</span> (с насока към възможни решения).</li>
+                        <li><span class="bold">понятиен апарат:</span> модулност, модалност, модификация.</li>
+                        <li><span class="bold">обекти:</span> потребителска аудитория и медийна среда.</li>
+                        <li><span class="bold">методология:</span> индекс-индикатор, бинарни опозиции, типологизация, литературни източници.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul class="not-bold big-text">
+                        Акценти на <span class="bold">проблемността:</span>
+                        <li>регулация и ентропия на каналите.</li>
+                        <li>дефицит на сканиране и филтриране.</li>
+                        <li>експанзия и експлозия на инфопотока.</li>
+                        <li>разбираемост и възприемане на смисъла.</li>
+                        <li>централизация и масовизация на съдържанието.</li>
+                        <li>фрагментараност и краткосрочност на посланията.</li>
+                    </ul>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <div class="bold very-big-text">II. АНАЛИТИЧНА РАМКА: <span class="italic">ТЕКСТОВО ПОЗНАНИЕ</span></div>
+                    <ul class="not-bold big-text">
+                        Във втората част се представят от текстова гледна точка: 
+                        <li><span class="bold">алтернативни решения</span> (в отговор на проблемността).</li>
+                        <li><span class="bold">терминология:</span> проекция, презумпция, перцепция.</li>
+                        <li><span class="bold">базови модели:</span> скритият на Марков, условни случайни полета, опорни вектори,<br/>наивният Бейсов- вариации Гаусов, Бернулиев, Полиномен.</li>
+                        <li><span class="bold">методи:</span> сравнителен, съпоставителен (benchmarking) <br/>и SWOT анализи, допитване (анкетно проучване).</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul class="not-bold big-text">
+                        Съвременни <span class="bold">решения:</span>
+                        <li>извличане на концепции (<span class="italic">Concept extraction</span>).</li>
+                        <li>информационно извличане (<span class="italic">Information extraction</span>).</li>
+                        <li>документна класификация (<span class="italic">Document classification</span>).</li>
+                        <li>извличане на знания от уеб източници (<span class="italic">Web mining</span>).</li>
+                        <li>обработка на естествен език (<span class="italic">Natural Language Processing</span>).</li>
+                        <li>документно групиране, т.е. клъстеризация (<span class="italic">Document clustering</span>).</li>
+                        <li>търсене и извличане на информация (<span class="italic">Search and information retrieval</span>).</li>
+                    </ul>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <div class="bold very-big-text">III. ПРАКТИКУМНА РАМКА: <span class="italic">ИЗЧИСЛИТЕЛЕН МОДЕЛ</span></div>
+                    <ul class="not-bold big-text">
+                        В третата част е реализацията на проекта:
+                        <li>
+                            <span class="bold">Същност на оптимизацията</span> (изготвяне на модела).
+                            <ul>
+                                <li><span class="italic">Характеристики:</span><br/> етапност, показатели, свойства, параметри, действия, обхват.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="bold">Подбор на инструментариум</span> (целеви похват).
+                            <ul>
+                                <li><span class="italic">Компоненти:</span><br/> токенизация, почистване, разпознаване на части от речта и на именувани същности,<br/> синтактичен и семантичен анализ.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="bold">Приложение на алгоритъма</span> (създаване на апликацията “Textopt”). 
+                            <ul>
+                                <li><span class="italic">Подход:</span><br/> избор на метрики, избор на оценители, разработване на софтуерен продукт.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <div class="bold very-big-text">ЛИЧЕН ПРИНОС</div>
+                    <ul class="not-bold big-text">
+                        Авторски в първа и втора част са: 
+                        <li>интерпретациите на понятийния апарат и терминологията, <br/> взаимствани от други научни области и приложими за целите на бакалавърската теза.</li>
+                        <li>подборът на методи и изборът на подходящите инструменти за анализ.</li>
+                        <li>всички фигури- графики, схеми, таблици и др. визуални материали.</li>
+                        <li>обобщените резултати, изводи и заключения от анкетното проучване <br/> и останалите видове изследвания в научния дискурс.</li>
+                    </ul>
+                    <ul class="not-bold big-text">
+                        В трета част персоналният принос включва:
+                        <li>определения (дефиниции) за оптималност и разбиране.</li>
+                        <li>алгоритъм за класификация и редуциране.</li>
+                        <li>разработени уравнения (формули) и критерии при тестване.</li>
+                        <li>описани свойства и формирани елементи.</li>
+                        <li>изградена процедура за избор на оценител по определени метрики.</li>
+                        <li>създадено софтуерно приложение “Textopt”.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul class="big-text">
+                        Определения (дефиниции):
+                        <li>
+                            𝐼 = информация; 𝐼 = ∑𝐼𝑖 = 1
+                        </li>
+                        <li>
+                            𝑆 = оценка на разбиране, 𝑆 = ∑𝑊𝑖⋅𝑋𝑖 &divide; |𝑊| ≤ 1, |𝑊| = |𝑋| = |𝐼|,
+                        </li>
+                        <li>
+                            𝑂 = качество на съкращаване, 𝑂 = &minus; (𝑆 &times; log<sub>2</sub>(𝑎 &divide; 𝑏)), 𝑎 < 𝑏
+                        </li>
+                    </ul>
+                    
+                </section>
+            </section>
+
+            
+
+            <section>
+                <section>
+                    <h3>How <span class="green">Bazel</span> does it?</h3>
+                </section>
+                <section>
+                    <h4>Definition of terms...</h4>
+                </section>
+                <section>
+                    <h4 class="green">Workspace</h4>
+                    <blockquote class="quote">
+                        <span>Refers to the root directory which contains all source files + external dependencies configuration.</span>
+                    </blockquote>
+                    <div class="regular-text center" style="margin-left: 5%; margin-right: 5%;">
+                        A <span class="green">workspace</span> directory contains <span class="file">WORKSPACE.bazel</span> file which defines the <span class="green">main repository</span> and also describes references
+                        to <span class="green">external repositories</span> required for the build.
+                    </div>
+                    <div class="image-container">
+                        <img width="500px" src="./images/workspace_diagram.svg" />
+                    </div>
+                </section>
+                <section>
+                    <h4 class="green">Repository</h4>
+                    <blockquote class="quote">
+                        <span>Directory containing source code and build instructions</span>
+                    </blockquote>
+                    <div class="regular-text center" style="margin-left: 5%; margin-right: 5%;">
+                        The <span class="green">WORKSPACE</span> directory is the root of the <span class="green">main repository</span>, also called <span class="green">@</span>.
+                        Other, <span class="green">external repositories</span> are defined in the <span class="file">WORKSPACE.bazel</span> file.
+                        <span class="green">Repository</span> itself could be regarded as a set of <span class="green">packages</span>...
+                    </div>
+                    <div class="image-container">
+                        <img width="700px" src="./images/repository_diagram.svg" />
+                    </div>
+                </section>
+                <section>
+                    <h4 class="green">Package</h4>
+                    <blockquote class="quote">
+                        <span>Subdirectory in a <span class="green">repository</span> which has build instructions defined</span>
+                    </blockquote>
+                    <div class="regular-text center" style="margin-left: 5%; margin-right: 5%;">
+                        A <span class="green">package</span> directory includes all files in its directory, plus all subdirectories beneath it and contains <span class="file">BUILD.bazel</span> file which defines <span class="green">targets</span>...
+                    </div>
+                    <div class="image-container">
+                        <img width="900px" src="./images/package_diagram3.svg" />
+                    </div>
+                </section>
+                <section>
+                    <h4 class="green">Target</h4>
+                    <div class="regular-text center" style="margin-left: 5%; margin-right: 5%;">
+                        <div>Definition of an action. Most <span class="green">targets</span> are one of two principal kinds:</div>
+                    </div>
+
+                    <div class="container">
+                        <div class="col">
+                            <h5 class="green">Rule</h5>
+                            <div class="regular-text center">
+                                A <span class="green">function</span> that has <span class="green">files</span> as <span class="green">input</span> and <span class="green">output</span>.
+                            </div>
+                            <div class="regular-text center">
+                                Chaining between <span class="green">rules</span> is supported. In other words,
+                                one <span class="green">rule</span> input files could be another <span class="green">rule</span> output files.
+                                
+                            </div>
+                            <div class="image-container">
+                                <img width="500px" src="./images/bazel_func.png" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h5 class="green">File</h5>
+                            <div class="regular-text center">
+                                Could be <span class="green">source files</span> or <span class="green">generated files</span> as an output from some <span class="green">rule</span>.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h4 class="green">Label</h4>
+                    <div class="regular-text center" style="margin-left: 5%; margin-right: 5%;">
+                        <div>Identifier for <span class="green">target</span></div>
+                    </div>
+                    <div class="image-container">
+                        <img width="500px" src="./images/label.png" />
+                    </div>
+                </section>
+                <section>
+                    <h4>Why so many configurations?</h4>
+                    <div class="container">
+                        <div class="col image-container">
+                            <img width="500px" src="./images/bazel_dir_structure.png" />
+                            <div class="author">Sample workspace structure</div>
+                        </div>
+                        <div class="col regular-text">
+                            The simple answer is <span class="green">Bazel</span> wants you to split your monolitic build into smaller pieces (<span class="green">targets</span>) as much as possible. But why?
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h4>Concepts...</h4>
+                </section>
+    
+                <section>
+                    <h4 class="green">Action Graph</h4>
+                    <blockquote class="quote">
+                        <span>The <span class="green">Action Graph</span> is Direct Acyclic Graph (DAG) representing dependency relations between <span class="green">targets</span>.</span>
+                    </blockquote>
+                    <div class="image-container">
+                        <img width="500px" src="./images/action_graph.png" />
+                    </div>
+                </section>
+
+                <section>
+                    <h4>Effective Caching</h4>
+                    <div class="regular-text center">
+                        At each incremental build, <span class="green">Bazel</span> analyzes and reconstructs
+                        the <span class="green">Action Graph</span> in order
+                        to find the minimum subforest of <span class="green">targets</span> it must rebuild.
+                    </div>
+                    <div class="image-container">
+                        <img width="500px" src="./images/cache.png" />
+                    </div>
+                </section>
+
+                <section>
+                    <h4>Parallel Execution</h4>
+                    <div class="regular-text center">
+                        Independent <span class="green">targets</span> could be executed in parallel.
+                    </div>
+                    <div class="image-container">
+                        <img width="500px" src="./images/parallel_execution.png" />
+                    </div>
+                </section>
+
+                <section>
+                    <h4>Stages of the <span class="green">Bazel</span> build process</h4>
+                    <ol class="fit-and-center">
+                        <li>
+                            <div class="green">Loading phase</div>
+                            <div class="medium-text">
+                                Load and evaluate all <span class="file">BUILD.bazel</span> files that are needed for the build.
+                                The execution of the <span class="file">BUILD.bazel</span> files simply instantiates <span class="green">rules</span>
+                                (each time a <span class="green">rule</span> is called, it gets added to a graph).
+                            </div>
+                        </li>
+                        <li>
+                            <div class="green">Analysis phase</div>
+                            <div class="medium-text">
+                                The code of the <span class="green">rules</span> is executed (their <span class="green">implementation function</span>), and <span class="green">actions</span> are instantiated.
+                                An <span class="green">action</span> describes how to generate a <span class="green">set of outputs</span> from a <span class="green">set of inputs</span>.
+                                In other words, the <span class="green">Analysis phase</span> takes the graph generated by the <span class="green">Loading phase</span> and generates an <span class="green">action graph</span>.
+                            </div>
+                        </li>
+                        <li>
+                            <div class="green">Execution phase</div>
+                            <div class="medium-text">
+                                <span class="green">Actions</span> are executed, when at least one of their <span class="green">outputs</span> is required.
+                                If a file is missing or if a command fails to generate one output, the build fails.
+                            </div>
+                        </li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h4>Syntax of <span class="green">Bazel</span></h4>
+                    <div class="regular-text fit-and-center">
+                        <span class="green">Bazel</span> build files are written in <span class="green">Starlark</span>(dialect of Python).
+                    </div>
+                    <div class="image-container">
+                        <img width="800px" src="./images/Genrule.PNG" />
+                    </div>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>What is <span class="green">vBazel</span>?</h3>
+                </section>
+                <section>
+                    <span><span class="green">vBazel</span> is a <span class="blue">VMware</span> developed wrapper of <span class="green">Bazel</span>.</span>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>How we use <span class="green">Bazel</span> to build the <span class="blue">vSAN UI</span>?</h3>
+                </section>
+                <section>
+                    <h4>Prerequisites...</h4>
+                </section>
+                <section>
+                    <h4>Setup new <span class="blue">Perforce Workspace</span></h4>
+                    <div class="container">
+                        <div class="col image-container">
+                            <img width="500px" src="./images/action_graph.png" />
+                            <div class="author">Perfoce workspace mappings</div>
+                        </div>
+                        <div class="col regular-text">
+                            Keep in mind that bazel depends on the file/directory structure of the source,
+                            so you must use the exact mappings above.
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h4>Configure GitLab SSH Access</h4>
+                    <ol class="regular-text">
+                       <li>Generate public/private key pair using <span class="code">ssh-keygen</span></li>
+                       <li>Configure the ssh connection to gitlab in <span class="file">~/.ssh/config</span> file</li>
+                       <li>Add your public key in your account info at <span class="blue">gitlab.eng.vmware.com</span></li>
+                    </ol>   
+                </section>
+                <section>
+                    <h4>Configure the <span class="green">Bazel Workspace</span></h4>
+                    <div class="fit-and-center regular-text">
+                        <span>By running <span class="code">vbazel</span> it would:</span>
+                        <div>
+                            <ul>
+                                <li>Generate <span class="file">WORKSPACE.bazel</span> file</li>
+                                <li>Register <span class="blue">gobuild dependencies</span> in the <span class="file">WORKSPACE.bazel</span></li>
+                                <li>Configure <span class="green">external repositories</span> in the <span class="file">WORKSPACE.bazel</span></li>
+                                <li>Override some default build settings in the <span class="file">WORKSPACE.bazel</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h4>Build the <span class="blue">vSAN UI plugin</span></h4>
+                    <div class="fit-and-center code regular-text">
+                        vbazel build //vsan-mgmt-ui/h5-plugin/h5-vsan-ui
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal.js"></script>
+    <script src="./lib/animations/three.min.js"></script>
+    <script src="./lib/animations/vanta.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script>
+       
+
+        // Bootstrap the presentation
+        Reveal.initialize({
+            hash: true
+        });
+
+        // Background network
+        VANTA.NET({
+          el: "#net",
+          color: 0x3447d2,
+          backgroundColor: 0x000000,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          points: 20.00,
+          maxDistance: 40.00,
+          spacing: 15.00
+        });
+
+        // 3D slides effect
+        window.onload = function () {
+            $("body").on("mousemove", ".present", function(e) {
+                var $el = $(this);
+                let xAxis = (window.innerWidth / 2 - e.pageX) / 2500;
+                let yAxis = (window.innerHeight / 2 - e.pageY) / 2500;
+                $el.css("transform", `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`);
+            });
+        };
+    </script>
+</body>
+
+</html>
