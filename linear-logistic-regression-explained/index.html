@@ -1,0 +1,401 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Bazel</title>
+
+    <link rel="stylesheet" href="./lib/reset.css">
+    <link rel="stylesheet" href="./lib/reveal.css">
+    <link rel="stylesheet" href="./lib/theme/black.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap');
+
+        body * {
+            font-family: 'Sigmar One', cursive !important;
+        }
+
+        .slides {
+            width: 100% !important;
+        }
+
+        .list-without-bullets li {
+            list-style-type: none;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .col {
+            margin: 10px;
+            flex: 1;
+        }
+
+        .not-bold {
+            font-weight: 100 !important;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .center {
+            text-align: center !important;
+        }
+
+        .italic {
+            font-style: italic !important;
+        }
+
+        .underline {
+            text-decoration: underline !important;
+        }
+
+        .regular-text {
+            font-size: 1.3rem;
+            text-align: left;
+        }
+
+        .medium-text {
+            font-size: 1.1rem !important;
+        }
+
+        .title {
+            font-size: 1.5rem;
+        }
+
+        .very-small-text {
+            font-size: 0.7rem !important;
+        }
+
+        .no-border {
+            border: none !important;
+        }
+
+        .quote {
+            font-size: 1.7rem !important;
+            text-align: center !important;
+        }
+
+        .quote > .author {
+            margin-top: 10px;
+            font-style: italic !important;
+            font-size: 1.3rem !important;
+        }
+
+        .image-container {
+            align-self: center;
+        }
+
+        .image-container > .author {
+            margin-top: 10px;
+            font-style: italic !important;
+            font-size: 1rem !important;
+        }
+
+        #digital-twins-demo-wrapper {
+            margin-left: 10%;
+            width: 800px;
+            height: 700px;
+            background-color: black;
+        }
+
+        .green {
+            color: greenyellow !important;
+        }
+
+        .blue {
+            color: deepskyblue !important;
+        }
+
+        .fit-and-center {
+            margin: auto;
+            width: fit-content;
+            max-width: 60%;
+        }
+
+        .code {
+            font-weight: 700;
+            background-color: black;
+            color: greenyellow;
+            font-family: 'Fira Code', monospace !important;
+        }
+
+        .file {
+            color: greenyellow;
+            font-family: 'Fira Code', monospace !important;
+        }
+
+        .formula {
+            font-family: math !important;
+        }
+
+        .formula > * {
+            font-family: math !important;
+        }
+    </style>
+</head>
+
+<body id="net">
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3 class="not-bold italic">
+                    <span class="blue">Intro to ML:</span>
+                    <br/>
+                    <span class="green">Linear and Logistic Regression</span>
+                </h3>
+            </section>
+
+            <section>
+                <section>
+                    <h3>What is <span class="green">Machine learning</span>?</h3>
+                </section>
+                <section>
+                    <blockquote class="quote">
+                        <span class="green">Machine learning</span> is a subset of artificial intelligence
+                        that involves the development of algorithms and statistical models,
+                        which enable computers to perform tasks by <span class="green">learning</span>
+                        from and making <span class="green">predictions</span> or decisions based on
+                        <span class="green">data</span>, rather than following explicit instructions.
+                    </blockquote>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>When is <span class="green">ML</span> needed?</h3>
+                </section>
+                <section>
+                    <div style="margin: 10%;">
+                        <p>
+                            How do we calculate the simple interest on a savings 
+                            account using the principal amount, annual interest rate, and time period?
+                        </p>
+                        <p class="fragment">
+                            Simple Interest = Principal Amount * Annual Interest Rate * Years
+                        </p>
+                        <p class="fragment">ML not needed...</p>
+                    </div>
+                </section>
+                <section>
+                    <div style="margin: 10%;">
+                        <p>
+                            How can we predict house prices based on factors
+                            such as location, size, number of bedrooms, and local market trends?
+                        </p>
+                        <p class="fragment">ML needed...</p>
+                        <p class="fragment">
+                            Data -> f(x) -> Predict
+                        </p>
+                    </div>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3><span class="green">ML</span> pipeline</h3>
+                </section>
+                <section>
+                    <h3>Data Collection</h3>
+                    <p style="margin: 10%;">
+                        Gathering raw data from various sources.
+                    </p>
+                </section>
+                <section>
+                    <h3>Data Preprocessing</h3>
+                    <p style="margin: 10%;">
+                        Cleaning and transforming data to a suitable format, including handling missing values and feature engineering.
+                    </p>
+                </section>
+                <section>
+                    <h3>Data Splitting</h3>
+                    <p style="margin: 10%;">
+                        Dividing the data into training, validation (optional), and testing sets.
+                    </p>
+                </section>
+                <section>
+                    <h3>Model Training</h3>
+                    <p style="margin: 10%;">
+                        Choosing an appropriate machine learning algorithm and using the training set to build the model.
+                    </p>
+                </section>
+                <section>
+                    <h3>Model Evaluation</h3>
+                    <p style="margin: 10%;">
+                        Assessing the model's performance with metrics appropriate for the problem (e.g., accuracy, precision, recall).
+                    </p>
+                </section>
+            </section>
+
+            <section>
+                <div class="image-container">
+                    <img width="400px" src="./images/roadmap.png" />
+                </div>
+            </section>
+
+            <section>
+                <section>
+                    <h3>Linear Regression</h3>
+                </section>
+                <section>
+                    <blockquote class="quote">
+                        <span class="green">Linear regression</span> is a statistical method used in machine learning
+                        for <span class="green">predicting</span> a <span class="green">continuous dependent variable</span>
+                        based on one or more <span class="green">independent variables</span>.
+                        It assumes a <span class="green">linear relationship</span> between the
+                        input(s) (independent variables) and the single output (dependent variable).
+                    </blockquote>
+                    <div class="image-container">
+                        <img width="900px" src="./images/correlation.png" />
+                    </div>
+                </section>
+                <section>
+                    <p>y = <span class="blue">&theta;<sub>0</sub></span> + <span class="blue">&theta;<sub>1</sub></span><span class="green">x<sub>1</sub></span> + <span class="blue">&theta;<sub>2</sub></span><span class="green">x<sub>2</sub></span> + ... + <span class="blue">&theta;<sub>n</sub></span><span class="green">x<sub>n</sub></span></p>
+                </section>
+                <section>
+                    <p>y = <span class="blue">&theta;<sub>0</sub></span> + <span class="blue">&theta;<sub>1</sub></span><span class="green">x</span></p>
+                    <div class="image-container">
+                        <img width="600px" src="./images/lr_plot.png" />
+                    </div>
+                </section>
+                <section>
+                    <p>y = <span class="blue">&theta;<sub>0</sub></span> + <span class="blue">&theta;<sub>1</sub></span><span class="green">x<sub>1</sub></span> + <span class="blue">&theta;<sub>2</sub></span><span class="green">x<sub>2</sub></span></p>
+                    <div class="image-container">
+                        <img width="600px" src="./images/multivariate_lr_plot.png" />
+                    </div>
+                </section>
+                <section>
+                    <h3 style="margin: 10%;">
+                        How to find the <span class="green">optimal weights/coefficients</span> that best fits the given set of data points?
+                    </h3>
+                </section>
+                <section>
+                    <h3>Measure error</h3>
+                </section>
+                <section>
+                    <h3>Mean Squared Error (MSE)</h3>
+                    <blockquote class="quote">
+                        MSE is the average of the squares of the errors—that is,
+                        the average squared difference between the estimated values and the actual value.
+                    </blockquote>
+                    <p class="italic not-bold center">MSE = &sum; (y - &#94;y)<sup>2</sup> / n</p>
+                    <div class="image-container">
+                        <img width="600px" src="./images/error.jpeg" />
+                    </div>
+                </section>
+                <section>
+                    <h3 style="margin: 5%;">Choose coefficients that minimize the error</h3>
+                    <p>y = <span class="blue">&theta;<sub>0</sub></span> + <span class="blue">&theta;<sub>1</sub></span><span class="green">x<sub>1</sub></span> + <span class="blue">&theta;<sub>2</sub></span><span class="green">x<sub>2</sub></span> + ... + <span class="blue">&theta;<sub>n</sub></span><span class="green">x<sub>n</sub></span></p>
+                </section>
+                <section>
+                    <p>y = <span class="blue">&theta;<sub>0</sub></span> + <span class="blue">&theta;<sub>1</sub></span><span class="green">x<sub>1</sub></span></p>
+                    <div class="image-container">
+                        <img width="700px" src="./images/mse_plot.png" />
+                    </div>
+                </section>
+                <section>
+                    <p>y = <span class="blue">&theta;<sub>0</sub></span> + <span class="blue">&theta;<sub>1</sub></span><span class="green">x<sub>1</sub></span></p>
+                    <div class="image-container">
+                        <img width="600px" src="./images/multi_mse_plot.png" />
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>Gradient descent</h3>
+                    <blockquote class="quote">
+                        Gradient descent is a method to find the optimal coefficients in
+                        linear regression that minimize error (like Mean Squared Error).
+                    </blockquote>
+                </section>
+                <section>
+                    <div style="margin: 5%;">
+                        <h3>1. Starting with random coefficient values.</h3>
+                        <p>y = <span class="blue">&theta;<sub>0</sub></span> + <span class="blue">&theta;<sub>1</sub></span><span class="green">x<sub>1</sub></span> + <span class="blue">&theta;<sub>2</sub></span><span class="green">x<sub>2</sub></span> + ... + <span class="blue">&theta;<sub>n</sub></span><span class="green">x<sub>n</sub></span></p>
+                    </div>
+                </section>
+                <section>
+                    <div style="margin: 5%;">
+                        <h3>2. Calculating the gradient of the error function with respect to each coefficient.</h3>
+                        <p class="formula">&part;/&part;&theta;<sub>j</sub> MSE(&theta;) = (2/m) &sum; ((&theta;<sup>T</sup> x<sup>(i)</sup> - y<sup>(i)</sup>) x<sub>j</sub><sup>(i)</sup>)</p>
+                        <p class="formula regular-text center">This represents the partial derivative of the MSE with respect to the coefficient &theta;<sub>j</sub>. x<sup>(i)</sup> is the feature vector of the i-th training example, y<sup>(i)</sup> is its target value, and x<sub>j</sub><sup>(i)</sup> is the value of feature j for this example.</p>
+                    </div>
+                </section>
+                <section>
+                    <div style="margin: 5%;">
+                        <h3>3. Updating the coefficients by subtracting a portion of the gradient, scaled by a learning rate.</h3>
+                        <p class="formula">&theta;<sub>j</sub> := &theta;<sub>j</sub> - &alpha; (&part;/&part;&theta;<sub>j</sub> MSE(&theta;))</p>
+                        <p class="formula regular-text center">Here, &theta;<sub>j</sub> is updated by subtracting the product of the learning rate &alpha; and the gradient of the MSE with respect to &theta;<sub>j</sub>.</p>
+                    </div>
+                </section>
+                <section>
+                    <div style="margin: 5%;">
+                        <h3>4. Repeating the process until the algorithm converges.</h3>
+                        <div class="fragment image-container">
+                            <img width="600px" src="./images/error_minimization.gif" />
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>Polynomial Regression</h3>
+                    <blockquote class="quote">
+                        Polynomial regression is a form of regression analysis in which the relationship
+                        between the independent variable and dependent variable is modeled as an nth degree polynomial,
+                        enabling it to fit a wide range of curvature and complexity in the data.
+                    </blockquote>
+                    <p>y = <span class="blue">&theta;<sub>0</sub></span> + <span class="blue">&theta;<sub>1</sub></span><span class="green">x<sub>1</sub></span> + <span class="blue">&theta;<sub>2</sub></span><span class="green">x<sub>2</sub></span> + <span class="blue">&theta;<sub>3</sub></span><span class="green">x<sub>1</sub><sup>2</sup></span> + <span class="blue">&theta;<sub>4</sub></span><span class="green">x<sub>2</sub><sup>2</sup></span> + <span class="blue">&theta;<sub>5</sub></span><span class="green">x<sub>1</sub></span><span class="green">x<sub>2</sub></span> + ...</p>
+                </section>
+                <section>
+                    <div class="image-container">
+                        <img width="600px" src="./images/pr_plot.png" />
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal.js"></script>
+    <script src="./lib/animations/p5.min.js"></script>
+    <script src="./lib/animations/three.min.js"></script>
+    <script src="./lib/animations/vanta.topology.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script>
+       
+
+        // Bootstrap the presentation
+        Reveal.initialize({
+            hash: true
+        });
+
+        // Background network
+        VANTA.TOPOLOGY({
+            el: "#net",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00
+        });
+
+        // 3D slides effect
+        window.onload = function () {
+            $("body").on("mousemove", ".present", function(e) {
+                var $el = $(this);
+                let xAxis = (window.innerWidth / 2 - e.pageX) / 2500;
+                let yAxis = (window.innerHeight / 2 - e.pageY) / 2500;
+                $el.css("transform", `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`);
+            });
+        };
+    </script>
+</body>
+
+</html>
