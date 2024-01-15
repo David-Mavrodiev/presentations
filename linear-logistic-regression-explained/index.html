@@ -81,12 +81,6 @@
             text-align: center !important;
         }
 
-        .quote > .author {
-            margin-top: 10px;
-            font-style: italic !important;
-            font-size: 1.3rem !important;
-        }
-
         .image-container {
             align-self: center;
         }
@@ -112,29 +106,21 @@
             color: deepskyblue !important;
         }
 
+        .red {
+            color: red !important;
+        }
+
         .fit-and-center {
             margin: auto;
             width: fit-content;
             max-width: 60%;
         }
 
-        .code {
-            font-weight: 700;
-            background-color: black;
-            color: greenyellow;
-            font-family: 'Fira Code', monospace !important;
-        }
-
-        .file {
-            color: greenyellow;
-            font-family: 'Fira Code', monospace !important;
-        }
-
         .formula {
             font-family: math !important;
         }
 
-        .formula > * {
+        .formula > *, .formula sub {
             font-family: math !important;
         }
     </style>
@@ -147,7 +133,7 @@
                 <h3 class="not-bold italic">
                     <span class="blue">Intro to ML:</span>
                     <br/>
-                    <span class="green">Linear and Logistic Regression</span>
+                    <span class="green">Linear Regression</span>
                 </h3>
             </section>
 
@@ -177,9 +163,9 @@
                             account using the principal amount, annual interest rate, and time period?
                         </p>
                         <p class="fragment">
-                            Simple Interest = Principal Amount * Annual Interest Rate * Years
+                            <span class="blue">Simple Interest</span> = <span class="blue">Principal Amount</span> * <span class="blue">Annual Interest Rate</span> * <span class="blue">Years</span>
                         </p>
-                        <p class="fragment">ML not needed...</p>
+                        <p class="fragment red">ML not needed...</p>
                     </div>
                 </section>
                 <section>
@@ -188,7 +174,7 @@
                             How can we predict house prices based on factors
                             such as location, size, number of bedrooms, and local market trends?
                         </p>
-                        <p class="fragment">ML needed...</p>
+                        <p class="fragment green">ML needed...</p>
                         <p class="fragment">
                             Data -> f(x) -> Predict
                         </p>
@@ -214,9 +200,14 @@
                 </section>
                 <section>
                     <h3>Data Splitting</h3>
-                    <p style="margin: 10%;">
-                        Dividing the data into training, validation (optional), and testing sets.
-                    </p>
+                    <div style="margin: 5%;">
+                        <p>
+                            Dividing the data into training, validation (optional), and testing sets.
+                        </p>
+                        <div class="image-container">
+                            <img width="600px" src="./images/data_split.png" />
+                        </div>
+                    </div>
                 </section>
                 <section>
                     <h3>Model Training</h3>
@@ -233,9 +224,23 @@
             </section>
 
             <section>
-                <div class="image-container">
-                    <img width="400px" src="./images/roadmap.png" />
-                </div>
+                <section>
+                    <div class="image-container">
+                        <img width="400px" src="./images/roadmap.png" />
+                    </div>
+                </section>
+                <section>
+                    <h4 style="margin: 5%;">
+                        <span class="green">Linear regression</span> is
+                        <span class="blue">Supervised Learning</span> with 
+                        <span class="blue">Continuous Output</span>
+                    </h4>
+                </section>
+                <section>
+                    <div class="image-container">
+                        <img width="1200px" src="./images/dataset_example.png" />
+                    </div>
+                </section>
             </section>
 
             <section>
@@ -305,12 +310,44 @@
                     </div>
                 </section>
             </section>
+            
             <section>
+                <section>
+                    <h3>How to find the optimal weights?</h3>
+                </section>
+                <section>
+                    <h4>Solving for Weights with Respect to the Error</h4>
+                </section>
+                <section>
+                    <h4>1. Equation with the error</h4>
+                    <p>Y = <span class="blue">W</span><span class="green">X</span> + <span class="red">ε</span></p>
+                    <p>
+                        Where Y is the vector of observed values, <span class="green">X</span>
+                        is the matrix of input features, <span class="blue">W</span> is the vector of weights,
+                        and <span class="red">ε</span> represents the error terms.
+                    </p>
+                </section>
+                <section>
+                    <h4>2. Objective - Minimize the Error</h4>
+                    <p style="margin: 5%;">
+                        The goal is to find the weights <span class="blue">W</span> that minimize the error
+                        between the predicted values (<span class="blue">W</span><span class="green">X</span>)
+                        and the actual values (Y). 
+                        This is done by minimizing the error (MSE).
+                    </p>
+                </section>
+                <section>
+                    <h4>3. Solve the Normal Equation</h4>
+                    <p style="margin: 5%;">
+                        The normal equation for solving weights using MSE is derived as setting the derivative of the MSE with respect to the weights to zero.
+                    </p>
+                    <p><span class="blue">W</span> = (<span class="green">X</span><sup>T</sup><span class="green">X</span>)<sup>−1</sup><span class="green">X</span><sup>T</sup>Y</p>
+                </section>
                 <section>
                     <h3>Gradient descent</h3>
                     <blockquote class="quote">
                         Gradient descent is a method to find the optimal coefficients in
-                        linear regression that minimize error (like Mean Squared Error).
+                        linear regression that minimize error (like MSE).
                     </blockquote>
                 </section>
                 <section>
@@ -336,9 +373,122 @@
                 <section>
                     <div style="margin: 5%;">
                         <h3>4. Repeating the process until the algorithm converges.</h3>
-                        <div class="fragment image-container">
+                        <div class="row">
+                            <div class="fragment col image-container">
+                                <img width="600px" src="./images/simple_gradient_descent.gif" />
+                            </div>
+                            <div class="fragment image-container">
+                                <img width="600px" src="./images/complex_gradient_descent.gif" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3>Training</h3>
+                    <div class="row">
+                        <div class="col image-container">
                             <img width="600px" src="./images/error_minimization.gif" />
                         </div>
+                        <div class="col fragment image-container">
+                            <img width="600px" height="400px" src="./images/complex_error_minimization.gif" />
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div style="margin: 5%;">
+                        <h4>Batch Gradient Descent</h4>
+                        <p class="regular-text center">
+                            Data Used: The entire training dataset.
+                        </p>
+                        <p class="regular-text center">
+                            Process: Computes the gradient of the cost function
+                            with respect to the parameters for the entire training dataset.
+                        </p>
+                        <p class="regular-text center">
+                            Characteristics:
+                        </p>
+                        <ul class="regular-text">
+                            <li>Very stable convergence.</li>
+                            <li>Computationally expensive, especially with very large datasets.</li>
+                            <li>Can handle noisy data well since it considers all data at each step.</li>
+                            <li>May get stuck in local minima for non-convex functions.</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <div style="margin: 5%;">
+                        <h4>Stochastic Gradient Descent (SGD)</h4>
+                        <p class="regular-text center">
+                            Data Used: A single data point (or instance) at each iteration.
+                        </p>
+                        <p class="regular-text center">
+                            Process: The gradient is calculated and parameters are updated for each data point separately.
+                        </p>
+                        <p class="regular-text center">
+                            Characteristics:
+                        </p>
+                        <ul class="regular-text">
+                            <li>Much faster than batch gradient descent because of frequent updates.</li>
+                            <li>Can handle very large datasets efficiently.</li>
+                            <li>Due to the frequent updates with high variance, it can escape local minima better than batch gradient descent.</li>
+                            <li>The path to convergence is noisier compared to batch gradient descent.</li>
+                            <li>Often requires a carefully selected decreasing learning rate.</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <div style="margin: 5%;">
+                        <h4>Mini-batch Gradient Descent</h4>
+                        <p class="regular-text center">
+                            Data Used: A subset (mini-batch) of the training dataset.
+                        </p>
+                        <p class="regular-text center">
+                            Process: The gradient is computed and the parameters are updated for each mini-batch of data.
+                        </p>
+                        <p class="regular-text center">
+                            Characteristics:
+                        </p>
+                        <ul class="regular-text">
+                            <li>Balances the efficiency of stochastic gradient descent with the stability of batch gradient descent.</li>
+                            <li>Often faster in practice on large datasets.</li>
+                            <li>Less erratic update path compared to stochastic gradient descent.</li>
+                            <li>Can take advantage of vectorized operations making it more computationally efficient.</li>
+                            <li>The size of the mini-batch is a hyperparameter that can be tuned.</li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <h3><span class="green">Linear Regression</span> Variations</h3>
+            </section>
+            <section>
+                <section>
+                    <h3>Ridge Regression</h3>
+                    <blockquote class="quote">
+                        Adds a <span class="green">regularization term</span> equal to the 
+                        <span class="green">square of the magnitude of the coefficients</span>
+                        (L2 regularization). This helps to prevent overfitting
+                        by penalizing large coefficients.
+                    </blockquote>
+                    <div style="margin: 5%;">
+                        <p class="formula">Cost function = Σ(y<sub>i</sub> - <span style="text-decoration:overline;">y</span><sub>i</sub>)² + <span class="blue">λ Σ w<sub>j</sub>²</span></p>
+                        <p class="regular-text center">Where y<sub>i</sub> is the actual value, <span style="text-decoration:overline;">y</span><sub>i</sub> is the predicted value, w<sub>j</sub> are the coefficients, and λ is the regularization parameter.</p>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>Lasso Regression</h3>
+                    <blockquote class="quote">
+                        Similar to <span class="green">Ridge Regression</span>, but the
+                        <span class="green">regularization term</span> is the 
+                        <span class="green">absolute value of the magnitude of the coefficients</span>
+                        (L1 regularization). This can lead to some coefficients being
+                        exactly zero, which is useful for feature selection.
+                    </blockquote>
+                    <div style="margin: 5%;">
+                        <p class="formula">Cost function = Σ(y<sub>i</sub> - <span style="text-decoration:overline;">y</span><sub>i</sub>)² + <span class="blue">λ Σ |w<sub>j</sub>|</span></p>
+                        <p class="regular-text center">The notation is similar to Ridge Regression, but the regularization term is the sum of the absolute values of the coefficients.</p>
                     </div>
                 </section>
             </section>
@@ -353,10 +503,22 @@
                     <p>y = <span class="blue">&theta;<sub>0</sub></span> + <span class="blue">&theta;<sub>1</sub></span><span class="green">x<sub>1</sub></span> + <span class="blue">&theta;<sub>2</sub></span><span class="green">x<sub>2</sub></span> + <span class="blue">&theta;<sub>3</sub></span><span class="green">x<sub>1</sub><sup>2</sup></span> + <span class="blue">&theta;<sub>4</sub></span><span class="green">x<sub>2</sub><sup>2</sup></span> + <span class="blue">&theta;<sub>5</sub></span><span class="green">x<sub>1</sub></span><span class="green">x<sub>2</sub></span> + ...</p>
                 </section>
                 <section>
-                    <div class="image-container">
-                        <img width="600px" src="./images/pr_plot.png" />
+                    <h3>Examples</h3>
+                    <div class="row">
+                        <div class="col image-container">
+                            <img width="400px" src="./images/pr_plot.png" />
+                        </div>
+                        <div class="col image-container">
+                            <img width="400px" src="./images/pr_plot_2.png" />
+                        </div>
+                        <div class="col image-container">
+                            <img width="400px" src="./images/pr_plot_3.png" />
+                        </div>
                     </div>
                 </section>
+            </section>
+            <section>
+                <a href="https://colab.research.google.com/drive/1K-WY9zMbQHYD9WZTrTmzeHpqY2QAw3Hp?usp=sharing">DEMO</a>
             </section>
         </div>
     </div>
