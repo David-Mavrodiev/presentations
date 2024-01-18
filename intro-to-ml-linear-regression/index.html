@@ -157,52 +157,55 @@
                     <h3>When is <span class="green">ML</span> needed?</h3>
                 </section>
                 <section>
-                    <div style="margin: 10%;">
-                        <p>
-                            How do we calculate the simple interest on a savings 
-                            account using the principal amount, annual interest rate, and time period?
-                        </p>
-                        <p class="fragment">
-                            <span class="blue">Simple Interest</span> = <span class="blue">Principal Amount</span> * <span class="blue">Annual Interest Rate</span> * <span class="blue">Years</span>
-                        </p>
-                        <p class="fragment red">ML not needed...</p>
-                    </div>
-                </section>
-                <section>
-                    <div style="margin: 10%;">
-                        <p>
-                            How can we predict house prices based on factors
-                            such as location, size, number of bedrooms, and local market trends?
-                        </p>
-                        <p class="fragment green">ML needed...</p>
-                        <p class="fragment">
-                            Data -> f(x) -> Predict
-                        </p>
+                    <div style="margin: 5%;" class="row">
+                        <div class="title center">
+                            <p>
+                                How do we calculate the simple interest on a savings 
+                                account using the principal amount, annual interest rate, and time period?
+                            </p>
+                            <p data-fragment-index="0" class="fragment red">ML not needed...</p>
+                            <p data-fragment-index="2" class="fragment">
+                                <span class="blue">Simple Interest</span> = <span class="blue">Principal Amount</span> * <span class="blue">Annual Interest Rate</span> * <span class="blue">Years</span>
+                            </p>
+                            
+                        </div>
+                        <div class="title center">
+                            <p>
+                                How can we predict house prices based on factors
+                                such as location, size, number of bedrooms, and local market trends?
+                            </p>
+                            <p data-fragment-index="1" class="fragment green">ML needed...</p>
+                            <p data-fragment-index="3" class="fragment">
+                                <span class="blue">Data</span> -> <span class="green">Model</span> -> <span class="blue">Predict</span>
+                            </p>
+                        </div>
                     </div>
                 </section>
             </section>
 
             <section>
                 <section>
-                    <h3><span class="green">ML</span> pipeline</h3>
+                    <h3>Generic <span class="green">ML</span> pipeline</h3>
                 </section>
                 <section>
-                    <h3>Data Collection</h3>
+                    <h3 class="blue">Data Collection</h3>
                     <p style="margin: 10%;">
                         Gathering raw data from various sources.
                     </p>
                 </section>
                 <section>
-                    <h3>Data Preprocessing</h3>
+                    <h3 class="blue">Data Preprocessing</h3>
                     <p style="margin: 10%;">
-                        Cleaning and transforming data to a suitable format, including handling missing values and feature engineering.
+                        <span class="green">Cleaning</span> and <span class="green">transforming</span>
+                        data to a suitable format, including handling missing values and feature engineering.
                     </p>
                 </section>
                 <section>
-                    <h3>Data Splitting</h3>
+                    <h3 class="blue">Data Splitting</h3>
                     <div style="margin: 5%;">
                         <p>
-                            Dividing the data into training, validation (optional), and testing sets.
+                            Dividing the data into <span class="green">training</span>,
+                            <span class="green">validation</span> (optional), and <span class="green">testing</span> sets.
                         </p>
                         <div class="image-container">
                             <img width="600px" src="./images/data_split.png" />
@@ -210,15 +213,17 @@
                     </div>
                 </section>
                 <section>
-                    <h3>Model Training</h3>
+                    <h3 class="blue">Model Training</h3>
                     <p style="margin: 10%;">
-                        Choosing an appropriate machine learning algorithm and using the training set to build the model.
+                        Choosing an appropriate <span class="green">machine learning algorithm</span>
+                        and using the <span class="green">training set</span> to build the <span class="green">model</span>.
                     </p>
                 </section>
                 <section>
-                    <h3>Model Evaluation</h3>
+                    <h3 class="blue">Model Evaluation</h3>
                     <p style="margin: 10%;">
-                        Assessing the model's performance with metrics appropriate for the problem (e.g., accuracy, precision, recall).
+                        Assessing the <span class="green">model's performance</span> with
+                        <span class="green">metrics</span> appropriate for the problem.
                     </p>
                 </section>
             </section>
@@ -237,6 +242,7 @@
                     </h4>
                 </section>
                 <section>
+                    <h4>Dataset Example</h4>
                     <div class="image-container">
                         <img width="1200px" src="./images/dataset_example.png" />
                     </div>
@@ -269,9 +275,31 @@
                     </div>
                 </section>
                 <section>
+                    <h4>Examples of <span class="green">Simple Linear Regression</span></h4>
+                    <div class="row">
+                        <div class="col image-container">
+                            <img width="600px" src="./images/simple_lr_example.png" />
+                        </div>
+                        <div class="col image-container">
+                            <img width="600px" src="./images/simple_lr_example2.png" />
+                        </div>
+                    </div>
+                </section>
+                <section>
                     <p>y = <span class="blue">&theta;<sub>0</sub></span> + <span class="blue">&theta;<sub>1</sub></span><span class="green">x<sub>1</sub></span> + <span class="blue">&theta;<sub>2</sub></span><span class="green">x<sub>2</sub></span></p>
                     <div class="image-container">
                         <img width="600px" src="./images/multivariate_lr_plot.png" />
+                    </div>
+                </section>
+                <section>
+                    <h4>Examples of <span class="green">Multivariate Linear Regression</span></h4>
+                    <div class="row">
+                        <div class="col image-container">
+                            <img width="600px" src="./images/multiple_lr_example3.png" />
+                        </div>
+                        <div class="col image-container">
+                            <img width="600px" src="./images/multiple_lr_example2.png" />
+                        </div>
                     </div>
                 </section>
                 <section>
@@ -280,7 +308,7 @@
                     </h3>
                 </section>
                 <section>
-                    <h3>Measure error</h3>
+                    <h3>Measure <span class="green">error</span>: <br> Difference between <span class="green">predictions</span> and the <span class="green">actual values</span></h3>
                 </section>
                 <section>
                     <h3>Mean Squared Error (MSE)</h3>
