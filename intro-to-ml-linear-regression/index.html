@@ -160,14 +160,14 @@
                     <div style="margin: 5%;" class="row">
                         <div class="title center">
                             <p>
-                                How do we calculate the simple interest on a savings 
-                                account using the principal amount, annual interest rate, and time period?
+                                How do we calculate the <span class="green">simple interest</span> on a savings 
+                                account using the <span class="blue">principal amount</span>, 
+                                <span class="blue">interest rate</span>, and <span class="blue">time period</span>?
                             </p>
                             <p data-fragment-index="0" class="fragment red">ML not needed...</p>
                             <p data-fragment-index="2" class="fragment">
-                                <span class="blue">Simple Interest</span> = <span class="blue">Principal Amount</span> * <span class="blue">Annual Interest Rate</span> * <span class="blue">Years</span>
+                                <span class="green">Simple Interest</span> = <span class="blue">Principal Amount</span> * <span class="blue">Annual Interest Rate</span> * <span class="blue">Time</span>
                             </p>
-                            
                         </div>
                         <div class="title center">
                             <p>
@@ -251,7 +251,7 @@
 
             <section>
                 <section>
-                    <h3>Linear Regression</h3>
+                    <h3><span class="green">Linear Regression</span> Explained</h3>
                 </section>
                 <section>
                     <blockquote class="quote">
@@ -308,21 +308,21 @@
                     </h3>
                 </section>
                 <section>
-                    <h3>Measure <span class="green">error</span>: <br> Difference between <span class="green">predictions</span> and the <span class="green">actual values</span></h3>
+                    <h3>Measure <span class="red">error</span>: <br> Difference between <span class="blue">predictions</span> and the <span class="green">actual values</span></h3>
                 </section>
                 <section>
-                    <h3>Mean Squared Error (MSE)</h3>
+                    <h3 class="green">Mean Squared Error (MSE)</h3>
                     <blockquote class="quote">
                         MSE is the average of the squares of the errors—that is,
                         the average squared difference between the estimated values and the actual value.
                     </blockquote>
-                    <p class="italic not-bold center">MSE = &sum; (y - &#94;y)<sup>2</sup> / n</p>
+                    <p class="italic not-bold center">MSE = &sum; (<span class="blue">y</span> - <span class="blue">&#94;y</span>)<sup>2</sup> / n</p>
                     <div class="image-container">
                         <img width="600px" src="./images/error.jpeg" />
                     </div>
                 </section>
                 <section>
-                    <h3 style="margin: 5%;">Choose coefficients that minimize the error</h3>
+                    <h3 style="margin: 5%;">Choose <span class="blue">weights</span> that minimize the <span class="red">error</span></h3>
                     <p>y = <span class="blue">&theta;<sub>0</sub></span> + <span class="blue">&theta;<sub>1</sub></span><span class="green">x<sub>1</sub></span> + <span class="blue">&theta;<sub>2</sub></span><span class="green">x<sub>2</sub></span> + ... + <span class="blue">&theta;<sub>n</sub></span><span class="green">x<sub>n</sub></span></p>
                 </section>
                 <section>
@@ -341,10 +341,10 @@
             
             <section>
                 <section>
-                    <h3>How to find the optimal weights?</h3>
+                    <h3>How to find the <span class="blue">optimal weights/coefficients</span>?</h3>
                 </section>
                 <section>
-                    <h4>Solving for Weights with Respect to the Error</h4>
+                    <h4>Solving for <span class="blue">Weights</span> with Respect to <span class="red">Error</span></h4>
                 </section>
                 <section>
                     <h4>1. Equation with the error</h4>
