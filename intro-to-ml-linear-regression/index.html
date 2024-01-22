@@ -374,8 +374,8 @@
                 <section>
                     <h3>Gradient descent</h3>
                     <blockquote class="quote">
-                        Gradient descent is a method to find the optimal coefficients in
-                        linear regression that minimize error (like MSE).
+                        <span class="green">Gradient descent</span> is a method to find the <span class="blue">optimal coefficients/weights</span> in
+                        <span class="green">linear regression</span> that <span class="green">minimize error</span> (like MSE).
                     </blockquote>
                 </section>
                 <section>
@@ -423,23 +423,22 @@
                     </div>
                 </section>
                 <section>
+                    <h3>Types of Gradient Descent</h3>
+                </section>
+                <section>
                     <div style="margin: 5%;">
                         <h4>Batch Gradient Descent</h4>
                         <p class="regular-text center">
-                            Data Used: The entire training dataset.
+                            Uses the entire training dataset.
                         </p>
                         <p class="regular-text center">
-                            Process: Computes the gradient of the cost function
+                            Computes the gradient of the cost function
                             with respect to the parameters for the entire training dataset.
                         </p>
-                        <p class="regular-text center">
-                            Characteristics:
-                        </p>
                         <ul class="regular-text">
-                            <li>Very stable convergence.</li>
-                            <li>Computationally expensive, especially with very large datasets.</li>
-                            <li>Can handle noisy data well since it considers all data at each step.</li>
-                            <li>May get stuck in local minima for non-convex functions.</li>
+                            <li class="green">Very stable convergence.</li>
+                            <li class="green">Can handle noisy data well.</li>
+                            <li class="red">Computationally expensive for large datasets.</li>
                         </ul>
                     </div>
                 </section>
@@ -447,20 +446,15 @@
                     <div style="margin: 5%;">
                         <h4>Stochastic Gradient Descent (SGD)</h4>
                         <p class="regular-text center">
-                            Data Used: A single data point (or instance) at each iteration.
+                            Uses a single data point (or instance) at each iteration.
                         </p>
                         <p class="regular-text center">
-                            Process: The gradient is calculated and parameters are updated for each data point separately.
-                        </p>
-                        <p class="regular-text center">
-                            Characteristics:
+                            The gradient is calculated and parameters are updated for each data point separately.
                         </p>
                         <ul class="regular-text">
-                            <li>Much faster than batch gradient descent because of frequent updates.</li>
-                            <li>Can handle very large datasets efficiently.</li>
-                            <li>Due to the frequent updates with high variance, it can escape local minima better than batch gradient descent.</li>
-                            <li>The path to convergence is noisier compared to batch gradient descent.</li>
-                            <li>Often requires a carefully selected decreasing learning rate.</li>
+                            <li class="green">Much faster than batch gradient descent.</li>
+                            <li class="green">Can handle very large datasets efficiently.</li>
+                            <li class="red">The path to convergence is noisier compared to batch gradient descent.</li>
                         </ul>
                     </div>
                 </section>
@@ -468,20 +462,15 @@
                     <div style="margin: 5%;">
                         <h4>Mini-batch Gradient Descent</h4>
                         <p class="regular-text center">
-                            Data Used: A subset (mini-batch) of the training dataset.
+                            Uses a subset (mini-batch) of the training dataset.
                         </p>
                         <p class="regular-text center">
-                            Process: The gradient is computed and the parameters are updated for each mini-batch of data.
-                        </p>
-                        <p class="regular-text center">
-                            Characteristics:
+                            The gradient is computed and the parameters are updated for each mini-batch of data.
                         </p>
                         <ul class="regular-text">
-                            <li>Balances the efficiency of stochastic gradient descent with the stability of batch gradient descent.</li>
-                            <li>Often faster in practice on large datasets.</li>
-                            <li>Less erratic update path compared to stochastic gradient descent.</li>
-                            <li>Can take advantage of vectorized operations making it more computationally efficient.</li>
-                            <li>The size of the mini-batch is a hyperparameter that can be tuned.</li>
+                            <li class="green">Balances the efficiency of SGD with the stability of BGD.</li>
+                            <li class="green">Less erratic update path compared to SGD.</li>
+                            <li class="red">Batch size must be carefully chosen.</li>
                         </ul>
                     </div>
                 </section>
@@ -495,8 +484,8 @@
                     <blockquote class="quote">
                         Adds a <span class="green">regularization term</span> equal to the 
                         <span class="green">square of the magnitude of the coefficients</span>
-                        (L2 regularization). This helps to prevent overfitting
-                        by penalizing large coefficients.
+                        (L2 regularization). This helps to prevent <span class="red">overfitting</span>
+                        by <span class="green">penalizing large coefficients</span>.
                     </blockquote>
                     <div style="margin: 5%;">
                         <p class="formula">Cost function = Σ(y<sub>i</sub> - <span style="text-decoration:overline;">y</span><sub>i</sub>)² + <span class="blue">λ Σ w<sub>j</sub>²</span></p>
@@ -524,9 +513,9 @@
                 <section>
                     <h3>Polynomial Regression</h3>
                     <blockquote class="quote">
-                        Polynomial regression is a form of regression analysis in which the relationship
+                        <span class="green">Polynomial regression</span> is a form of regression analysis in which the relationship
                         between the independent variable and dependent variable is modeled as an nth degree polynomial,
-                        enabling it to fit a wide range of curvature and complexity in the data.
+                        enabling it to fit a <span class="green">wide range of curvature and complexity in the data</span>.
                     </blockquote>
                     <p>y = <span class="blue">&theta;<sub>0</sub></span> + <span class="blue">&theta;<sub>1</sub></span><span class="green">x<sub>1</sub></span> + <span class="blue">&theta;<sub>2</sub></span><span class="green">x<sub>2</sub></span> + <span class="blue">&theta;<sub>3</sub></span><span class="green">x<sub>1</sub><sup>2</sup></span> + <span class="blue">&theta;<sub>4</sub></span><span class="green">x<sub>2</sub><sup>2</sup></span> + <span class="blue">&theta;<sub>5</sub></span><span class="green">x<sub>1</sub></span><span class="green">x<sub>2</sub></span> + ...</p>
                 </section>
