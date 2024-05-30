@@ -1,0 +1,534 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>ИЗЧИСЛИТЕЛЕН МОДЕЛ ЗА ОПТИМИЗАЦИЯ НА ТЕКСТ</title>
+
+    <link rel="stylesheet" href="./lib/reset.css">
+    <link rel="stylesheet" href="./lib/reveal.css">
+    <link rel="stylesheet" href="./lib/theme/black.css">
+
+    <style>
+        /* @import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap'); */
+
+        html {
+            font-size: 16px; /* 1em = 16px */
+        }
+
+        body {
+            font-size: 16px; /* 1em = 16px */
+        }
+
+        h1 {
+            font-size: 1.5em !important; /* 32px */
+        }
+
+        h2 {
+            font-size: 1em !important; /* 24px */
+        }
+
+        p, ul {
+            text-align: left;
+            font-size: 0.7em !important; /* 16px */
+        }
+
+        .list-without-bullets li {
+            list-style-type: none;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .col {
+            margin: 10px;
+            flex: 1;
+        }
+
+        .not-bold {
+            font-weight: 100 !important;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .center {
+            text-align: center !important;
+        }
+
+        .italic {
+            font-style: italic !important;
+        }
+
+        .underline {
+            text-decoration: underline !important;
+        }
+
+        .no-border {
+            border: none !important;
+        }
+
+        .quote {
+            font-size: 1.7rem !important;
+            text-align: center !important;
+        }
+
+        .quote > .author {
+            margin-top: 10px;
+            font-style: italic !important;
+            font-size: 1.3rem !important;
+        }
+
+        .image-container {
+            align-self: center;
+        }
+
+        .image-container > img {
+            border: 10px solid snow;
+        }
+
+        .image-container > .author {
+            margin-top: 10px;
+            font-style: italic !important;
+            font-size: 1rem !important;
+        }
+
+        #digital-twins-demo-wrapper {
+            margin-left: 10%;
+            width: 800px;
+            height: 700px;
+            background-color: black;
+        }
+
+        .green {
+            color: greenyellow !important;
+        }
+
+        .blue {
+            color: deepskyblue !important;
+        }
+
+        .fit-and-center {
+            margin: auto;
+            width: fit-content;
+            max-width: 60%;
+        }
+
+        .code {
+            font-weight: 700;
+            background-color: black;
+            color: greenyellow;
+            font-family: 'Fira Code', monospace !important;
+        }
+
+        .file {
+            color: greenyellow;
+            font-family: 'Fira Code', monospace !important;
+        }
+    </style>
+</head>
+
+<body id="net">
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <section>
+                    <h1>
+                        ИЗЧИСЛИТЕЛЕН МОДЕЛ ЗА ОПТИМИЗАЦИЯ НА ТЕКСТ:
+                        
+                    </h1>
+                    <h2>
+                        СЪДЪРЖАТЕЛНО РЕДУЦИРАНЕ ЗА ПОДОБРЯВАНЕ НА СМИСЛОВОТО ВЪЗПРИЯТИЕ НА ИНФОРМАЦИЯТА
+                    </h2>
+                    <ul class="not-bold big-text">
+                        <li><span class="bold italic">Дипломант:</span> Давид Мавродиев</li>
+                        <li><span class="bold italic">Научен ръководител:</span> проф. д-р Теодора Бакърджиева</li>
+                        <li><span class="bold italic">Консултант:</span> Salman Khan, PhD</li>
+                    </ul>
+                </section>
+            </section>
+            
+            <section>
+                <section>
+                    <h2>Дефиниция на информация</h2>
+                    <h2 class="fragment" data-fragment-index="1">
+                        $$ {I = \sum^n_{i=1}I_i = 1} $$
+                    </h2>
+                </section>
+
+                <section>
+                    <div class="container">
+                        <p class="col">
+                            <span style="color: greenyellow;">Вчера гледах прогнозата за времето.</span>
+                            <span style="color: blanchedalmond;">Днес ще вали.</span>
+                            <span style="color: goldenrod;">Ще ти трябва чадър.</span>
+                        </p>
+                        <div class="col">
+                            <ul>
+                                <li style="color: greenyellow;">Какво е гледано вчера?</li>
+                                <li style="color: blanchedalmond;">Какво е времето днес?</li>
+                                <li style="color: goldenrod;">Какво е необходимо за днес?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p class="center">
+                        I = <span style="color: greenyellow;">0.2</span> + <span style="color: blanchedalmond;">0.3</span> + <span style="color: goldenrod;">0.5</span> = 1
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Оценка на разбиране</h2>
+                    <h2 class="fragment" data-fragment-index="1">
+                        $$
+                            S = \frac {\sum^{|I|}_{i=1} I_i \times X_i} {\sum^{|I|}_{i=1} I_i} \leq 1
+                        $$
+                        $$
+                            X = \{ x_i \in \{0, 1\} \mid |X| = |I| \}
+                        $$
+                    </h2>
+                    <ul class="fragment" data-fragment-index="2">
+                        <li>S -> 0, разбирането се влошава.</li>
+                        <li>S -> 1, разбирането се подобрява.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <div class="container">
+                        <p class="col">
+                            <span style="color: greenyellow; text-decoration: line-through;">Вчера гледах прогнозата за времето.</span>
+                            <span style="color: blanchedalmond;">Днес ще вали.</span>
+                            <span style="color: goldenrod;">Ще ти трябва чадър.</span>
+                        </p>
+                        <div class="col">
+                            <ul>
+                                <li style="color: greenyellow; text-decoration: line-through;">Какво е гледано вчера?</li>
+                                <li style="color: blanchedalmond;">Какво е времето днес?</li>
+                                <li style="color: goldenrod;">Какво е необходимо за днес?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="center">
+                        $$
+                            I = \{0.2, 0.3, 0.5\}
+                        $$
+                        $$
+                            S = \frac {0.2 \times 0 + 0.3 \times 1 + 0.5 \times 1} {0.2 + 0.3 + 0.5} = 0.8
+                        $$
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Качество на съкращаване</h2>
+                    <h2 class="fragment" data-fragment-index="1">
+                        $$
+                            O = - (S \times \log_2 (\frac{a}{b})), \, a < b
+                        $$
+                    </h2>
+                </section>
+
+                <section>
+                    <div class="container">
+                        <p class="col">
+                            <span style="color: greenyellow; text-decoration: line-through;">Вчера гледах прогнозата за времето.</span>
+                            <span style="color: blanchedalmond;">Днес ще вали.</span>
+                            <span style="color: goldenrod;">Ще ти трябва чадър.</span>
+                        </p>
+                        <div class="col">
+                            <ul>
+                                <li style="color: greenyellow; text-decoration: line-through;">Какво е гледано вчера?</li>
+                                <li style="color: blanchedalmond;">Какво е времето днес?</li>
+                                <li style="color: goldenrod;">Какво е необходимо за днес?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="center">
+                        $$
+                            I = \{0.2, 0.3, 0.5\}
+                        $$
+                        $$
+                            S = 0.8
+                        $$
+                        $$
+                            O = -(0.8 \times \log_2 (\frac{33}{69})) = 0.8513
+                        $$
+                    </p>
+                </section>
+
+                <section>
+                    <div class="container">
+                        <p class="col">
+                            <span style="color: greenyellow;">Вчера гледах прогнозата за времето.</span>
+                            <span style="color: blanchedalmond; text-decoration: line-through;">Днес ще вали.</span>
+                            <span style="color: goldenrod;">Ще ти трябва чадър.</span>
+                        </p>
+                        <div class="col">
+                            <ul>
+                                <li style="color: greenyellow;">Какво е гледано вчера?</li>
+                                <li style="color: blanchedalmond; text-decoration: line-through;">Какво е времето днес?</li>
+                                <li style="color: goldenrod;">Какво е необходимо за днес?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="center">
+                        $$
+                            I = \{0.2, 0.3, 0.5\}
+                        $$
+                        $$
+                            S = 0.7
+                        $$
+                        $$
+                            O = -(0.7 \times \log_2 (\frac{55}{69})) = 0.2290
+                        $$
+                    </p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h2>Извлечени свойства:</h2>
+                </section>
+                <section>
+                    <h2>
+                        Първо свойство
+                    </h2>
+                    <p>
+                        Отстраняването на смислово повтарящ се елемент оптимизира съдържанието, без да променя информацията.
+                    </p>
+                    <p>
+                        $$
+                            I_i \cup I_j \neq \emptyset 
+                        $$
+                    </p>
+                </section>
+                <section>
+                    <div class="container">
+                        <p class="col">
+                            ... <span style="color: blanchedalmond; text-decoration: line-through;">Работеше като учителка.</span> ...
+                            <span style="color: greenyellow;">Докато преподаваше урока, тя се сети, че трябва да изпрати писмото.</span> ...
+                        </p>
+                        <div class="col">
+                            <ul>
+                                <li>...</li>
+                                <li style="color: greenyellow;">Като каква работи тя?</li>
+                                <li>...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>
+                        Второ свойство
+                    </h2>
+                    <p>
+                        Липсата на елемент, смислово противоречащ на друг, подобрява разбирането на съдържание, без изменяне на информацията.
+                    </p>
+                    <p>
+                        $$
+                        I_i = I_j^c
+                        $$
+                    </p>
+                </section>
+                <section>
+                    <div class="container">
+                        <div class="container">
+                            <p class="col">
+                                ... <span style="color: blanchedalmond; text-decoration: line-through;">Случайност съществува.</span> ...
+                                <span style="color: greenyellow;">Случайности не съществуват, вселената е детерминистична.</span> ...
+                            </p>
+                            <div class="col">
+                                <ul>
+                                    <li>...</li>
+                                    <li style="color: greenyellow;">Има ли случайност?</li>
+                                    <li>...</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Дефиниция на оптимален текст:</h2>
+                    <ul>
+                        <li>Текст, който се състои от елементи, съдържащи различна, а не еднаква или взаимноизключваща се информация.</li>
+                        <li>Текст, който ако бъде съкратен, разбирането ще пострада, защото информацията или част от нея бива изгубена.</li>
+                    </ul>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h2>
+                        Цел:
+                    </h2>
+                    <h2>Създаване на изчислителен модел (алгоритъм) за оптимизация на текст спрямо въпроси.</h2>
+                </section>
+                <section>
+                    <h2>
+                        Условие:
+                    </h2>
+                    <h2>Моделът да редуцира текст без да намали разбирането му.</h2>
+                </section>
+                <section>
+                    <h2>
+                        Следствие:
+                    </h2>
+                    <h2>Редуцирането да подобри разбирането на текста.</h2>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h2>Процедура за избор на оценител:</h2>
+                </section>
+                <section>
+                    <h2>1. Създаване на тестове.</h2>
+                    <div>
+                        <img width="700px" src="./images/example_test_case.png" />
+                    </div>
+                </section>
+                <section>
+                    <h2>2. Изчисляване на метрики:</h2>
+                    <p>
+                        True positives (TP), False positives (FP), True negatives (TN), False negatives (FN), Accuracy, Positive Predictive Value (Precision), True Positive Rate (Recall), True Negative Rate (Specificity), Negative Predictive Value и F1 score.
+                    </p>
+                </section>
+                <section>
+                    <h2>3. Избор на оценител на база на метрики.</h2>
+                    <div>
+                        <img width="700px" src="./images/model_selection_results.png" />
+                    </div>
+                </section>
+                <section>
+                    <div class="bold">Софтуерно приложение "Textopt"</div>
+                    <img width="400px" height="300px" src="./images/app_1.png" />
+                    <img width="400px" height="300px" src="./images/app_2.png" />
+                    <img width="400px" height="300px" src="./images/app_3.png" />
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h2>
+                        Други приложения на модела (алгоритъма)
+                    </h2>
+                </section>
+                <section>
+                    <h2>
+                        Обучение на специализирани езикови модели
+                    </h2>
+                    <p>
+                        {Голям масив от текстови данни} -> Модел(Въпроси) -> {Масив от специализирани текстови данни}
+                    </p>
+                </section>
+                <section>
+                    <h2>
+                        Изследване на разликите във възприемането на текст
+                    </h2>
+                    
+                    <p>
+                        Сравнение за разбиране на текст между хора и езикови модели.
+                    </p>
+                </section>
+            </section>
+            
+
+            <!-- <section>
+                <section>
+                    <div class="bold very-big-text">III. ПРАКТИКУМНА РАМКА: <span class="italic">ИЗЧИСЛИТЕЛЕН МОДЕЛ</span></div>
+                    <ul class="not-bold big-text">
+                        В третата част е реализацията на проекта:
+                        <li>
+                            <span class="bold">Същност на оптимизацията</span> (изготвяне на модела).
+                            <ul>
+                                <li><span class="italic">Характеристики:</span><br/> етапност, показатели, свойства, параметри, действия, обхват.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="bold">Подбор на инструментариум</span> (целеви похват).
+                            <ul>
+                                <li><span class="italic">Компоненти:</span><br/> токенизация, почистване, разпознаване на части от речта и на именувани същности,<br/> синтактичен и семантичен анализ.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="bold">Приложение на алгоритъма</span> (създаване на апликацията “Textopt”). 
+                            <ul>
+                                <li><span class="italic">Подход:</span><br/> избор на метрики, избор на оценители, разработване на софтуерен продукт.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+            </section> -->
+
+            <section>
+                <img height="400px" src="./images/thanks.gif" />
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+    <script src="./lib/animations/three.min.js"></script>
+    <script src="./lib/animations/vanta.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script>
+        // Bootstrap the presentation
+        Reveal.initialize({
+            responsive: true,
+            hash: true
+        });
+
+        // Custom script to handle fragment replacement
+        Reveal.addEventListener('fragmentshown', function(event) {
+            var fragment1 = document.querySelector('.fragment-1');
+            var fragment2 = document.querySelector('.fragment-2');
+
+            if (event.fragment === fragment1) {
+                fragment1.style.display = 'none';
+                fragment2.style.display = 'block';
+            }
+        });
+
+        Reveal.addEventListener('fragmenthidden', function(event) {
+            var fragment1 = document.querySelector('.fragment-1');
+            var fragment2 = document.querySelector('.fragment-2');
+
+            if (event.fragment === fragment2) {
+                fragment2.style.display = 'none';
+                fragment1.style.display = 'block';
+            }
+        });
+
+        // Background network
+        VANTA.NET({
+          el: "#net",
+          color: 0x3447d2,
+          backgroundColor: 0x000000,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          points: 20.00,
+          maxDistance: 40.00,
+          spacing: 15.00
+        });
+
+        // 3D slides effect
+        window.onload = function () {
+            $("body").on("mousemove", ".present", function(e) {
+                var $el = $(this);
+                let xAxis = (window.innerWidth / 2 - e.pageX) / 2500;
+                let yAxis = (window.innerHeight / 2 - e.pageY) / 2500;
+                $el.css("transform", `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`);
+            });
+        };
+    </script>
+</body>
+
+</html>
