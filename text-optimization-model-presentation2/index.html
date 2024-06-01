@@ -137,28 +137,49 @@
         <div class="slides">
             <section>
                 <section>
+                    <div>
+                        <img height="400px" src="./images/intro.gif" />
+                    </div>
+                </section>
+                <section>
                     <h1>
                         ИЗЧИСЛИТЕЛЕН МОДЕЛ ЗА ОПТИМИЗАЦИЯ НА ТЕКСТ:
                         
                     </h1>
-                    <h2>
+                    <h2 class="italic">
                         СЪДЪРЖАТЕЛНО РЕДУЦИРАНЕ ЗА ПОДОБРЯВАНЕ НА СМИСЛОВОТО ВЪЗПРИЯТИЕ НА ИНФОРМАЦИЯТА
                     </h2>
-                    <ul class="not-bold big-text">
-                        <li><span class="bold italic">Автор:</span> Давид Мавродиев</li>
-                    </ul>
+                    <span>Автор: Давид Мавродиев</span>
                 </section>
             </section>
             
             <section>
                 <section>
-                    <h2>Дефиниция на текстова информация</h2>
+                    <h2>Хипотези</h2>
+                    <ul>
+                        <li>
+                            Може да бъде създаден изчислителен модел, който да оптимизира текст чрез съдържателно редуциране, с цел подобряване на разбирането му.
+                        </li>
+                        <li>
+                            Концептуалният модел (алгоритъм) има практическо приложение. 
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Първа част: Концептуална</h1>
+                    <div>
+                        <img height="400px" src="./images/part1.jpg" />
+                    </div>
+                </section>
+                <section>
+                    <h2>Определение на текстова информация</h2>
                     <h2 class="fragment" data-fragment-index="1">
                         $$ {I = \sum^n_{i=1}I_i = 1} $$
                     </h2>
                 </section>
 
                 <section>
+                    <h2>Пример</h2>
                     <div class="container">
                         <p class="col">
                             <span style="color: greenyellow;">Вчера гледах прогнозата за времето.</span>
@@ -180,7 +201,7 @@
                 </section>
 
                 <section>
-                    <h2>Оценка за разбиране</h2>
+                    <h2>Оценка на текстово разбиране</h2>
                     <h2 class="fragment" data-fragment-index="1">
                         $$
                             S = \frac {\sum^{|I|}_{i=1} I_i \times X_i} {\sum^{|I|}_{i=1} I_i} \leq 1
@@ -189,13 +210,10 @@
                             X = \{ x_i \in \{0, 1\} \mid |X| = |I| \}
                         $$
                     </h2>
-                    <ul class="fragment" data-fragment-index="2">
-                        <li>S -> 0, разбирането се влошава.</li>
-                        <li>S -> 1, разбирането се подобрява.</li>
-                    </ul>
                 </section>
 
                 <section>
+                    <h2>Пример</h2>
                     <div class="container">
                         <p class="col">
                             <span style="color: greenyellow; text-decoration: line-through;">Вчера гледах прогнозата за времето.</span>
@@ -221,7 +239,7 @@
                 </section>
 
                 <section>
-                    <h2>Качество на съкращаването</h2>
+                    <h2>Качество на текстово съкращаване</h2>
                     <h2 class="fragment" data-fragment-index="1">
                         $$
                             O = - (S \times \log_2 (\frac{a}{b})), \, a < b
@@ -230,6 +248,7 @@
                 </section>
 
                 <section>
+                    <h2>Пример</h2>
                     <div class="container">
                         <p class="col">
                             <span style="color: greenyellow; text-decoration: line-through;">Вчера гледах прогнозата за времето.</span>
@@ -258,6 +277,7 @@
                 </section>
 
                 <section>
+                    <h2>Пример</h2>
                     <div class="container">
                         <p class="col">
                             <span style="color: greenyellow;">Вчера гледах прогнозата за времето.</span>
@@ -288,14 +308,11 @@
 
             <section>
                 <section>
-                    <h2>Извлечени свойства:</h2>
+                    <h2>Свойства</h2>
                 </section>
                 <section>
-                    <h2>
-                        Първо свойство
-                    </h2>
                     <p>
-                        Отстраняването на смислово повтарящ се елемент оптимизира съдържанието, без да променя информацията.
+                        <span class="bold">I.</span> Отстраняването на смислово повтарящ се елемент оптимизира съдържанието, без да променя информацията.
                     </p>
                     <p>
                         $$
@@ -304,6 +321,7 @@
                     </p>
                 </section>
                 <section>
+                    <h2>Пример</h2>
                     <div class="container">
                         <p class="col">
                             ... <span style="color: blanchedalmond; text-decoration: line-through;">Работеше като учителка.</span> ...
@@ -319,11 +337,8 @@
                     </div>
                 </section>
                 <section>
-                    <h2>
-                        Второ свойство
-                    </h2>
                     <p>
-                        Липсата на елемент, смислово противоречащ на друг, подобрява разбирането на съдържание, без изменяне на информацията.
+                        <span class="bold">II.</span> Липсата на елемент, смислово противоречащ на друг, подобрява разбирането на съдържание, без изменяне на информацията.
                     </p>
                     <p>
                         $$
@@ -332,6 +347,7 @@
                     </p>
                 </section>
                 <section>
+                    <h2>Пример</h2>
                     <div class="container">
                         <div class="container">
                             <p class="col">
@@ -349,7 +365,7 @@
                     </div>
                 </section>
                 <section>
-                    <h2>Дефиниция на оптимален текст:</h2>
+                    <h2>Дефиниция за оптимален текст:</h2>
                     <ul>
                         <li>Текст, който се състои от елементи, съдържащи различна, а не еднаква или взаимноизключваща се информация.</li>
                         <li>Текст, който ако бъде съкратен, разбирането ще пострада, защото информацията или част от нея бива изгубена.</li>
@@ -358,44 +374,38 @@
             </section>
 
             <section>
-                <section>
-                    <h2>
-                        Цел:
-                    </h2>
-                    <h2>Създаване на изчислителен модел (алгоритъм) за оптимизация на текст спрямо въпроси.</h2>
-                </section>
-                <section>
-                    <h2>
-                        Условие:
-                    </h2>
-                    <h2>Моделът да редуцира текст без да намали разбирането му.</h2>
-                </section>
-                <section>
-                    <h2>
-                        Следствие:
-                    </h2>
-                    <h2>Редуцирането да подобри разбирането на текста.</h2>
-                </section>
+                <h2>I. Хипотеза</h2>
+                <ul>
+                    <li>
+                        <span class="bold underline">Доказано:</span> Може да бъде създаден изчислителен модел, който да оптимизира текст чрез съдържателно редуциране, с цел подобряване на разбирането му.
+                    </li>
+                </ul>
             </section>
 
             <section>
                 <section>
-                    <h2>Процедура за избор на езиков модел за оценител:</h2>
+                    <h1>Втора част: Практикумна</h1>
+                    <div>
+                        <img height="400px" src="./images/part2.jpg" />
+                    </div>
                 </section>
                 <section>
-                    <h2>1. Създаване на тестове.</h2>
+                    <h2>Етапи на процедурата за ефективна оценка на разбиране</h2>
+                </section>
+                <section>
+                    <h2>Tестове</h2>
                     <div>
                         <img width="700px" src="./images/example_test_case.png" />
                     </div>
                 </section>
                 <section>
-                    <h2>2. Изчисляване на метрики:</h2>
+                    <h2>Mетрики</h2>
                     <p>
                         True positives (TP), False positives (FP), True negatives (TN), False negatives (FN), Accuracy, Positive Predictive Value (Precision), True Positive Rate (Recall), True Negative Rate (Specificity), Negative Predictive Value и F1 score.
                     </p>
                 </section>
                 <section>
-                    <h2>3. Избор на оценител на база на метрики.</h2>
+                    <h2>Избор</h2>
                     <div>
                         <img width="700px" src="./images/model_selection_results.png" />
                     </div>
@@ -404,15 +414,39 @@
 
             <section>
                 <section>
-                    <h2>
-                        Приложения на модела (алгоритъма)
-                    </h2>
+                    <h2>Софтуерно приложение "Textopt"</h2>
+                    <a href="https://github.com/David-Mavrodiev/textopt">https://github.com/David-Mavrodiev/textopt</a>
                 </section>
                 <section>
-                    <div class="bold">Софтуерно приложение "Textopt"</div>
-                    <img width="400px" height="300px" src="./images/app_1.png" />
-                    <img width="400px" height="300px" src="./images/app_2.png" />
-                    <img width="400px" height="300px" src="./images/app_3.png" />
+                    <div>
+                        <img width="800px" src="./images/app_1.png" />
+                    </div>
+                </section>
+                <section>
+                    <div>
+                        <img width="800px" src="./images/app_2.png" />
+                    </div>
+                </section>
+                <section>
+                    <div>
+                        <img width="800px" src="./images/app_3.png" />
+                    </div>
+                </section>
+                <section>
+                    <h2>II. Хипотеза</h2>
+                    <ul>
+                        <li>
+                            <span class="bold underline">Доказано:</span> Концептуалният модел (алгоритъм) има практическо приложение.
+                        </li>
+                    </ul>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h2>
+                        Други приложения на алгоритъма
+                    </h2>
                 </section>
                 <section>
                     <h2>
@@ -432,34 +466,6 @@
                 </section>
             </section>
             
-
-            <!-- <section>
-                <section>
-                    <div class="bold very-big-text">III. ПРАКТИКУМНА РАМКА: <span class="italic">ИЗЧИСЛИТЕЛЕН МОДЕЛ</span></div>
-                    <ul class="not-bold big-text">
-                        В третата част е реализацията на проекта:
-                        <li>
-                            <span class="bold">Същност на оптимизацията</span> (изготвяне на модела).
-                            <ul>
-                                <li><span class="italic">Характеристики:</span><br/> етапност, показатели, свойства, параметри, действия, обхват.</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="bold">Подбор на инструментариум</span> (целеви похват).
-                            <ul>
-                                <li><span class="italic">Компоненти:</span><br/> токенизация, почистване, разпознаване на части от речта и на именувани същности,<br/> синтактичен и семантичен анализ.</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="bold">Приложение на алгоритъма</span> (създаване на апликацията “Textopt”). 
-                            <ul>
-                                <li><span class="italic">Подход:</span><br/> избор на метрики, избор на оценители, разработване на софтуерен продукт.</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </section>
-            </section> -->
-
             <section>
                 <img height="400px" src="./images/thanks.gif" />
             </section>
