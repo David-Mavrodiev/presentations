@@ -1,0 +1,691 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>COMPUTATIONAL MODEL FOR TEXT OPTIMIZATION</title>
+
+    <link rel="stylesheet" href="./lib/reset.css">
+    <link rel="stylesheet" href="./lib/reveal.css">
+    <link rel="stylesheet" href="./lib/theme/black.css">
+
+    <style>
+        /* @import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap'); */
+
+        html {
+            font-size: 16px;
+            /* 1em = 16px */
+        }
+
+        body {
+            font-size: 16px;
+            /* 1em = 16px */
+        }
+
+        h1 {
+            font-size: 1.5em !important;
+            /* 32px */
+        }
+
+        h2 {
+            font-size: 1em !important;
+            /* 24px */
+        }
+
+        p,
+        ul {
+            text-align: left;
+            font-size: 0.7em !important;
+            /* 16px */
+        }
+
+        .list-without-bullets li {
+            list-style-type: none;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .col {
+            margin: 10px;
+            flex: 1;
+        }
+
+        .not-bold {
+            font-weight: 100 !important;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .center {
+            text-align: center !important;
+        }
+
+        .italic {
+            font-style: italic !important;
+        }
+
+        .underline {
+            text-decoration: underline !important;
+        }
+
+        .no-border {
+            border: none !important;
+        }
+
+        .quote {
+            font-size: 1.7rem !important;
+            text-align: center !important;
+        }
+
+        .quote>.author {
+            margin-top: 10px;
+            font-style: italic !important;
+            font-size: 1.3rem !important;
+        }
+
+        .image-container {
+            align-self: center;
+        }
+
+        .image-container>img {
+            border: 10px solid snow;
+        }
+
+        .image-container>.author {
+            margin-top: 10px;
+            font-style: italic !important;
+            font-size: 1rem !important;
+        }
+
+        #digital-twins-demo-wrapper {
+            margin-left: 10%;
+            width: 800px;
+            height: 700px;
+            background-color: black;
+        }
+
+        .green {
+            color: greenyellow !important;
+        }
+
+        .blue {
+            color: deepskyblue !important;
+        }
+
+        .fit-and-center {
+            margin: auto;
+            width: fit-content;
+            max-width: 60%;
+        }
+
+        .code {
+            font-weight: 700;
+            background-color: black;
+            color: greenyellow;
+            font-family: 'Fira Code', monospace !important;
+        }
+
+        .file {
+            color: greenyellow;
+            font-family: 'Fira Code', monospace !important;
+        }
+    </style>
+</head>
+
+<body id="net">
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <section>
+                    <h1>
+                        COMPUTATIONAL MODEL FOR TEXT OPTIMIZATION:
+                    </h1>
+                    <h2 class="italic">
+                        Content reduction for improving the semantic perception of information
+                    </h2>
+                    <span>Author: David Mavrodiev</span>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h2>Task Definition</h2>
+                    <p class="center">
+                        (Text, Context, Rules) -> Optimaly Reduced Text
+                    </p>
+                </section>
+                <section>
+                    <h2>Embeddings Overview</h2>
+                    <p>
+                        Word embeddings are vector representations that capture a word's meaning based on the contexts in which it appears, positioning similar words close in a high-dimensional space.
+                        This allows embeddings to reflect relationships like synonyms, analogies, and usage patterns.
+                    </p>
+                    <ul>
+                        <li>Word Embeddings Models: Word2Vec, GloVe, FastText, ELMo, BERT etc.</li>
+                        <li>Sentence Embeddings Models: Average Word Embeddings, InferSent, Universal Sentence Encoder, SBERT,
+                            LASER etc.</li>
+                        <li>Paragraph Embeddings: Average of Sentence Embeddings, Doc2Vec, Hierarchical Attention
+                            Networks, Deep Averaging Networks, etc.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Text</h2>
+                    <p>
+                        In this context, \( T = \{t_1, t_2, \dots, t_n\} \) represents a set of embedding vectors for words, sentences, or paragraphs from the text.
+                        Each element \( t_i \) in the set \( T \) is a vector that encodes some linguistic information about a particular word, sentence, or paragraph.
+                    </p>
+                </section>
+                <section>
+                    <h2>Context</h2>
+                    <p>\( C = \{c_1, c_2, \dots, c_m\} \) represents a set of embedding vectors corresponding to context elements. Each element \( c_i \) in the set \( C \) is a vector that encodes some semantic or informational significance about the specific context element, which can be a word, sentence, or paragraph related to a larger text or domain.</p>
+                    <p>
+                        Let \( I = \{I_1, I_2, \dots, I_n\} \) represent the weights for each context element, indicating their informational importance. Such weights could be based on the rarity of the elements—rarer elements (words, sentences, paragraphs) typically carry more informational importance because they are less expected and thus contribute more uniquely to the overall meaning.
+                    </p>
+                </section>
+                <section>
+                    <h2>Similarity Measurement</h2>
+                    <p>Between Words, Sentences, and Paragraphs</p>
+                    <ul>
+                        <li>Word similarity: Cosine Similarity, Euclidean Distance, Jaccard Similarity, etc.</li>
+                        <li>Sentence Similarity: Cosine Similarity, Word Mover's Distance (WMD), Semantic Similarity,
+                            etc.</li>
+                        <li>Paragraph Similarity: Average Embedding Similarity, Doc2Vec Similarity, etc.</li>
+                    </ul>
+                    <p>
+                        The weighted similarity \( V \) between context elements and text elements is:
+                        \[
+                        V = \sum_{i=1}^{m} I_i \sum_{j=1}^{n} \text{sim}(c_i, t_j)
+                        \]
+                    </p>
+                </section>
+                <section>
+                    <h2>Understanding Measurement</h2>
+                    <p>
+                        Let \( S \) be the understanding measurement, defined as the ratio between the initial
+                        similarity \( V \) and the similarity after text reduction \( V_{\text{reduced}} \).
+                    </p>
+
+                    <p>
+                        The understanding measurement \( S \) is the ratio between these two similarity values:
+                        \[
+                        S = \frac{V_{\text{reduced}}}{V} \leq 1
+                        \]
+                    </p>
+                </section>
+                <section>
+                    <h2>Quality of Text Reduction</h2>
+                    <p>
+                        The formula for evaluating the quality of text reduction is:
+                    </p>
+                    <p>
+                        \[
+                        O = S \times \log_2 \left( \frac{a}{b} \right), \, a < b
+                        \]
+                    </p>
+                    <p>
+                        Where:
+                        <ul>
+                            <li>\( S \) is the understanding retained after text reduction.</li>
+                            <li>\( a \) is the size of the text after reduction.</li>
+                            <li>\( b \) is the original text size before reduction.</li>
+                        </ul>
+                    </p>
+                    <p>
+                        This formula measures the trade-off between reducing text size and retaining understanding. Higher \( O \) values indicate a better balance.
+                    </p>
+                </section>
+                <section>
+                    <h2>Introducing Rules for Text Reduction</h2>
+                    <p>
+                        <strong>Rules</strong> allow you to define allowed ranges for measurements during text reduction. These rules set constraints on how much understanding can be lost or the size of the reduced text. 
+                    </p>
+        
+                    <p>
+                        For example:
+                        <ul>
+                            <li><strong>Understanding Rule</strong>: Require that at least 90% of the original understanding is retained:
+                            \[
+                            S \geq 0.9
+                            \]
+                            </li>
+                            <li><strong>Size Rule</strong>: Only consider reduced text versions that are less than 50% of the original size:
+                            \[
+                            a \leq 0.5 \times b
+                            \]
+                            </li>
+                        </ul>
+                    </p>
+                </section>
+                <section>
+                    <h2>Combining Rules for Optimal Reduction</h2>
+                    <p>
+                        By combining rules for understanding and text size, you can control the quality and efficiency of the text reduction process. For example:
+                        <ul>
+                            <li>Only allow a maximum 10% loss in understanding (\( S \geq 0.9 \)).</li>
+                            <li>Ensure that the reduced text is less than 50% of the original size (\( a \leq 0.5 \times b \)).</li>
+                        </ul>
+                    </p>
+                    <p>
+                        These rules help guide the search for the most optimal reduced text versions that maintain both meaning and conciseness.
+                    </p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h2>Hypotheses</h2>
+                    <ul>
+                        <li>
+                            A computational model can be created to optimize text through content reduction, with the
+                            goal of improving its comprehension.
+                        </li>
+                        <li>
+                            The conceptual model (algorithm) has practical applications.
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Part One: Conceptual</h1>
+                    <div>
+                        <img height="400px" src="./images/part1.jpg" />
+                    </div>
+                </section>
+                <section>
+                    <h2>Definition of textual information</h2>
+                    <h2 class="fragment" data-fragment-index="1">
+                        $$ {I = \sum^n_{i=1}I_i = 1} $$
+                    </h2>
+                </section>
+
+                <section>
+                    <h2>Example</h2>
+                    <div class="container">
+                        <p class="col">
+                            <span style="color: greenyellow;">Yesterday I watched the weather forecast.</span>
+                            <span style="color: blanchedalmond;">It will rain today.</span>
+                            <span style="color: goldenrod;">You will need an umbrella.</span>
+                        </p>
+                        <div class="col">
+                            <ul>
+                                <li style="color: greenyellow;">What was watched yesterday?</li>
+                                <li style="color: blanchedalmond;">What is the weather today?</li>
+                                <li style="color: goldenrod;">What is needed for today?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p class="center">
+                        I = <span style="color: greenyellow;">0.2</span> + <span
+                            style="color: blanchedalmond;">0.3</span> + <span style="color: goldenrod;">0.5</span> = 1
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Evaluation of textual comprehension</h2>
+                    <h2 class="fragment" data-fragment-index="1">
+                        $$
+                        S = \frac {\sum^{|I|}_{i=1} I_i \times X_i} {\sum^{|I|}_{i=1} I_i} \leq 1
+                        $$
+                        $$
+                        X = \{ x_i \in \{0, 1\} \mid |X| = |I| \}
+                        $$
+                    </h2>
+                </section>
+
+                <section>
+                    <h2>Example</h2>
+                    <div class="container">
+                        <p class="col">
+                            <span style="color: greenyellow; text-decoration: line-through;">Yesterday I watched the
+                                weather forecast.</span>
+                            <span style="color: blanchedalmond;">It will rain today.</span>
+                            <span style="color: goldenrod;">You will need an umbrella.</span>
+                        </p>
+                        <div class="col">
+                            <ul>
+                                <li style="color: greenyellow; text-decoration: line-through;">What was watched
+                                    yesterday?</li>
+                                <li style="color: blanchedalmond;">What is the weather today?</li>
+                                <li style="color: goldenrod;">What is needed for today?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="center">
+                        $$
+                        I = \{0.2, 0.3, 0.5\}
+                        $$
+                        $$
+                        S = \frac {0.2 \times 0 + 0.3 \times 1 + 0.5 \times 1} {0.2 + 0.3 + 0.5} = 0.8
+                        $$
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Quality of text summarization</h2>
+                    <h2 class="fragment" data-fragment-index="1">
+                        $$ O = |S \times \log_2 (\frac{a}{b})|, \, a < b $$ </h2>
+                </section>
+
+                <section>
+                    <h2>Example</h2>
+                    <div class="container">
+                        <p class="col">
+                            <span style="color: greenyellow; text-decoration: line-through;">Yesterday I watched the
+                                weather forecast.</span>
+                            <span style="color: blanchedalmond;">It will rain today.</span>
+                            <span style="color: goldenrod;">You will need an umbrella.</span>
+                        </p>
+                        <div class="col">
+                            <ul>
+                                <li style="color: greenyellow; text-decoration: line-through;">What was watched
+                                    yesterday?</li>
+                                <li style="color: blanchedalmond;">What is the weather today?</li>
+                                <li style="color: goldenrod;">What is needed for today?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="center">
+                        $$
+                        I = \{0.2, 0.3, 0.5\}
+                        $$
+                        $$
+                        S = 0.8
+                        $$
+                        $$
+                        O = -(0.8 \times \log_2 (\frac{33}{69})) = 0.8513
+                        $$
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Example</h2>
+                    <div class="container">
+                        <p class="col">
+                            <span style="color: greenyellow;">Yesterday I watched the weather forecast.</span>
+                            <span style="color: blanchedalmond; text-decoration: line-through;">It will rain
+                                today.</span>
+                            <span style="color: goldenrod;">You will need an umbrella.</span>
+                        </p>
+                        <div class="col">
+                            <ul>
+                                <li style="color: greenyellow;">What was watched yesterday?</li>
+                                <li style="color: blanchedalmond; text-decoration: line-through;">What is the weather
+                                    today?</li>
+                                <li style="color: goldenrod;">What is needed for today?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="center">
+                        $$
+                        I = \{0.2, 0.3, 0.5\}
+                        $$
+                        $$
+                        S = 0.7
+                        $$
+                        $$
+                        O = -(0.7 \times \log_2 (\frac{55}{69})) = 0.2290
+                        $$
+                    </p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h2>Properties</h2>
+                </section>
+                <section>
+                    <p>
+                        <span class="bold">I.</span> Removing semantically repetitive elements optimizes the content
+                        without changing the information.
+                    </p>
+                    <p>
+                        $$
+                        I_i \cup I_j \neq \emptyset
+                        $$
+                    </p>
+                </section>
+                <section>
+                    <h2>Example</h2>
+                    <div class="container">
+                        <p class="col">
+                            ... <span style="color: blanchedalmond; text-decoration: line-through;">She worked as a
+                                teacher.</span> ...
+                            <span style="color: greenyellow;">While teaching the lesson, she remembered that she had to
+                                send the letter.</span> ...
+                        </p>
+                        <div class="col">
+                            <ul>
+                                <li>...</li>
+                                <li style="color: greenyellow;">What does she work as?</li>
+                                <li>...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <p>
+                        <span class="bold">II.</span> The absence of an element that semantically contradicts another
+                        improves the comprehension of the content without altering the information.
+                    </p>
+                    <p>
+                        $$
+                        I_i = I_j^c
+                        $$
+                    </p>
+                </section>
+                <section>
+                    <h2>Example</h2>
+                    <div class="container">
+                        <div class="container">
+                            <p class="col">
+                                ... <span style="color: blanchedalmond; text-decoration: line-through;">The discovery
+                                    was made by chance</span> ...
+                                <span style="color: greenyellow;">There are no coincidences, the universe is
+                                    deterministic.</span> ...
+                            </p>
+                            <div class="col">
+                                <ul>
+                                    <li>...</li>
+                                    <li style="color: greenyellow;">Is there chance?</li>
+                                    <li>...</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Definition of optimal text:</h2>
+                    <ul>
+                        <li>A text consisting of elements that contain different, not identical or mutually exclusive
+                            information.</li>
+                        <li>A text which, if shortened, would suffer in comprehension because the information or part of
+                            it would be lost.</li>
+                    </ul>
+                </section>
+            </section>
+
+            <section>
+                <h2>I. Hypothesis</h2>
+                <ul>
+                    <li>
+                        <span class="bold underline">Proved:</span> A computational model can be created to optimize
+                        text through content reduction, with the goal of improving its comprehension.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Part Two: Practical</h1>
+                    <div>
+                        <img height="400px" src="./images/part2.jpg" />
+                    </div>
+                </section>
+                <section>
+                    <h2>Stages of the procedure for effective comprehension evaluation</h2>
+                </section>
+                <section>
+                    <h2>Tests</h2>
+                    <div>
+                        <img width="700px" src="./images/example_test_case.png" />
+                    </div>
+                </section>
+                <section>
+                    <h2>Metrics</h2>
+                    <p>
+                        True positives (TP), False positives (FP), True negatives (TN), False negatives (FN), Accuracy,
+                        Positive Predictive Value (Precision), True Positive Rate (Recall), True Negative Rate
+                        (Specificity), Negative Predictive Value и F1 score.
+                    </p>
+                </section>
+                <section>
+                    <h2>Choice</h2>
+                    <div>
+                        <img width="700px" src="./images/model_selection_results.png" />
+                    </div>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h2>Software application 'Textopt'</h2>
+                    <a href="https://github.com/David-Mavrodiev/textopt">https://github.com/David-Mavrodiev/textopt</a>
+                </section>
+                <section>
+                    <div>
+                        <img width="800px" src="./images/app_1.png" />
+                    </div>
+                </section>
+                <section>
+                    <div>
+                        <img width="800px" src="./images/app_2.png" />
+                    </div>
+                </section>
+                <section>
+                    <div>
+                        <img width="800px" src="./images/app_3.png" />
+                    </div>
+                </section>
+                <section>
+                    <h2>II. Hypothesis</h2>
+                    <ul>
+                        <li>
+                            <span class="bold underline">Proved:</span> The conceptual model (algorithm) has practical
+                            applications.
+                        </li>
+                    </ul>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h2>
+                        Other applications of the algorithm
+                    </h2>
+                </section>
+                <section>
+                    <h2>
+                        Training specialized language models
+                    </h2>
+                    <div>
+                        <img width="700px" src="./images/specialized-LLM-en.png" />
+                    </div>
+                </section>
+                <section>
+                    <h2>
+                        Investigation of differences in text perception
+                    </h2>
+                    <div>
+                        <img width="600px" src="./images/comparison-LLM-human-en.png" />
+                    </div>
+                </section>
+            </section>
+
+            <section>
+                <h2>Thank you for your attention!</h2>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal.js"></script>
+    <script src="./lib/plugins/multiplex/client.js"></script>
+    <script src="./lib/plugins/multiplex/master.js"></script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+    <script src="./lib/animations/three.min.js"></script>
+    <script src="./lib/animations/vanta.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script>
+        // Bootstrap the presentation
+        Reveal.initialize({
+            responsive: true,
+            hash: true,
+            multiplex: {
+                secret: null, // Leave this as null for clients
+                id: 'txtopt1312', // Unique identifier for your presentation
+                url: 'https://reveal-multiplex.glitch.me/' // Hosted multiplex server
+            },
+            dependencies: [
+                { src: './lib/plugins/multiplex/client.js', async: true },
+                { src: './lib/plugins/multiplex/master.js', async: true }
+            ]
+        });
+
+        // Custom script to handle fragment replacement
+        Reveal.addEventListener('fragmentshown', function (event) {
+            var fragment1 = document.querySelector('.fragment-1');
+            var fragment2 = document.querySelector('.fragment-2');
+
+            if (event.fragment === fragment1) {
+                fragment1.style.display = 'none';
+                fragment2.style.display = 'block';
+            }
+        });
+
+        Reveal.addEventListener('fragmenthidden', function (event) {
+            var fragment1 = document.querySelector('.fragment-1');
+            var fragment2 = document.querySelector('.fragment-2');
+
+            if (event.fragment === fragment2) {
+                fragment2.style.display = 'none';
+                fragment1.style.display = 'block';
+            }
+        });
+
+        // Background network
+        VANTA.NET({
+            el: "#net",
+            color: 0x1f2a85,
+            backgroundColor: 0x000000,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            points: 20.00,
+            maxDistance: 40.00,
+            spacing: 15.00
+        });
+
+        // 3D slides effect
+        window.onload = function () {
+            $("body").on("mousemove", ".present", function (e) {
+                var $el = $(this);
+                let xAxis = (window.innerWidth / 2 - e.pageX) / 2500;
+                let yAxis = (window.innerHeight / 2 - e.pageY) / 2500;
+                $el.css("transform", `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`);
+            });
+        };
+    </script>
+</body>
+
+</html>
