@@ -151,10 +151,13 @@
                     </h2>
                     <span>Author: David Mavrodiev</span>
                 </section>
+            </section>
+
+            <section>
                 <section>
                     <h2>Task Definition</h2>
                     <p class="center">
-                        (Text, Context, Rules) -> Reduced Text
+                        (Text, Context, Rules) -> Optimaly Reduced Text
                     </p>
                 </section>
                 <section>
@@ -272,6 +275,167 @@
                         These rules help guide the search for the most optimal reduced text versions that maintain both meaning and conciseness.
                     </p>
                 </section>
+            </section>
+
+            <section>
+                <section>
+                    <h2>Hypotheses</h2>
+                    <ul>
+                        <li>
+                            A computational model can be created to optimize text through content reduction, with the
+                            goal of improving its comprehension.
+                        </li>
+                        <li>
+                            The conceptual model (algorithm) has practical applications.
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Part One: Conceptual</h1>
+                    <div>
+                        <img height="400px" src="./images/part1.jpg" />
+                    </div>
+                </section>
+                <section>
+                    <h2>Definition of textual information</h2>
+                    <h2 class="fragment" data-fragment-index="1">
+                        $$ {I = \sum^n_{i=1}I_i = 1} $$
+                    </h2>
+                </section>
+
+                <section>
+                    <h2>Example</h2>
+                    <div class="container">
+                        <p class="col">
+                            <span style="color: greenyellow;">Yesterday I watched the weather forecast.</span>
+                            <span style="color: blanchedalmond;">It will rain today.</span>
+                            <span style="color: goldenrod;">You will need an umbrella.</span>
+                        </p>
+                        <div class="col">
+                            <ul>
+                                <li style="color: greenyellow;">What was watched yesterday?</li>
+                                <li style="color: blanchedalmond;">What is the weather today?</li>
+                                <li style="color: goldenrod;">What is needed for today?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p class="center">
+                        I = <span style="color: greenyellow;">0.2</span> + <span
+                            style="color: blanchedalmond;">0.3</span> + <span style="color: goldenrod;">0.5</span> = 1
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Evaluation of textual comprehension</h2>
+                    <h2 class="fragment" data-fragment-index="1">
+                        $$
+                        S = \frac {\sum^{|I|}_{i=1} I_i \times X_i} {\sum^{|I|}_{i=1} I_i} \leq 1
+                        $$
+                        $$
+                        X = \{ x_i \in \{0, 1\} \mid |X| = |I| \}
+                        $$
+                    </h2>
+                </section>
+
+                <section>
+                    <h2>Example</h2>
+                    <div class="container">
+                        <p class="col">
+                            <span style="color: greenyellow; text-decoration: line-through;">Yesterday I watched the
+                                weather forecast.</span>
+                            <span style="color: blanchedalmond;">It will rain today.</span>
+                            <span style="color: goldenrod;">You will need an umbrella.</span>
+                        </p>
+                        <div class="col">
+                            <ul>
+                                <li style="color: greenyellow; text-decoration: line-through;">What was watched
+                                    yesterday?</li>
+                                <li style="color: blanchedalmond;">What is the weather today?</li>
+                                <li style="color: goldenrod;">What is needed for today?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="center">
+                        $$
+                        I = \{0.2, 0.3, 0.5\}
+                        $$
+                        $$
+                        S = \frac {0.2 \times 0 + 0.3 \times 1 + 0.5 \times 1} {0.2 + 0.3 + 0.5} = 0.8
+                        $$
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Quality of text summarization</h2>
+                    <h2 class="fragment" data-fragment-index="1">
+                        $$ O = |S \times \log_2 (\frac{a}{b})|, \, a < b $$ </h2>
+                </section>
+
+                <section>
+                    <h2>Example</h2>
+                    <div class="container">
+                        <p class="col">
+                            <span style="color: greenyellow; text-decoration: line-through;">Yesterday I watched the
+                                weather forecast.</span>
+                            <span style="color: blanchedalmond;">It will rain today.</span>
+                            <span style="color: goldenrod;">You will need an umbrella.</span>
+                        </p>
+                        <div class="col">
+                            <ul>
+                                <li style="color: greenyellow; text-decoration: line-through;">What was watched
+                                    yesterday?</li>
+                                <li style="color: blanchedalmond;">What is the weather today?</li>
+                                <li style="color: goldenrod;">What is needed for today?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="center">
+                        $$
+                        I = \{0.2, 0.3, 0.5\}
+                        $$
+                        $$
+                        S = 0.8
+                        $$
+                        $$
+                        O = -(0.8 \times \log_2 (\frac{33}{69})) = 0.8513
+                        $$
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Example</h2>
+                    <div class="container">
+                        <p class="col">
+                            <span style="color: greenyellow;">Yesterday I watched the weather forecast.</span>
+                            <span style="color: blanchedalmond; text-decoration: line-through;">It will rain
+                                today.</span>
+                            <span style="color: goldenrod;">You will need an umbrella.</span>
+                        </p>
+                        <div class="col">
+                            <ul>
+                                <li style="color: greenyellow;">What was watched yesterday?</li>
+                                <li style="color: blanchedalmond; text-decoration: line-through;">What is the weather
+                                    today?</li>
+                                <li style="color: goldenrod;">What is needed for today?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="center">
+                        $$
+                        I = \{0.2, 0.3, 0.5\}
+                        $$
+                        $$
+                        S = 0.7
+                        $$
+                        $$
+                        O = -(0.7 \times \log_2 (\frac{55}{69})) = 0.2290
+                        $$
+                    </p>
+                </section>
+            </section>
+
+            <section>
                 <section>
                     <h2>Properties</h2>
                 </section>
@@ -287,6 +451,24 @@
                     </p>
                 </section>
                 <section>
+                    <h2>Example</h2>
+                    <div class="container">
+                        <p class="col">
+                            ... <span style="color: blanchedalmond; text-decoration: line-through;">She worked as a
+                                teacher.</span> ...
+                            <span style="color: greenyellow;">While teaching the lesson, she remembered that she had to
+                                send the letter.</span> ...
+                        </p>
+                        <div class="col">
+                            <ul>
+                                <li>...</li>
+                                <li style="color: greenyellow;">What does she work as?</li>
+                                <li>...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
                     <p>
                         <span class="bold">II.</span> The absence of an element that semantically contradicts another
                         improves the comprehension of the content without altering the information.
@@ -298,6 +480,26 @@
                     </p>
                 </section>
                 <section>
+                    <h2>Example</h2>
+                    <div class="container">
+                        <div class="container">
+                            <p class="col">
+                                ... <span style="color: blanchedalmond; text-decoration: line-through;">The discovery
+                                    was made by chance</span> ...
+                                <span style="color: greenyellow;">There are no coincidences, the universe is
+                                    deterministic.</span> ...
+                            </p>
+                            <div class="col">
+                                <ul>
+                                    <li>...</li>
+                                    <li style="color: greenyellow;">Is there chance?</li>
+                                    <li>...</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
                     <h2>Definition of optimal text:</h2>
                     <ul>
                         <li>A text consisting of elements that contain different, not identical or mutually exclusive
@@ -306,9 +508,54 @@
                             it would be lost.</li>
                     </ul>
                 </section>
+            </section>
+
+            <section>
+                <h2>I. Hypothesis</h2>
+                <ul>
+                    <li>
+                        <span class="bold underline">Proved:</span> A computational model can be created to optimize
+                        text through content reduction, with the goal of improving its comprehension.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Part Two: Practical</h1>
+                    <div>
+                        <img height="400px" src="./images/part2.jpg" />
+                    </div>
+                </section>
+                <section>
+                    <h2>Stages of the procedure for effective comprehension evaluation</h2>
+                </section>
+                <section>
+                    <h2>Tests</h2>
+                    <div>
+                        <img width="700px" src="./images/example_test_case.png" />
+                    </div>
+                </section>
+                <section>
+                    <h2>Metrics</h2>
+                    <p>
+                        True positives (TP), False positives (FP), True negatives (TN), False negatives (FN), Accuracy,
+                        Positive Predictive Value (Precision), True Positive Rate (Recall), True Negative Rate
+                        (Specificity), Negative Predictive Value и F1 score.
+                    </p>
+                </section>
+                <section>
+                    <h2>Choice</h2>
+                    <div>
+                        <img width="700px" src="./images/model_selection_results.png" />
+                    </div>
+                </section>
+            </section>
+
+            <section>
                 <section>
                     <h2>Software application 'Textopt'</h2>
-                    <!-- <a href="https://github.com/David-Mavrodiev/textopt">https://github.com/David-Mavrodiev/textopt</a> -->
+                    <a href="https://github.com/David-Mavrodiev/textopt">https://github.com/David-Mavrodiev/textopt</a>
                 </section>
                 <section>
                     <div>
@@ -326,6 +573,23 @@
                     </div>
                 </section>
                 <section>
+                    <h2>II. Hypothesis</h2>
+                    <ul>
+                        <li>
+                            <span class="bold underline">Proved:</span> The conceptual model (algorithm) has practical
+                            applications.
+                        </li>
+                    </ul>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h2>
+                        Other applications of the algorithm
+                    </h2>
+                </section>
+                <section>
                     <h2>
                         Training specialized language models
                     </h2>
@@ -334,8 +598,17 @@
                     </div>
                 </section>
                 <section>
-                    <h2>Thank you for your attention!</h2>
+                    <h2>
+                        Investigation of differences in text perception
+                    </h2>
+                    <div>
+                        <img width="600px" src="./images/comparison-LLM-human-en.png" />
+                    </div>
                 </section>
+            </section>
+
+            <section>
+                <h2>Thank you for your attention!</h2>
             </section>
         </div>
     </div>
