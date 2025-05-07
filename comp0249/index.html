@@ -1,0 +1,509 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>COMPUTATIONAL MODEL FOR TEXT OPTIMIZATION</title>
+
+    <link rel="stylesheet" href="./lib/reset.css">
+    <link rel="stylesheet" href="./lib/reveal.css">
+    <link rel="stylesheet" href="./lib/theme/black.css">
+
+    <style>
+        /* @import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap'); */
+
+        html {
+            font-size: 16px;
+            /* 1em = 16px */
+        }
+
+        body {
+            font-size: 16px;
+            /* 1em = 16px */
+        }
+
+        h1 {
+            font-size: 1.5em !important;
+            /* 32px */
+        }
+
+        h2 {
+            font-size: 1em !important;
+            /* 24px */
+        }
+
+        p,
+        ul,
+        ol {
+            text-align: left;
+            font-size: 0.7em !important;
+            /* 16px */
+        }
+
+        .list-without-bullets li {
+            list-style-type: none;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .col {
+            margin: 10px;
+            flex: 1;
+        }
+
+        .not-bold {
+            font-weight: 100 !important;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .center {
+            text-align: center !important;
+        }
+
+        .italic {
+            font-style: italic !important;
+        }
+
+        .underline {
+            text-decoration: underline !important;
+        }
+
+        .no-border {
+            border: none !important;
+        }
+
+        .quote {
+            font-size: 1.7rem !important;
+            text-align: center !important;
+        }
+
+        .quote>.author {
+            margin-top: 10px;
+            font-style: italic !important;
+            font-size: 1.3rem !important;
+        }
+
+        .image-container {
+            align-self: center;
+        }
+
+        .image-container>img {
+            border: 10px solid snow;
+        }
+
+        .image-container>.author {
+            margin-top: 10px;
+            font-style: italic !important;
+            font-size: 1rem !important;
+        }
+
+        #digital-twins-demo-wrapper {
+            margin-left: 10%;
+            width: 800px;
+            height: 700px;
+            background-color: black;
+        }
+
+        .green {
+            color: greenyellow !important;
+        }
+
+        .blue {
+            color: deepskyblue !important;
+        }
+
+        .fit-and-center {
+            margin: auto;
+            width: fit-content;
+            max-width: 60%;
+        }
+
+        .code {
+            font-weight: 700;
+            background-color: black;
+            color: greenyellow;
+            font-family: 'Fira Code', monospace !important;
+        }
+
+        .file {
+            color: greenyellow;
+            font-family: 'Fira Code', monospace !important;
+        }
+    </style>
+</head>
+
+<body id="net">
+    <div class="reveal">
+       <div class="slides">
+        <section>
+            <section>
+              <h1>Monocular SLAM Comparison</h1>
+              <h2 class="italic">Evaluating COLMAP and ORB-SLAM2</h2>
+              <span>Group 33 - UCL MSc Robotics & AI</span>
+              <div>
+                <img src="./images/1. Автори.gif" alt="Indoor APE Plot" style="width: 30%" />
+              </div>
+            </section>
+          </section>
+          
+          <section>
+            <section>
+            <div class="container">
+                <div class="col">
+                    <img src="./images/2. Съдържание- 1.gif" alt="Indoor APE Plot" style="width: 100%" />
+                </div>
+                <div class="col" style="margin-top: 10%;">
+                    <ul>
+                        <li>Introduction</li>
+                        <li>Methods and Procedures</li>
+                        <li>Pipeline</li>
+                        <li>Videos</li>
+                        <li>Results</li>
+                        <li>Analyses</li>
+                        <li>Conclusions</li>
+                      </ul>
+                </div>
+            </div>
+            </section>
+          </section>
+          
+          <section>
+            <section>
+                <div class="container">
+                    <div class="col">
+                        <h2>Introduction</h2>
+                        <p>We present a complete monocular SLAM pipeline using COLMAP and ORB-SLAM2. The pipeline was evaluated on newly acquired indoor and outdoor video sequences using trajectory alignment metrics.</p>
+                    </div>
+                    <div class="col">
+                        <img src="./images/3. Въведение- 2.gif" alt="Indoor APE Plot" style="width: 100%" />
+                    </div>
+                </div>
+            </section>
+          </section>
+          
+          <section>
+            <section>
+              <div class="container">
+                <div class="col">
+                    <img src="./images/4. Методи и процедури.gif" alt="Indoor APE Plot" style="width: 100%" />
+                </div>
+                <div class="col">
+                    <h2>Methods and Procedures</h2>
+                    <ul>
+                        <li>Frame extraction from indoor and outdoor videos (30 fps)</li>
+                        <li>COLMAP used for intrinsic calibration and sparse 3D reconstruction</li>
+                        <li>ORB-SLAM2 configured with COLMAP calibration parameters</li>
+                        <li>Trajectory extraction and evaluation using EVO (APE metric)</li>
+                    </ul>
+                </div>
+              </div>
+            </section>
+          </section>
+          
+          <section>
+            <section>
+              <div class="container">
+                <div class="col">
+                    <h2>Pipeline</h2>
+                    <ol>
+                        <li>Record video (indoor/outdoor)</li>
+                        <li>Extract video frames using ffmpeg at 30fps</li>
+                        <li>Use COLMAP for camera calibration and sparse reconstruction</li>
+                        <li>Extract intrinsics from COLMAP for use in ORB-SLAM2</li>
+                        <li>Configure and run ORB-SLAM2 monocular pipeline</li>
+                        <li>Extract trajectories from ORB-SLAM2</li>
+                        <li>Compare reconstructed trajectories using EVO APE</li>
+                    </ol>
+                </div>
+                <div class="col">
+                    <img src="./images/5.gif" alt="Indoor APE Plot" style="width: 100%" />
+                </div>
+              </div>
+            </section>
+          </section>
+          
+          <section>
+            <section>
+              <h2>Indoor</h2>
+              <div>
+                <img src="./images/19.gif" alt="Outdoor APE Plot" style="width: 50%" />
+              </div>
+            </section>
+            <section>
+                <h2>Indoor Videos</h2>
+                <div class="container">
+                  <div class="col">
+                    <p class="center">Original indoor recording</p>
+                    <video controls width="350" height="500px">
+                      <source src="./images/indoor_video.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="col">
+                    <p class="center">ORB-SLAM2 visualization</p>
+                    <video controls width="350" height="500px">
+                      <source src="./images/indoor_video_analysis.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+            </section>
+            <section>
+              <h2>Indoor Results</h2>
+              <div class="container">
+                <div class="col">
+                  <ul>
+                    <li>RMSE: 1.1682 m</li>
+                    <li>Mean Error: 1.0280 m</li>
+                    <li>Median Error: 0.9831 m</li>
+                    <li>Standard Deviation: 0.5547 m</li>
+                    <li>Min: 0.1912 m</li>
+                    <li>Max: 2.4528 m</li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <div>
+                    <img src="./images/ape_indoor_raw.jpeg" alt="Indoor APE Plot" style="width: 100%" />
+                  </div>
+                  <div>
+                    <img src="./images/ape_indoor_map.jpeg" alt="Indoor APE Plot" style="width: 80%" />
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <h2>Indoor Analyse</h2>
+              <ul>
+                <li>Indoor scenes had limited structure and repetitive features</li>
+                <li>Feature matching was more difficult leading to alignment drift</li>
+                <li>Visual aliasing and poor texture caused higher APE</li>
+              </ul>
+            </section>
+          </section>
+          
+          <section>
+            <section>
+              <h2>Outdoor</h2>
+              <div>
+                <img src="./images/20.gif" alt="Outdoor APE Plot" style="width: 50%" />
+              </div>
+            </section>
+            <section>
+                <h2>Outdoor Videos</h2>
+                <div class="container">
+                  <div class="col">
+                    <p class="center">Original outdoor recording</p>
+                    <video controls width="350" height="500px">
+                      <source src="./images/outdoor_video.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="col">
+                    <p class="center">ORB-SLAM2 visualization</p>
+                    <video controls width="350" height="500px">
+                      <source src="./images/outdoor_video_analysis.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+            </section>
+            <section>
+              <h2>Outdoor Results</h2>
+              <div class="container">
+                <div class="col">
+                  <ul>
+                    <li>RMSE: 0.2826 m</li>
+                    <li>Mean Error: 0.2588 m</li>
+                    <li>Median Error: 0.2782 m</li>
+                    <li>Standard Deviation: 0.1135 m</li>
+                    <li>Min: 0.0200 m</li>
+                    <li>Max: 0.5360 m</li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <div>
+                    <img src="./images/ape_outdoor_raw.jpeg" alt="Indoor APE Plot" style="width: 100%" />
+                  </div>
+                  <div>
+                    <img src="./images/ape_outdoor_map.jpeg" alt="Indoor APE Plot" style="width: 80%" />
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <h2>Outdoor Analyse</h2>
+              <ul>
+                <li>Outdoor trajectory had much lower APE than indoor</li>
+                <li>Rich texture and wide-open space improved feature matching</li>
+                <li>Smooth motion led to better trajectory estimation and alignment</li>
+              </ul>
+            </section>
+          </section>
+          
+          <section>
+            <section>
+                <div class="container">
+                    <div class="col">
+                        <section>
+                            <h2>Conclusions</h2>
+                            <ul>
+                            <li>Outdoor SLAM performance significantly outperforms indoor</li>
+                            <li>Careful video capture and rich environments are critical</li>
+                            <li>COLMAP intrinsics improve ORB-SLAM2 monocular results</li>
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col">
+                        <img src="./images/9. Заключение-1.gif" alt="Outdoor APE Plot" style="width: 100%" />
+                    </div>
+                </div>
+            </section>
+          </section>
+          
+          <section>
+            <section>
+                <div class="container">
+                    <div class="col">
+                        <img src="./images/010. Приноси.gif" alt="Outdoor APE Plot" style="width: 100%" />
+                    </div>
+                    <div class="col">
+                        <h2>Contributions</h2>
+                        <p>
+                        Each member recorded their own video (Klevis: indoor, David: outdoor) and executed the described pipeline from frame extraction, COLMAP calibration, ORB-SLAM2 configuration and execution, to final trajectory evaluation using EVO.
+                        </p>
+                    </div>
+                </div>
+              </section>
+          </section>
+          
+          <section>
+            <section>
+                <div class="container">
+                    <div class="col">
+                        <section>
+                            <ul style="font-size: 1.5rem !important;">
+                                <li>
+                                    R. Mur-Artal and J. D. Tardo ́s, ORB-SLAM2: An Open-Source SLAM System for Monocular, Stereo and RGB-D Cameras, IEEE Transactions on Robotics, vol. 33, no. 5, pp. 1255–1262, 2017.
+                                </li>
+                                <li>
+                                    University College London (UCL), COMP0249 24-25 ORB SLAM2 GitHub Reposi- tory, Available at: https://github.com/UCL/COMP0249_24-25_ORB_SLAM2
+                                </li>
+                                <li>
+                                    M. Grupp, evo: Python package for the evaluation of odometry and SLAM, Available at: https://github.com/MichaelGrupp/evo, 2017.
+                                </li>
+                                <li>
+                                    J. L. Scho ̈nberger and J.-M. Frahm, Structure-from-Motion Revisited, In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2016.
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col">
+                        <img src="./images/2. Съдържание- 2.gif" alt="Outdoor APE Plot" style="width: 100%" />
+                    </div>
+                </div>
+            </section>
+          </section>
+          
+          <section>
+            <section>
+                <img src="./images/012. Благодарност.gif" alt="Outdoor APE Plot" style="width: 100%" />
+            </section>
+          </section>
+          
+          <section>
+            <section>
+                <img src="./images/013.Въпроси.gif" alt="Outdoor APE Plot" style="width: 100%" />
+            </section>
+          </section>
+          
+          <section>
+            <section>
+                <img src="./images/18. Край.gif" alt="Outdoor APE Plot" style="width: 100%" />
+            </section>
+          </section>
+       </div>
+    </div>
+
+    <script src="./lib/reveal.js"></script>
+    <script src="./lib/plugins/multiplex/client.js"></script>
+    <script src="./lib/plugins/multiplex/master.js"></script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+    <script src="./lib/animations/three.min.js"></script>
+    <script src="./lib/animations/vanta.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script>
+        // Bootstrap the presentation
+        Reveal.initialize({
+            responsive: true,
+            hash: true,
+            multiplex: {
+                secret: null, // Leave this as null for clients
+                id: 'txtopt1312', // Unique identifier for your presentation
+                url: 'https://reveal-multiplex.glitch.me/' // Hosted multiplex server
+            },
+            dependencies: [
+                { src: './lib/plugins/multiplex/client.js', async: true },
+                { src: './lib/plugins/multiplex/master.js', async: true }
+            ]
+        });
+
+        // Custom script to handle fragment replacement
+        Reveal.addEventListener('fragmentshown', function (event) {
+            var fragment1 = document.querySelector('.fragment-1');
+            var fragment2 = document.querySelector('.fragment-2');
+
+            if (event.fragment === fragment1) {
+                fragment1.style.display = 'none';
+                fragment2.style.display = 'block';
+            }
+        });
+
+        Reveal.addEventListener('fragmenthidden', function (event) {
+            var fragment1 = document.querySelector('.fragment-1');
+            var fragment2 = document.querySelector('.fragment-2');
+
+            if (event.fragment === fragment2) {
+                fragment2.style.display = 'none';
+                fragment1.style.display = 'block';
+            }
+        });
+
+        // Background network
+        VANTA.NET({
+            el: "#net",
+            color: 0x1f2a85,
+            backgroundColor: 0x000000,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            points: 20.00,
+            maxDistance: 40.00,
+            spacing: 15.00
+        });
+
+        // 3D slides effect
+        window.onload = function () {
+            $("body").on("mousemove", ".present", function (e) {
+                var $el = $(this);
+                let xAxis = (window.innerWidth / 2 - e.pageX) / 2500;
+                let yAxis = (window.innerHeight / 2 - e.pageY) / 2500;
+                $el.css("transform", `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`);
+            });
+        };
+    </script>
+</body>
+
+</html>
