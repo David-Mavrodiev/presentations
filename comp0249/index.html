@@ -391,11 +391,14 @@
             <section>
                 <div class="container">
                     <div class="col">
-                        <section>
+                        <section style="font-size: 2.5rem;">
                             <h2>Conclusions</h2>
                             <ul>
-                              <li>Careful video capture and rich environments are critical</li>
-                              <li>COLMAP intrinsics improve ORB-SLAM2 monocular results</li>
+                              <li>SLAM performance is highly dependent on camera calibration and accurate intrinsics.</li>
+                              <li>Integrating COLMAP intrinsics with ORB-SLAM2 improves pose estimation stability.</li>
+                              <li>Consistent frame extraction and smooth motion are essential for robust visual SLAM.</li>
+                              <li>The use of multiple tools (ffmpeg, COLMAP, ORB-SLAM2, EVO) demonstrates effective modular SLAM pipelines.</li>
+                              <li>Visual inspection alongside quantitative APE metrics provides deeper insight into SLAM performance.</li>
                             </ul>
                         </section>
                     </div>
