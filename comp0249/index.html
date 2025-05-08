@@ -164,10 +164,18 @@
                         <li>Introduction</li>
                         <li>Methods and Procedures</li>
                         <li>Pipeline</li>
-                        <li>Videos</li>
-                        <li>Results</li>
-                        <li>Analyses</li>
+                        <li>Indoor Experiment</li>
+                        <li>Indoor Videos</li>
+                        <li>Indoor Results</li>
+                        <li>Indoor Analyse</li>
+                        <li>Outdoor Experiment</li>
+                        <li>Outdoor Videos</li>
+                        <li>Outdoor Results</li>
+                        <li>Outdoor Analyse</li>
                         <li>Conclusions</li>
+                        <li>Contributions</li>
+                        <li>References</li>
+                        <li>Questions</li>
                       </ul>
                 </div>
             </div>
@@ -231,7 +239,7 @@
           
           <section>
             <section>
-              <h2>Indoor</h2>
+              <h2>Indoor Experiment</h2>
               <div>
                 <img src="./images/19.gif" alt="Outdoor APE Plot" style="width: 50%" />
               </div>
@@ -241,17 +249,17 @@
                 <div class="container">
                   <div class="col">
                     <p class="center">Original indoor recording</p>
-                    <video controls width="350" height="500px">
-                      <source src="./images/indoor_video.mp4" type="video/mp4">
+                    <video controls width="350" height="500">
+                      <source src="https://www.dropbox.com/scl/fi/9amsxmsvk0mtxatnluosf/indoor_video.mp4?rlkey=qae00lx7lwfc5wqy7dxkqx6qr&st=ici5m6mn&raw=1" type="video/mp4">
                       Your browser does not support the video tag.
-                    </video>
+                    </video>                    
                   </div>
                   <div class="col">
                     <p class="center">ORB-SLAM2 visualization</p>
-                    <video controls width="350" height="500px">
-                      <source src="./images/indoor_video_analysis.mp4" type="video/mp4">
+                    <video controls width="350" height="500">
+                      <source src="https://www.dropbox.com/scl/fi/u4yj7r4rkqi91x01vnwoo/indoor_video_analysis.mp4?rlkey=udmt7ge46vo31ut6jtt7y480l&st=vsqos8vo&raw=1" type="video/mp4">
                       Your browser does not support the video tag.
-                    </video>
+                    </video>  
                   </div>
                 </div>
             </section>
@@ -284,22 +292,19 @@
                   <h2>Indoor Analyse</h2>
                   <ul style="font-size: 1.2rem !important;">
                     <li>
-                      Root Mean Square Error reflects the overall deviation of the estimated trajectory from the ground truth. The higher value indicates relatively poor alignment in the indoor setting.
+                      Root Mean Square Error reflects the overall deviation of the estimated trajectory from the ground truth.
                     </li>
                     <li>
                       On average, each frame's estimated camera position deviated by about 1 meter from the true position.
                     </li>
                     <li>
-                      Half of the trajectory points had an error below ~0.98 m, showing that although there were large errors, they weren't consistent throughout.
-                    </li>
-                    <li>
-                      Indicates high variability in errors, meaning that ORB-SLAM2 performed inconsistently in this environment.
+                      Half of the trajectory points had an error below ~0.98 m, showing that although there were larger errors, they weren't consistent throughout.
                     </li>
                     <li>
                       The best-case alignment for some frames was relatively good.
                     </li>
                     <li>
-                      However, the worst-case deviation reached over 2.4 meters, showing significant drift likely due to poor visual features.
+                      However, the worst-case deviation reached over 2.4 meters.
                     </li>
                     <li>Indoor scenes had limited structure and repetitive features</li>
                     <li>Feature matching was more difficult leading to alignment drift</li>
@@ -314,7 +319,7 @@
           
           <section>
             <section>
-              <h2>Outdoor</h2>
+              <h2>Outdoor Experiment</h2>
               <div>
                 <img src="./images/20.gif" alt="Outdoor APE Plot" style="width: 50%" />
               </div>
@@ -324,17 +329,17 @@
                 <div class="container">
                   <div class="col">
                     <p class="center">Original outdoor recording</p>
-                    <video controls width="350" height="500px">
-                      <source src="./images/outdoor_video.mp4" type="video/mp4">
+                    <video controls width="350" height="500">
+                      <source src="https://www.dropbox.com/scl/fi/3jt6kbd42zggd0lcdjgs8/outdoor_video.mp4?rlkey=92ebfe9y7tbn82g0elmnepjq0&st=tmmmbaek&raw=1" type="video/mp4">
                       Your browser does not support the video tag.
-                    </video>
+                    </video>                    
                   </div>
                   <div class="col">
                     <p class="center">ORB-SLAM2 visualization</p>
-                    <video controls width="350" height="500px">
-                      <source src="./images/outdoor_video_analysis.mp4" type="video/mp4">
+                    <video controls width="350" height="500">
+                      <source src="https://www.dropbox.com/scl/fi/4244cpf7y8f1wt7mfol9p/outdoor_video_analysis.mp4?rlkey=ae8rbzxmlav3w4oyzepkvmqtm&st=itddl7yb&raw=1" type="video/mp4">
                       Your browser does not support the video tag.
-                    </video>
+                    </video>                    
                   </div>
                 </div>
             </section>
@@ -369,7 +374,6 @@
                 <div class="col">
                   <h2>Outdoor Analyse</h2>
                   <ul style="font-size: 1.2rem !important;">
-                    <li>The Root Mean Square Error is significantly lower than indoor, showing strong alignment between estimated and ground-truth trajectories.</li>
                     <li>On average, the position estimate was within ~26 cm of the true location, indicating stable SLAM performance.</li>
                     <li>Half the frames had errors below ~28 cm, suggesting most estimates were tightly grouped around the ground truth.</li>
                     <li>Low variability in error indicates consistent tracking quality throughout the sequence.</li>
@@ -390,7 +394,6 @@
                         <section>
                             <h2>Conclusions</h2>
                             <ul>
-                              <li>Outdoor SLAM performance significantly outperforms indoor</li>
                               <li>Careful video capture and rich environments are critical</li>
                               <li>COLMAP intrinsics improve ORB-SLAM2 monocular results</li>
                             </ul>
