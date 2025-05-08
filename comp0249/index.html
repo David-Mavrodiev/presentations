@@ -279,12 +279,36 @@
               </div>
             </section>
             <section>
-              <h2>Indoor Analyse</h2>
-              <ul>
-                <li>Indoor scenes had limited structure and repetitive features</li>
-                <li>Feature matching was more difficult leading to alignment drift</li>
-                <li>Visual aliasing and poor texture caused higher APE</li>
-              </ul>
+              <div class="container">
+                <div class="col">
+                  <h2>Indoor Analyse</h2>
+                  <ul style="font-size: 1.2rem !important;">
+                    <li>
+                      Root Mean Square Error reflects the overall deviation of the estimated trajectory from the ground truth. The higher value indicates relatively poor alignment in the indoor setting.
+                    </li>
+                    <li>
+                      On average, each frame's estimated camera position deviated by about 1 meter from the true position.
+                    </li>
+                    <li>
+                      Half of the trajectory points had an error below ~0.98 m, showing that although there were large errors, they weren't consistent throughout.
+                    </li>
+                    <li>
+                      Indicates high variability in errors, meaning that ORB-SLAM2 performed inconsistently in this environment.
+                    </li>
+                    <li>
+                      The best-case alignment for some frames was relatively good.
+                    </li>
+                    <li>
+                      However, the worst-case deviation reached over 2.4 meters, showing significant drift likely due to poor visual features.
+                    </li>
+                    <li>Indoor scenes had limited structure and repetitive features</li>
+                    <li>Feature matching was more difficult leading to alignment drift</li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <img src="./images/INDOOR ANALYSE.gif" alt="Outdoor APE Plot" style="width: 100%" />
+                </div>
+              </div>
             </section>
           </section>
           
@@ -338,12 +362,24 @@
               </div>
             </section>
             <section>
-              <h2>Outdoor Analyse</h2>
-              <ul>
-                <li>Outdoor trajectory had much lower APE than indoor</li>
-                <li>Rich texture and wide-open space improved feature matching</li>
-                <li>Smooth motion led to better trajectory estimation and alignment</li>
-              </ul>
+              <div class="container">
+                <div class="col">
+                  <img src="./images/OUTDOOR ANALYSE.gif" alt="Indoor APE Plot" style="width: 100%" />
+                </div>
+                <div class="col">
+                  <h2>Outdoor Analyse</h2>
+                  <ul style="font-size: 1.2rem !important;">
+                    <li>The Root Mean Square Error is significantly lower than indoor, showing strong alignment between estimated and ground-truth trajectories.</li>
+                    <li>On average, the position estimate was within ~26 cm of the true location, indicating stable SLAM performance.</li>
+                    <li>Half the frames had errors below ~28 cm, suggesting most estimates were tightly grouped around the ground truth.</li>
+                    <li>Low variability in error indicates consistent tracking quality throughout the sequence.</li>
+                    <li>In the best case, the system nearly matched the ground truth, with only 2 cm deviation.</li>
+                    <li>Even the worst error remained under 0.54 m, suggesting no severe drift occurred.</li>
+                    <li>Rich texture and wide-open space improved feature matching.</li>
+                    <li>Smooth motion led to better trajectory estimation and alignment.</li>
+                  </ul>
+                </div>
+              </div>
             </section>
           </section>
           
@@ -354,9 +390,9 @@
                         <section>
                             <h2>Conclusions</h2>
                             <ul>
-                            <li>Outdoor SLAM performance significantly outperforms indoor</li>
-                            <li>Careful video capture and rich environments are critical</li>
-                            <li>COLMAP intrinsics improve ORB-SLAM2 monocular results</li>
+                              <li>Outdoor SLAM performance significantly outperforms indoor</li>
+                              <li>Careful video capture and rich environments are critical</li>
+                              <li>COLMAP intrinsics improve ORB-SLAM2 monocular results</li>
                             </ul>
                         </section>
                     </div>
@@ -374,9 +410,8 @@
                         <img src="./images/010. Приноси.gif" alt="Outdoor APE Plot" style="width: 100%" />
                     </div>
                     <div class="col">
-                        <h2>Contributions</h2>
                         <p>
-                        Each member recorded their own video (Klevis: indoor, David: outdoor) and executed the described pipeline from frame extraction, COLMAP calibration, ORB-SLAM2 configuration and execution, to final trajectory evaluation using EVO.
+                          Each member recorded their own video (Klevis: indoor, David: outdoor) and executed the described pipeline from frame extraction, COLMAP calibration, ORB-SLAM2 configuration and execution, to final trajectory evaluation using EVO.
                         </p>
                     </div>
                 </div>
@@ -405,7 +440,7 @@
                         </section>
                     </div>
                     <div class="col">
-                        <img src="./images/2. Съдържание- 2.gif" alt="Outdoor APE Plot" style="width: 100%" />
+                        <img src="./images/References.gif" alt="Outdoor APE Plot" style="width: 100%" />
                     </div>
                 </div>
             </section>
