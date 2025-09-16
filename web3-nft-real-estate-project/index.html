@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>NFT REAL ESTATE INVESTMENT PLATFORM — Pitch Deck</title>
+
+  <!-- Reveal core & theme -->
+  <link rel="stylesheet" href="./lib/reset.css" />
+  <link rel="stylesheet" href="./lib/reveal.css" />
+  <link rel="stylesheet" href="./lib/theme/black.css" />
+
+  <style>
+    html { font-size: 16px; }
+    body { font-size: 16px; }
+
+    h1 { font-size: 1.5em !important; } /* ~24px on theme */
+    h2 { font-size: 1em !important; }   /* ~16px on theme */
+
+    p, ul, ol { text-align: left; font-size: 0.7em !important; }
+
+    .list-without-bullets li { list-style-type: none; }
+    .container { display: flex; flex-wrap: wrap; gap: 18px; }
+    .col { flex: 1 1 46%; min-width: 280px; }
+
+    .not-bold { font-weight: 100 !important; }
+    .bold { font-weight: 700; }
+    .center { text-align: center !important; }
+    .italic { font-style: italic !important; }
+    .underline { text-decoration: underline !important; }
+    .no-border { border: none !important; }
+
+    .quote { font-size: 1.4rem !important; text-align: center !important; line-height: 1.4; }
+    .quote > .author { margin-top: 10px; font-style: italic !important; font-size: 1rem !important; }
+
+    .image-container { align-self: center; }
+    .image-container > img { border: 10px solid snow; }
+    .image-container > .author { margin-top: 10px; font-style: italic !important; font-size: 1rem !important; }
+
+    .green { color: greenyellow !important; }
+    .blue { color: deepskyblue !important; }
+    .fit-and-center { margin: auto; width: fit-content; max-width: 60%; }
+
+    .code { font-weight: 700; background: #000; color: greenyellow; font-family: monospace; padding: 0 4px; }
+    .file { color: greenyellow; font-family: monospace; }
+
+    /* Accent chips */
+    .chip { display: inline-block; padding: 4px 8px; border: 1px solid #444; border-radius: 14px; margin: 2px 6px 2px 0; font-size: 0.6em; opacity: 0.9; }
+
+    /* Subtle cards */
+    .card {
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.03);
+      margin-bottom: 10px;
+    }
+
+    /* Two-column bullets aligned */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    /* Slide footnote */
+    .foot {
+      margin-top: 8px;
+      font-size: 0.55em !important;
+      opacity: 0.8;
+    }
+
+    /* Divider */
+    .hr { height: 1px; background: rgba(255,255,255,0.2); margin: 10px 0; }
+
+    /* Emphasis tag */
+    .tag { font-size: 0.6em; padding: 2px 6px; border: 1px solid #555; border-radius: 12px; margin-left: 6px; opacity: 0.9; }
+
+    /* Tight lists */
+    .tight li { margin: 2px 0; }
+
+    /* Big number */
+    .big { font-size: 2.2rem; line-height: 1.1; }
+  </style>
+</head>
+
+<body id="net">
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- =========================
+           TITLE / OPENER
+      ========================== -->
+      <section>
+        <section>
+          <h1>NFT REAL ESTATE INVESTMENT PLATFORM</h1>
+          <h2 class="italic">Fractional property ownership via KYC‑gated NFTs</h2>
+          <p class="center">
+            One‑click access to income‑producing property • Automated dividend distribution •
+            Regulated secondary transfers
+          </p>
+          <p class="center foot not-bold">For discussion with prospective partners & investors. Not investment or legal advice.</p>
+        </section>
+
+        <section>
+          <p class="quote">
+            “We combine the transparency and programmability of blockchain with the stability and income potential of
+            real estate—making diversified property investing simple, compliant, and liquid.”
+          </p>
+        </section>
+      </section>
+
+      <!-- =========================
+           PROBLEM → OPPORTUNITY
+      ========================== -->
+      <section>
+        <section>
+          <h1>Problem</h1>
+          <ul>
+            <li>High minimums & complex paperwork block everyday investors from quality real estate.</li>
+            <li>Cross‑border ownership, tax, and compliance are burdensome; property is illiquid.</li>
+            <li>Traditional SPV participation is opaque and slow; dividends & reporting are manual.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Opportunity</h1>
+          <ul>
+            <li>Tokenized real‑world assets (RWA) enable <span class="bold">programmable ownership</span> & compliance controls.</li>
+            <li>Security‑aware token standards + KYC‑gated transfers unlock a compliant secondary market.</li>
+            <li>Investors seek <span class="bold">yield, transparency, and liquidity</span>—especially in income property.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- =========================
+           SOLUTION (CORE CONCEPT)
+      ========================== -->
+      <section>
+        <section>
+          <h1>Solution — How It Works</h1>
+          <ol>
+            <li><span class="bold">KYC/Wallet Whitelist:</span> Investors onboard via AML/KYC; only verified wallets can hold tokens.</li>
+            <li><span class="bold">Invest:</span> Fund property pools in fiat or stablecoins; choose <em>Auto‑Allocation</em> or <em>Manual</em> selection.</li>
+            <li><span class="bold">Acquire:</span> Regional entity/SPV acquires the property once target is reached (escrowed flows).</li>
+            <li><span class="bold">Mint:</span> NFTs represent fractional economic rights in the SPV (dividends, exit proceeds).</li>
+            <li><span class="bold">Operate:</span> Rent collected; net income distributed to token holders in fiat or stablecoins.</li>
+            <li><span class="bold">Trade:</span> KYC‑gated secondary transfers; later list on licensed venues (ATS/MTF) where applicable.</li>
+            <li><span class="bold">Exit:</span> On sale, SPV distributes profits; NFTs are redeemed/burned.</li>
+          </ol>
+          <p class="foot not-bold">MVP: issuer‑approved private transfers between whitelisted wallets; phase‑2: licensed secondary market.</p>
+        </section>
+
+        <section>
+          <h1>Investor Experience</h1>
+          <div class="container">
+            <div class="col card">
+              <h2 class="green">Passive (Auto‑Allocation)</h2>
+              <ul class="tight">
+                <li>Set risk/return & liquidity preferences.</li>
+                <li>Algorithm allocates across vetted projects.</li>
+                <li>Hands‑off dividends & periodic rebalancing.</li>
+              </ul>
+            </div>
+            <div class="col card">
+              <h2 class="blue">Active (Manual)</h2>
+              <ul class="tight">
+                <li>Browse due‑diligenced properties with yields & risks.</li>
+                <li>Invest per project; monitor rental performance.</li>
+                <li>Trade positions on the platform (KYC‑gated).</li>
+              </ul>
+            </div>
+          </div>
+          <p class="foot not-bold">Auto‑Allocation and property‑pool flows align with the product design described in the proposal. <!-- Source: proposal pp. 4–5 --></p>
+        </section>
+      </section>
+
+      <!-- =========================
+           CORPORATE STRUCTURE
+      ========================== -->
+      <section>
+        <section>
+          <h1>Corporate Structure</h1>
+          <div class="container">
+            <div class="col">
+              <ul>
+                <li><span class="bold">Global Holding Company</span> (e.g., UK/Estonia Ltd)
+                  <ul class="tight">
+                    <li>Owns platform IP & smart contracts.</li>
+                    <li>Holds 100% of regional subsidiaries.</li>
+                    <li>Receives platform & protocol revenues.</li>
+                  </ul>
+                </li>
+                <li><span class="bold">Regional Subsidiaries</span> (e.g., DE GmbH / ES SL / PL Sp. z o.o.)
+                  <ul class="tight">
+                    <li>Acquire/manage properties; handle local tax & legal.</li>
+                    <li>Can form <span class="bold">SPVs</span> per asset.</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="col">
+              <div class="card">
+                <p class="bold">Investor → HoldCo/Regional → SPV</p>
+                <div class="hr"></div>
+                <ul class="tight">
+                  <li>Investor funds land in escrow/seg accounts.</li>
+                  <li>SPV holds title; NFTs mirror rights in SPV.</li>
+                  <li>Dividends/proceeds flow back to holders.</li>
+                </ul>
+              </div>
+              <p class="foot not-bold">Structure mirrors the diagram and bullets in the proposal’s corporate‑structure section. <!-- Source: proposal p. 3 --></p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h1>Core Flows (Operational)</h1>
+          <div class="grid-3">
+            <div class="card">
+              <p class="bold">1) Project Selection & DD</p>
+              <p>Legal, inspection, yield forecasting, risk analysis; only vetted assets list.</p>
+            </div>
+            <div class="card">
+              <p class="bold">2) Funding & Pooling</p>
+              <p>When target met, regional entity/SPV completes acquisition.</p>
+            </div>
+            <div class="card">
+              <p class="bold">3) Ownership via NFTs</p>
+              <p>Minted to verified wallets; enforceable economic rights (dividends/exit).</p>
+            </div>
+            <div class="card">
+              <p class="bold">4) Construction‑Phase</p>
+              <p>No dividends until rent begins; early liquidity via secondary transfers.</p>
+            </div>
+            <div class="card">
+              <p class="bold">5) Market‑Making</p>
+              <p>Platform facilitates price discovery & KYC‑gated liquidity.</p>
+            </div>
+            <div class="card">
+              <p class="bold">6) Distribution</p>
+              <p>Net rent → automated payouts in fiat/stablecoins.</p>
+            </div>
+          </div>
+          <p class="foot not-bold">These operational flows follow the proposal’s “Core Flows” section. <!-- Source: proposal pp. 4–6 --></p>
+        </section>
+      </section>
+
+      <!-- =========================
+           LEGAL & COMPLIANCE
+      ========================== -->
+      <section>
+        <section>
+          <h1>Legal Foundations</h1>
+          <ul>
+            <li><span class="bold">Company law:</span> SPVs per property; articles/operating agreements bind on‑chain to off‑chain cap table.</li>
+            <li><span class="bold">Securities law:</span> NFTs represent investment rights → treat as securities; use exemptions or prospectus where needed.</li>
+            <li><span class="bold">AML/KYC:</span> Verify investors, sanction‑screen wallets, Travel Rule records for large transfers.</li>
+          </ul>
+          <p class="foot not-bold">Jurisdiction‑agnostic baseline; local specifics applied per market (UK/EU/US notes later).</p>
+        </section>
+
+        <section>
+          <h1>What the NFT Legally Represents</h1>
+          <div class="container">
+            <div class="col card">
+              <p class="bold">Equity token</p>
+              <ul class="tight">
+                <li>Represents shares/units of SPV.</li>
+                <li>Strong claim; transfers more constrained.</li>
+              </ul>
+            </div>
+            <div class="col card">
+              <p class="bold">Trust / Beneficial interest</p>
+              <ul class="tight">
+                <li>Token = rights under trust that owns SPV shares.</li>
+                <li>Flexible; requires trustee/registrar.</li>
+              </ul>
+            </div>
+            <div class="col card">
+              <p class="bold">Debt token (notes)</p>
+              <ul class="tight">
+                <li>Loan to SPV with interest & security.</li>
+                <li>Simpler transfers; less upside.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="foot not-bold">Pick one per asset; reflect in corporate docs & smart‑contract controls.</p>
+        </section>
+
+        <section>
+          <h1>KYC / AML Stack</h1>
+          <ul>
+            <li>Identity: <span class="chip">Sumsub</span><span class="chip">Onfido</span><span class="chip">Veriff</span><span class="chip">Jumio</span></li>
+            <li>On‑chain screening: <span class="chip">Chainalysis</span><span class="chip">TRM Labs</span></li>
+            <li>Wallet whitelist & Transfer checks (primary & secondary).</li>
+            <li>Travel Rule data retention for applicable crypto transfers.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Smart‑Contract Controls</h1>
+          <ul>
+            <li>Standards: <span class="chip">ERC‑1400 family</span> or <span class="chip">ERC‑1155</span> with compliance modules.</li>
+            <li>Transfer restrictions (KYC‑gated, jurisdictional blocks, lockups).</li>
+            <li>Snapshots for voting & dividends; cap‑table export.</li>
+            <li>Redemption/burn on exit; force‑transfer hooks for legal orders.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Funds & Investor Protection</h1>
+          <ul>
+            <li>Escrow / segregated client accounts; milestone‑based releases to developer.</li>
+            <li>Security Trustee may hold a charge over SPV shares/title.</li>
+            <li>Insurance: title, construction, liability; independent monitoring/QS.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Tax & Jurisdiction Planning</h1>
+          <ul>
+            <li>SPV in property’s country; HoldCo in crypto‑friendly jurisdiction.</li>
+            <li>Intercompany loans; deduct depreciation/maintenance/interest.</li>
+            <li>Handle withholding taxes, double‑tax treaties, investor reporting (FATCA/CRS/1099).</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Distribution Waterfall</h1>
+          <ul>
+            <li>Operating expenses → Reserves → Debt service → Investor returns → Developer carry/promote.</li>
+            <li>Payouts in fiat or stablecoins to verified recipients; full audit trail.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Secondary Trading & Exit</h1>
+          <ul>
+            <li><span class="bold">Phase 1 (MVP):</span> Private transfers among KYC wallets with issuer/TA approval.</li>
+            <li><span class="bold">Phase 2:</span> Resale on licensed venues (US: ATS; EU/UK: MTF) with whitelist checks.</li>
+            <li><span class="bold">Exit:</span> On sale/refi, distribute proceeds; redeem/burn NFTs.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Jurisdiction Quick Notes</h1>
+          <div class="container">
+            <div class="col card">
+              <p class="bold">UK</p>
+              <ul class="tight">
+                <li>FCA financial promotions; MLR registration for AML.</li>
+                <li>Consider custody/client‑money rules; AIFMD if fund‑like.</li>
+              </ul>
+            </div>
+            <div class="col card">
+              <p class="bold">EU</p>
+              <ul class="tight">
+                <li>Security tokens → MiFID II/Prospectus; check exemptions.</li>
+                <li>AIF assesment for pooled vehicles; MiCA scope (non‑securities).</li>
+              </ul>
+            </div>
+            <div class="col card">
+              <p class="bold">US</p>
+              <ul class="tight">
+                <li>Reg D 506(c) (accredited) + Reg S (offshore); Rule 144 lockups.</li>
+                <li>Secondary via ATS or issuer‑approved private transfers.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="foot not-bold">Execution path: start with private placements; expand once licenses/partners secured.</p>
+        </section>
+      </section>
+
+      <!-- =========================
+           TECH & PRODUCT
+      ========================== -->
+      <section>
+        <section>
+          <h1>Tech Stack</h1>
+          <ul>
+            <li><span class="bold">Chain:</span> EVM, target <span class="chip">Polygon</span> for low fees & ecosystem support.</li>
+            <li><span class="bold">Smart contracts:</span> Solidity (ERC‑1155 / ERC‑1400 modules).</li>
+            <li><span class="bold">Backend:</span> NestJS • <span class="bold">Frontend:</span> React.</li>
+            <li><span class="bold">Infra:</span> CDK for Terraform (CDKTF), IaC deployments.</li>
+          </ul>
+          <p class="foot not-bold">Platform & stack selections follow the proposal’s implementation section. <!-- Source: proposal p. 6 --></p>
+        </section>
+
+        <section>
+          <h1>POC Scope (Day‑0)</h1>
+          <div class="grid-3">
+            <div class="card">
+              <p class="bold">Acquired Properties</p>
+              <ul class="tight">
+                <li>Mint fractional tokens at listing.</li>
+                <li>Enable purchases & compliant transfers.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <p class="bold">Prospective Assets</p>
+              <ul class="tight">
+                <li>Investment pool contract (target funding).</li>
+                <li>Auto‑mint & allocate on success; refunds on fail.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <p class="bold">Dividends (Mock)</p>
+              <ul class="tight">
+                <li>Simulate rental income distribution via snapshots.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="foot not-bold">Est. effort: FE 5d, BE 10d, SC 2d, Infra 5d → ~26.5d incl. buffer. <!-- Source: proposal p. 7 --></p>
+        </section>
+      </section>
+
+      <!-- =========================
+           BUSINESS MODEL
+      ========================== -->
+      <section>
+        <section>
+          <h1>Business Model</h1>
+          <ul>
+            <li><span class="bold">Primary:</span> Platform fee on raises & property operations.</li>
+            <li><span class="bold">Secondary:</span> KYC‑gated trading fees; market‑making spread where permitted.</li>
+            <li><span class="bold">Ancillary:</span> Listing/onboarding fees, data/API, premium analytics.</li>
+          </ul>
+          <p class="foot not-bold">HoldCo receives platform & protocol‑level revenue.</p>
+        </section>
+      </section>
+
+      <!-- =========================
+           MARKET & SELECTION
+      ========================== -->
+      <section>
+        <section>
+          <h1>Market Selection Framework</h1>
+          <ul>
+            <li><span class="bold">Country filter:</span> legal stability, digital‑asset stance, transparency, macro indicators.</li>
+            <li><span class="bold">City scoring:</span> yields, tourism/expat demand, migration, liquidity, taxation.</li>
+            <li><span class="bold">Neighborhood:</span> micro‑data on rents, gentrification, infrastructure, STR rules.</li>
+            <li><span class="bold">Pilot criteria:</span> €100k–€500k, minimal capex, gross yields &gt; 6% with positive cash flow.</li>
+          </ul>
+          <p class="foot not-bold">Sources: portals (Idealista/ImmoScout/Zoopla), AirDNA/Mashvisor, local agents, gov open data. <!-- Source: proposal pp. 8–9 --></p>
+        </section>
+
+        <section>
+          <h1>Beyond Residential</h1>
+          <ul>
+            <li>Expand into <span class="bold">solar fields & wind farms</span> to offer long‑duration contracted yields.</li>
+            <li>Apply the same SPV + NFT rights structure and distribution mechanics.</li>
+          </ul>
+          <p class="foot not-bold">Diversification path noted in the proposal’s roadmap narrative. <!-- Source: proposal p. 5 --></p>
+        </section>
+      </section>
+
+      <!-- =========================
+           GO-TO-MARKET & OUTREACH
+      ========================== -->
+      <section>
+        <section>
+          <h1>Investor Outreach (Pre‑MVP)</h1>
+          <ul>
+            <li><span class="bold">Objectives:</span> anchor backers, feedback loop, soft commitments, credibility.</li>
+            <li><span class="bold">Targets:</span> tech‑savvy HNWIs, family offices, crypto‑native funds, proptech angels, small syndicates.</li>
+            <li><span class="bold">Channels:</span> LinkedIn SN, crypto VC networks, AngelList/SeedBlink, strategic partners, webinars.</li>
+          </ul>
+          <p class="foot not-bold">Deliverables: pitch deck, use‑cases, tokenomics explainer, legal outline, litepaper, waitlist. <!-- Source: proposal pp. 10–11 --></p>
+        </section>
+
+        <section>
+          <h1>Early Targets & KPI Goals</h1>
+          <ul>
+            <li>5–10 qualified early backers; 2–3 anchor investors for first pilot property.</li>
+            <li>Beta tester pool & partner pipeline established pre‑launch.</li>
+          </ul>
+          <p class="foot not-bold">Per proposal outcomes for MVP readiness. <!-- Source: proposal p. 11 --></p>
+        </section>
+      </section>
+
+      <!-- =========================
+           TEAM & WAYS OF WORKING
+      ========================== -->
+      <section>
+        <section>
+          <h1>Team</h1>
+          <div class="container">
+            <div class="col card">
+              <p class="bold">David — Product & Platform</p>
+              <p>Frontend & backend for prototype, secure onboarding, investment logic, NFT issuance/tracking.</p>
+            </div>
+            <div class="col card">
+              <p class="bold">Valery — Token & Smart Contracts</p>
+              <p>Token design (ERC‑1155/1400), wallet integration, on‑chain metadata, dividend snapshots.</p>
+            </div>
+          </div>
+          <div class="container">
+            <div class="col card">
+              <p class="bold">Klevis — Markets & Legal Interface</p>
+              <p>Market research, region selection, pilot sourcing, due diligence with legal partners.</p>
+            </div>
+            <div class="col card">
+              <p class="bold">Julian — Outreach & Capital</p>
+              <p>Investor relations, partner pipeline, pitch materials, UX/user feedback loop.</p>
+            </div>
+          </div>
+          <p class="foot not-bold">Roles & split per proposal’s “Team Structure & Work Allocation.” <!-- Source: proposal pp. 11–12 --></p>
+        </section>
+
+        <section>
+          <h1>Execution Rhythm</h1>
+          <ul>
+            <li>Bi‑weekly sprints (Trello/Notion/Jira) across tech, business, outreach.</li>
+            <li>Weekly status sync; clear deliverable ownership.</li>
+            <li>Tooling: GitHub • Slack/Discord • Google Drive/Notion • Figma.</li>
+          </ul>
+          <p class="foot not-bold">Target: validated MVP by year‑end per proposed plan. <!-- Source: proposal p. 12 --></p>
+        </section>
+      </section>
+
+      <!-- =========================
+           ROADMAP, RISKS, ASK
+      ========================== -->
+      <section>
+        <section>
+          <h1>Roadmap</h1>
+          <ul>
+            <li><span class="bold">Phase 0 (POC):</span> Investment pool + fractional mint + mock dividends.</li>
+            <li><span class="bold">Phase 1 (MVP):</span> First SPV live; private transfers (issuer‑approved) between KYC wallets.</li>
+            <li><span class="bold">Phase 2:</span> Licensed secondary venue integration; production dividend engine.</li>
+            <li><span class="bold">Phase 3:</span> Multi‑asset portfolio; energy assets (solar/wind); global expansion.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Key Risks & Mitigations</h1>
+          <ul>
+            <li><span class="bold">Regulatory risk:</span> Start with private placements; partner with licensed firms.</li>
+            <li><span class="bold">Use of funds risk:</span> Escrow, milestone releases, independent oversight.</li>
+            <li><span class="bold">Liquidity risk:</span> Build compliant secondary market in phases.</li>
+            <li><span class="bold">Tax leakage:</span> SPV structuring & treaty planning; robust reporting.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Funding & Use of Proceeds</h1>
+          <ul>
+            <li><span class="bold">Legal & Compliance:</span> Structuring, docs, registrations, trustee/TA partners.</li>
+            <li><span class="bold">Technology:</span> Core contracts, platform build, security audit(s), infra.</li>
+            <li><span class="bold">Go‑to‑Market:</span> Property sourcing, investor onboarding, partnerships.</li>
+            <li><span class="bold">Operations:</span> Escrow/custody providers, insurance, audit/valuation.</li>
+          </ul>
+          <p class="foot not-bold">Specific raise size & runway to be finalized with counsel and pilot pipeline.</p>
+        </section>
+
+        <section>
+          <h1>Open Questions</h1>
+          <ul>
+            <li>Which investor geographies in wave‑1 (drives offering exemptions & disclosures)?</li>
+            <li>Final token right (equity vs trust vs note) per pilot asset & jurisdiction.</li>
+            <li>KYC scope per country and Travel Rule thresholds by corridor.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- =========================
+           APPENDIX
+      ========================== -->
+      <section>
+        <section>
+          <h1>Appendix — Providers</h1>
+          <ul>
+            <li><span class="bold">KYC/AML:</span> Sumsub, Onfido, Veriff, Jumio • On‑chain: Chainalysis, TRM Labs</li>
+            <li><span class="bold">Payments:</span> Bank rails (SEPA/wires) • Stablecoins (USDC)</li>
+            <li><span class="bold">Custody/Escrow:</span> Regulated partners (jurisdiction‑specific)</li>
+            <li><span class="bold">Legal:</span> Securities counsel + local real‑estate firms</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Appendix — References</h1>
+          <ul class="tight">
+            <li>Real‑estate tokenization legal & regulatory overviews (selected papers/blogs)</li>
+            <li><a href="https://www.sciencedirect.com/science/article/pii/S0267364924000633">ScienceDirect article (2024)</a></li>
+            <li><a href="https://arxiv.org/abs/2405.01852">arXiv preprint (2024)</a></li>
+            <li><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5401703">SSRN working paper</a></li>
+            <li><a href="https://www.debutinfotech.com/blog/legal-and-regulatory-challenges-in-real-estate-tokenization">Industry overview blog</a></li>
+          </ul>
+          <p class="foot not-bold">Links provided by founder; confirm applicability with jurisdiction‑specific counsel.</p>
+        </section>
+
+        <section>
+          <h1>Contact</h1>
+          <p class="big">Let’s build compliant, liquid real‑estate investing.</p>
+          <p>Contact: <span class="file">your-email@example.com</span> • Website: <span class="file">yourdomain.com</span></p>
+        </section>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal & plugins -->
+  <script src="./lib/reveal.js"></script>
+  <script src="./lib/plugins/multiplex/client.js"></script>
+  <script src="./lib/plugins/multiplex/master.js"></script>
+
+  <!-- MathJax (optional) & visuals -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default"></script>
+  <script src="./lib/animations/three.min.js"></script>
+  <script src="./lib/animations/vanta.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+          integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+          crossorigin="anonymous"></script>
+
+  <script>
+    // Bootstrap the presentation
+    Reveal.initialize({
+      responsive: true,
+      hash: true,
+      multiplex: {
+        secret: null,     // Leave this as null for clients
+        id: 'txtopt1312', // Unique identifier for your presentation
+        url: 'https://reveal-multiplex.glitch.me/' // Hosted multiplex server
+      },
+      dependencies: [
+        { src: './lib/plugins/multiplex/client.js', async: true },
+        { src: './lib/plugins/multiplex/master.js', async: true }
+      ]
+    });
+
+    // Optional fragment replacement demo (keep for future interactive slides)
+    Reveal.addEventListener('fragmentshown', function (event) {
+      var fragment1 = document.querySelector('.fragment-1');
+      var fragment2 = document.querySelector('.fragment-2');
+      if (event.fragment === fragment1) { fragment1.style.display = 'none'; fragment2.style.display = 'block'; }
+    });
+
+    Reveal.addEventListener('fragmenthidden', function (event) {
+      var fragment1 = document.querySelector('.fragment-1');
+      var fragment2 = document.querySelector('.fragment-2');
+      if (event.fragment === fragment2) { fragment2.style.display = 'none'; fragment1.style.display = 'block'; }
+    });
+
+    // Animated background
+    VANTA.NET({
+      el: "#net",
+      color: 0x1f2a85,
+      backgroundColor: 0x000000,
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      points: 20.00,
+      maxDistance: 40.00,
+      spacing: 15.00
+    });
+
+    // Subtle 3D tilt on active slide
+    window.onload = function () {
+      $("body").on("mousemove", ".present", function (e) {
+        var $el = $(this);
+        let xAxis = (window.innerWidth / 2 - e.pageX) / 2500;
+        let yAxis = (window.innerHeight / 2 - e.pageY) / 2500;
+        $el.css("transform", `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`);
+      });
+    };
+  </script>
+</body>
+</html>
