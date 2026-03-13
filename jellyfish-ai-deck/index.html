@@ -1,0 +1,719 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Jellyfish AI — Pitch Deck</title>
+
+    <link rel="stylesheet" href="./lib/reset.css">
+    <link rel="stylesheet" href="./lib/reveal.css">
+    <link rel="stylesheet" href="./lib/theme/black.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700&display=swap');
+
+        body * {
+            font-family: 'Outfit', sans-serif !important;
+        }
+
+        .slides { width: 100% !important; }
+        .container { display: flex; align-items: center; justify-content: center; gap: 20px; }
+        .col { margin: 10px; flex: 1; }
+        .bold { font-weight: 700 !important; }
+        .center { text-align: center !important; }
+        .reveal p { text-align: center; }
+        .regular-text { font-size: 1.35rem; text-align: center; line-height: 1.6; }
+        .medium-text { font-size: 1.2rem !important; }
+        .small-text { font-size: 1.05rem !important; color: #aaa; }
+        .mono { font-family: 'JetBrains Mono', monospace !important; }
+
+        .teal { color: #2dd4bf !important; }
+        .amber { color: #fbbf24 !important; }
+        .rose { color: #fb7185 !important; }
+        .violet { color: #a78bfa !important; }
+        .sky { color: #38bdf8 !important; }
+        .emerald { color: #34d399 !important; }
+
+        .highlight-box {
+            background: rgba(45, 212, 191, 0.08);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #2dd4bf;
+            margin: 15px 0;
+        }
+        .warning-box {
+            background: rgba(251, 113, 133, 0.08);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #fb7185;
+            margin: 15px 0;
+        }
+        .formula {
+            font-family: 'JetBrains Mono', monospace !important;
+            background: rgba(45, 212, 191, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #2dd4bf;
+        }
+        .code-block {
+            font-family: 'JetBrains Mono', monospace !important;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 18px 22px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            font-size: 1.05rem;
+            text-align: left;
+            line-height: 1.7;
+            color: #e2e8f0;
+        }
+        .code-block .comment { color: #64748b; }
+        .code-block .keyword { color: #2dd4bf; }
+        .code-block .string { color: #fbbf24; }
+        .code-block .error { color: #fb7185; }
+        .source { font-size: 0.95rem; color: #94a3b8; margin-top: 8px; }
+
+        .chart-bar-wrap { display: flex; align-items: flex-end; gap: 12px; height: 200px; margin: 20px 0; padding: 0 10px; }
+        .chart-bar { flex: 1; min-width: 40px; background: linear-gradient(to top, #0d9488, #2dd4bf); border-radius: 6px 6px 0 0; transition: height 0.5s; }
+        .chart-bar.muted { background: linear-gradient(to top, #475569, #64748b); }
+        .chart-bar.rose-bar { background: linear-gradient(to top, #be123c, #fb7185); }
+        .chart-labels { display: flex; gap: 12px; margin-top: 8px; font-size: 1rem; color: #94a3b8; }
+        .chart-labels span { flex: 1; min-width: 40px; text-align: center; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 1.15rem; color: #fff; }
+        .data-table th, .data-table td { padding: 14px 16px; text-align: left; border-bottom: 1px solid #334155; color: #fff; }
+        .data-table th { color: #fff; font-weight: 600; }
+        .data-table .num { text-align: right; font-family: 'JetBrains Mono', monospace; }
+        .data-table.data-table-large { font-size: 1.35rem; }
+        .data-table.data-table-large th, .data-table.data-table-large td { padding: 16px 20px; }
+        .reveal h2 { font-size: 2.2rem !important; }
+        .reveal h3 { font-size: 1.65rem !important; }
+
+        /* Architecture diagram */
+        .arch-flow { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 25px 0; flex-wrap: wrap; }
+        .arch-box { background: rgba(45, 212, 191, 0.08); border: 1px solid #2dd4bf; border-radius: 10px; padding: 16px 22px; text-align: center; min-width: 130px; }
+        .arch-box.jf { background: rgba(45, 212, 191, 0.15); border: 2px solid #2dd4bf; }
+        .arch-box.provider { background: rgba(100, 116, 139, 0.15); border: 1px solid #475569; }
+        .arch-box.agent { background: rgba(56, 189, 248, 0.08); border: 1px solid #38bdf8; }
+        .arch-arrow { font-size: 1.8rem; color: #64748b; }
+        .arch-sub { display: block; font-size: 0.9rem; color: #94a3b8; margin-top: 4px; }
+
+        /* Metric cards */
+        .metric-grid { display: flex; gap: 20px; margin: 25px 0; justify-content: center; flex-wrap: wrap; }
+        .metric-card { background: rgba(45, 212, 191, 0.06); border: 1px solid #1e293b; border-radius: 12px; padding: 24px; text-align: center; flex: 1; min-width: 160px; }
+        .metric-card .metric-val { font-size: 2.4rem; font-weight: 700; color: #2dd4bf; display: block; font-family: 'JetBrains Mono', monospace; }
+        .metric-card .metric-label { font-size: 1rem; color: #94a3b8; margin-top: 6px; display: block; }
+
+        /* Competitive landscape */
+        .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .comp-card { background: rgba(30, 41, 59, 0.5); border: 1px solid #334155; border-radius: 10px; padding: 18px; text-align: left; }
+        .comp-card h4 { font-size: 1.15rem; margin-bottom: 6px; color: #e2e8f0; }
+        .comp-card p { font-size: 1rem; color: #94a3b8; line-height: 1.5; }
+        .comp-card.us { border-color: #2dd4bf; background: rgba(45, 212, 191, 0.06); }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- ============================================================ -->
+            <!-- 1. COVER -->
+            <!-- ============================================================ -->
+            <section>
+                <p style="font-size: 4rem; margin-bottom: 10px;">&#x1FABC;</p>
+                <h1 class="bold" style="font-size: 3.2rem; margin-bottom: 16px;">
+                    <span class="teal">Jellyfish AI</span>
+                </h1>
+                <p class="regular-text" style="font-size: 1.6rem; color: #94a3b8;">
+                    Guardrails and cost control for autonomous AI agents
+                </p>
+                <p class="regular-text" style="font-size: 1.2rem; color: #64748b; margin-top: 30px;">
+                    Pre-seed &middot; March 2026
+                </p>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 2. PROBLEM -->
+            <!-- ============================================================ -->
+            <section>
+                <section>
+                    <h2 class="bold">The <span class="rose">Problem</span></h2>
+                </section>
+                <section>
+                    <h3 class="bold">Multi-agent AI is exploding in cost</h3>
+                    <p class="regular-text" style="margin-bottom: 20px;">
+                        Modern AI products run <span class="teal">fleets of autonomous agents</span> &mdash; planners, researchers, coders, reviewers &mdash;
+                        that pass context, instructions, and results between each other. Every hop is an LLM call.
+                    </p>
+                    <div class="warning-box">
+                        <p class="regular-text" style="font-size: 1.35rem;">
+                            A single user action can trigger <span class="rose bold">10&ndash;50 inter-agent LLM calls</span>.
+                            Most of the tokens in these messages are <span class="amber">redundant context, verbose instructions, and repeated information</span>.
+                        </p>
+                    </div>
+                    <p class="source">Common in AutoGPT, CrewAI, LangGraph, OpenAI Swarm, and custom agent frameworks.</p>
+                </section>
+                <section>
+                    <h3 class="bold">The cost is unsustainable</h3>
+                    <table class="data-table data-table-large">
+                        <tr><th>Metric</th><th class="num">Value</th></tr>
+                        <tr><td>OpenAI inference cost (2025)</td><td class="num rose">$8.4B</td></tr>
+                        <tr><td>OpenAI projected (2026)</td><td class="num rose">$14.1B</td></tr>
+                        <tr><td>OpenAI gross margin</td><td class="num amber">33%</td></tr>
+                        <tr><td>Anthropic: cost vs revenue</td><td class="num rose">$2.7B cost, $0.8B rev</td></tr>
+                        <tr><td>Google Gemini infrastructure (2025)</td><td class="num rose">$12B+ CapEx</td></tr>
+                        <tr><td>GitHub Copilot: per-user loss</td><td class="num rose">$20&ndash;80/mo loss per seat</td></tr>
+                    </table>
+                    <p class="regular-text" style="margin-top: 18px;">
+                        API prices are <span class="amber">below cost</span> to capture market share. When subsidies end, <span class="rose">prices go up</span>.
+                        Companies burning millions of tokens per day will feel it first.
+                    </p>
+                    <p class="source">Sacra, Reuters, 2024&ndash;2025.</p>
+                </section>
+                <section>
+                    <h3 class="bold">And agents have no guardrails</h3>
+                    <p class="regular-text" style="margin-bottom: 18px;">
+                        When agents run autonomously, there&rsquo;s no human reviewing every prompt before it hits an LLM:
+                    </p>
+                    <ul class="regular-text" style="line-height: 2;">
+                        <li><span class="rose">Data leaks</span> &mdash; agents accidentally include PII, credentials, or internal data in prompts</li>
+                        <li><span class="rose">Budget overruns</span> &mdash; runaway agent loops burn thousands of dollars in minutes</li>
+                        <li><span class="rose">Off-topic drift</span> &mdash; agents wander outside their assigned domain</li>
+                        <li><span class="rose">Compliance gaps</span> &mdash; no audit trail of what agents sent to external LLMs</li>
+                    </ul>
+                    <p class="regular-text" style="margin-top: 18px; color: #94a3b8;">
+                        Teams need both <span class="teal">cost control</span> and <span class="teal">safety guardrails</span> &mdash; today they have neither.
+                    </p>
+                </section>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 3. MARKET -->
+            <!-- ============================================================ -->
+            <section>
+                <section>
+                    <h2 class="bold">The <span class="violet">Market</span></h2>
+                </section>
+                <section>
+                    <h3 class="bold">LLM API market size</h3>
+                    <div class="chart-bar-wrap" style="height: 200px;">
+                        <div class="chart-bar" style="height: 55px;" title="2025"></div>
+                        <div class="chart-bar" style="height: 100px;" title="2027"></div>
+                        <div class="chart-bar" style="height: 165px;" title="2030"></div>
+                    </div>
+                    <div class="chart-labels">
+                        <span>2025 ~$12B</span>
+                        <span>2027 ~$22B</span>
+                        <span>2030 ~$36B</span>
+                    </div>
+                    <p class="regular-text" style="margin-top: 15px;">LLM cloud/API market growing at <span class="teal">~24% CAGR</span>. Enterprise segment growing fastest.</p>
+                    <p class="source">Grand View Research, SNS Insider, Fortune Business Insights.</p>
+                </section>
+                <section>
+                    <h3 class="bold">Multi-agent is the growth vector</h3>
+                    <ul class="regular-text" style="line-height: 2;">
+                        <li>Gartner predicts <span class="teal">33% of enterprise software</span> will include agentic AI by 2028 (up from &lt;1% in 2024)</li>
+                        <li>Every major framework (LangChain, CrewAI, AutoGen, OpenAI Swarm) is multi-agent</li>
+                        <li>Multi-agent = <span class="amber">multiplicative token consumption</span> &mdash; N agents &times; M hops &times; K tokens each</li>
+                        <li>Our TAM: any team running multi-agent pipelines on LLM APIs</li>
+                    </ul>
+                    <p class="source">Gartner (2024), industry analysis.</p>
+                </section>
+                <section>
+                    <h3 class="bold">Optimization already matters</h3>
+                    <p class="regular-text">Industry reports show developers can cut AI spend <span class="emerald">40&ndash;70%</span> via:</p>
+                    <ul class="regular-text" style="margin-top: 15px; line-height: 1.9;">
+                        <li>Prompt caching (50&ndash;90% off cached input)</li>
+                        <li>Model routing (cheaper models for simple tasks)</li>
+                        <li>Structured outputs (30&ndash;50% fewer output tokens)</li>
+                        <li><span class="teal bold">Prompt compression &amp; policy enforcement</span> &mdash; our wedge</li>
+                    </ul>
+                    <p class="source">Thread Transfer, NorthBound Advisory, 10x Dev (2025).</p>
+                </section>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 4. SOLUTION -->
+            <!-- ============================================================ -->
+            <section>
+                <section>
+                    <h2 class="bold">Our <span class="teal">Solution</span></h2>
+                </section>
+                <section>
+                    <h3 class="bold">Jellyfish sits between agents and LLMs</h3>
+                    <div class="arch-flow">
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="arch-box agent">Agent A<span class="arch-sub">Planner</span></div>
+                            <div class="arch-box agent">Agent B<span class="arch-sub">Researcher</span></div>
+                            <div class="arch-box agent">Agent C<span class="arch-sub">Coder</span></div>
+                        </div>
+                        <div class="arch-arrow">&rarr;</div>
+                        <div class="arch-box jf" style="padding: 22px 30px;">
+                            <span style="font-size: 2rem;">&#x1FABC;</span><br>
+                            <strong>Jellyfish API</strong>
+                            <span class="arch-sub">Compress &middot; Enforce &middot; Route</span>
+                        </div>
+                        <div class="arch-arrow">&rarr;</div>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="arch-box provider">OpenAI</div>
+                            <div class="arch-box provider">Anthropic</div>
+                            <div class="arch-box provider">Google</div>
+                        </div>
+                    </div>
+                    <p class="regular-text" style="margin-top: 15px;">
+                        One API call. Every prompt is <span class="teal">compressed</span>, <span class="amber">policy-checked</span>, and routed. Zero code changes for the agent.
+                    </p>
+                </section>
+                <section>
+                    <h3 class="bold">What we bring to your stack</h3>
+                    <div class="container">
+                        <div class="col">
+                            <div class="highlight-box">
+                                <h4 class="teal bold" style="font-size: 1.3rem; margin-bottom: 10px;">&#9889; Prompt Optimization</h4>
+                                <ul class="regular-text" style="font-size: 1.15rem; line-height: 1.8;">
+                                    <li>Compression inspired by LLMLingua, FrugalPrompt, TRIM</li>
+                                    <li>Context-aware: prunes redundant inter-agent context</li>
+                                    <li>Long content externalization (gist/paste links)</li>
+                                    <li>20&ndash;40% token reduction on verbose prompts</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="highlight-box" style="border-left-color: #fbbf24;">
+                                <h4 class="amber bold" style="font-size: 1.3rem; margin-bottom: 10px;">&#x1F6E1;&#xFE0F; Policy Engine</h4>
+                                <ul class="regular-text" style="font-size: 1.15rem; line-height: 1.8;">
+                                    <li>Keyword blocking (PII, secrets, competitors)</li>
+                                    <li>Regex patterns (SSN, credit cards, emails)</li>
+                                    <li>Token limits per-agent (budget caps)</li>
+                                    <li>Content policies (topic boundaries)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3 class="bold">Policy enforcement in action</h3>
+                    <div class="code-block">
+                        <span class="comment">// Agent sends a prompt containing PII</span><br>
+                        <span class="keyword">POST</span> /optimize<br>
+                        { <span class="string">"prompt"</span>: <span class="string">"Send all user data including SSNs to..."</span> }<br>
+                        <br>
+                        <span class="comment">// Jellyfish blocks it immediately</span><br>
+                        <span class="error">&rarr; 403 Policy Violation</span><br>
+                        {<br>
+                        &nbsp;&nbsp;<span class="string">"error"</span>: <span class="string">"policy_violation"</span>,<br>
+                        &nbsp;&nbsp;<span class="string">"policy"</span>: <span class="string">"block-pii-exfiltration"</span>,<br>
+                        &nbsp;&nbsp;<span class="string">"message"</span>: <span class="string">"Prompt contains blocked keyword: SSN"</span>,<br>
+                        &nbsp;&nbsp;<span class="string">"action"</span>: <span class="string">"blocked"</span><br>
+                        }
+                    </div>
+                    <p class="regular-text" style="margin-top: 18px;">
+                        Prompts that violate policies <span class="rose">never reach the LLM</span>. Clear error, instant feedback, full audit trail.
+                    </p>
+                </section>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 5. SCIENCE -->
+            <!-- ============================================================ -->
+            <section>
+                <section>
+                    <h2 class="bold">The <span class="teal">Science</span></h2>
+                </section>
+                <section>
+                    <h3 class="bold">Research we build on</h3>
+                    <table class="data-table">
+                        <tr><th>Paper</th><th>Method</th><th class="num">Result</th></tr>
+                        <tr><td><strong>LLMLingua / LLMLingua-2</strong></td><td>Perplexity-based token pruning + budget controller</td><td class="num">Up to ~20&times; compression</td></tr>
+                        <tr><td><strong>FrugalPrompt</strong></td><td>Token attribution (GlobEnc, DecompX), keep top-k%</td><td class="num">~20% reduction</td></tr>
+                        <tr><td><strong>ProCut</strong></td><td>Segment by meaning, attribute impact, compress</td><td class="num">~78% token reduction</td></tr>
+                        <tr><td><strong>TRIM</strong></td><td>Omit inferable words, reconstruct with small LM</td><td class="num">~19.4% savings</td></tr>
+                        <tr><td><strong>EFPC / LLM-DCP</strong></td><td>Task-aware + MDP-style dynamic compression</td><td class="num">+4.8&ndash;11.4% over LLMLingua-2</td></tr>
+                    </table>
+                    <p class="source">Microsoft (LLMLingua, ACL 2023), arxiv (FrugalPrompt, ProCut, TRIM, EFPC).</p>
+                </section>
+                <section>
+                    <h3 class="bold">Our optimization pipeline (today)</h3>
+                    <ol class="regular-text" style="line-height: 2.1;">
+                        <li><span class="teal">Segmentation</span> &mdash; parse prompt into system, context, and query regions</li>
+                        <li><span class="teal">Entropy scoring</span> &mdash; heuristic token importance scoring inspired by LLMLingua perplexity approach</li>
+                        <li><span class="teal">Context dedup</span> &mdash; detect repeated info across agent handoff messages, prune redundancy</li>
+                        <li><span class="teal">Extractive compression</span> &mdash; remove filler words, tighten structure (inspired by FrugalPrompt/TRIM)</li>
+                        <li><span class="teal">Externalization</span> &mdash; move long content to paste links; agent reads link, no tokens wasted</li>
+                        <li><span class="teal">Policy check</span> &mdash; validate against all active user policies before returning</li>
+                    </ol>
+                    <p class="regular-text" style="margin-top: 15px; color: #94a3b8;">
+                        Current: heuristic-based. Next: fine-tuned small models for neural compression (distilbert/phi-2 for perplexity scoring).
+                    </p>
+                </section>
+                <section>
+                    <h3 class="bold">Where we are vs. where we&rsquo;re going</h3>
+                    <ul class="regular-text" style="line-height: 1.9;">
+                        <li><span class="teal">Today:</span> heuristic compression (entropy scoring, filler removal, context dedup) &mdash; effective on verbose/redundant prompts</li>
+                        <li><span class="teal">Honest limitation:</span> short, well-written prompts don&rsquo;t compress much &mdash; the value there is policy enforcement, not compression</li>
+                        <li><span class="sky">Next:</span> neural compression with small LMs (distilbert/phi-2 for perplexity-based token scoring)</li>
+                        <li><span class="sky">Next:</span> task-aware + query-aware methods that outperform one-size-fits-all</li>
+                        <li>Research shows <span class="teal">20&ndash;80%</span> compression is achievable &mdash; we&rsquo;re building toward this with proper ML models</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 6. PRODUCT -->
+            <!-- ============================================================ -->
+            <section>
+                <section>
+                    <h2 class="bold">Working <span class="emerald">Prototype</span></h2>
+                </section>
+                <section>
+                    <h3 class="bold">Built and running today</h3>
+                    <table class="data-table data-table-large">
+                        <tr><th>Component</th><th>Status</th></tr>
+                        <tr><td>REST API (<span class="mono">/optimize</span>, <span class="mono">/chat</span>)</td><td class="teal">&#x2705; Live</td></tr>
+                        <tr><td>Policy Engine (4 policy types, CRUD, enforcement)</td><td class="teal">&#x2705; Live</td></tr>
+                        <tr><td>Heuristic compression (entropy scoring, filler removal, dedup)</td><td class="teal">&#x2705; Live</td></tr>
+                        <tr><td>Web dashboard (optimize, chat, analytics, history)</td><td class="teal">&#x2705; Live</td></tr>
+                        <tr><td>Cost analytics &amp; savings tracking</td><td class="teal">&#x2705; Live</td></tr>
+                        <tr><td>Benchmark suite (6 prompt categories)</td><td class="teal">&#x2705; Live</td></tr>
+                        <tr><td>VS Code extension</td><td class="teal">&#x2705; Live</td></tr>
+                        <tr><td>Python SDK</td><td class="teal">&#x2705; Live</td></tr>
+                        <tr><td>Docker deployment (single command)</td><td class="teal">&#x2705; Live</td></tr>
+                        <tr><td>On-prem / Ollama local mode</td><td class="teal">&#x2705; Live</td></tr>
+                    </table>
+                </section>
+                <section>
+                    <h3 class="bold">Integration is one line</h3>
+                    <div class="code-block">
+                        <span class="comment"># Before &mdash; direct to OpenAI</span><br>
+                        response = openai.chat(<span class="string">"Analyze the quarterly report..."</span>)<br>
+                        <br>
+                        <span class="comment"># After &mdash; through Jellyfish (one URL change)</span><br>
+                        optimized = jellyfish.optimize(<span class="string">"Analyze the quarterly report..."</span>)<br>
+                        response = openai.chat(optimized.prompt) &nbsp;<span class="comment"># fewer tokens, policy-checked</span>
+                    </div>
+                    <div class="metric-grid" style="margin-top: 25px;">
+                        <div class="metric-card">
+                            <span class="metric-val">20&ndash;40%</span>
+                            <span class="metric-label">Token reduction (verbose prompts)</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-val">&lt;5ms</span>
+                            <span class="metric-label">Optimization latency</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-val">4 types</span>
+                            <span class="metric-label">Policy enforcement rules</span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3 class="bold">Cost impact example</h3>
+                    <p class="regular-text" style="margin-bottom: 15px;">A team running 20 agents, each making ~100 LLM calls/day:</p>
+                    <div class="chart-bar-wrap" style="height: 180px;">
+                        <div class="chart-bar rose-bar" style="height: 160px;"></div>
+                        <div class="chart-bar" style="height: 70px;"></div>
+                    </div>
+                    <div class="chart-labels">
+                        <span>Without Jellyfish: <span class="rose bold">$12,400/mo</span></span>
+                        <span>With Jellyfish: <span class="teal bold">$5,200/mo</span></span>
+                    </div>
+                    <p class="regular-text" style="margin-top: 18px;">
+                        <span class="teal bold">$7,200/mo saved</span> &mdash; Jellyfish pays for itself in the first hour.
+                    </p>
+                </section>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 7. BUSINESS MODEL -->
+            <!-- ============================================================ -->
+            <section>
+                <section>
+                    <h2 class="bold">Business <span class="emerald">Model</span></h2>
+                </section>
+                <section>
+                    <h3 class="bold">SaaS + usage-based hybrid</h3>
+                    <table class="data-table data-table-large">
+                        <tr><th>Tier</th><th>What&rsquo;s included</th><th class="num">Price</th></tr>
+                        <tr><td class="teal bold">Free</td><td>Compression API, up to 1M tokens/mo</td><td class="num">$0</td></tr>
+                        <tr><td class="sky bold">Team</td><td>Policy engine, analytics, 50M tokens/mo</td><td class="num">$99/mo</td></tr>
+                        <tr><td class="violet bold">Enterprise</td><td>On-prem, custom policies, unlimited, SSO, audit logs</td><td class="num">Custom</td></tr>
+                    </table>
+                    <p class="regular-text" style="margin-top: 18px;">
+                        Overage: <span class="teal">$0.10 per 1M tokens</span>. Enterprise: rev-share option (15&ndash;25% of verified savings).
+                    </p>
+                    <div class="highlight-box" style="margin-top: 15px;">
+                        <p class="regular-text" style="font-size: 1.15rem;">
+                            <span class="bold">The wedge:</span> Teams sign up for the free compression tier. Once they see value, they activate <span class="amber">policies + analytics</span> (paid tier). Policy engine has high retention &mdash; once guardrails are in place, removing them is a compliance risk.
+                        </p>
+                    </div>
+                </section>
+                <section>
+                    <h3 class="bold">Why it scales</h3>
+                    <ul class="regular-text" style="line-height: 2;">
+                        <li>Near-zero marginal cost &mdash; compression runs on CPU, no GPU needed for current pipeline</li>
+                        <li>Policy engine has <span class="teal">high switching cost</span> &mdash; once guardrails are in place, removing them is a risk</li>
+                        <li>Multi-provider support (OpenAI, Anthropic, Google) &rarr; one integration, all providers covered</li>
+                        <li>Upsell path: analytics, agent routing, compliance reporting, advanced policy rules</li>
+                        <li>Even as per-token prices fall, <span class="amber">total token volume grows faster</span> (more agents, more hops) &mdash; absolute spend keeps rising</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 8. COMPETITION / MOAT -->
+            <!-- ============================================================ -->
+            <section>
+                <section>
+                    <h2 class="bold">Competitive <span class="amber">Landscape</span></h2>
+                </section>
+                <section>
+                    <h3 class="bold">Why not existing tools?</h3>
+                    <div class="comp-grid">
+                        <div class="comp-card">
+                            <h4>LLM Providers (OpenAI, Anthropic)</h4>
+                            <p>Offer prompt caching (50% off repeated prefixes) &mdash; helps with static parts, but doesn&rsquo;t compress unique content. No cross-provider solution. No policy engine.</p>
+                        </div>
+                        <div class="comp-card">
+                            <h4>LLM Gateways (Portkey, Helicone)</h4>
+                            <p>Focus on observability + routing, not prompt optimization. No compression science. Logging &ne; cost reduction.</p>
+                        </div>
+                        <div class="comp-card">
+                            <h4>DIY prompt engineering</h4>
+                            <p>Manual, not scalable. Doesn&rsquo;t work for autonomous agents that generate their own prompts at runtime.</p>
+                        </div>
+                        <div class="comp-card us">
+                            <h4 class="teal">Jellyfish AI</h4>
+                            <p class="teal">Research-backed compression + policy enforcement + drop-in API. Built specifically for multi-agent systems. Provider-agnostic. On-prem option.</p>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3 class="bold">Our moat (honest assessment)</h3>
+                    <ul class="regular-text" style="line-height: 2;">
+                        <li><span class="teal">Policy engine</span> &mdash; no competitor offers prompt-level guardrails for autonomous agents. High switching cost once deployed.</li>
+                        <li><span class="teal">Compression is complementary to caching</span> &mdash; caching helps repeated prefixes; we optimize the unique parts. Used together, savings compound.</li>
+                        <li><span class="teal">Multi-agent native</span> &mdash; built for inter-agent communication, not just human&rarr;LLM</li>
+                        <li><span class="teal">On-prem / privacy-first</span> &mdash; Ollama + Docker means prompts never leave customer infra</li>
+                        <li><span class="amber">Moat deepens with ML</span> &mdash; neural compression (next milestone) creates a data flywheel: more prompts &rarr; better models &rarr; wider moat</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3 class="bold">Elephant in the room: falling prices</h3>
+                    <div class="warning-box">
+                        <p class="regular-text" style="font-size: 1.25rem;">
+                            &ldquo;LLM token prices have dropped ~100&times; in 2 years. Won&rsquo;t this problem solve itself?&rdquo;
+                        </p>
+                    </div>
+                    <ul class="regular-text" style="line-height: 2; margin-top: 18px;">
+                        <li>Per-token prices fall, but <span class="teal bold">total token volume grows faster</span>. Multi-agent = N agents &times; M hops &times; K tokens. Absolute spend keeps rising.</li>
+                        <li>Cheap tokens make <span class="amber">more agent usage viable</span> &rarr; more agents &rarr; more total cost &rarr; more need for controls.</li>
+                        <li>Even at $0 per token, <span class="rose">you still need guardrails</span>. Policy enforcement value is independent of token price.</li>
+                        <li>This is why we lead with <span class="teal">policy engine as the wedge</span> and offer compression as bonus value &mdash; the guardrails sell regardless of price trends.</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 9. GO-TO-MARKET -->
+            <!-- ============================================================ -->
+            <section>
+                <section>
+                    <h2 class="bold">Go-to-<span class="sky">Market</span></h2>
+                </section>
+                <section>
+                    <h3 class="bold">Land and expand</h3>
+                    <ul class="regular-text" style="line-height: 2.1;">
+                        <li><span class="teal bold">Phase 1 &mdash; Developer adoption</span><br>
+                            <span style="color: #94a3b8;">Free tier for individual devs. VS Code extension + Python SDK. Developer content &amp; benchmarks. Grow through dev communities (HN, Reddit, Discord).</span></li>
+                        <li><span class="teal bold">Phase 2 &mdash; Team adoption</span><br>
+                            <span style="color: #94a3b8;">Teams activate policies + analytics. Usage-based pricing kicks in. Target: AI startups running agent frameworks (CrewAI, LangChain, AutoGen).</span></li>
+                        <li><span class="teal bold">Phase 3 &mdash; Enterprise</span><br>
+                            <span style="color: #94a3b8;">On-prem Docker deployment. Compliance features (audit logs, SOC 2). Custom policy rules. Rev-share contracts for large API spenders.</span></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3 class="bold">Target customers</h3>
+                    <table class="data-table">
+                        <tr><th>Segment</th><th>Pain point</th><th class="num">API spend</th></tr>
+                        <tr><td>AI-native startups</td><td>Agent costs eating runway</td><td class="num">$5&ndash;50K/mo</td></tr>
+                        <tr><td>SaaS companies adding AI</td><td>Per-user AI cost unsustainable</td><td class="num">$10&ndash;100K/mo</td></tr>
+                        <tr><td>Enterprises (finance, legal, health)</td><td>Cost + compliance + data security</td><td class="num">$50K&ndash;1M+/mo</td></tr>
+                        <tr><td>AI consulting firms</td><td>Building agents for clients, need cost control</td><td class="num">$10&ndash;200K/mo</td></tr>
+                    </table>
+                </section>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 10. TRACTION & MILESTONES -->
+            <!-- ============================================================ -->
+            <section>
+                <section>
+                    <h2 class="bold">Traction &amp; <span class="teal">Milestones</span></h2>
+                </section>
+                <section>
+                    <h3 class="bold">What&rsquo;s in the beta prototype</h3>
+                    <ul class="regular-text" style="line-height: 2.2;">
+                        <li>&#x2705; <span class="teal">REST API</span> &mdash; single endpoint for compression + policy enforcement</li>
+                        <li>&#x2705; <span class="teal">Web dashboard</span> &mdash; analytics, policy management, optimization history</li>
+                        <li>&#x2705; <span class="teal">Heuristic compression</span> &mdash; entropy scoring, filler removal, context dedup</li>
+                        <li>&#x2705; <span class="teal">Policy engine</span> &mdash; 4 rule types, real-time enforcement, per-policy toggle</li>
+                        <li>&#x2705; <span class="teal">Benchmark suite</span> &mdash; 6 prompt categories, automated quality validation</li>
+                        <li>&#x2705; <span class="teal">VS Code extension + Python SDK</span> &mdash; developer-facing integrations</li>
+                        <li>&#x2705; <span class="teal">Docker / on-prem</span> &mdash; single command deploy, runs locally with Ollama</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3 class="bold">Next milestones</h3>
+                    <ul class="regular-text" style="line-height: 2.2;">
+                        <li>&#x1F51C; <span class="sky">Streaming optimization</span> &mdash; compress in real-time as agents stream prompts</li>
+                        <li>&#x1F51C; <span class="sky">Rate limiting</span> &mdash; per-agent throughput caps</li>
+                        <li>&#x1F51C; <span class="sky">Team accounts</span> &mdash; shared policies, aggregated analytics, role-based access</li>
+                        <li>&#x1F51C; <span class="sky">Playground mode</span> &mdash; side-by-side original vs optimized with live metrics</li>
+                        <li>&#x1F51C; <span class="sky">Agent framework integrations</span> &mdash; native plugins for CrewAI, LangChain, AutoGen</li>
+                        <li>&#x1F51C; <span class="sky">Neural compression</span> &mdash; small LM perplexity scoring (the real moat &mdash; moves us from heuristic to research-grade)</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 11. TEAM -->
+            <!-- ============================================================ -->
+            <section>
+                <h2 class="bold">The <span class="violet">Team</span></h2>
+                <div class="highlight-box" style="margin-top: 30px;">
+                    <p class="regular-text" style="font-size: 1.4rem; color: #94a3b8;">
+                        To be added
+                    </p>
+                </div>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 12. ASK -->
+            <!-- ============================================================ -->
+            <section>
+                <section>
+                    <h2 class="bold">The <span class="teal">Ask</span></h2>
+                </section>
+                <section>
+                    <h3 class="bold">Raising pre-seed to accelerate</h3>
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <span class="metric-val" style="font-size: 2rem;">$___K</span>
+                            <span class="metric-label">Raising</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-val" style="font-size: 2rem;">__mo</span>
+                            <span class="metric-label">Runway</span>
+                        </div>
+                    </div>
+                    <h4 class="bold" style="margin-top: 25px; font-size: 1.3rem;">Use of funds</h4>
+                    <ul class="regular-text" style="line-height: 2;">
+                        <li><span class="teal bold">Engineering (60%)</span> &mdash; Neural compression (small LM), streaming, framework plugins</li>
+                        <li><span class="sky bold">GTM (25%)</span> &mdash; Developer marketing, content, community building, early pilots</li>
+                        <li><span class="violet bold">Infrastructure (15%)</span> &mdash; GPU compute for model training, hosting, SOC 2 prep</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3 class="bold">Key milestones with this round</h3>
+                    <ul class="regular-text" style="line-height: 2.2;">
+                        <li>&rarr; Launch public beta + free tier</li>
+                        <li>&rarr; First 50 paying teams</li>
+                        <li>&rarr; Native integrations: CrewAI, LangChain, AutoGen</li>
+                        <li>&rarr; Advanced compression models (domain-specific fine-tuning)</li>
+                        <li>&rarr; SOC 2 Type I certification</li>
+                        <li>&rarr; Position for seed round</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 13. CLOSING -->
+            <!-- ============================================================ -->
+            <section>
+                <p style="font-size: 4rem; margin-bottom: 20px;">&#x1FABC;</p>
+                <h2 class="bold" style="font-size: 2.6rem;">
+                    <span class="teal">Jellyfish AI</span>
+                </h2>
+                <p class="regular-text" style="font-size: 1.5rem; color: #94a3b8; margin: 20px 0;">
+                    Guardrails and cost control for autonomous AI agents
+                </p>
+                <div class="highlight-box" style="text-align: center;">
+                    <p class="regular-text" style="font-size: 1.35rem;">
+                        Your agents are sending whatever they want to LLMs and you have no visibility or control.<br>
+                        <span class="teal bold">We fix that. And we cut your token bill while we&rsquo;re at it.</span>
+                    </p>
+                </div>
+                <p class="regular-text" style="font-size: 1.15rem; color: #64748b; margin-top: 25px;">
+                    [founder@jellyfish.ai] &middot; [website URL]
+                </p>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- APPENDIX: Inference Economics (deep-dive) -->
+            <!-- ============================================================ -->
+            <section>
+                <section>
+                    <h2 class="bold">Appendix: Inference <span class="rose">Economics</span></h2>
+                    <p class="regular-text" style="color: #94a3b8;">Deep-dive slides</p>
+                </section>
+                <section>
+                    <h3 class="bold">Provider cost vs revenue</h3>
+                    <div class="chart-bar-wrap" style="height: 200px;">
+                        <div class="chart-bar rose-bar" style="height: 160px;" title="Inference cost ~$8.4B"></div>
+                        <div class="chart-bar muted" style="height: 65px;" title="Revenue"></div>
+                    </div>
+                    <div class="chart-labels">
+                        <span>OpenAI inference cost</span>
+                        <span>OpenAI revenue</span>
+                    </div>
+                    <p class="source">Sacra, Reuters, 2024&ndash;2025. Illustrative of margin pressure.</p>
+                </section>
+                <section>
+                    <h3 class="bold">Why prices will rise</h3>
+                    <ul class="regular-text" style="line-height: 2;">
+                        <li>GPU cost: ~$1.30&ndash;$2+ per A100/H100 hour (Azure/cloud)</li>
+                        <li>Token consumption: <span class="teal">hundreds of billions</span> per week across providers</li>
+                        <li>API prices (GPT-4o Mini, Claude Haiku) are <span class="amber">below cost</span> as loss leaders</li>
+                        <li>When subsidies unwind &rarr; <span class="rose">prices increase</span> &rarr; token savings = direct $ savings</li>
+                        <li>Multi-agent systems <span class="rose">amplify the problem</span> &mdash; N&times; more calls per user action</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- APPENDIX: Research papers -->
+            <!-- ============================================================ -->
+            <section>
+                <section>
+                    <h2 class="bold">Appendix: Key <span class="teal">Papers</span></h2>
+                </section>
+                <section>
+                    <ul class="regular-text" style="line-height: 2;">
+                        <li><strong>LLMLingua / LLMLingua-2</strong> &mdash; Microsoft; ACL 2023, EMNLP; prompt compression via perplexity scoring</li>
+                        <li><strong>FrugalPrompt</strong> &mdash; arxiv 2510.16439; token attribution for contextual overhead reduction</li>
+                        <li><strong>ProCut</strong> &mdash; arxiv 2508.02053; LLM prompt compression via attribution estimation</li>
+                        <li><strong>TRIM</strong> &mdash; arxiv 2412.07682; token reduction and inference modeling</li>
+                        <li><strong>EFPC / LLM-DCP</strong> &mdash; task-aware compression, MDP-style dynamic compression</li>
+                    </ul>
+                    <p class="source" style="margin-top: 20px;">
+                        Market data: Grand View Research, SNS Insider, Sacra, Reuters, Thread Transfer, NorthBound Advisory, 10x Dev, Gartner.
+                    </p>
+                </section>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            transition: 'slide'
+        });
+    </script>
+</body>
+
+</html>
