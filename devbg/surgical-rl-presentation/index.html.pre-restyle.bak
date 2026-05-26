@@ -1,0 +1,2018 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Automation in Surgical Robotics</title>
+
+    <link rel="stylesheet" href="./lib/reset.css">
+    <link rel="stylesheet" href="./lib/reveal.css">
+    <link rel="stylesheet" href="./lib/theme/black.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        /* ============================================================
+           Two-color palette:
+             - Accent (teal):  #4ecdc4   -> primary highlight
+             - Warm  (amber):  #e0a458   -> secondary highlight (used sparingly)
+             - Neutrals:       #f2f2f2 text, #aaa muted, #0a0a0a bg
+           ============================================================ */
+        :root {
+            --accent: #4ecdc4;
+            --warm:   #e0a458;
+            --text:   #ececec;
+            --muted:  #9a9a9a;
+            --line:   #2a2a2a;
+            --panel:  rgba(255,255,255,0.04);
+        }
+
+        .reveal, .reveal * { font-family: 'Inter', sans-serif !important; }
+        .reveal { color: var(--text); font-weight: 400; }
+
+        /* Reveal headings — calm, consistent scale */
+        .reveal h1 { font-size: 2.0rem;  font-weight: 700; letter-spacing: 0.2px;
+                     text-transform: none; margin-bottom: 0.4em; }
+        .reveal h2 { font-size: 1.5rem;  font-weight: 700; letter-spacing: 0.2px;
+                     text-transform: none; margin-bottom: 0.5em; color: var(--text); }
+        .reveal h3 { font-size: 1.15rem; font-weight: 600; text-transform: none;
+                     margin-bottom: 0.4em; }
+        .reveal h4 { font-size: 0.95rem; font-weight: 600; text-transform: uppercase;
+                     letter-spacing: 0.6px; margin-bottom: 0.4em; color: var(--accent); }
+        .reveal p, .reveal li { font-size: 0.95rem; line-height: 1.5; }
+
+        .reveal .slide-number { font-size: 14px; color: var(--muted); background: transparent; }
+
+        /* Layout helpers */
+        .container { display: flex; align-items: center; justify-content: center;
+                     gap: 24px; width: 100%; }
+        .container.top { align-items: flex-start; }
+        .col { flex: 1; min-width: 0; }
+
+        .not-bold { font-weight: 300 !important; }
+        .bold     { font-weight: 700 !important; }
+        .center   { text-align: center !important; }
+        .italic   { font-style: italic !important; }
+
+        .regular-text { font-size: 1.0rem; text-align: left; line-height: 1.55; }
+        .medium-text  { font-size: 0.9rem !important; }
+        .small-text   { font-size: 0.8rem !important; color: var(--muted); }
+
+        /* All accent classes collapse to just two colors */
+        .green, .blue, .purple { color: var(--accent) !important; }
+        .orange, .red, .yellow { color: var(--warm)   !important; }
+        .gray, .muted          { color: var(--muted)  !important; }
+
+        /* Three.js demo containers */
+        .threejs-container {
+            width: 100%; height: 420px;
+            margin: 12px auto;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+        .threejs-controls {
+            position: absolute; top: 10px; left: 10px; z-index: 10;
+            background: rgba(0,0,0,0.65);
+            padding: 8px 10px; border-radius: 6px;
+            color: var(--text); font-size: 0.8rem;
+        }
+        .threejs-controls button {
+            background: var(--accent); color: #0a0a0a; border: none;
+            padding: 6px 12px; margin: 4px 4px 0 0; border-radius: 4px;
+            cursor: pointer; font-weight: 600; font-size: 0.8rem;
+        }
+        .threejs-controls button:hover { filter: brightness(1.1); }
+        .threejs-controls input[type="range"] { width: 120px; vertical-align: middle; }
+        .threejs-stats {
+            position: absolute; top: 10px; right: 10px; z-index: 10;
+            background: rgba(0,0,0,0.65);
+            padding: 8px 10px; border-radius: 6px;
+            color: var(--text); font-size: 0.8rem;
+        }
+
+        /* Boxes — all use the same accent now */
+        .formula {
+            font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+            background: rgba(78,205,196,0.08);
+            padding: 10px 14px; border-radius: 6px;
+            border-left: 3px solid var(--accent);
+            font-size: 0.9rem;
+        }
+        .highlight-box, .info-box, .purple-box {
+            background: var(--panel);
+            padding: 12px 16px; border-radius: 6px;
+            border-left: 3px solid var(--accent);
+            margin: 10px 0;
+        }
+        .warn-box {
+            background: var(--panel);
+            padding: 12px 16px; border-radius: 6px;
+            border-left: 3px solid var(--warm);
+            margin: 10px 0;
+        }
+
+        /* Stats */
+        .stat { display: inline-block; margin: 6px 14px; text-align: center; }
+        .stat .num { display: block; font-size: 1.7rem; font-weight: 700; color: var(--accent); }
+        .stat .lbl { display: block; font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+
+        /* Figures */
+        .figure-frame {
+            background: #fff; padding: 5px; border-radius: 6px;
+            display: inline-block; max-width: 100%;
+        }
+        .figure-frame img { max-height: 380px; max-width: 100%; display: block; }
+        .figure-frame.dark { background: #111; border: 1px solid var(--line); }
+
+        .strip { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+        .strip .figure-frame { padding: 3px; }
+        .strip .figure-frame img { max-height: 110px; max-width: 170px; }
+
+        /* Tables */
+        table.params {
+            margin: 0 auto; border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        table.params th, table.params td {
+            padding: 5px 14px; border-bottom: 1px solid var(--line);
+        }
+        table.params th { color: var(--accent); text-align: left; font-weight: 600; }
+        table.params td { color: var(--text); text-align: left; }
+
+        /* Card grid — uniform accent, no rainbow */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .grid.three { grid-template-columns: repeat(3, 1fr); }
+        .card {
+            background: var(--panel);
+            padding: 12px 14px;
+            border-radius: 6px;
+            border-top: 2px solid var(--accent);
+            text-align: left;
+            min-width: 0;
+        }
+        .card h4 { margin: 0 0 4px 0; font-size: 0.85rem; color: var(--accent) !important;
+                   text-transform: uppercase; letter-spacing: 0.5px; }
+        .card p  { margin: 0; font-size: 0.78rem; color: var(--text); line-height: 1.45; }
+        /* Color variants disabled — single accent */
+        .card.blue, .card.orange, .card.purple, .card.red { border-top-color: var(--accent); }
+
+        /* Autonomy levels list */
+        .levels { list-style: none !important; padding-left: 0 !important; margin: 0; font-size: 0.88rem; }
+        .reveal ul.levels, .reveal ol.levels { list-style: none !important; padding-left: 0 !important; }
+        .levels li { padding: 6px 10px; margin: 4px 0; border-radius: 4px;
+                     background: var(--panel); }
+        .levels li .lv { display: inline-block; min-width: 60px; font-weight: 700;
+                         color: var(--accent); }
+
+        /* Pull-quote */
+        .reveal blockquote {
+            border-left: 3px solid var(--warm);
+            padding: 4px 0 4px 18px; margin: 16px 0;
+            font-style: italic; color: var(--text);
+            font-size: 1.0rem; background: transparent; box-shadow: none;
+            width: 100%;
+        }
+
+        a { color: var(--accent); }
+
+        /* Safety net — keep content inside slides */
+        .reveal .slides section img,
+        .reveal .slides section svg,
+        .reveal .slides section canvas { max-width: 100%; }
+        .reveal .slides section { box-sizing: border-box; }
+
+        /* ============================================================
+           Bilingual support — toggle English / Bulgarian via data-lang
+           ============================================================ */
+        html[lang="en"] [data-lang="bg"] { display: none !important; }
+        html[lang="bg"] [data-lang="en"] { display: none !important; }
+
+        /* Language toggle widget (top-right) */
+        #lang-toggle {
+            position: fixed;
+            top: 14px;
+            right: 14px;
+            z-index: 1000;
+            display: flex;
+            gap: 4px;
+            background: rgba(0,0,0,0.55);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: 3px;
+            font-family: 'Inter', sans-serif;
+            backdrop-filter: blur(6px);
+        }
+        #lang-toggle button {
+            background: transparent;
+            color: var(--muted);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        #lang-toggle button:hover { color: var(--text); }
+        #lang-toggle button.active {
+            background: var(--accent);
+            color: #0a0a0a;
+        }
+        #lang-toggle .flag { font-size: 14px; }
+    </style>
+</head>
+
+<body>
+    <div id="lang-toggle" aria-label="Language">
+        <button data-set-lang="en" type="button"><span class="flag">🇬🇧</span><span>EN</span></button>
+        <button data-set-lang="bg" type="button"><span class="flag">🇧🇬</span><span>BG</span></button>
+    </div>
+
+    <div class="reveal">
+        <div class="slides">
+
+        <!-- =======================================================
+             PHASE 1 — HOOK
+             ======================================================= -->
+
+        <!-- 1. Title -->
+        <section data-background-color="#000">
+            <h1 class="bold" style="font-size: 2.4rem; margin-bottom: 16px;" data-lang="en">
+                <span class="green">Automation</span> in
+                <span class="orange">Surgical Robotics</span>
+            </h1>
+            <h1 class="bold" style="font-size: 2.4rem; margin-bottom: 16px;" data-lang="bg">
+                <span class="green">Автоматизация</span> в
+                <span class="orange">хирургичната роботика</span>
+            </h1>
+            <p class="regular-text center" style="font-size: 1.2rem; color: #ddd;" data-lang="en">
+                What's automated today, what's coming next, and how it's actually built.
+            </p>
+            <p class="regular-text center" style="font-size: 1.2rem; color: #ddd;" data-lang="bg">
+                Какво е автоматизирано днес, какво идва, и как реално се изгражда.
+            </p>
+            <p class="center" style="margin-top: 70px; color: #888;">
+                David Mavrodiev &middot; devbg IoT &middot; 2026
+            </p>
+            <aside class="notes">
+                Здравейте! Темата днес е автоматизация в хирургичната роботика —
+                какво вече работи в операционните зали, какво се изследва, и как
+                всичко това се изгражда технически. Не е лекция за моите проекти,
+                а обзор на едно от най‑бързо развиващите се направления в
+                cyber‑physical системите.
+            </aside>
+        </section>
+
+        <!-- 2. Hook -->
+        <section>
+            <h2 class="bold" data-lang="en">Surgery is becoming a <span class="orange">software problem</span></h2>
+            <h2 class="bold" data-lang="bg">Хирургията се превръща в <span class="orange">софтуерен проблем</span></h2>
+            <div class="container" style="margin-top: 20px;">
+                <div class="col">
+                    <div class="figure-frame dark">
+                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cmglee_Cambridge_Science_Festival_2015_da_Vinci.jpg?width=900"
+                             alt="da Vinci surgical system" style="max-height: 380px;">
+                    </div>
+                    <p class="small-text center gray" style="margin-top: 4px;" data-lang="en">da Vinci patient cart + surgeon console &middot; <span class="italic">Wikimedia Commons</span></p>
+                    <p class="small-text center gray" style="margin-top: 4px;" data-lang="bg">da Vinci patient cart + конзола на хирурга &middot; <span class="italic">Wikimedia Commons</span></p>
+                </div>
+                <div class="col">
+                    <p class="regular-text" data-lang="en">
+                        For a hundred years surgery was a <span class="bold">craft</span>, practiced by hand.
+                        For the last twenty‑five it has been <span class="bold green">remote control</span>,
+                        with a surgeon at a console driving a robot at the table.
+                        For the next twenty‑five it will be
+                        <span class="bold green">computer‑assisted</span>, and increasingly
+                        <span class="bold orange">autonomous</span> for the parts a machine does
+                        better than a human.
+                    </p>
+                    <p class="regular-text" data-lang="bg">
+                        Сто години хирургията беше <span class="bold">занаят</span>, практикуван
+                        на ръка. През последните двадесет и пет се превърна в
+                        <span class="bold green">дистанционно управление</span>, с хирург на конзола и
+                        робот на масата. През следващите двадесет и пет ще бъде
+                        <span class="bold green">компютърно асистирана</span>, и все по‑често
+                        <span class="bold orange">автономна</span> за нещата, които машината прави
+                        по‑добре от човек.
+                    </p>
+                </div>
+            </div>
+            <aside class="notes">
+                За сто години хирургията беше занаят. През последните 25 — се
+                превърна в дистанционно управление с роботи. През следващите 25
+                ще се превърне в компютърно асистирана дейност, с все повече
+                автономни компоненти за нещата, които една машина прави
+                по‑добре от човек.
+            </aside>
+        </section>
+
+        <!-- 3. Why now -->
+        <section>
+            <h2 class="bold" data-lang="en">Why <span class="green">now</span>?</h2>
+            <h2 class="bold" data-lang="bg">Защо <span class="green">сега</span>?</h2>
+            <div class="grid" style="grid-template-columns: repeat(4, 1fr); margin-top: 24px;">
+                <div class="card" style="text-align: center;">
+                    <h4 style="font-size: 1.6rem; color: var(--accent) !important; margin: 0;">~14M</h4>
+                    <p class="small-text" style="margin-top: 6px;" data-lang="en">robotic procedures performed since 2000</p>
+                    <p class="small-text" style="margin-top: 6px;" data-lang="bg">роботизирани процедури от 2000 г. насам</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <h4 style="font-size: 1.6rem; color: var(--accent) !important; margin: 0;">10+</h4>
+                    <p class="small-text" style="margin-top: 6px;" data-lang="en">commercial robotic platforms on the market</p>
+                    <p class="small-text" style="margin-top: 6px;" data-lang="bg">комерсиални роботизирани платформи на пазара</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <h4 style="font-size: 1.6rem; color: var(--accent) !important; margin: 0;">$18B</h4>
+                    <p class="small-text" style="margin-top: 6px;" data-lang="en">surgical robotics market projected for 2030</p>
+                    <p class="small-text" style="margin-top: 6px;" data-lang="bg">прогнозен пазар на хирургична роботика за 2030</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <h4 style="font-size: 1.6rem; color: var(--accent) !important; margin: 0;">~10×</h4>
+                    <p class="small-text" style="margin-top: 6px;" data-lang="en">surgical‑AI papers per year vs. 2015 (PubMed/IEEE search)</p>
+                    <p class="small-text" style="margin-top: 6px;" data-lang="bg">публикации за surgical AI на година спрямо 2015 (PubMed/IEEE)</p>
+                </div>
+            </div>
+            <p class="regular-text center gray" style="margin-top: 28px;" data-lang="en">
+                Hardware is mature. Cost is falling. ML is finally good enough.
+                The bottleneck is now <span class="orange">software, data and verification</span>.
+            </p>
+            <p class="regular-text center gray" style="margin-top: 28px;" data-lang="bg">
+                Хардуерът съзря. Цената пада. ML най‑накрая работи достатъчно добре.
+                Тясното гърло вече е <span class="orange">софтуерът, данните и верификацията</span>.
+            </p>
+            <aside class="notes">
+                Защо точно сега. Хардуерът съзря — десет различни търговски платформи
+                се конкурират. Цената пада. Машинното обучение най‑накрая работи
+                достатъчно надеждно за критични задачи. Тясното гърло вече не е
+                механиката, а софтуерът, данните и верификацията.
+            </aside>
+        </section>
+
+        <!-- 4. Roadmap -->
+        <section>
+            <h2 class="bold" data-lang="en">Where we're going today</h2>
+            <h2 class="bold" data-lang="bg">Какво ще разгледаме днес</h2>
+            <p class="regular-text center small-text gray" style="margin-top: 6px;" data-lang="en">
+                We start with what's already in real operating rooms, drill down to the code that runs on the cart, and end with where the field is heading.
+            </p>
+            <p class="regular-text center small-text gray" style="margin-top: 6px;" data-lang="bg">
+                Започваме с това, което вече е в реалните операционни, слизаме до кода, който работи в карта, и завършваме с накъде отива полето.
+            </p>
+            <div class="grid three" style="margin-top: 18px;">
+                <div class="card">
+                    <h4 class="green" data-lang="en">1 &middot; The robots</h4>
+                    <h4 class="green" data-lang="bg">1 &middot; Роботите</h4>
+                    <p data-lang="en">What hardware is actually in operating rooms today — and how much of it is autonomous.</p>
+                    <p data-lang="bg">Какъв хардуер реално има в операционните зали днес — и колко от него е автономен.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green" data-lang="en">2 &middot; The tasks</h4>
+                    <h4 class="green" data-lang="bg">2 &middot; Задачите</h4>
+                    <p data-lang="en">Which surgical sub‑tasks have been automated, by whom, and which ones are still hard.</p>
+                    <p data-lang="bg">Кои хирургични подзадачи са автоматизирани, от кого, и кои все още са трудни.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green" data-lang="en">3 &middot; The stack</h4>
+                    <h4 class="green" data-lang="bg">3 &middot; Стекът</h4>
+                    <p data-lang="en">The simulators, frameworks and datasets you'd actually <code>git clone</code> to build this.</p>
+                    <p data-lang="bg">Симулаторите, frameworks и datasets, които реално би <code>git clone</code>‑нал, за да построиш това.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green" data-lang="en">4 &middot; The techniques</h4>
+                    <h4 class="green" data-lang="bg">4 &middot; Техниките</h4>
+                    <p data-lang="en">Forty years of methods stacked on top of each other — from PID controllers to foundation models.</p>
+                    <p data-lang="bg">Четиридесет години методи, натрупани един върху друг — от PID контролери до foundation models.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green" data-lang="en">5 &middot; A case study</h4>
+                    <h4 class="green" data-lang="bg">5 &middot; Case study</h4>
+                    <p data-lang="en">One concrete task end‑to‑end: framing, training, deploying, results.</p>
+                    <p data-lang="bg">Една конкретна задача end‑to‑end: формулиране, обучение, deployment, резултати.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green" data-lang="en">6 &middot; The road ahead</h4>
+                    <h4 class="green" data-lang="bg">6 &middot; Пътят напред</h4>
+                    <p data-lang="en">What's still missing, what's about to change, and how a learned model gets to a patient.</p>
+                    <p data-lang="bg">Какво още липсва, какво предстои да се промени, и как научен модел стига до пациент.</p>
+                </div>
+            </div>
+            <aside class="notes">
+                Шест части. Първо — самите роботи, какво има в реалните зали.
+                После — какви задачи са автоматизирани и от кого. Трето — техническият
+                стек: симулатори, frameworks, dataset‑и. Четвърто — техниките,
+                от класически контрол до foundation модели. Пето — конкретен case study
+                с демо. И накрая — пътят напред.
+            </aside>
+        </section>
+
+        <!-- =======================================================
+             PHASE 2 — THE ROBOTS
+             ======================================================= -->
+
+        <!-- 5. Section header: robots -->
+        <section data-background-color="#0a1a1a">
+            <h1 class="bold" style="font-size: 2.4rem;" data-lang="en">
+                Part 1: The <span class="orange">Robots</span>
+            </h1>
+            <h1 class="bold" style="font-size: 2.4rem;" data-lang="bg">
+                Част 1: <span class="orange">Роботите</span>
+            </h1>
+            <p class="regular-text center gray" style="margin-top: 20px; max-width: 780px; margin-left: auto; margin-right: auto;" data-lang="en">
+                Before we talk about automation, we have to know what we're automating <em>on</em>. The hardware in real operating rooms today — the giants, the specialists, and the open kits used in research.
+            </p>
+            <p class="regular-text center gray" style="margin-top: 20px; max-width: 780px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Преди да говорим за автоматизация, трябва да знаем върху <em>какво</em> автоматизираме. Хардуерът, който реално е в операционните зали днес — гигантите, специализираните и отворените kits в изследователските лаборатории.
+            </p>
+        </section>
+
+        <!-- 6. The teleoperated giants -->
+        <section>
+            <h2 class="bold" data-lang="en">Teleoperated giants</h2>
+            <h2 class="bold" data-lang="bg">Телеуправляемите гиганти</h2>
+            <p class="regular-text center small-text" data-lang="en">
+                Surgeon at a console, robot at the table. <span class="orange">Zero autonomy</span>. Pure motion mapping.
+            </p>
+            <p class="regular-text center small-text" data-lang="bg">
+                Хирург на конзола, робот на масата. <span class="orange">Нула автономия</span>. Чисто мащабиране на движенията.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 900px; margin-left: auto; margin-right: auto;" data-lang="en">
+                These are the platforms most people picture when they hear “surgical robot.” The robot does <em>nothing</em> on its own — every motion is the surgeon's. What they buy you is wristed instruments inside a 1 cm port, stereo HD, motion scaling and tremor filtering. That is already a huge clinical win, and it's the foundation everything else is built on top of.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 900px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Това са платформите, които повечето хора си представят при думата „хирургичен робот“. Роботът сам не прави <em>нищо</em> — всяко движение е на хирурга. Какво печелиш: инструменти със ставен китка през 1 cm порт, stereo HD, мащабиране на движенията и филтриране на тремора. Това вече е огромно клинично постижение и точно върху него се гради всичко останало.
+            </p>
+            <div class="container top" style="margin-top: 14px; gap: 18px;">
+                <div class="col" style="flex: 0 0 36%;">
+                    <div class="figure-frame">
+                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cmglee_Cambridge_Science_Festival_2015_da_Vinci_console.jpg?width=500"
+                             alt="da Vinci console" style="max-height: 210px;">
+                    </div>
+                    <p class="small-text center gray" style="margin-top: 4px;" data-lang="en">
+                        Surgeon's console. Stereo viewer, foot pedals, master grips.
+                    </p>
+                    <p class="small-text center gray" style="margin-top: 4px;" data-lang="bg">
+                        Конзолата на хирурга. Стерео възприятие, педали, master grips.
+                    </p>
+                </div>
+                <div class="col">
+                    <div class="grid">
+                        <div class="card">
+                            <h4 class="green">Intuitive da Vinci</h4>
+                            <p data-lang="en">The market. ~9,500 systems, &gt;14M procedures since 2000. Four wristed arms through 8 mm ports, stereo HD, motion scaling, tremor filtering. Newest variants: <span class="bold">SP</span> (single‑port through 2.5 cm), <span class="bold">5</span> (force feedback at the tip).</p>
+                            <p data-lang="bg">Пазарът. ~9 500 системи, &gt;14M процедури от 2000. Четири ставени ръкава през 8 mm портове, stereo HD, мащабиране на движенията, филтриране на тремора. Най‑новите варианти: <span class="bold">SP</span> (single‑port през 2.5 cm), <span class="bold">5</span> (force feedback на върха).</p>
+                        </div>
+                        <div class="card blue">
+                            <h4 class="blue">CMR Versius</h4>
+                            <p data-lang="en">Modular: each arm rides on its own wheeled cart, so the OR team configures the layout per case. UK‑built. The first credible challenger to da Vinci, with an aggressive global rollout from 2022.</p>
+                            <p data-lang="bg">Модулен: всяко ръкаво е на отделен cart, така че екипът конфигурира разположението за всеки случай. От Великобритания. Първият сериозен конкурент на da Vinci, с агресивен глобален ролаут от 2022.</p>
+                        </div>
+                        <div class="card orange">
+                            <h4 class="orange">Medtronic Hugo RAS</h4>
+                            <p data-lang="en">Open architecture — the visualization tower is intentionally a separate, third‑party box. Cloud‑based case data and analytics. CE‑marked, with expanding clinical use across Europe and Asia 2024–26.</p>
+                            <p data-lang="bg">Отворена архитектура — visualization кулата е нарочно отделна, от трета страна. Cloud‑базирани case data и analytics. CE‑маркиран, с разширяваща се клинична употреба в Европа и Азия 2024–26.</p>
+                        </div>
+                        <div class="card purple">
+                            <h4 class="purple">Asensus Senhance</h4>
+                            <p data-lang="en"><span class="bold">Reusable</span> instruments — a deliberate cost play against Intuitive's per‑case razor model. <span class="bold">Eye‑tracked</span> camera that follows the surgeon's gaze. The only big platform with real haptic <span class="bold">force feedback</span> in the master grips.</p>
+                            <p data-lang="bg"><span class="bold">Многократни</span> инструменти — целенасочен економически ход срещу razor модела на Intuitive. <span class="bold">Eye‑tracked</span> камера, която следва погледа на хирурга. Единствената голяма платформа с истински хаптичен <span class="bold">force feedback</span> в master grips.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <aside class="notes">
+                Първите четири — телеуправляеми платформи. Хирургът седи на конзола,
+                роботът работи на масата. Нула автономия. Само мащабиране на
+                движенията и филтриране на тремора. da Vinci е безспорният лидер с
+                близо десет хиляди системи в света. Versius на CMR е по‑модулна и
+                компактна. Hugo на Medtronic залага на отворена архитектура.
+                Senhance е единствената с истински force feedback и eye tracking
+                за управление на камерата.
+            </aside>
+        </section>
+
+        <!-- 7. Specialty robots -->
+        <section>
+            <h2 class="bold" data-lang="en">Specialty robots: <span class="green">narrow but deep</span></h2>
+            <h2 class="bold" data-lang="bg">Специализирани роботи: <span class="green">тесни, но дълбоки</span></h2>
+            <p class="regular-text center small-text" data-lang="en">
+                Single domain. Often <span class="orange">already semi‑autonomous</span>, because the task is narrow enough to verify.
+            </p>
+            <p class="regular-text center small-text" data-lang="bg">
+                Една област. Често <span class="orange">вече полу‑автономни</span>, защото задачата е достатъчно тясна, за да бъде верифицирана.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 920px; margin-left: auto; margin-right: auto;" data-lang="en">
+                The teleoperated giants are general but dumb. The next class is the opposite — each robot solves <em>one</em> domain so well that it can do part of the procedure on its own. The trick: when the geometry is rigid and the plan comes from a CT scan, the robot can be trusted with motions a teleoperated arm cannot.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 920px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Телеуправляемите гиганти са общи, но „тъпи“. Следващият клас е обратното — всеки робот решава <em>една</em> област толкова добре, че може да поеме част от процедурата сам. Трикът: когато геометрията е твърда и планът идва от CT, на робота може да се вярва с движения, които телеуправляема ръка не може да направи.
+            </p>
+            <div class="grid" style="margin-top: 12px;">
+                <div class="card">
+                    <h4 class="green">Stryker Mako</h4>
+                    <p data-lang="en">Knee and hip replacement. The surgeon holds the handpiece; the robot <span class="bold">resists</span> any motion outside the CT‑planned cut envelope — a haptic boundary, not an autonomous cut. FDA‑cleared, ~1M procedures done. <span class="orange">Closest thing to "autonomy in the OR" today.</span></p>
+                    <p data-lang="bg">Колянна и тазобедрена артропластика. Хирургът държи handpiece; роботът <span class="bold">се съпротивлява</span> на всяко движение извън планирания в CT envelope — хаптична граница, не автономно рязане. FDA‑одобрен, ~1 млн. процедури. <span class="orange">Най‑близкото до „автономия в залата“ днес.</span></p>
+                </div>
+                <div class="card blue">
+                    <h4 class="blue">Zimmer ROSA / Smith+Nephew CORI</h4>
+                    <p data-lang="en">Same virtual‑fixture pattern as Mako, applied to spine and orthopedics. Optical tracking on bone‑mounted markers gives sub‑mm registration; ROSA also navigates pedicle screw placement.</p>
+                    <p data-lang="bg">Същият virtual‑fixture модел като Mako, приложен към гръбнак и ортопедия. Оптическо tracking на маркери по костта дава под‑милиметрова регистрация; ROSA навигира и поставяне на pedicle screws.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange">Intuitive Ion / Auris Monarch</h4>
+                    <p data-lang="en">Robotic <span class="bold">bronchoscopy</span>. A pre‑op CT scan generates a 3‑D airway map; the catheter then <span class="bold">drives itself</span> deep into the lung to the surgeon‑picked target, where the surgeon takes the biopsy. Autonomy in <em>navigation</em>, not in cutting.</p>
+                    <p data-lang="bg">Роботизирана <span class="bold">бронхоскопия</span>. Предоперативният CT генерира 3‑D карта на дихателните пътища; катетърът след това <span class="bold">се самоуправлява</span> дълбоко в белия дроб до избраната от хирурга цел, където хирургът взима биопсия. Автономия в <em>навигацията</em>, не в рязането.</p>
+                </div>
+                <div class="card purple">
+                    <h4 class="purple">Preceyes / ForSight</h4>
+                    <p data-lang="en">Microsurgery — retina, lymphatics. The robot <span class="bold">downscales</span> the surgeon's tremor by 100×, achieving sub‑10‑µm precision. Enables tasks like retinal vein cannulation that simply lie below the limit of an unaided human hand.</p>
+                    <p data-lang="bg">Микрохирургия — ретина, лимфни съдове. Роботът <span class="bold">намалява</span> тремора на хирурга 100× и постига точност под 10 µm. Позволява задачи като канилиране на ретинални вени, които са под предела на човешката ръка.</p>
+                </div>
+            </div>
+            <aside class="notes">
+                Специализираните роботи — тесни, но дълбоки. Mako на Stryker за
+                ортопедия е най‑близкото нещо до автономия в реална зала.
+                Хирургът планира резекцията, а роботът физически ограничава
+                инструмента до планираната зона. ROSA и CORI са подобни.
+                Ion и Monarch автономно навигират катетър през белия дроб.
+                Preceyes намалява тремора в очна микрохирургия 100 пъти.
+            </aside>
+        </section>
+
+        <!-- 8. Open research platforms -->
+        <section>
+            <h2 class="bold" data-lang="en">Open <span class="green">research</span> platforms</h2>
+            <h2 class="bold" data-lang="bg">Отворени <span class="green">изследователски</span> платформи</h2>
+            <p class="regular-text center small-text gray" style="max-width: 920px; margin-left: auto; margin-right: auto;" data-lang="en">
+                The commercial systems we just saw are sealed boxes — you don't get to write a control loop for da Vinci. So if you want to actually publish, fine‑tune, or break things, you need an open robot. These three platforms are why nearly every surgical RL or imitation paper you read can be reproduced at all.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 920px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Комерсиалните системи, които току‑що видяхме, са затворени кутии — не можеш да пишеш control loop за da Vinci. Ако искаш да публикуваш, fine‑tune‑ваш или да чупиш нещо, трябва ти отворен робот. Тези три платформи са причината почти всяка публикация в surgical RL и imitation learning, която четеш, изобщо да може да се възпроизведе.
+            </p>
+            <div class="grid three" style="margin-top: 16px;">
+                <div class="card">
+                    <h4 class="green">dVRK</h4>
+                    <p data-lang="en"><span class="bold">da Vinci Research Kit.</span> First‑gen da Vinci hardware donated by Intuitive (since ~2014) plus an open stack from Johns Hopkins: <span class="bold">cisst‑saw</span> for low‑level control, <span class="bold">CRTK</span> for the kinematics API, ROS bridge on top. ~50 labs worldwide — the closest thing the field has to a reference robot.</p>
+                    <p data-lang="bg"><span class="bold">da Vinci Research Kit.</span> Първо поколение da Vinci, дарено от Intuitive (от ~2014) плюс отворен стек от Johns Hopkins: <span class="bold">cisst‑saw</span> за нисконивов контрол, <span class="bold">CRTK</span> за кинематичния API, ROS bridge отгоре. ~50 лаборатории в света — най‑близкото до референтна платформа в полето.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green">RAVEN II</h4>
+                    <p data-lang="en">7‑DoF cable‑driven research robot from the University of Washington. Fully open hardware — schematics, motor specs, firmware all public. Used heavily for sim‑to‑real and tele‑surgery experiments under realistic latency.</p>
+                    <p data-lang="bg">7‑DoF cable‑driven изследователски робот от University of Washington. Напълно отворен хардуер — схеми, спецификации на мотори, firmware. Активно се използва за sim‑to‑real и телехирургични експерименти при реалистична latency.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green">STAR</h4>
+                    <p data-lang="en">Smart Tissue Autonomous Robot from Children's National + JHU. First published autonomous laparoscopic <span class="orange">soft‑tissue suturing</span> (Science Robotics, 2022) — bowel anastomosis on live pigs. Combines NIR fluorescent markers, force sensing, and a custom motion planner; the proof that autonomous soft‑tissue surgery is possible at all.</p>
+                    <p data-lang="bg">Smart Tissue Autonomous Robot от Children's National + JHU. Първото публикувано автономно лапароскопско <span class="orange">зашиване на меки тъкани</span> (Science Robotics, 2022) — анастомоза на черво при живи свине. Комбинира NIR флуоресцентни маркери, force sensing и собствен motion planner; доказателството, че автономната хирургия на меки тъкани изобщо е възможна.</p>
+                </div>
+            </div>
+            <p class="regular-text center small-text gray" style="margin-top: 18px;" data-lang="en">
+                Without these platforms the academic field does not exist.
+            </p>
+            <p class="regular-text center small-text gray" style="margin-top: 18px;" data-lang="bg">
+                Без тези платформи академичното поле просто не съществува.
+            </p>
+            <aside class="notes">
+                Изследователските платформи. dVRK — старите da Vinci роботи,
+                дарени от Intuitive на университетите, с отворен ROS стек.
+                Над 50 лаборатории в света. Без него на практика няма
+                академична хирургична роботика. RAVEN II — отворен 7‑степенен
+                робот. STAR — Smart Tissue Autonomous Robot — първото
+                публикувано автономно зашиване на меки тъкани върху живи
+                свине, в Science Robotics 2022.
+            </aside>
+        </section>
+
+        <!-- 9. Levels of autonomy -->
+        <section>
+            <h2 class="bold" data-lang="en">Levels of <span class="orange">autonomy</span></h2>
+            <h2 class="bold" data-lang="bg">Нива на <span class="orange">автономия</span></h2>
+            <ul class="levels" style="margin-top: 14px;" data-lang="en">
+                <li><span class="lv blue">Lvl 0</span> No autonomy. <span class="gray">Pure teleoperation &middot; <span class="bold">surgeon owns every motion</span> &middot; da Vinci, Versius, Hugo.</span></li>
+                <li><span class="lv blue">Lvl 1</span> Assistance. <span class="gray">Tremor filter, motion scaling &middot; <span class="bold">surgeon still owns failure</span> &middot; all commercial systems.</span></li>
+                <li><span class="lv orange">Lvl 2</span> Task autonomy. <span class="gray">Robot does a sub‑task under direct supervision &middot; <span class="bold">shared liability</span> &middot; Mako, Ion, STAR.</span></li>
+                <li><span class="lv orange">Lvl 3</span> Conditional autonomy. <span class="gray">Robot plans &amp; executes whole steps &middot; <span class="bold">manufacturer on the hook</span> &middot; mostly research.</span></li>
+                <li><span class="lv red">Lvl 4</span> High autonomy. <span class="gray">Surgeon supervises &middot; <span class="bold">unresolved liability</span> &middot; not yet.</span></li>
+                <li><span class="lv red">Lvl 5</span> Full autonomy. <span class="gray">No human in the loop &middot; <span class="bold">not happening soon.</span></span></li>
+            </ul>
+            <ul class="levels" style="margin-top: 14px;" data-lang="bg">
+                <li><span class="lv blue">Ниво 0</span> Без автономия. <span class="gray">Чиста телеоперация &middot; <span class="bold">хирургът притежава всяко движение</span> &middot; da Vinci, Versius, Hugo.</span></li>
+                <li><span class="lv blue">Ниво 1</span> Асистиране. <span class="gray">Филтър на тремора, мащабиране &middot; <span class="bold">хирургът все още отговаря за грешките</span> &middot; всички комерсиални системи.</span></li>
+                <li><span class="lv orange">Ниво 2</span> Автономия на задачи. <span class="gray">Роботът изпълнява подзадача под директен надзор &middot; <span class="bold">споделена отговорност</span> &middot; Mako, Ion, STAR.</span></li>
+                <li><span class="lv orange">Ниво 3</span> Условна автономия. <span class="gray">Роботът планира и изпълнява цели стъпки &middot; <span class="bold">производителят поема риска</span> &middot; предимно изследвания.</span></li>
+                <li><span class="lv red">Ниво 4</span> Висока автономия. <span class="gray">Хирургът наблюдава &middot; <span class="bold">нерешена отговорност</span> &middot; още не.</span></li>
+                <li><span class="lv red">Ниво 5</span> Пълна автономия. <span class="gray">Без човек в цикъла &middot; <span class="bold">не скоро.</span></span></li>
+            </ul>
+            <p class="regular-text center small-text gray" style="margin-top: 18px;" data-lang="en">
+                Framework adapted from Yang et al., <em>Sci.&nbsp;Robot.</em> 2017. The same SAE‑style ladder used for self‑driving cars.
+            </p>
+            <p class="regular-text center small-text gray" style="margin-top: 18px;" data-lang="bg">
+                Framework адаптиран от Yang et al., <em>Sci.&nbsp;Robot.</em> 2017. Същата SAE‑скала, каквато се използва и за самоуправляващите се коли.
+            </p>
+            <aside class="notes">
+                Скалата на автономията. Заимствана от автомобилната индустрия —
+                същите шест нива като при самоуправляващите се коли. Днес
+                реалните комерсиални системи са на ниво 0–1 за лапароскопия,
+                и на ниво 2 за тесни специалности като ортопедията. Нивата 4
+                и 5 са далеч в бъдещето — и за повечето хирургични задачи
+                може никога да не са целта.
+            </aside>
+        </section>
+
+        <!-- =======================================================
+             PHASE 3 — WHAT'S BEING AUTOMATED
+             ======================================================= -->
+
+        <!-- 10. Section header: tasks -->
+        <section data-background-color="#1a1209">
+            <h1 class="bold" style="font-size: 2.4rem;" data-lang="en">
+                Part 2: The <span class="orange">Tasks</span>
+            </h1>
+            <h1 class="bold" style="font-size: 2.4rem;" data-lang="bg">
+                Част 2: <span class="orange">Задачите</span>
+            </h1>
+            <p class="regular-text center gray" style="margin-top: 20px; max-width: 820px; margin-left: auto; margin-right: auto;" data-lang="en">
+                Now we know what's on the cart. The next question is: of the thousand things a surgeon does, which ones has anyone managed to automate — and how well? We'll walk through them roughly in order of difficulty, from “hold the camera” to “cut soft tissue.”
+            </p>
+            <p class="regular-text center gray" style="margin-top: 20px; max-width: 820px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Вече знаем какво има на карта. Следващият въпрос е: от хилядите неща, които прави един хирург, кои някой е успял да автоматизира — и колко добре? Ще ги прегледаме грубо по ред на трудност — от „държи камерата“ до „режи меки тъкани“.
+            </p>
+        </section>
+
+        <!-- 11. Camera control -->
+        <section>
+            <h2 class="bold" data-lang="en">Autonomous <span class="green">camera control</span></h2>
+            <h2 class="bold" data-lang="bg">Автономно <span class="green">управление на камерата</span></h2>
+            <p class="regular-text center small-text" data-lang="en">
+                The dullest job in the OR. And the easiest win.
+            </p>
+            <p class="regular-text center small-text" data-lang="bg">
+                Най‑скучната работа в залата. И най‑лесната победа.
+            </p>
+            <div class="grid three" style="margin-top: 18px;">
+                <div class="card">
+                    <h4 class="green" data-lang="en">Problem</h4>
+                    <h4 class="green" data-lang="bg">Проблемът</h4>
+                    <p data-lang="en">An assistant holds the endoscope for hours and must anticipate the surgeon's view.</p>
+                    <p data-lang="bg">Асистент държи ендоскопа с часове и трябва да предусеща къде гледа хирургът.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green" data-lang="en">Approach</h4>
+                    <h4 class="green" data-lang="bg">Подходът</h4>
+                    <p data-lang="en">Track the tools in the image and keep them centered. Visual servoing plus a small CNN to detect instrument tips.</p>
+                    <p data-lang="bg">Следиш инструментите в кадъра и ги държиш центрирани. Visual servoing плюс малка CNN за детекция на върховете на инструментите.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">Result</h4>
+                    <h4 class="orange" data-lang="bg">Резултатът</h4>
+                    <p data-lang="en"><span class="bold">FDA‑cleared</span> products since 2017 (Olympus EndoCUFF, Karl Storz Image1). Safe because the actuator is a camera, not a scalpel.</p>
+                    <p data-lang="bg"><span class="bold">FDA‑одобрени</span> продукти от 2017 (Olympus EndoCUFF, Karl Storz Image1). Безопасно, защото актуаторът е камера, не скалпел.</p>
+                </div>
+            </div>
+            <p class="regular-text center small-text gray" style="margin-top: 14px;" data-lang="en">
+                Why this is the first task to ship: when the worst possible failure is “you see the wrong corner of the screen,” the certification bar drops dramatically. Every harder task on the next slides moves <em>away</em> from this comfort zone.
+            </p>
+            <p class="regular-text center small-text gray" style="margin-top: 14px;" data-lang="bg">
+                Защо именно тази задача излезе първа на пазара: когато най‑лошата възможна грешка е „виждаш погрешния ъгъл на екрана“, летвата за сертификация резко пада. Всяка по‑трудна задача от следващите слайдове ни отдалечава от тази комфортна зона.
+            </p>
+            <aside class="notes">
+                Автономното управление на камерата е най‑скучната работа на
+                асистента — да държи ендоскопа с часове и да предусеща
+                накъде гледа хирургът. Решава се с visual servoing — следиш
+                инструментите в кадъра и центрираш изображението около тях.
+                Има FDA‑одобрени продукти още от 2017 година. Безопасно е,
+                защото актуаторът е камера, не скалпел.
+            </aside>
+        </section>
+
+        <!-- 12. Suturing & knot tying -->
+        <section>
+            <h2 class="bold" data-lang="en">Suturing &amp; <span class="orange">knot tying</span></h2>
+            <h2 class="bold" data-lang="bg">Зашиване и <span class="orange">вързване на възли</span></h2>
+            <p class="regular-text center small-text" data-lang="en">
+                Repetitive, structured, takes ~30% of operating time. <span class="bold">The big prize.</span></p>
+            <p class="regular-text center small-text" data-lang="bg">
+                Повтарящо се, структурирано, заема ~30% от оперативното време. <span class="bold">Голямата награда.</span></p>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="en">
+                Camera control was easy because nothing got cut. Suturing is the opposite — a needle goes through living tissue, on a curve, with a thread that has to end in a tight knot. Three groups have shown it can be done autonomously, and they each picked a completely different recipe.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Управлението на камерата беше лесно, защото нищо не се реже. Зашиването е обратното — игла преминава през жива тъкан, по крива, с конец, който трябва да завърши в затегнат възел. Три групи показаха, че може да се направи автономно — и всяка избра потпълно различна рецепта.
+            </p>
+            <div class="grid three" style="margin-top: 14px;">
+                <div class="card">
+                    <h4 class="green">STAR (2016, 2022)</h4>
+                    <p data-lang="en">Autonomous bowel anastomosis on live pigs. Vision + force tracking + classical motion planning. <span class="bold orange">No learning</span> — pure engineering. Outperformed open and laparoscopic surgery on stitch consistency in the published trials.</p>
+                    <p data-lang="bg">Автономна анастомоза на черво при живи свине. Vision + force tracking + класическо motion planning. <span class="bold orange">Без ML</span> — чисто инженерство. Надмина отворената и лапароскопската хирургия по консистентност на бодовете в публикуваните проучвания.</p>
+                </div>
+                <div class="card blue">
+                    <h4 class="blue">Berkeley dVRK suturing</h4>
+                    <p data-lang="en">Learned needle handover and knot tying via <span class="bold">imitation learning</span> from human demonstrations. Trained on hundreds of teleoperated trials — works because suturing is structured and demonstration‑rich.</p>
+                    <p data-lang="bg">Научено подаване на игла и вързване на възли чрез <span class="bold">imitation learning</span> от човешки демонстрации. Обучени на стотици телеуправлявани опити — работи, защото зашиването е структурирано и богато на демонстрации.</p>
+                </div>
+                <div class="card purple">
+                    <h4 class="purple">JHU + Hopkins APL</h4>
+                    <p data-lang="en">Hierarchical RL. A high‑level planner picks intents like “tie a knot”; low‑level skill primitives execute. <span class="bold">Sim‑to‑real</span> via domain randomization — same primitives can be reused across procedures.</p>
+                    <p data-lang="bg">Йерархичен RL. Високонивов planner избира намерения като „вържи възел“; нисконивови skill primitives изпълняват. <span class="bold">Sim‑to‑real</span> чрез domain randomization — същите primitives могат да се използват в различни процедури.</p>
+                </div>
+            </div>
+            <aside class="notes">
+                Зашиването и завързването на възли. Повтарящо се, структурирано,
+                заема около 30% от оперативното време — голямата награда.
+                STAR проектът: автономна анастомоза на черво при живи свине,
+                без машинно обучение, просто много добра инженерна работа.
+                Berkeley учат робота на dVRK да завързва възли чрез имитация
+                на хора. Johns Hopkins — йерархичен RL с високо ниво на
+                планиране и ниско ниво на умения.
+            </aside>
+        </section>
+
+        <!-- 13. Tissue manipulation -->
+        <section>
+            <h2 class="bold" data-lang="en">Tissue manipulation</h2>
+            <h2 class="bold" data-lang="bg">Манипулация на тъкани</h2>
+            <p class="regular-text center small-text gray" style="max-width: 920px; margin-left: auto; margin-right: auto;" data-lang="en">
+                Suturing is at least <em>structured</em>. Tissue manipulation is the messy cousin: the thing you grab keeps moving, deforming, and bleeding. There is no rigid model to plan against — which is exactly why this is the open frontier.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 920px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Зашиването все пак е <em>структурирано</em>. Манипулацията на тъкани е разхвърленият братовчед: онова, което хващаш, продължава да се движи, да се деформира и да кърви. Няма твърд модел, срещу който да планираш — точно затова това е отвореният фронт.
+            </p>
+            <div class="grid" style="margin-top: 16px;">
+                <div class="card">
+                    <h4 class="green" data-lang="en">Retraction</h4>
+                    <h4 class="green" data-lang="bg">Ретракция</h4>
+                    <p data-lang="en">Pulling tissue out of the way to expose the operating field. Hard because the tissue deforms unpredictably and the robot has to anticipate where the surgeon needs visibility next.</p>
+                    <p data-lang="bg">Издърпване на тъканта встрани, за да се открие оперативното поле. Трудно, защото тъканта се деформира непредвидимо и роботът трябва да предусеща къде хирургът ще иска видимост следващата секунда.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green" data-lang="en">Cutting and dissection</h4>
+                    <h4 class="green" data-lang="bg">Рязане и дисекция</h4>
+                    <p data-lang="en">Following anatomical planes between organs. Vision‑based segmentation classifies tissue in real time and steers a monopolar, bipolar, or ultrasonic energy device along the safe boundary.</p>
+                    <p data-lang="bg">Следване на анатомични слоеве между органите. Vision‑based сегментация класифицира тъканите в реално време и води монополярен, биполярен или ултразвуков енергиен инструмент по безопасната граница.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">Vessel sealing and clipping</h4>
+                    <h4 class="orange" data-lang="bg">Запушване и клипсиране на съдове</h4>
+                    <p data-lang="en">Our case study later in the talk. Hemostasis means controlled tissue compression — over‑squeeze damages the wall, under‑squeeze leaks. The safety window is narrow, and that's exactly what makes it interesting for a learned policy.</p>
+                    <p data-lang="bg">Нашият case study по‑нататък. Хемостазата е контролирана компресия на тъканта — прекомерно стискане уврежда стената, недостатъчно — изтича. Прозорецът на безопасност е тесен — именно това прави задачата интересна за научена политика.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">Suction and irrigation</h4>
+                    <h4 class="orange" data-lang="bg">Аспирация и иригация</h4>
+                    <p data-lang="en">Clearing blood, smoke and irrigation fluid from the field. The worst‑case failure is “the view gets messy,” not “the patient bleeds out” — which makes this an ideal first autonomy target. Easy to verify, low risk.</p>
+                    <p data-lang="bg">Почистване на кръв, дим и иригационна течност от полето. Най‑лошата възможна грешка е „изгледът се разбърква“, не „пациентът кърви“ — което я прави идеална първа цел за автономия. Лесна за верификация, нисък риск.</p>
+                </div>
+            </div>
+            <p class="regular-text center small-text gray" style="margin-top: 16px;" data-lang="en">
+                None of these are routinely autonomous in commercial systems. <span class="orange">All are active research.</span>
+            </p>
+            <p class="regular-text center small-text gray" style="margin-top: 16px;" data-lang="bg">
+                Нито една от тези не се прави рутинно автономно в комерсиални системи. <span class="orange">Всички са обект на активни изследвания.</span>
+            </p>
+            <aside class="notes">
+                Манипулация на тъкани. Ретракция — издърпване на тъканта встрани.
+                Дисекция — следване на анатомичните слоеве. Запушване и клипсиране
+                на съдове — нашият case study. Аспирация и иригация — изненадващо
+                плодородна територия, защото е лесна за валидация и нискорискова.
+                Нито една от тези задачи не се прави автономно в комерсиалните
+                системи — всички са обект на активни изследвания.
+            </aside>
+        </section>
+
+        <!-- 14. Outside the abdomen -->
+        <section>
+            <h2 class="bold" data-lang="en">Beyond <span class="green">laparoscopy</span></h2>
+            <h2 class="bold" data-lang="bg">Отвъд <span class="green">лапароскопията</span></h2>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="en">
+                So far we've stayed inside the abdomen. But the loudest autonomy stories are happening in completely different places — in bone, in the lung, in the eye. The pattern: pick a domain where the geometry is rigid, the plan comes from imaging, or the human simply <em>cannot</em> do it. Then automate.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Дотук стояхме в корема. Но най‑гръмките истории за автономия се случват на съвсем други места — в кост, в белия дроб, в окото. Шаблонът: избираш област, където геометрията е твърда, планът идва от образна диагностика, или човекът просто <em>не може</em> да я извърши. И автоматизираш.
+            </p>
+            <div class="grid" style="margin-top: 14px;">
+                <div class="card">
+                    <h4 class="green" data-lang="en">Bone milling: Mako</h4>
+                    <h4 class="green" data-lang="bg">Фрезоване на кост: Mako</h4>
+                    <p data-lang="en">Hard tissue, rigid registration, planned in CT. Bone is the easiest tissue you can pick: it doesn't deform, doesn't bleed, and doesn't move while you're cutting. <span class="bold">Genuinely semi‑autonomous</span> — the robot enforces the cut envelope.</p>
+                    <p data-lang="bg">Твърда тъкан, твърда регистрация, планиране в CT. Костта е най‑лесната тъкан, която можеш да избереш: не се деформира, не кърви и не се мести, докато режеш. <span class="bold">Истинска полу‑автономия</span> — роботът налага envelope на рязане.</p>
+                </div>
+                <div class="card blue">
+                    <h4 class="blue" data-lang="en">Bronchoscopy navigation: Ion</h4>
+                    <h4 class="blue" data-lang="bg">Навигация в бронхоскопия: Ion</h4>
+                    <p data-lang="en">A thin catheter steers itself to a pre‑planned target deep in the lung; the surgeon then takes the biopsy through it. The autonomy is in the navigation — in the actual diagnostic step the human is still in charge.</p>
+                    <p data-lang="bg">Тънък катетър се самоуправлява до предварително планирана цел дълбоко в белия дроб; хирургът после взима биопсия през него. Автономията е в навигацията — при самата диагностична стъпка човекът остава главен.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">Needle steering &amp; brachytherapy</h4>
+                    <h4 class="orange" data-lang="bg">Управление на игли и брахитерапия</h4>
+                    <p data-lang="en">Bevel‑tipped flexible needles trace curves through tissue by exploiting the tip asymmetry, dodging vessels and nerves. MRI‑guided in real time — the bottleneck is MRI‑compatible hardware. Mostly research today.</p>
+                    <p data-lang="bg">Гъвкави игли със скосен връх следват криви през тъканта, използвайки асиметрията на върха, и заобикалят съдове и нерви. MRI‑guided в реално време — тесното гърло е MRI‑съвместимият хардуер. Предимно изследвания днес.</p>
+                </div>
+                <div class="card purple">
+                    <h4 class="purple" data-lang="en">Microsurgery: Preceyes, MUSA</h4>
+                    <h4 class="purple" data-lang="bg">Микрохирургия: Preceyes, MUSA</h4>
+                    <p data-lang="en">100× motion downscaling for retinal and lymphatic surgery. Lymphatic vessels are 200–800 µm — no surgeon can hand‑suture them without a robot. The “automation” here is just <span class="bold">making impossible tasks possible</span>.</p>
+                    <p data-lang="bg">100× намаляване на движението за ретинална и лимфна хирургия. Лимфните съдове са 200–800 µm — никой хирург не може да ги зашива на ръка. „Автоматизацията“ тук е просто <span class="bold">да прави невъзможното възможно</span>.</p>
+                </div>
+            </div>
+            <aside class="notes">
+                Извън коремната хирургия. Mako — фрезоване на кост в ортопедията,
+                наистина полу‑автономно. Ion — катетърът се самоуправлява до
+                целта в белия дроб. Брахитерапия — извити игли, които заобикалят
+                критични структури. Микрохирургия — Preceyes за очи, MUSA за
+                лимфни съдове, където автоматизацията просто прави невъзможното
+                възможно чрез намаляване на тремора.
+            </aside>
+        </section>
+
+        <!-- =======================================================
+             PHASE 4 — THE STACK
+             ======================================================= -->
+
+        <!-- 23. Section header: stack -->
+        <section data-background-color="#1a0a1a">
+            <h1 class="bold" style="font-size: 2.4rem;" data-lang="en">
+                Part 3: The <span class="orange">Stack</span>
+            </h1>
+            <h1 class="bold" style="font-size: 2.4rem;" data-lang="bg">
+                Част 3: <span class="orange">Стекът</span>
+            </h1>
+            <p class="regular-text center gray" style="margin-top: 20px; max-width: 820px; margin-left: auto; margin-right: auto;" data-lang="en">
+                We've seen the hardware and we've seen which sub‑tasks people try to automate on it. Now — the part most surveys skip: the actual code. The simulators, frameworks and datasets you'd <code>git clone</code> if you wanted to build any of this yourself.
+            </p>
+            <p class="regular-text center gray" style="margin-top: 20px; max-width: 820px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Видяхме хардуера и видяхме кои подзадачи хората се опитват да автоматизират. Сега — частта, която повечето обзори пропускат: реалният код. Симулаторите, frameworks и datasets, които би <code>git clone</code>‑нал, ако искаш сам да построиш нещо от всичко това.
+            </p>
+        </section>
+
+        <!-- 23b. System architecture -->
+        <section>
+            <h2 class="bold" data-lang="en">A surgical robot as a <span class="green">distributed system</span></h2>
+            <h2 class="bold" data-lang="bg">Хирургичният робот като <span class="green">разпределена система</span></h2>
+            <p class="regular-text center small-text gray" style="margin-bottom: 8px;" data-lang="en">
+                Three chassis, three time domains. Everything time‑critical lives inside the middle box.
+            </p>
+            <p class="regular-text center small-text gray" style="margin-bottom: 8px;" data-lang="bg">
+                Три кутии, три времеви области. Всичко критично във времето живее в средната кутия.
+            </p>
+            <div style="text-align: center;">
+            <svg viewBox="0 0 1100 400" style="width: 100%; max-height: 400px;" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                        <path d="M0,0 L8,4 L0,8 Z" fill="#4ecdc4"/>
+                    </marker>
+                </defs>
+
+                <!-- Surgeon Console -->
+                <rect x="20" y="90" width="180" height="210" rx="6" fill="#0a0a0a" stroke="#4ecdc4" stroke-width="1.5"/>
+                <text x="110" y="115" text-anchor="middle" fill="#4ecdc4" font-size="14" font-weight="600">Surgeon Console</text>
+                <text x="110" y="145" text-anchor="middle" fill="#ececec" font-size="11">Master grips</text>
+                <text x="110" y="165" text-anchor="middle" fill="#ececec" font-size="11">Stereo viewer</text>
+                <text x="110" y="185" text-anchor="middle" fill="#ececec" font-size="11">Foot pedals</text>
+                <text x="110" y="205" text-anchor="middle" fill="#ececec" font-size="11">Hand tracker</text>
+                <text x="110" y="245" text-anchor="middle" fill="#9a9a9a" font-size="10">~1 kHz pose updates</text>
+                <text x="110" y="265" text-anchor="middle" fill="#9a9a9a" font-size="10">deterministic link</text>
+
+                <!-- Compute Cart container -->
+                <rect x="260" y="40" width="540" height="320" rx="6" fill="#0a0a0a" stroke="#4ecdc4" stroke-width="1.5"/>
+                <text x="530" y="65" text-anchor="middle" fill="#4ecdc4" font-size="14" font-weight="600">Compute Cart</text>
+
+                <!-- RT control -->
+                <rect x="285" y="95" width="235" height="75" rx="4" fill="rgba(78,205,196,0.06)" stroke="#4ecdc4" stroke-width="1"/>
+                <text x="402" y="118" text-anchor="middle" fill="#4ecdc4" font-size="12" font-weight="600">RT Control</text>
+                <text x="402" y="138" text-anchor="middle" fill="#ececec" font-size="10">PID, impedance, kinematics</text>
+                <text x="402" y="156" text-anchor="middle" fill="#9a9a9a" font-size="10">RT‑PREEMPT · 1 kHz</text>
+
+                <!-- AI inference -->
+                <rect x="540" y="95" width="235" height="75" rx="4" fill="rgba(224,164,88,0.08)" stroke="#e0a458" stroke-width="1"/>
+                <text x="657" y="118" text-anchor="middle" fill="#e0a458" font-size="12" font-weight="600">AI Inference</text>
+                <text x="657" y="138" text-anchor="middle" fill="#ececec" font-size="10">Policy, perception, segmentation</text>
+                <text x="657" y="156" text-anchor="middle" fill="#9a9a9a" font-size="10">Jetson / Holoscan · 30–50 Hz</text>
+
+                <!-- Safety supervisor -->
+                <rect x="285" y="185" width="235" height="75" rx="4" fill="rgba(224,164,88,0.08)" stroke="#e0a458" stroke-width="1"/>
+                <text x="402" y="208" text-anchor="middle" fill="#e0a458" font-size="12" font-weight="600">Safety Supervisor</text>
+                <text x="402" y="228" text-anchor="middle" fill="#ececec" font-size="10">Geometric guards, monitors</text>
+                <text x="402" y="246" text-anchor="middle" fill="#9a9a9a" font-size="10">Watchdog · safe state</text>
+
+                <!-- Vision pipeline -->
+                <rect x="540" y="185" width="235" height="75" rx="4" fill="rgba(78,205,196,0.06)" stroke="#4ecdc4" stroke-width="1"/>
+                <text x="657" y="208" text-anchor="middle" fill="#4ecdc4" font-size="12" font-weight="600">Vision Pipeline</text>
+                <text x="657" y="228" text-anchor="middle" fill="#ececec" font-size="10">Stereo capture, tool tracking</text>
+                <text x="657" y="246" text-anchor="middle" fill="#9a9a9a" font-size="10">CCU · 60 Hz HD</text>
+
+                <!-- Footer line inside compute cart -->
+                <text x="530" y="295" text-anchor="middle" fill="#9a9a9a" font-size="11" font-style="italic">Shared memory + ROS 2 · cross‑checks every cycle</text>
+                <text x="530" y="315" text-anchor="middle" fill="#9a9a9a" font-size="11" font-style="italic">All time‑critical paths inside one chassis</text>
+                <text x="530" y="340" text-anchor="middle" fill="#9a9a9a" font-size="10">no cloud round‑trip, ever</text>
+
+                <!-- Patient cart -->
+                <rect x="860" y="90" width="220" height="210" rx="6" fill="#0a0a0a" stroke="#4ecdc4" stroke-width="1.5"/>
+                <text x="970" y="115" text-anchor="middle" fill="#4ecdc4" font-size="14" font-weight="600">Patient Cart</text>
+                <text x="970" y="145" text-anchor="middle" fill="#ececec" font-size="11">Joints + encoders</text>
+                <text x="970" y="165" text-anchor="middle" fill="#ececec" font-size="11">Instruments</text>
+                <text x="970" y="185" text-anchor="middle" fill="#ececec" font-size="11">Endoscope</text>
+                <text x="970" y="205" text-anchor="middle" fill="#ececec" font-size="11">Force sensors (some)</text>
+                <text x="970" y="245" text-anchor="middle" fill="#9a9a9a" font-size="10">EtherCAT · &lt; 1 ms</text>
+                <text x="970" y="265" text-anchor="middle" fill="#9a9a9a" font-size="10">hard real‑time</text>
+
+                <!-- Arrows between chassis -->
+                <line x1="200" y1="195" x2="258" y2="195" stroke="#4ecdc4" stroke-width="1.5" marker-end="url(#arr)"/>
+                <line x1="800" y1="195" x2="858" y2="195" stroke="#4ecdc4" stroke-width="1.5" marker-end="url(#arr)"/>
+            </svg>
+            </div>
+            <p class="regular-text center small-text gray" style="margin-top: 4px;" data-lang="en">
+                Next: <span class="bold">simulators</span> &middot; the <span class="bold">software ecosystem</span> &middot; the <span class="bold orange">deployment envelope</span> around the AI box.
+            </p>
+            <p class="regular-text center small-text gray" style="margin-top: 4px;" data-lang="bg">
+                Следва: <span class="bold">симулатори</span> &middot; <span class="bold">софтуерната екосистема</span> &middot; <span class="bold orange">deployment envelope</span> около AI кутията.
+            </p>
+            <aside class="notes">
+                Хирургичният робот като разпределена система. Три кутии,
+                три времеви области. Конзолата на хирурга изпраща килохерцови
+                потоци от позиции. Средната compute кутия държи RT контрола
+                на 1 kHz, AI inference на 30–50 Hz, vision pipeline, и safety
+                supervisor. Всичко критично във времето живее тук, в един
+                chassis. Дясно — patient cart с твърд реалновременен EtherCAT
+                към моторите. Никакво обръщане към cloud — бюджетът не
+                позволява.
+            </aside>
+        </section>
+
+        <!-- 24. Simulators -->
+        <section>
+            <h2 class="bold" data-lang="en">Simulators. <span class="green">Where everything starts.</span></h2>
+            <h2 class="bold" data-lang="bg">Симулатори. <span class="green">Всичко започва тук.</span></h2>
+            <div class="container top" style="margin-top: 14px; gap: 18px;">
+                <div class="col" style="flex: 0 0 42%;">
+                    <div class="figure-frame">
+                        <img src="images/thesis/simulation_tool.png" alt="simulated dVRK scene" style="max-height: 220px;">
+                    </div>
+                    <p class="small-text center gray" style="margin-top: 4px;" data-lang="en">dVRK arm in SurRoL / PyBullet</p>
+                    <p class="small-text center gray" style="margin-top: 4px;" data-lang="bg">dVRK рамо в SurRoL / PyBullet</p>
+                </div>
+                <div class="col">
+                    <p class="regular-text" data-lang="en">
+                        A physics engine, a URDF model, and a Python API.
+                    </p>
+                    <p class="regular-text" data-lang="bg">
+                        Физичен engine, URDF модел и Python API.
+                    </p>
+                    <p class="regular-text small-text gray" style="margin-top: 8px;" data-lang="en">
+                        Train 10<sup>5</sup>&ndash;10<sup>6</sup> episodes before ever touching metal. Pick your simulator by whether you need GPU‑scale RL, soft tissue, or just dVRK kinematics.
+                    </p>
+                    <p class="regular-text small-text gray" style="margin-top: 8px;" data-lang="bg">
+                        Обучи 10<sup>5</sup>&ndash;10<sup>6</sup> епизода преди да докоснеш метал. Избираш симулатора според нуждата: GPU‑мащабен RL, deformable тъкан, или само dVRK кинематика.
+                    </p>
+                </div>
+            </div>
+            <div class="grid" style="margin-top: 14px; grid-template-columns: repeat(4, 1fr);">
+                <div class="card">
+                    <h4 class="green">SurRoL</h4>
+                    <p data-lang="en">PyBullet‑based dVRK simulator from HK PolyU. Lightweight, runs on a laptop, ships with Gym‑style task suites for picking, peg transfer, suturing. The default starting point if you want to reproduce a paper.</p>
+                    <p data-lang="bg">PyBullet‑базиран dVRK симулатор от HK PolyU. Лек, върви на лаптоп, идва с Gym‑стил пакет задачи — хващане, peg transfer, зашиване. Стандартната отправна точка, ако искаш да възпроизведеш публикация.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green">AMBF</h4>
+                    <p data-lang="en">Asynchronous Multi‑Body Framework from WPI. Bullet physics core, plus FEM plugins for soft tissue — if you need deformable organs and not just rigid kinematics, this is the open option.</p>
+                    <p data-lang="bg">Asynchronous Multi‑Body Framework от WPI. Bullet physics ядро, плюс FEM плъгини за меки тъкани — ако ти трябват деформируеми органи, а не само твърда кинематика, това е отвореният вариант.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange">ORBIT‑Surgical</h4>
+                    <p data-lang="en">NVIDIA Isaac Lab benchmark (2024). GPU‑parallel: thousands of environments simultaneously on a single H100, plus PhysX soft‑body. The first surgical simulator built for the “millions of episodes per night” scale.</p>
+                    <p data-lang="bg">NVIDIA Isaac Lab benchmark (2024). GPU‑паралелен: хиляди среди едновременно на един H100, плюс PhysX soft‑body. Първият хирургичен симулатор, изграден за „милиони епизоди на нощ“ мащаб.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange">MuJoCo / Genesis</h4>
+                    <p data-lang="en">General‑purpose physics, not surgery‑specific. <span class="bold">MuJoCo MJX</span> brings GPU acceleration; <span class="bold">Genesis</span> (2024) adds differentiable multi‑physics so you can backprop through the simulator itself.</p>
+                    <p data-lang="bg">Обща физика, не хирургично‑специфична. <span class="bold">MuJoCo MJX</span> добавя GPU ускорение; <span class="bold">Genesis</span> (2024) добавя differentiable multi‑physics, така че може да разпространяваш backprop през самия симулатор.</p>
+                </div>
+            </div>
+            <aside class="notes">
+                Симулаторите. SurRoL — PyBullet базиран dVRK симулатор от Хонконг,
+                лек, върви на лаптоп. AMBF от WPI — по‑тежък, с FEM плъгини за
+                deformable тъкан. ORBIT‑Surgical — NVIDIA Isaac Lab бенчмарк
+                от 2024, GPU паралелизация на хиляди среди. MuJoCo и Genesis
+                за по‑общи нужди. Изборът зависи от това дали ти трябва GPU
+                мащаб, deformable тъкан, или просто dVRK кинематика.
+            </aside>
+        </section>
+
+        <!-- 25. Software ecosystem -->
+        <section>
+            <h2 class="bold" data-lang="en">Software ecosystem</h2>
+            <h2 class="bold" data-lang="bg">Софтуерна екосистема</h2>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="en">
+                Here's the surprise for most engineers: a surgical autonomy stack is mostly tools you already use. ROS for the robot, PyTorch for the model, OpenCV for the camera, Flask or TensorRT for serving. The surgical‑specific layer on top is thin — except for the one nobody ships in a package: <span class="red bold">safety</span>.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Изненадата за повече инженери: surgical autonomy стекът е предимно инструменти, които вече използвате. ROS за робота, PyTorch за модела, OpenCV за камерата, Flask или TensorRT за serving. Surgical‑специфичният слой отгоре е тънък — с изключение на онзи, който никой не доставя като пакет: <span class="red bold">безопасността</span>.
+            </p>
+            <div class="grid three" style="margin-top: 14px;">
+                <div class="card">
+                    <h4 class="green" data-lang="en">Robotics layer</h4>
+                    <h4 class="green" data-lang="bg">Robotics слой</h4>
+                    <p data-lang="en"><span class="bold">ROS 2</span> &middot; <span class="bold">dVRK ROS</span><br/>
+                    URDF/SDF models, real‑time control nodes, RViz for debugging.</p>
+                    <p data-lang="bg"><span class="bold">ROS 2</span> &middot; <span class="bold">dVRK ROS</span><br/>
+                    URDF/SDF модели, real‑time control nodes, RViz за debugging.</p>
+                </div>
+                <div class="card blue">
+                    <h4 class="blue" data-lang="en">Learning layer</h4>
+                    <h4 class="blue" data-lang="bg">Learning слой</h4>
+                    <p data-lang="en"><span class="bold">PyTorch / JAX</span><br/>
+                    <span class="bold">Stable‑Baselines3</span>, <span class="bold">RLlib</span>, <span class="bold">CleanRL</span> for RL.<br/>
+                    <span class="bold">LeRobot</span> (HuggingFace) for imitation.</p>
+                    <p data-lang="bg"><span class="bold">PyTorch / JAX</span><br/>
+                    <span class="bold">Stable‑Baselines3</span>, <span class="bold">RLlib</span>, <span class="bold">CleanRL</span> за RL.<br/>
+                    <span class="bold">LeRobot</span> (HuggingFace) за imitation.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">Vision layer</h4>
+                    <h4 class="orange" data-lang="bg">Vision слой</h4>
+                    <p data-lang="en"><span class="bold">OpenCV</span> &middot; <span class="bold">MMDetection</span><br/>
+                    <span class="bold">SAM2</span> for segmentation, <span class="bold">DINOv2</span> for features.<br/>
+                    Increasingly: surgical foundation models.</p>
+                    <p data-lang="bg"><span class="bold">OpenCV</span> &middot; <span class="bold">MMDetection</span><br/>
+                    <span class="bold">SAM2</span> за сегментация, <span class="bold">DINOv2</span> за features.<br/>
+                    Все по‑често: surgical foundation models.</p>
+                </div>
+                <div class="card purple">
+                    <h4 class="purple" data-lang="en">Serving / edge</h4>
+                    <h4 class="purple" data-lang="bg">Serving / edge</h4>
+                    <p data-lang="en"><span class="bold">Flask / FastAPI</span> for prototypes<br/>
+                    <span class="bold">TensorRT</span>, <span class="bold">ONNX Runtime</span> for production<br/>
+                    <span class="bold">NVIDIA Holoscan</span> for surgical edge AI.</p>
+                    <p data-lang="bg"><span class="bold">Flask / FastAPI</span> за прототипи<br/>
+                    <span class="bold">TensorRT</span>, <span class="bold">ONNX Runtime</span> за продукция<br/>
+                    <span class="bold">NVIDIA Holoscan</span> за surgical edge AI.</p>
+                </div>
+                <div class="card red">
+                    <h4 class="red" data-lang="en">Safety layer</h4>
+                    <h4 class="red" data-lang="bg">Safety слой</h4>
+                    <p data-lang="en">Custom: runtime monitors, geometric guards, watchdog timers, rate limiters.<br/>
+                    <span class="small-text">No "framework" exists. This is where engineering matters most.</span></p>
+                    <p data-lang="bg">На ръка: runtime monitors, geometric guards, watchdog timers, rate limiters.<br/>
+                    <span class="small-text">Няма готов framework. Тук инженерството има най‑голямо значение.</span></p>
+                </div>
+                <div class="card">
+                    <h4 class="green">Datasets</h4>
+                    <p data-lang="en"><span class="bold">JIGSAWS</span> &middot; <span class="bold">CholecT45/T50</span> &middot; <span class="bold">EndoVis</span> &middot; <span class="bold">SAR‑RARP50</span><br/>
+                    <span class="small-text">Suturing, cholecystectomy, segmentation, prostatectomy.</span></p>
+                    <p data-lang="bg"><span class="bold">JIGSAWS</span> &middot; <span class="bold">CholecT45/T50</span> &middot; <span class="bold">EndoVis</span> &middot; <span class="bold">SAR‑RARP50</span><br/>
+                    <span class="small-text">Зашиване, холецистектомия, сегментация, простатектомия.</span></p>
+                </div>
+            </div>
+            <aside class="notes">
+                Софтуерната екосистема, по слоеве. Робот слой — ROS 2 и dVRK
+                ROS. Learning слой — PyTorch с Stable‑Baselines3 за RL,
+                LeRobot за имитация. Vision слой — OpenCV, SAM2, DINOv2.
+                Serving — Flask за прототипи, TensorRT и Holoscan за продукция.
+                Safety слой — без framework, всеки прави свой. И накрая
+                dataset‑ите — JIGSAWS, CholecT45, EndoVis, SAR‑RARP50.
+            </aside>
+        </section>
+
+        <!-- 26. Real-time constraints in the OR -->
+        <section>
+            <h2 class="bold" data-lang="en">Real‑time constraints in the <span class="green">operating room</span></h2>
+            <h2 class="bold" data-lang="bg">Real‑time ограничения в <span class="green">операционната</span></h2>
+            <div class="grid" style="margin-top: 16px;">
+                <div class="card">
+                    <h4 class="green" data-lang="en">Latency budget</h4>
+                    <h4 class="green" data-lang="bg">Бюджет за latency</h4>
+                    <p data-lang="en">Control loops under 10 ms, end‑to‑end. Inference must finish before the next frame arrives. There is no time to retry, and no time to round‑trip a request to a cloud API.</p>
+                    <p data-lang="bg">Control loops под 10 ms, end‑to‑end. Inference трябва да приключи преди следващия кадър. Няма време за retry и няма време за round‑trip до cloud API.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green" data-lang="en">Inference target</h4>
+                    <h4 class="green" data-lang="bg">Inference таргет</h4>
+                    <p data-lang="en">Jetson Orin or RTX 4000 Ada sitting on the cart for the policy and segmentation networks. NVIDIA Holoscan racks for heavier vision pipelines that need 4K stereo at 60 Hz.</p>
+                    <p data-lang="bg">Jetson Orin или RTX 4000 Ada в карта за политиката и segmentation мрежите. NVIDIA Holoscan rack за по‑тежки vision pipelines, които искат 4K stereo на 60 Hz.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">Determinism</h4>
+                    <h4 class="orange" data-lang="bg">Детерминизъм</h4>
+                    <p data-lang="en">Hard real‑time timing all the way down: RT‑PREEMPT Linux on the compute, EtherCAT to the motor drivers. Garbage collection pauses, page faults, swap — anything stochastic on a path between brain and motor is a bug.</p>
+                    <p data-lang="bg">Hard real‑time timing по цялата верига: RT‑PREEMPT Linux върху compute, EtherCAT към motor drivers. Garbage collection паузи, page faults, swap — всяко стохастично нещо по пътя от мозък до мотор е бъг.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">Failover</h4>
+                    <h4 class="orange" data-lang="bg">Failover</h4>
+                    <p data-lang="en">If inference times out, the robot must enter a safe state in under one frame — servo to last‑good reference, alert the surgeon, hand back manual control. No retry, no “log and continue,” no exceptions to swallow.</p>
+                    <p data-lang="bg">Ако inference таймаутне, роботът трябва да влезе в безопасно състояние под един кадър — servo до last‑good reference, аларма до хирурга, връща мануален контрол. Без retry, без „log and continue“, без погълнати exceptions.</p>
+                </div>
+            </div>
+            <blockquote style="margin-top: 18px;" data-lang="en">
+                Hard real‑time control, learned models, and zero tolerance for missed deadlines
+                — all sharing one chassis, with a patient on the table.
+            </blockquote>
+            <blockquote style="margin-top: 18px;" data-lang="bg">
+                Hard real‑time контрол, научени модели и нулева толерансност към пропуснати срокове —
+                всичко в едно chassis, с пациент на масата.
+            </blockquote>
+            <aside class="notes">
+                Реалновременни изисквания в операционната. Бюджет за
+                латентност под 10 милисекунди. Inference локално на Jetson Orin
+                или Holoscan. RT‑PREEMPT Linux за детерминизъм, EtherCAT към
+                моторите. Ако моделът таймаутне — роботът влиза в
+                безопасно състояние за по‑малко от един кадър. Без retry,
+                без log‑and‑continue.
+            </aside>
+        </section>
+
+        <!-- =======================================================
+             PHASE 5 — TECHNIQUES
+             ======================================================= -->
+
+        <!-- 15. Section header: techniques -->
+        <section data-background-color="#0a0a1a">
+            <h1 class="bold" style="font-size: 2.4rem;" data-lang="en">
+                Part 4: The <span class="orange">Techniques</span>
+            </h1>
+            <h1 class="bold" style="font-size: 2.4rem;" data-lang="bg">
+                Част 4: <span class="orange">Техниките</span>
+            </h1>
+            <p class="regular-text center gray" style="margin-top: 20px; max-width: 820px; margin-left: auto; margin-right: auto;" data-lang="en">
+                We have the robots, the tasks, and the stack. Time for the methods that turn pixels and joint angles into intelligent motion — forty years of them, layered like sediment. None of the old stuff went away; it just got a new layer on top.
+            </p>
+            <p class="regular-text center gray" style="margin-top: 20px; max-width: 820px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Имаме роботите, задачите и стека. Време за методите, които превръщат пиксели и ъгли на стави в интелигентно движение — четиридесет години от тех, наслоени като седимент. Нищо старо не изчезна — просто получи нов слой отгоре.
+            </p>
+        </section>
+
+        <!-- 16. The technique map -->
+        <section>
+            <h2 class="bold" data-lang="en">The technique map</h2>
+            <h2 class="bold" data-lang="bg">Карта на техниките</h2>
+            <table class="params" style="margin-top: 16px;" data-lang="en">
+                <tr><th>Era</th><th>Approach</th><th>Where it shines</th></tr>
+                <tr><td>1980s+</td><td>Classical control (PID, impedance)</td><td>Position holding, force regulation</td></tr>
+                <tr><td>1990s+</td><td>Visual servoing</td><td>Camera centering, tool tracking</td></tr>
+                <tr><td>2000s+</td><td>Motion planning (RRT, CHOMP)</td><td>Collision‑free trajectories</td></tr>
+                <tr><td>2010s+</td><td>Learning from demonstration</td><td>Knot tying, suturing primitives</td></tr>
+                <tr><td>2015+</td><td>Reinforcement learning (PPO, SAC)</td><td>Closed‑loop skills with shaped rewards</td></tr>
+                <tr><td>2020+</td><td>Diffusion / transformer policies</td><td>Multi‑modal demonstrations, long horizons</td></tr>
+                <tr><td><span class="orange bold">2024+</span></td>
+                    <td><span class="orange bold">Surgical foundation models / VLAs</span></td>
+                    <td><span class="orange bold">Generalist task understanding</span></td></tr>
+            </table>
+            <table class="params" style="margin-top: 16px;" data-lang="bg">
+                <tr><th>Епоха</th><th>Подход</th><th>Къде блести</th></tr>
+                <tr><td>1980+</td><td>Класически контрол (PID, impedance)</td><td>Държане на позиция, force regulation</td></tr>
+                <tr><td>1990+</td><td>Visual servoing</td><td>Центриране на камерата, tool tracking</td></tr>
+                <tr><td>2000+</td><td>Motion planning (RRT, CHOMP)</td><td>Траектории без колизии</td></tr>
+                <tr><td>2010+</td><td>Learning from demonstration</td><td>Вързване на възли, suturing primitives</td></tr>
+                <tr><td>2015+</td><td>Reinforcement learning (PPO, SAC)</td><td>Closed‑loop умения с shaped rewards</td></tr>
+                <tr><td>2020+</td><td>Diffusion / transformer policies</td><td>Multi‑modal демонстрации, дълги horizons</td></tr>
+                <tr><td><span class="orange bold">2024+</span></td>
+                    <td><span class="orange bold">Surgical foundation models / VLAs</span></td>
+                    <td><span class="orange bold">Общо разбиране на задачите</span></td></tr>
+            </table>
+            <p class="regular-text center small-text gray" style="margin-top: 20px;" data-lang="en">
+                None of the older tools went away: you stack them. Modern systems use 4 or 5 of these in one pipeline.
+            </p>
+            <p class="regular-text center small-text gray" style="margin-top: 20px;" data-lang="bg">
+                Нито едно от старите инструменти не изчезна — натрупваш ги. Модерните системи комбинират 4–5 от тях в една pipeline.
+            </p>
+            <aside class="notes">
+                Техническата карта. Класически контрол от 80‑те години — PID,
+                impedance control. Visual servoing от 90‑те. Motion planning от
+                2000‑те. Learning from demonstration от 2010‑те. Reinforcement
+                learning от 2015. Diffusion и transformer policies от 2020.
+                И най‑новото — surgical foundation models и vision‑language‑action
+                модели от 2024. Нито едно от старите неща не изчезна — модерните
+                системи комбинират по 4–5 от тези подходи в една pipeline.
+            </aside>
+        </section>
+
+        <!-- 17. Classical control -->
+        <section>
+            <h2 class="bold" data-lang="en">Classical control. <span class="green">Still the workhorse.</span></h2>
+            <h2 class="bold" data-lang="bg">Класически контрол. <span class="green">Все още работният кон.</span></h2>
+            <p class="regular-text center small-text gray" data-lang="en">
+                Underneath every learned policy is a stack of decades‑old controllers that nobody plans to replace.
+            </p>
+            <p class="regular-text center small-text gray" data-lang="bg">
+                Под всяка научена политика има стек от десетилетни контролери, които никой не планира да сменя.
+            </p>
+            <div class="grid" style="margin-top: 14px;">
+                <div class="card">
+                    <h4 class="green">PID + impedance</h4>
+                    <p data-lang="en">Joint‑level setpoint tracking, plus a programmable spring at the tool tip. Why surgical robots feel compliant instead of stiff.</p>
+                    <p data-lang="bg">Setpoint tracking на ниво става, плюс програмируема пружина на върха. Затова хирургичните роботи са податливи, а не корави.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green">Visual servoing</h4>
+                    <p data-lang="en">$\dot q = J^{+}(s_{*} - s)$. Image error &rarr; joint velocity. Powers every autonomous camera holder shipping today.</p>
+                    <p data-lang="bg">$\dot q = J^{+}(s_{*} - s)$. Грешката в изображението &rarr; скорост на ставата. Движи всеки автономен държач на камера на пазара.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green" data-lang="en">Constraint enforcement</h4>
+                    <h4 class="green" data-lang="bg">Налагане на ограничения</h4>
+                    <p data-lang="en">Virtual fixtures. "You may move here, not there." How Mako keeps the saw inside the planned bone region.</p>
+                    <p data-lang="bg">Virtual fixtures. „Може тук, не може там.“ Така Mako държи триона в планираната зона на костта.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">Why it matters for ML</h4>
+                    <h4 class="orange" data-lang="bg">Защо има значение за ML</h4>
+                    <p data-lang="en">Learned policies output <em>references</em>. Classical control tracks them and clamps them. The safety case lives here, not in the network.</p>
+                    <p data-lang="bg">Научените политики извеждат <em>references</em>. Класическият контрол ги trackва и ги clampва. Safety caseът живее тук, не в мрежата.</p>
+                </div>
+            </div>
+            <aside class="notes">
+                Класическият контрол не е стар — той е навсякъде. Всяка става
+                на всеки робот работи с PID. Impedance control прави роботите
+                податливи и приятни за докосване. Visual servoing затваря
+                контролния контур през камерата. Constraint enforcement е
+                как Mako не позволява на триона да излезе извън планираната
+                зона на костта.
+            </aside>
+        </section>
+
+        <!-- 18. Imitation learning -->
+        <section>
+            <h2 class="bold" data-lang="en">Imitation learning. <span class="green">Learn from humans.</span></h2>
+            <h2 class="bold" data-lang="bg">Imitation learning. <span class="green">Учиш от хора.</span></h2>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="en">
+                Classical control gets you precise but rigid behavior. The next step is to learn what “good surgery” looks like from somebody who already knows how to do it. The whole field of imitation learning is built on one premise: humans are an extremely expensive, extremely high‑quality source of demonstrations.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Класическият контрол ти дава точно, но твърдо поведение. Следващата стъпка е да научиш какво е „добра хирургия“ от някой, който вече знае да я прави. Цялото поле на imitation learning стъпва върху една предпоставка: хората са крайно скъп, но крайно висококачествен източник на демонстрации.
+            </p>
+            <div class="grid three" style="margin-top: 16px;">
+                <div class="card">
+                    <h4 class="green">Behavior cloning</h4>
+                    <p data-lang="en">Record (observation, action) pairs from a teacher and train a network to mimic them. Simple, but brittle: as soon as the policy drifts even slightly off the demonstrations, errors compound — the network has never seen those states.</p>
+                    <p data-lang="bg">Записваш (observation, action) двойки от учител и обучаваш мрежа да ги имитира. Просто, но крехко: в момента, в който политиката се отклони от демонстрациите, грешките се натрупват — мрежата никога не е виждала тези състояния.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green">ACT &amp; Diffusion Policy</h4>
+                    <p data-lang="en">Predict <span class="italic">chunks</span> of future actions instead of single steps, using a transformer or a diffusion model. The chunked output is robust to noise and — since 2023 — the strongest non‑RL approach on most surgical benchmarks.</p>
+                    <p data-lang="bg">Предсказват <span class="italic">chunks</span> от бъдещи действия, а не единични стъпки, чрез transformer или diffusion модел. Чанкованият изход е устойчив на шум и — от 2023 насам — най‑силният non‑RL подход на повечето хирургични benchmarks.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">Datasets matter most</h4>
+                    <h4 class="orange" data-lang="bg">Dataset‑ът е най‑важен</h4>
+                    <p data-lang="en"><a href="#">JIGSAWS</a> remains the canonical benchmark: 103 trials of suturing and knot‑tying on dVRK, with synced kinematic and video data plus expert skill scores. The whole imitation literature is calibrated against it — and against how tiny it is.</p>
+                    <p data-lang="bg"><a href="#">JIGSAWS</a> остава каноничният benchmark: 103 изпитвания със зашиване и вързване на възли върху dVRK, със синхронизирани кинематични и video данни плюс expert skill scores. Цялата imitation литература се калибрира срещу него — и срещу това колко е малък.</p>
+                </div>
+            </div>
+            <blockquote style="margin-top: 18px;" data-lang="en">
+                "In imitation learning the model is the easy part.
+                The data collection is the entire problem."
+            </blockquote>
+            <blockquote style="margin-top: 18px;" data-lang="bg">
+                „В imitation learning моделът е лесната част.
+                Събирането на данни е целият проблем.“
+            </blockquote>
+            <aside class="notes">
+                Imitation learning — учиш от хора. Най‑простата форма е behavior
+                cloning — записваш наблюдение и действие, обучаваш мрежа да
+                имитира. Слабост: ако политиката се отклони, грешките се
+                натрупват. Модерните методи — ACT и Diffusion Policy —
+                предсказват цели последователности от действия. Това е
+                най‑силният подход извън RL в момента. Но най‑важното:
+                в imitation learning моделът е лесната част, събирането на
+                данни е целият проблем.
+            </aside>
+        </section>
+
+        <!-- 19. RL crash course (merged) -->
+        <section>
+            <h2 class="bold" data-lang="en">Reinforcement learning, <span class="green">in one slide</span></h2>
+            <h2 class="bold" data-lang="bg">Reinforcement learning <span class="green">в един слайд</span></h2>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="en">
+                Imitation needs an expert. What if you don't have one — or the expert isn't <em>good enough</em>? Then you let the agent discover the policy itself, by trial and error against a simulator and a reward.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Imitation иска експерт. Но ако нямаш — или експертът не е <em>достатъчно добър</em>? Тогава оставяш агента сам да открие политиката, чрез проба и грешка срещу симулатор и reward.
+            </p>
+            <div class="container" style="margin-top: 8px;">
+                <div class="col" style="flex: 0 0 42%;">
+                    <div class="figure-frame">
+                        <img src="images/thesis/agent_vs_environment.png" alt="agent-env loop" style="max-height: 280px;">
+                    </div>
+                </div>
+                <div class="col">
+                    <p class="regular-text" data-lang="en">
+                        Agent picks <span class="orange bold">actions</span>,
+                        observes <span class="blue bold">states</span>,
+                        receives <span class="yellow bold">rewards</span>.
+                    </p>
+                    <p class="regular-text" data-lang="bg">
+                        Агентът избира <span class="orange bold">actions</span>,
+                        наблюдава <span class="blue bold">states</span>,
+                        получава <span class="yellow bold">rewards</span>.
+                    </p>
+                    <div class="formula" style="margin-top: 8px; font-size: 0.95rem;">
+                        $\pi^* = \arg\max_\pi \mathbb{E}\bigl[\textstyle\sum_t \gamma^t r_t\bigr]$
+                    </div>
+                    <p class="regular-text small-text" style="margin-top: 10px;" data-lang="en">
+                        <span class="bold green">Model‑free</span> (PPO, SAC, DQN) — learn from trial &amp; error.<br/>
+                        <span class="bold orange">Model‑based</span> (Dreamer, MuZero) — learn a world model, plan inside it.
+                    </p>
+                    <p class="regular-text small-text" style="margin-top: 10px;" data-lang="bg">
+                        <span class="bold green">Model‑free</span> (PPO, SAC, DQN) — учи от проба и грешка.<br/>
+                        <span class="bold orange">Model‑based</span> (Dreamer, MuZero) — учи модел на света, планира в него.
+                    </p>
+                    <div class="highlight-box" style="margin-top: 10px;">
+                        <p class="regular-text small-text" data-lang="en">
+                            Surgical RL today is <span class="bold">dominated by PPO</span>: stable, continuous control, well‑understood. <span class="bold green">HER</span> shows up for goal‑conditioned tasks with sparse rewards.
+                        </p>
+                        <p class="regular-text small-text" data-lang="bg">
+                            Surgical RL днес е <span class="bold">доминиран от PPO</span>: стабилен, непрекъснат контрол, добре разбран. <span class="bold green">HER</span> излиза на преден план при goal‑conditioned задачи с редки rewards.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <aside class="notes">
+                RL накратко. Агент, среда, действия, състояния, reward.
+                Два големи клона — model‑free и model‑based. В хирургичната
+                роботика днес доминира PPO: стабилен, работи на непрекъснат
+                контрол, добре разбран. HER се използва за задачи с редки
+                rewards и явни цели.
+            </aside>
+        </section>
+
+        <!-- 21. Sim-to-real -->
+        <section>
+            <h2 class="bold" data-lang="en">Sim‑to‑real &amp; <span class="orange">domain randomization</span></h2>
+            <h2 class="bold" data-lang="bg">Sim‑to‑real и <span class="orange">domain randomization</span></h2>
+            <div class="warn-box" style="margin-top: 14px;">
+                <p class="regular-text" data-lang="en">
+                    <span class="bold red">The problem.</span> You can't iterate RL on real tissue.
+                    But policies trained in simulation rarely work on real robots.
+                </p>
+                <p class="regular-text" data-lang="bg">
+                    <span class="bold red">Проблемът.</span> Не можеш да обучаваш RL върху истинска тъкан.
+                    Но политики, обучени в симулация, рядко работят на истински роботи.
+                </p>
+            </div>
+            <div class="highlight-box">
+                <p class="regular-text" data-lang="en">
+                    <span class="bold green">The trick.</span> Randomize physics, lighting, geometry, sensor noise <span class="italic">every episode</span>.
+                    The policy learns to generalize across worlds: including the <span class="orange">real one</span> it's never seen.
+                </p>
+                <p class="regular-text" data-lang="bg">
+                    <span class="bold green">Трикът.</span> Randomize на физика, осветление, геометрия, sensor noise <span class="italic">на всеки епизод</span>.
+                    Политиката се учи да обобщава между светове — включително <span class="orange">истинския</span>, който никога не е виждала.
+                </p>
+            </div>
+            <table class="params" style="margin-top: 16px;" data-lang="en">
+                <tr><th>Randomized</th><th>Typical range (clip‑application example)</th></tr>
+                <tr><td>Vessel radius</td><td>1.5 – 3.0 mm</td></tr>
+                <tr><td>Friction coefficient</td><td>0.3 – 1.2</td></tr>
+                <tr><td>Damping</td><td>0.02 – 0.10</td></tr>
+                <tr><td>Sensing noise</td><td>σ ≈ 0.002 rad</td></tr>
+                <tr><td>Pose tilt</td><td>± 1.1°</td></tr>
+            </table>
+            <table class="params" style="margin-top: 16px;" data-lang="bg">
+                <tr><th>Randomized</th><th>Типичен диапазон (clip‑application пример)</th></tr>
+                <tr><td>Радиус на съда</td><td>1.5 – 3.0 mm</td></tr>
+                <tr><td>Коеф. на триене</td><td>0.3 – 1.2</td></tr>
+                <tr><td>Damping</td><td>0.02 – 0.10</td></tr>
+                <tr><td>Sensing noise</td><td>σ ≈ 0.002 rad</td></tr>
+                <tr><td>Наклон на pose</td><td>± 1.1°</td></tr>
+            </table>
+            <aside class="notes">
+                Sim‑to‑real. Не можеш да обучаваш RL върху истинска тъкан.
+                Но политики обучени в симулация рядко работят на истински
+                робот. Решението е domain randomization — на всеки епизод
+                сменяш физическите параметри, осветлението, геометрията,
+                шума на сензорите. Политиката се учи да обобщава между
+                светове — включително истинския, който никога не е виждала.
+            </aside>
+        </section>
+
+        <!-- 22. Foundation models -->
+        <section>
+            <h2 class="bold" data-lang="en">The new wave. <span class="orange">Foundation models.</span></h2>
+            <h2 class="bold" data-lang="bg">Новата вълна. <span class="orange">Foundation models.</span></h2>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="en">
+                Everything we've discussed so far trains one policy for one task on one robot. The current shift: pre‑train one giant model on every endoscopic video and kinematic trace ever recorded, then fine‑tune it for whatever you actually need. Same playbook that took NLP from 2017 to ChatGPT.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Всичко до тук обучава една политика за една задача върху един робот. Идващата промяна: pre‑train‑ваш един гигантски модел върху всяко ендоскопско видео и всяка кинематична следа, които са били записвани, и го fine‑tune‑ваш за всяка конкретна задача. Същият подход, който отведе NLP от 2017 до ChatGPT.
+            </p>
+            <div class="grid three" style="margin-top: 16px;">
+                <div class="card">
+                    <h4 class="green">RT‑2 / OpenVLA</h4>
+                    <p data-lang="en">Vision‑language‑action models pre‑trained on millions of robot trajectories from many embodiments. You give them an image and a sentence — “pick up the green clip” — they output joint commands. The first credible attempt at a generalist robot brain.</p>
+                    <p data-lang="bg">Vision‑language‑action модели, предварително обучени върху милиони робот траектории от различни роботи. Даваш им изображение и изречение — „вземи зеления клипс“ — те връщат команди към ставите. Първият сериозен опит за общ роботен мозък.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green">SurgicalSAM, EndoFM</h4>
+                    <p data-lang="en">Domain‑specific foundation models for instrument and tissue segmentation in endoscopic video. Fine‑tuned from generic vision foundations (SAM, DINO) on tens of thousands of annotated surgical frames.</p>
+                    <p data-lang="bg">Domain‑specific foundation models за сегментация на инструменти и тъкани в ендоскопско видео. Fine‑tune‑вани от общи vision foundations (SAM, DINO) върху десетки хиляди анотирани хирургични кадри.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange">CholecT45 / EndoVis</h4>
+                    <p data-lang="en">Public datasets that fuel the pre‑training era — tens of thousands of annotated cholecystectomy and laparoscopy videos. Still many orders of magnitude smaller than ImageNet, which is the field's structural problem.</p>
+                    <p data-lang="bg">Публични datasets, които захранват ерата на pre‑training — десетки хиляди анотирани видеа от холецистектомия и лапароскопия. Все още много порядъци по‑малки от ImageNet — структурният проблем на полето.</p>
+                </div>
+            </div>
+            <blockquote style="margin-top: 18px;" data-lang="en">
+                2024 was when the field stopped training from scratch
+                and started fine‑tuning.
+            </blockquote>
+            <blockquote style="margin-top: 18px;" data-lang="bg">
+                2024 беше годината, в която полето спря да обучава от нула
+                и започна да fine‑tune‑ва.
+            </blockquote>
+            <aside class="notes">
+                Новата вълна — foundation модели. RT‑2 и OpenVLA — vision‑language‑action
+                модели, предобучени върху милиони робот траектории. Казваш на
+                английски какво искаш, моделът връща ставни команди. SurgicalSAM
+                и EndoFM — domain‑specific foundation модели за сегментация на
+                инструменти и тъкани в ендоскопско видео. Dataset‑и като CholecT45
+                и EndoVis захранват ерата на предобучаването. 2024 беше годината,
+                в която полето спря да обучава от нула и започна да fine‑tune.
+            </aside>
+        </section>
+
+        <!-- =======================================================
+             PHASE 6 — CASE STUDY
+             ======================================================= -->
+
+        <!-- 27. Section header: case study -->
+        <section data-background-color="#0a1a09">
+            <h1 class="bold" style="font-size: 2.4rem;" data-lang="en">
+                Part 5: A <span class="orange">Concrete Example</span>
+            </h1>
+            <h1 class="bold" style="font-size: 2.4rem;" data-lang="bg">
+                Част 5: <span class="orange">Конкретен пример</span>
+            </h1>
+            <p class="regular-text center gray" style="margin-top: 20px; max-width: 820px; margin-left: auto; margin-right: auto;" data-lang="en">
+                Enough surveys. Let's pick one task and follow it from procedure picture to trained policy to deployment envelope. Everything we've talked about — PPO, SurRoL, reward shaping, runtime monitors — is going to show up here in the same slide deck, applied to one job.
+            </p>
+            <p class="regular-text center gray" style="margin-top: 20px; max-width: 820px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Доста обзор. Сега избираме една задача и я проследяваме от картинка на процедурата до обучена политика и deployment envelope. Всичко, за което говорихме — PPO, SurRoL, reward shaping, runtime monitors — ще се яви в едно място, приложено към една задача.
+            </p>
+        </section>
+
+        <!-- 28. The problem -->
+        <section>
+            <h2 class="bold" data-lang="en">Vascular clip application</h2>
+            <h2 class="bold" data-lang="bg">Поставяне на съдов клипс</h2>
+            <div class="strip" style="margin-top: 12px;">
+                <div class="figure-frame"><img src="images/thesis/procedure/step_1.png" alt="step 1"></div>
+                <div class="figure-frame"><img src="images/thesis/procedure/step_2.png" alt="step 2"></div>
+                <div class="figure-frame"><img src="images/thesis/procedure/step_3.png" alt="step 3"></div>
+                <div class="figure-frame"><img src="images/thesis/procedure/step_4.png" alt="step 4"></div>
+                <div class="figure-frame"><img src="images/thesis/procedure/step_5.png" alt="step 5"></div>
+                <div class="figure-frame"><img src="images/thesis/procedure/step_6.png" alt="step 6"></div>
+            </div>
+            <p class="regular-text center" style="margin-top: 12px;" data-lang="en">
+                Dissect &rarr; plan &rarr; approach &rarr; center &rarr;
+                <span class="orange bold">squeeze</span> &rarr; fire.
+            </p>
+            <p class="regular-text center" style="margin-top: 12px;" data-lang="bg">
+                Дисекция &rarr; план &rarr; доближаване &rarr; центриране &rarr;
+                <span class="orange bold">стискане</span> &rarr; изстрелване.
+            </p>
+            <p class="regular-text center small-text gray" data-lang="en">
+                We zoom into one step: <span class="orange">the pre‑firing squeeze</span>.
+                Sub‑mm precision, narrow safety window, must hold steady before the clip is fired.
+            </p>
+            <p class="regular-text center small-text gray" data-lang="bg">
+                Фокусираме върху една стъпка: <span class="orange">стискането преди изстрелване</span>.
+                Под‑милиметрова точност, тесен прозорец на безопасност, трябва да задържи стабилно преди да се изстреля клипсът.
+            </p>
+            <aside class="notes">
+                Конкретен пример. Поставяне на клипс върху кръвоносен съд.
+                Шест стъпки: дисекция, планиране, доближаване, центриране,
+                стискане, изстрелване. Фокусираме се върху стъпката
+                "стискане" — най‑деликатната. Под‑милиметрова точност,
+                тесен прозорец на безопасност, трябва да задържи стабилно
+                преди клипсът да бъде изстрелян.
+            </aside>
+        </section>
+
+        <!-- 29. How it's framed -->
+        <section>
+            <h2 class="bold" data-lang="en">How we frame it</h2>
+            <h2 class="bold" data-lang="bg">Как формулираме задачата</h2>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="en">
+                The hardest part of applying RL to a real task is rarely training. It's writing the four boxes below: <em>what does the agent see, what does it do, what counts as good, and where does it learn?</em> Get those wrong and no algorithm will save you.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Най‑трудната част в прилагането на RL върху реална задача рядко е обучението. Тя е да напишеш четирите кутии по‑долу: <em>какво вижда агентът, какво прави, какво се счита за добро и къде учи?</em> Ако тези са грешни, никакъв алгоритъм няма да те спаси.
+            </p>
+            <div class="grid" style="margin-top: 14px;">
+                <div class="card">
+                    <h4 class="green">State (4‑D)</h4>
+                    <p class="formula" style="margin: 4px 0;">[ θ, &nbsp;u<sub>prev</sub>, &nbsp;r, &nbsp;τ ]</p>
+                    <p class="small-text" style="margin-top: 4px;" data-lang="en">Jaw angle, last action, vessel radius, wall thickness.</p>
+                    <p class="small-text" style="margin-top: 4px;" data-lang="bg">Ангел на челюстите, предишно action, радиус на съда, дебелина на стената.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">Action (1‑D continuous)</h4>
+                    <h4 class="orange" data-lang="bg">Action (1‑D непрекъснато)</h4>
+                    <p class="formula" style="margin: 4px 0;">u ∈ [−1, +1] &rarr; θ<sub>cmd</sub></p>
+                    <p class="small-text" style="margin-top: 4px;" data-lang="en">A single continuous knob that sets the commanded jaw angle.</p>
+                    <p class="small-text" style="margin-top: 4px;" data-lang="bg">Един непрекъснат параметър, който задава желания ангел на челюстите.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green" data-lang="en">Reward (sculpted)</h4>
+                    <h4 class="green" data-lang="bg">Reward (формована)</h4>
+                    <p class="small-text" style="line-height: 1.55;" data-lang="en">
+                        <span class="green">+ accuracy</span>. Quadratic penalty on (θ − θ*)².<br/>
+                        <span class="orange">− safety</span>. Large penalty near the damage threshold.<br/>
+                        <span class="orange">− smoothness</span>. Penalty on |Δu|.<br/>
+                        <span class="green bold">+ success bonus</span> for a stable hold.
+                    </p>
+                    <p class="small-text" style="line-height: 1.55;" data-lang="bg">
+                        <span class="green">+ точност</span>. Квадратична пенализация върху (θ − θ*)².<br/>
+                        <span class="orange">− безопасност</span>. Голяма пенализация близо до прага на увреждане.<br/>
+                        <span class="orange">− плавност</span>. Пенализация върху |Δu|.<br/>
+                        <span class="green bold">+ бонус за успех</span> при стабилно задържане.
+                    </p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">Setup</h4>
+                    <h4 class="orange" data-lang="bg">Setup</h4>
+                    <p class="small-text" data-lang="en">
+                        <span class="bold">Algorithm.</span> PPO, model‑free policy gradient.<br/>
+                        <span class="bold">Simulator.</span> SurRoL / PyBullet.<br/>
+                        <span class="bold">Training.</span> ~400k steps on a laptop GPU.
+                    </p>
+                    <p class="small-text" data-lang="bg">
+                        <span class="bold">Алгоритъм.</span> PPO, model‑free policy gradient.<br/>
+                        <span class="bold">Симулатор.</span> SurRoL / PyBullet.<br/>
+                        <span class="bold">Обучение.</span> ~400k стъпки на laptop GPU.
+                    </p>
+                </div>
+            </div>
+            <aside class="notes">
+                Как формулираме задачата като MDP. Състояние — четиримерно:
+                ъгъл на челюстите, предишно действие, радиус на съда, дебелина
+                на стената. Действие — едно непрекъснато число. Reward — четири
+                компонента: точност, безопасност, плавност и бонус за успех.
+                Алгоритъм — PPO, същото семейство като при паркинг демото.
+                Симулатор — SurRoL. Обучение — около 400 хиляди стъпки на лаптоп.
+            </aside>
+        </section>
+
+        <!-- 30. The learned behavior -->
+        <section>
+            <h2 class="bold" data-lang="en">The learned <span class="orange">behavior</span></h2>
+            <h2 class="bold" data-lang="bg">Наученото <span class="orange">поведение</span></h2>
+            <p class="regular-text center small-text" data-lang="en">
+                <span class="bold">Approach fast → freeze</span>: four frames of the policy squeezing a vessel.
+            </p>
+            <p class="regular-text center small-text" data-lang="bg">
+                <span class="bold">Бързо приближаване → задържане</span>: четири кадъра от политиката, стискаща съд.
+            </p>
+            <div class="strip" style="margin-top: 14px;">
+                <div>
+                    <div class="figure-frame"><img src="images/thesis/experiment/vessel_squeeze_step0_jaw.png" alt="step 0" style="max-height: 210px; max-width: 260px;"></div>
+                    <p class="small-text center gray" style="margin-top: 2px;" data-lang="en">t = 0 &middot; jaws open</p>
+                    <p class="small-text center gray" style="margin-top: 2px;" data-lang="bg">t = 0 &middot; отворени челюсти</p>
+                </div>
+                <div>
+                    <div class="figure-frame"><img src="images/thesis/experiment/vessel_squeeze_step5_jaw.png" alt="step 5" style="max-height: 210px; max-width: 260px;"></div>
+                    <p class="small-text center gray" style="margin-top: 2px;" data-lang="en">t = 5 &middot; approaching</p>
+                    <p class="small-text center gray" style="margin-top: 2px;" data-lang="bg">t = 5 &middot; приближаване</p>
+                </div>
+                <div>
+                    <div class="figure-frame"><img src="images/thesis/experiment/vessel_squeeze_step10_jaw.png" alt="step 10" style="max-height: 210px; max-width: 260px;"></div>
+                    <p class="small-text center gray" style="margin-top: 2px;" data-lang="en">t = 10 &middot; entering band</p>
+                    <p class="small-text center gray" style="margin-top: 2px;" data-lang="bg">t = 10 &middot; влизане в зоната</p>
+                </div>
+                <div>
+                    <div class="figure-frame"><img src="images/thesis/experiment/vessel_squeeze_step19_jaw.png" alt="step 19" style="max-height: 210px; max-width: 260px;"></div>
+                    <p class="small-text center gray" style="margin-top: 2px;" data-lang="en">t = 19 &middot; held steady</p>
+                    <p class="small-text center gray" style="margin-top: 2px;" data-lang="bg">t = 19 &middot; стабилно задържане</p>
+                </div>
+            </div>
+            <p class="regular-text center small-text gray" style="margin-top: 14px;" data-lang="en">
+                Nobody programmed these two phases: they <span class="orange bold">emerged</span> from the reward function.
+            </p>
+            <p class="regular-text center small-text gray" style="margin-top: 14px;" data-lang="bg">
+                Никой не е програмирал тези две фази — те <span class="orange bold">възникнаха</span> от reward функцията.
+            </p>
+            <aside class="notes">
+                Поведението, научено от агента. Четири кадъра от един епизод.
+                В началото челюстите са широко отворени. Политиката ги затваря
+                бързо. Към десетата стъпка влиза в целевата зона. До края
+                на епизода — стабилно задържане. Никой не е програмирал тези
+                две фази — те възникват от структурата на reward функцията.
+            </aside>
+        </section>
+
+        <!-- 31a. Deploying it safely -->
+        <section>
+            <h2 class="bold" data-lang="en">Wrapping the policy for <span class="orange">deployment</span></h2>
+            <h2 class="bold" data-lang="bg">Опаковане на политиката за <span class="orange">deployment</span></h2>
+            <p class="regular-text center small-text gray" data-lang="en">
+                A learned policy never reaches a patient on its own. It sits inside a deterministic envelope.
+            </p>
+            <p class="regular-text center small-text gray" data-lang="bg">
+                Научената политика никога не стига до пациент сама. Тя живее в детерминистична обвивка.
+            </p>
+            <div class="grid" style="margin-top: 14px; grid-template-columns: repeat(4, 1fr);">
+                <div class="card">
+                    <h4 class="green" data-lang="en">Policy</h4>
+                    <h4 class="green" data-lang="bg">Policy</h4>
+                    <p data-lang="en">PPO network. Outputs a <em>reference</em> jaw angle, not a torque or a velocity. Runs at 50 Hz — fast enough to keep up with the surgeon, slow enough that the supervisor below can sanity‑check every step.</p>
+                    <p data-lang="bg">PPO мрежа. Извежда <em>reference</em> ангел, не torque или скорост. Работи на 50 Hz — достатъчно бързо, за да върви с хирурга, и достатъчно бавно, за да може supervisorът отдолу да проверява всяка стъпка.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green" data-lang="en">Geometric guard</h4>
+                    <h4 class="green" data-lang="bg">Geometric guard</h4>
+                    <p data-lang="en">A pure‑code clamp on θ<sub>cmd</sub>: never inside the damage band, never outside the workspace, never moving faster than the actuator allows. No ML, ~50 lines, easy to certify under IEC 62304.</p>
+                    <p data-lang="bg">Чистокодов clamp върху θ<sub>cmd</sub>: никога в зоната на увреждане, никога извън workspace, никога по‑бърз от това, което актуаторът позволява. Без ML, ~50 реда, лесен за сертификация по IEC 62304.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">Runtime monitor</h4>
+                    <h4 class="orange" data-lang="bg">Runtime monitor</h4>
+                    <p data-lang="en">Watches |Δu|, action entropy and prediction confidence in real time. If the policy starts thrashing or its confidence collapses, the monitor trips it out of the loop — the network is treated as a fallible component, not a source of truth.</p>
+                    <p data-lang="bg">Следи |Δu|, action entropy и prediction confidence в реално време. Ако политиката започне да припрясва или confidence и падне, monitorът я изключва от цикъла — мрежата се третира като грешим компонент, не като източник на истина.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">Watchdog &amp; safe state</h4>
+                    <h4 class="orange" data-lang="bg">Watchdog и safe state</h4>
+                    <p data-lang="en">If inference misses even one frame, a hardware watchdog timer fires: the controller servos to the last‑good reference, the surgeon gets an audible alert, manual control is handed back. The system is failure‑tolerant by design, not by hope.</p>
+                    <p data-lang="bg">Ако inference пропусне дори един кадър, хардуерен watchdog таймер се изпълнява: контролерът прави servo до last‑good reference, хирургът получава звукова аларма, мануалният контрол се връща. Системата е failure‑tolerant по дизайн, не по надежда.</p>
+                </div>
+            </div>
+            <p class="regular-text center small-text gray" style="margin-top: 14px;" data-lang="en">
+                The interesting engineering isn't the network. It's the <span class="orange">three boxes around it</span>.
+            </p>
+            <p class="regular-text center small-text gray" style="margin-top: 14px;" data-lang="bg">
+                Интересната инженерна работа не е в мрежата. Тя е в <span class="orange">трите кутии около нея</span>.
+            </p>
+            <aside class="notes">
+                Никоя научена политика не стига до пациент сама. Тя живее в
+                детерминистичен капсул — geometric guard клампва изхода,
+                runtime monitor следи за аномалии, watchdog таймерът връща
+                робота в безопасно състояние при пропуснат кадър. Интересната
+                инженерна работа не е в мрежата, а в трите кутии около нея.
+            </aside>
+        </section>
+
+        <!-- 31. The result -->
+        <section>
+            <h2 class="bold" data-lang="en">What it gave us</h2>
+            <h2 class="bold" data-lang="bg">Какво получихме</h2>
+            <div class="container" style="margin-top: 12px;">
+                <div class="col">
+                    <div class="figure-frame">
+                        <img src="images/thesis/ppo/abs_error_vs_delta_u.png" alt="hexbin two-phase" style="max-height: 360px;">
+                    </div>
+                </div>
+                <div class="col">
+                    <p class="regular-text" data-lang="en">
+                        Two clusters emerged, untouched by hand:
+                    </p>
+                    <p class="regular-text" data-lang="bg">
+                        Два клъстера възникнаха сами, без намеса:
+                    </p>
+                    <p class="regular-text" data-lang="en">
+                        <span class="bold orange">Approach</span>: large error, large action.<br/>
+                        <span class="bold green">Hold</span>: tiny error, near‑zero action.
+                    </p>
+                    <p class="regular-text" data-lang="bg">
+                        <span class="bold orange">Приближаване</span>: голяма грешка, голямо action.<br/>
+                        <span class="bold green">Задържане</span>: минимална грешка, почти нулево action.
+                    </p>
+                    <div class="container" style="margin-top: 14px;">
+                        <div class="stat"><span class="num">~86%</span><span class="lbl" data-lang="en">success on held‑out evals</span><span class="lbl" data-lang="bg">успеваемост на held‑out evals</span></div>
+                        <div class="stat"><span class="num">4–5°</span><span class="lbl" data-lang="en">final error</span><span class="lbl" data-lang="bg">финална грешка</span></div>
+                    </div>
+                    <p class="regular-text small-text gray italic" style="margin-top: 8px;" data-lang="en">
+                        Sim only. Never touched a real robot. <span class="bold">One narrow sub‑task done well.</span>
+                    </p>
+                    <p class="regular-text small-text gray italic" style="margin-top: 8px;" data-lang="bg">
+                        Само в симулация. Никога върху истински робот. <span class="bold">Една тясна подзадача, изпълнена добре.</span>
+                    </p>
+                </div>
+            </div>
+            <aside class="notes">
+                Какво ни даде. Две поведенчески фази възникнаха сами в данните:
+                "приближаване" с големи действия, и "задържане" с почти
+                нулеви действия. Никой не е програмирал това. Числово:
+                около 86% успеваемост на тестова изборка, грешка от 4 до 5
+                градуса. Подчертавам — само в симулация, никога върху
+                истински робот. Една тясна под‑задача, изпълнена добре.
+            </aside>
+        </section>
+
+        <!-- =======================================================
+             PHASE 7 — ROAD AHEAD
+             ======================================================= -->
+
+        <!-- 32. Section header -->
+        <section data-background-color="#1a1a09">
+            <h1 class="bold" style="font-size: 2.4rem;" data-lang="en">
+                Part 6: The <span class="orange">Road Ahead</span>
+            </h1>
+            <h1 class="bold" style="font-size: 2.4rem;" data-lang="bg">
+                Част 6: <span class="orange">Пътят напред</span>
+            </h1>
+            <p class="regular-text center gray" style="margin-top: 20px; max-width: 820px; margin-left: auto; margin-right: auto;" data-lang="en">
+                We just trained one policy for one sub‑task in simulation. The honest next question is: what would it take to get a policy like this to a real patient? Two slides on what's still hard, two slides on where the field is going, and one on the road from prototype to OR.
+            </p>
+            <p class="regular-text center gray" style="margin-top: 20px; max-width: 820px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Току‑що обучихме една политика за една подзадача в симулация. Честният следващ въпрос е: какво би трябвало да се случи, за да стигне такава политика до реален пациент? Два слайда за това, което все още е трудно, два за накъде отива полето, и един за пътя от прототип до операционна зала.
+            </p>
+        </section>
+
+        <!-- 33. Open challenges -->
+        <section>
+            <h2 class="bold" data-lang="en">Open <span class="red">challenges</span></h2>
+            <h2 class="bold" data-lang="bg">Отворени <span class="red">предизвикателства</span></h2>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="en">
+                The case study worked because we kept the problem small and stayed in simulation. The moment you scale either direction — broader behavior, real tissue — the field hits the same five walls. None of these are research curiosities; each one is a project plan for the next decade.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Case study‑то сработи, защото запазихме проблема малък и останахме в симулация. В момента, в който скалираш в която и да е посока — по‑широко поведение, реална тъкан — полето се ударя в същите пет стени. Нито едно от тези не е изследователска любопитка — всяко е план за работа за следващото десетилетие.
+            </p>
+            <div class="grid" style="margin-top: 14px;">
+                <div class="card red">
+                    <h4 class="red" data-lang="en">Sim‑to‑real gap</h4>
+                    <h4 class="red" data-lang="bg">Sim‑to‑real пропаст</h4>
+                    <p data-lang="en">Soft tissue deforms, organs slip on each other, blood and smoke obscure vision. Almost none of this matches the simulator the policy was trained in. Domain randomization helps; it doesn't close the gap.</p>
+                    <p data-lang="bg">Меките тъкани се деформират, органите се плъзгат един върху друг, кръв и дим замъгляват зрението. Почти нищо от това не съвпада със симулатора, в който е обучена политиката. Domain randomization помага; не затваря пропастта.</p>
+                </div>
+                <div class="card red">
+                    <h4 class="red" data-lang="en">Force / haptic sensing</h4>
+                    <h4 class="red" data-lang="bg">Force / haptic sensing</h4>
+                    <p data-lang="en">Most surgical robots have <span class="bold">no real force feedback</span> at the tool tip — cable‑driven mechanisms hide it. You can't safely squeeze, pull, or suture without knowing the force you're applying.</p>
+                    <p data-lang="bg">Повечето хирургични роботи <span class="bold">нямат истински force feedback</span> на върха на инструмента — cable‑driven механизмите го скриват. Не можеш безопасно да стискаш, дърпаш или зашиваш, без да знаеш силата.</p>
+                </div>
+                <div class="card red">
+                    <h4 class="red" data-lang="en">Generalization across patients</h4>
+                    <h4 class="red" data-lang="bg">Генерализация между пациенти</h4>
+                    <p data-lang="en">A policy trained on one anatomy can fail on another — organ size, position, fat thickness, prior surgery all change the picture. Big, diverse datasets fix it; we don't have them yet.</p>
+                    <p data-lang="bg">Политика, обучена на една анатомия, може да се провали на друга — размер на органа, позиция, дебелина на мазнината, предишни операции — всичко променя картината. Големи и разнообразни datasets решават проблема; не ги имаме още.</p>
+                </div>
+                <div class="card red">
+                    <h4 class="red" data-lang="en">Verification &amp; regulation</h4>
+                    <h4 class="red" data-lang="bg">Верификация и регулация</h4>
+                    <p data-lang="en">How do you certify a learned controller under IEC 62304 / FDA SaMD when the function is a 50M‑parameter network? Guidance is still being written. Today's early answers: SBOMs, model cards, and runtime monitors that <em>are</em> certifiable.</p>
+                    <p data-lang="bg">Как се сертифицира научен контролер по IEC 62304 / FDA SaMD, когато функцията е мрежа с 50M параметра? Ръководствата още се пишат. Ранните отговори: SBOMs, model cards и runtime monitors, които <em>могат</em> да се сертифицират.</p>
+                </div>
+                <div class="card red">
+                    <h4 class="red" data-lang="en">Data scarcity</h4>
+                    <h4 class="red" data-lang="bg">Недостиг на данни</h4>
+                    <p data-lang="en">JIGSAWS = 103 demonstrations. ImageNet had 14M. The gap is <em>five orders of magnitude</em>. Surgical recordings are also sensitive personal health data — hard to share, even between hospitals.</p>
+                    <p data-lang="bg">JIGSAWS = 103 демонстрации. ImageNet имаше 14M. Пропастта е <em>пет порядъка</em>. Хирургичните записи са и чувствителни лични здравни данни — трудно за споделяне дори между болници.</p>
+                </div>
+            </div>
+            <aside class="notes">
+                Отворените предизвикателства. Sim‑to‑real пропастта — меките
+                тъкани се деформират, кръвта замъглява зрението. Липса на
+                force feedback в повечето роботи. Генерализация между пациенти.
+                Сертификация и регулация — FDA още пише ръководствата.
+                Дефицит на данни — JIGSAWS има 103 демонстрации, ImageNet
+                имаше 14 милиона. Пропастта е пет порядъка. И накрая —
+                юридическата отговорност, която още няма ясен отговор.
+            </aside>
+        </section>
+
+        <!-- 34. Where it's going -->
+        <section>
+            <h2 class="bold" data-lang="en">Where the field is heading</h2>
+            <h2 class="bold" data-lang="bg">Накъде отива полето</h2>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="en">
+                The challenges are real, but the answers are taking shape. Don't expect a robot that performs an operation. Expect one that watches the surgeon, takes over the boring parts, and uses the same kind of pre‑trained models we use elsewhere in AI today.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Предизвикателствата са реални, но отговорите се оформят. Не очаквайте робот, който извършва операция. Очаквайте робот, който наблюдава хирурга, поема скучните части и използва същия вид pre‑trained модели, каквито вече използваме навсякъде в AI.
+            </p>
+            <div class="grid" style="margin-top: 16px;">
+                <div class="card">
+                    <h4 class="green" data-lang="en">Surgical copilots</h4>
+                    <h4 class="green" data-lang="bg">Surgical copilots</h4>
+                    <p data-lang="en">Models that watch the procedure live, name the anatomy in real time, suggest the next step, and offer to take over routine actions. Think Copilot for code — except the editor is an OR.</p>
+                    <p data-lang="bg">Модели, които наблюдават процедурата на живо, разпознават анатомията в реално време, предлагат следващата стъпка и поемат рутинни действия. Copilot за код, но редакторът е операционна.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green" data-lang="en">Generalist foundation models</h4>
+                    <h4 class="green" data-lang="bg">Generalist foundation models</h4>
+                    <p data-lang="en">Pre‑trained on every endoscopic video and kinematic trace ever recorded, then fine‑tuned per task. The same playbook that took NLP from 2017 to ChatGPT — just with five fewer orders of magnitude of data, for now.</p>
+                    <p data-lang="bg">Предварително обучени върху всяко ендоскопско видео и всяка кинематична следа, след което fine‑tune‑вани за всяка задача. Същият подход, който отведе NLP от 2017 до ChatGPT — просто с пет порядъка по‑малко данни, засега.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">Multi‑modal sensing</h4>
+                    <h4 class="orange" data-lang="bg">Multi‑modal sensing</h4>
+                    <p data-lang="en">Force, vision, intra‑op ultrasound, and ICG fluorescence fused into one perception stack. Each modality answers a question the others can't — force tells you what tissue is doing, fluorescence tells you where the blood goes.</p>
+                    <p data-lang="bg">Force, vision, интраоперативен ултразвук и ICG флуоресценция, слети в един perception stack. Всяка модалност отговаря на въпрос, на който другите не могат — force казва какво прави тъканта, флуоресценцията — къде тече кръвта.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">Last‑foot autonomy</h4>
+                    <h4 class="orange" data-lang="bg">Last‑foot автономия</h4>
+                    <p data-lang="en">The realistic near‑term: the surgeon does the surgery, the robot does the boring 80%. Suction, retraction, camera holding, irrigation, simple closure — all good targets for narrow autonomy that don't require <em>solving</em> surgery.</p>
+                    <p data-lang="bg">Реалистичното в краткосрочен план: хирургът прави хирургията, роботът поема скучните 80%. Аспирация, ретракция, държане на камерата, иригация, прости зашивания — всички добри цели за тясна автономия, която не изисква да <em>решаваш</em> хирургията.</p>
+                </div>
+            </div>
+            <aside class="notes">
+                Накъде отива полето. Първо — surgical copilots, модели които
+                наблюдават процедурата на живо и предлагат следващата стъпка
+                или поемат рутинни задачи. Като Copilot за код, но за хирургия.
+                Второ — generalist foundation модели, предобучени върху всяко
+                ендоскопско видео и всяка кинематична следа. Трето — multi‑modal
+                сетива. Четвърто — "last‑foot" автономия: хирургът прави
+                операцията, роботът поема скучните 80% — аспирация, ретракция,
+                камера, иригация, прости зашивания.
+            </aside>
+        </section>
+
+        <!-- 35. The V&V ladder -->
+        <section>
+            <h2 class="bold" data-lang="en">The road to the OR</h2>
+            <h2 class="bold" data-lang="bg">Пътят до операционната</h2>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="en">
+                There is no shortcut from a working policy in simulation to a deployed one in the OR. There's a ladder, and every rung filters out things you didn't think you'd missed. Skipping rungs is how patients get hurt.
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Няма къси пътища от работеща политика в симулация до deployment в залата. Има стълба и всяко стъпало филтрира неща, които не си знаел, че си пропуснал. Прескачането на стъпала е начинът да застраши пациент.
+            </p>
+            <ul class="levels" style="margin-top: 18px;" data-lang="en">
+                <li><span class="lv">Step 1</span> Simulation and unit tests.</li>
+                <li><span class="lv">Step 2</span> Hardware‑in‑the‑loop with realistic latency.</li>
+                <li><span class="lv">Step 3</span> Benchtop tissue analogs with force and flow sensors.</li>
+                <li><span class="lv">Step 4</span> Cadaver and animal preclinical labs.</li>
+                <li><span class="lv">Step 5</span> IRB‑supervised limited clinical trial.</li>
+                <li><span class="lv">Step 6</span> Deployment under strict stop rules.</li>
+            </ul>
+            <ul class="levels" style="margin-top: 18px;" data-lang="bg">
+                <li><span class="lv">Стъпка 1</span> Симулация и unit тестове.</li>
+                <li><span class="lv">Стъпка 2</span> Hardware‑in‑the‑loop с реалистична latency.</li>
+                <li><span class="lv">Стъпка 3</span> Benchtop изкуствени тъкани със силови и flow сензори.</li>
+                <li><span class="lv">Стъпка 4</span> Cadaver и животински preclinical лаборатории.</li>
+                <li><span class="lv">Стъпка 5</span> IRB‑надзиравано ограничено клинично проучване.</li>
+                <li><span class="lv">Стъпка 6</span> Deployment под строги stop правила.</li>
+            </ul>
+            <p class="regular-text center small-text gray" style="margin-top: 16px;" data-lang="en">
+                Years of engineering. <span class="bold">And that's the right pace.</span>
+            </p>
+            <p class="regular-text center small-text gray" style="margin-top: 16px;" data-lang="bg">
+                Години инженерство. <span class="bold">И това е правилното темпо.</span>
+            </p>
+            <aside class="notes">
+                Пътят от прототип до операционна зала. Симулация, after that
+                hardware‑in‑the‑loop, после benchtop с изкуствени тъкани и
+                силови сензори, после cadaver лаборатории, после ограничени
+                клинични проучвания под етичен надзор, и накрая — деплоймент
+                със строги stop правила. Това отнема години. И трябва да
+                отнема години.
+            </aside>
+        </section>
+
+        <!-- =======================================================
+             PHASE 8 — WRAP
+             ======================================================= -->
+
+        <!-- 36. Takeaways -->
+        <section>
+            <h2 class="bold" data-lang="en">Takeaways</h2>
+            <h2 class="bold" data-lang="bg">Какво да запомните</h2>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="en">
+                If only three things stay with you from the last hour, let it be these. They are the answers to “what does autonomy in surgery actually look like in 2026,” “do I need a new tech stack to build it,” and “where does the safety actually live.”
+            </p>
+            <p class="regular-text center small-text gray" style="max-width: 940px; margin-left: auto; margin-right: auto;" data-lang="bg">
+                Ако само три неща останат в главата ви от изминалия час, нека бъдат тези. Те са отговорите на „как изглежда хирургичната автономия в 2026“, „трябва ли ми нов технологичен стек, за да я построя“ и „къде реално живее безопасността“.
+            </p>
+            <div class="grid three" style="margin-top: 24px;">
+                <div class="card">
+                    <h4 class="green" data-lang="en">1 &middot; Narrow and deep</h4>
+                    <h4 class="green" data-lang="bg">1 &middot; Тясно и дълбоко</h4>
+                    <p data-lang="en">Surgical autonomy is narrow and deep, not broad. Mako, Ion, STAR each automate <em>one</em> thing.</p>
+                    <p data-lang="bg">Хирургичната автономия е тясна и дълбока, не широка. Mako, Ion, STAR — всеки автоматизира <em>едно</em> нещо.</p>
+                </div>
+                <div class="card">
+                    <h4 class="green" data-lang="en">2 &middot; Familiar stack</h4>
+                    <h4 class="green" data-lang="bg">2 &middot; Познат стек</h4>
+                    <p data-lang="en">The stack is mostly tools you already know. PyTorch, ROS, Flask, Jetson, plus a few surgical‑specific simulators.</p>
+                    <p data-lang="bg">Стекът е предимно инструменти, които вече познавате. PyTorch, ROS, Flask, Jetson, плюс няколко специфични симулатора.</p>
+                </div>
+                <div class="card orange">
+                    <h4 class="orange" data-lang="en">3 &middot; Safety is plumbing</h4>
+                    <h4 class="orange" data-lang="bg">3 &middot; Безопасността е водопровод</h4>
+                    <p data-lang="en">Safety isn't a feature. It's the <span class="italic">reward function</span>, the <span class="italic">runtime monitor</span>, and the <span class="italic">V&amp;V ladder</span>.</p>
+                    <p data-lang="bg">Безопасността не е feature. Тя е в <span class="italic">reward function</span>, в <span class="italic">runtime monitor</span> и в <span class="italic">V&amp;V стълбата</span>.</p>
+                </div>
+            </div>
+            <aside class="notes">
+                Три неща да си запомните. Първо — хирургичната автономност е
+                тясна и дълбока, не широка. Mako, Ion, STAR — всеки автоматизира
+                по една задача. Второ — стекът е предимно инструменти, които
+                вече познавате: PyTorch, ROS, Flask, Jetson, плюс няколко
+                специфични симулатори. Трето — безопасността не е функция,
+                а конкретно нещо: в reward функцията, в runtime monitor‑ите,
+                и в процеса на верификация.
+            </aside>
+        </section>
+
+        <!-- 37. Thank you -->
+        <section data-background-color="#000">
+            <h1 class="bold" style="font-size: 2.8rem;" data-lang="en">
+                <span class="green">Thank you.</span>
+            </h1>
+            <h1 class="bold" style="font-size: 2.8rem;" data-lang="bg">
+                <span class="green">Благодаря.</span>
+            </h1>
+            <p class="regular-text center" style="font-size: 1.3rem; margin-top: 30px; color: #ddd;" data-lang="en">
+                Questions?
+            </p>
+            <p class="regular-text center" style="font-size: 1.3rem; margin-top: 30px; color: #ddd;" data-lang="bg">
+                Въпроси?
+            </p>
+            <p class="center" style="margin-top: 60px; color: #888;">
+                David Mavrodiev<br/>
+                <span class="small-text">github.com/David-Mavrodiev</span>
+            </p>
+            <aside class="notes">
+                Благодаря за вниманието. Готов съм за въпроси.
+            </aside>
+        </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <script>
+        // ---------- Bilingual toggle ----------
+        (function () {
+            const KEY = 'surgicalRLPresentationLang';
+            const supported = ['en', 'bg'];
+            const initial = supported.includes(localStorage.getItem(KEY))
+                ? localStorage.getItem(KEY)
+                : 'en';
+
+            function setLang(lang) {
+                if (!supported.includes(lang)) return;
+                document.documentElement.lang = lang;
+                localStorage.setItem(KEY, lang);
+                document.querySelectorAll('#lang-toggle button').forEach(b => {
+                    b.classList.toggle('active', b.dataset.setLang === lang);
+                });
+                if (window.Reveal && Reveal.layout) {
+                    Reveal.layout();
+                }
+            }
+
+            document.querySelectorAll('#lang-toggle button').forEach(b => {
+                b.addEventListener('click', () => setLang(b.dataset.setLang));
+            });
+
+            setLang(initial);
+        })();
+
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            touch: true,
+            loop: false,
+            transition: 'slide',
+            slideNumber: 'c/t',
+            width: 1280,
+            height: 760,
+            margin: 0.06,
+            minScale: 0.2,
+            maxScale: 1.6
+        });
+
+        function renderMath(scope) {
+            if (window.renderMathInElement) {
+                renderMathInElement(scope || document.body, {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$',  right: '$',  display: false }
+                    ],
+                    throwOnError: false
+                });
+            }
+        }
+        window.addEventListener('load', () => renderMath());
+
+        Reveal.addEventListener('slidechanged', function (event) {
+            renderMath(event.currentSlide);
+        });
+    </script>
+</body>
+
+</html>
