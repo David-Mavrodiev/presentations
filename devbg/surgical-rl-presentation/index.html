@@ -161,23 +161,6 @@
     .callout strong { font-size: 0.78em; }
     .callout span { color: var(--muted); font-size: 0.56em; line-height: 1.32; }
 
-    .problem-stack { display: grid; gap: 10px; }
-    .problem-row {
-      display: grid;
-      grid-template-columns: 70px 1fr;
-      gap: 14px;
-      align-items: center;
-      padding: 12px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.04);
-    }
-    .problem-row strong { font-family: "Space Grotesk", Inter, sans-serif; font-size: 0.9em; }
-    .problem-row p { font-size: 0.54em; }
-    .icon-box { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 8px; color: var(--ink); background: linear-gradient(135deg, var(--cyan), var(--green)); font-weight: 900; font-size: 0.76em; }
-    .icon-box.amber { background: linear-gradient(135deg, var(--amber), var(--violet)); }
-    .icon-box.violet { background: linear-gradient(135deg, var(--violet), var(--cyan)); }
-
     .flow-step {
       min-height: 146px;
       display: grid;
@@ -511,8 +494,6 @@
       .hero-layout, .split-layout { gap: 24px; }
       .reveal .lede { font-size: 0.66em; margin-top: 14px; }
       .panel, .metric, .persona, .milestone, .flow-step { padding: 12px; }
-      .problem-row { padding: 12px; grid-template-columns: 60px 1fr; }
-      .icon-box { width: 48px; height: 48px; }
       .flow-step { min-height: 150px; padding: 13px; }
       .timeline { gap: 9px; }
       .milestone { padding: 12px; }
@@ -547,13 +528,18 @@
             
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
-          <div class="hero-title">
-            <span class="eyebrow" data-lang="en">A working tour</span>
-            <h1 data-lang="en"><span class="accent-cyan">Deep Automation</span> in <span class="accent-amber">Surgical Robotics</span></h1>
-            
-            <p class="lede" data-lang="en">What's automated today, what's coming next, and how it's actually built — from the cart in the OR to the policy network on the GPU.</p>
-            <div class="by-line" data-lang="en">David Mavrodiev · devbg IoT · 2026</div>
-            
+          <div class="hero-layout" style="grid-template-columns: 1.06fr 0.94fr; align-items: center;">
+            <div class="hero-title">
+              <h1 data-lang="en"><span class="accent-cyan">Deep Automation</span> in <span class="accent-amber">Surgical Robotics</span></h1>
+              
+              <p class="lede" data-lang="en">Surgery started as manual craft, became teleoperated through robotic systems, and is now moving toward computer-assisted autonomy for narrow, well-defined tasks.</p>
+              <p class="lede" data-lang="en">Surgery is becoming a <strong>software problem</strong>...</p>
+              
+            </div>
+            <div class="figure-frame dark tall">
+              <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cmglee_Cambridge_Science_Festival_2015_da_Vinci.jpg?width=900" alt="da Vinci surgical system" />
+              <div class="figure-caption" data-lang="en">da Vinci · Wikimedia Commons</div>
+            </div>
           </div>
           <div class="footerline">
             <span data-lang="en">Six parts: robots · tasks · stack · techniques · case study · road ahead</span>
@@ -568,40 +554,6 @@
       </aside>
       </section>
 
-      <!-- 2. Hook -->
-      <section>
-        <div class="slide-shell">
-          <div class="slide-header">
-            <div class="kicker" data-lang="en">The Premise</div>
-            
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
-          </div>
-          <div class="hero-layout">
-            <div>
-              <h1 data-lang="en">Surgery is becoming a <span style="color: var(--cyan);">software problem</span>.</h1>
-              
-              <p class="lede" data-lang="en">For a hundred years surgery was a <strong>craft</strong>, practiced by hand. For the last twenty‑five it has been <strong>remote control</strong>, with a surgeon at a console driving a robot at the table. For the next twenty‑five it will be <strong>computer‑assisted</strong>, and increasingly <strong>autonomous</strong> for the parts a machine does better than a human.</p>
-              
-            </div>
-            <div class="figure-frame dark tall">
-              <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cmglee_Cambridge_Science_Festival_2015_da_Vinci.jpg?width=900" alt="da Vinci surgical system" />
-              <div class="figure-caption" data-lang="en">da Vinci · Wikimedia Commons</div>
-              
-            </div>
-          </div>
-          <div class="footerline">
-            <span data-lang="en">Craft → Remote control → Computer‑assisted → Narrow autonomy.</span>
-            
-            <span class="brand-text">Surgical Robotics</span>
-          </div>
-          <aside class="notes">
-        
-        (~56 сек)
-        Хирургията се променя на етапи, а не с един скок. От ръчен занаят стигнахме до телеуправление, а сега навлизаме в компютърно асистирани и частично автономни действия. Фокусът е върху тесни, добре дефинирани задачи, където машината е по-последователна.
-      </aside>
-        </div>
-      </section>
-
       <!-- 3. Why now -->
       <section>
         <div class="slide-shell">
@@ -613,7 +565,7 @@
           <div>
             <h2 data-lang="en">Hardware is mature, cost is falling, ML is finally good enough.</h2>
             
-            <p class="lede" data-lang="en">The bottleneck has moved from mechanics to <strong>software, data, and verification</strong>.</p>
+            <p class="lede" data-lang="en">The bottleneck has moved from mechanics to <strong>software, data, and verification</strong>. Ten commercial platforms now compete. Cost per procedure is falling. Machine learning is reliable enough for narrow safety-critical tasks. What's left to figure out is the integration — and the regulation that comes with it.</p>
             
             <div class="metric-grid" style="margin-top: 18px;">
               <div class="metric panel chart-panel">
@@ -649,12 +601,6 @@
                 
               </div>
             </div>
-            <div class="callout amber" style="margin-top: 18px;">
-              <strong data-lang="en">The shift</strong>
-              
-              <span data-lang="en">Ten commercial platforms now compete. Cost per procedure is falling. Machine learning is reliable enough for narrow safety‑critical tasks. What's left to figure out is the integration — and the regulation that comes with it.</span>
-              
-            </div>
           </div>
           <div class="footerline">
             <span data-lang="en">Why now: hardware ready, ML ready, software & verification still hard.</span>
@@ -678,47 +624,70 @@
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div>
-            <h2 data-lang="en">Where we're going today.</h2>
+            <h2 data-lang="en">We will build the picture piece by piece.</h2>
             
-            <p class="lede" data-lang="en">We start with what's already in real operating rooms, drill down to the code that runs on the cart, and end with where the field is heading.</p>
+            <p class="lede" data-lang="en">First we look at the robots and tasks that exist today, then the software stack and learning methods, then one concrete case study and the path toward clinical use.</p>
             
-            <div class="grid-3" style="margin-top: 18px;">
-              <div class="panel outline-cyan">
-                <h3 data-lang="en">1 · The robots</h3>
-                
-                <p data-lang="en">What hardware is actually in operating rooms today — and how much of it is autonomous.</p>
-                
-              </div>
-              <div class="panel outline-cyan">
-                <h3 data-lang="en">2 · The tasks</h3>
-                
-                <p data-lang="en">Which surgical sub‑tasks have been automated, by whom, and which ones are still hard.</p>
-                
-              </div>
-              <div class="panel outline-cyan">
-                <h3 data-lang="en">3 · The stack</h3>
-                
-                <p data-lang="en">The simulators, frameworks and datasets you'd actually <code>git clone</code> to build this.</p>
-                
-              </div>
-              <div class="panel outline-amber">
-                <h3 data-lang="en">4 · The techniques</h3>
-                
-                <p data-lang="en">Forty years of methods stacked on top of each other — from PID controllers to foundation models.</p>
-                
-              </div>
-              <div class="panel outline-amber">
-                <h3 data-lang="en">5 · A case study</h3>
-                
-                <p data-lang="en">One concrete task end‑to‑end: framing, training, deploying, results.</p>
-                
-              </div>
-              <div class="panel outline-amber">
-                <h3 data-lang="en">6 · The road ahead</h3>
-                
-                <p data-lang="en">What's still missing, what's about to change, and how a learned model gets to a patient.</p>
-                
-              </div>
+            <div class="panel outline-cyan" style="padding: 14px; margin-top: 18px;">
+              <svg viewbox="0 0 1120 360" style="width: 100%; max-height: 330px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Roadmap timeline for the presentation">
+                <line x1="92" y1="170" x2="1028" y2="170" stroke="rgba(71,229,255,0.34)" stroke-width="5" stroke-linecap="round" />
+                <g font-family="Inter, sans-serif">
+                  <g transform="translate(66 62)">
+                    <circle cx="40" cy="108" r="24" fill="#47e5ff" />
+                    <text x="40" y="114" text-anchor="middle" fill="#07101f" font-size="15" font-weight="900" font-family="Space Grotesk">1</text>
+                    <rect x="-35" y="0" width="150" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 78 L52 78 L40 86 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="-19" y="27" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">The robots</text>
+                    <text x="-19" y="49" fill="#c7d2ee" font-size="11">hardware in</text>
+                    <text x="-19" y="64" fill="#c7d2ee" font-size="11">real operating rooms</text>
+                  </g>
+                  <g transform="translate(226 200)">
+                    <circle cx="40" cy="-30" r="24" fill="#47e5ff" />
+                    <text x="40" y="-24" text-anchor="middle" fill="#07101f" font-size="15" font-weight="900" font-family="Space Grotesk">2</text>
+                    <rect x="-35" y="0" width="150" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 0 L52 0 L40 -8 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="-19" y="27" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">The tasks</text>
+                    <text x="-19" y="49" fill="#c7d2ee" font-size="11">what can be</text>
+                    <text x="-19" y="64" fill="#c7d2ee" font-size="11">automated safely</text>
+                  </g>
+                  <g transform="translate(386 62)">
+                    <circle cx="40" cy="108" r="24" fill="#47e5ff" />
+                    <text x="40" y="114" text-anchor="middle" fill="#07101f" font-size="15" font-weight="900" font-family="Space Grotesk">3</text>
+                    <rect x="-35" y="0" width="150" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 78 L52 78 L40 86 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="-19" y="27" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">The stack</text>
+                    <text x="-19" y="49" fill="#c7d2ee" font-size="11">simulators, code,</text>
+                    <text x="-19" y="64" fill="#c7d2ee" font-size="11">data and APIs</text>
+                  </g>
+                  <g transform="translate(546 200)">
+                    <circle cx="40" cy="-30" r="24" fill="#47e5ff" />
+                    <text x="40" y="-24" text-anchor="middle" fill="#07101f" font-size="15" font-weight="900" font-family="Space Grotesk">4</text>
+                    <rect x="-35" y="0" width="150" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 0 L52 0 L40 -8 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="-19" y="27" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">Techniques</text>
+                    <text x="-19" y="49" fill="#c7d2ee" font-size="11">control, planning,</text>
+                    <text x="-19" y="64" fill="#c7d2ee" font-size="11">IL, RL, foundation models</text>
+                  </g>
+                  <g transform="translate(706 62)">
+                    <circle cx="40" cy="108" r="24" fill="#47e5ff" />
+                    <text x="40" y="114" text-anchor="middle" fill="#07101f" font-size="15" font-weight="900" font-family="Space Grotesk">5</text>
+                    <rect x="-35" y="0" width="150" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 78 L52 78 L40 86 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="-19" y="27" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">Case study</text>
+                    <text x="-19" y="49" fill="#c7d2ee" font-size="11">vascular clip</text>
+                    <text x="-19" y="64" fill="#c7d2ee" font-size="11">squeeze policy</text>
+                  </g>
+                  <g transform="translate(866 200)">
+                    <circle cx="40" cy="-30" r="24" fill="#47e5ff" />
+                    <text x="40" y="-24" text-anchor="middle" fill="#07101f" font-size="15" font-weight="900" font-family="Space Grotesk">6</text>
+                    <rect x="-46" y="0" width="172" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 0 L52 0 L40 -8 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="-30" y="27" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">Road ahead</text>
+                    <text x="-30" y="49" fill="#c7d2ee" font-size="11">what is missing</text>
+                    <text x="-30" y="64" fill="#c7d2ee" font-size="11">before clinical use</text>
+                  </g>
+                </g>
+              </svg>
             </div>
           </div>
           <div class="footerline">
@@ -745,12 +714,11 @@
       <section>
         <div class="section-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Part 1 — The Robots</div>
+            <div class="kicker" data-lang="en">Part I: The Robots</div>
             
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div class="section-hero">
-            <span class="kicker" data-lang="en">Hardware in the OR</span>
             
             <h1 data-lang="en">Before we automate, we have to know <span style="color: var(--cyan);">what we're automating on</span>.</h1>
             
@@ -1460,18 +1428,55 @@
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div>
-            <h2 data-lang="en">The SAE‑style ladder, borrowed from <span style="color: var(--cyan);">self‑driving cars</span>.</h2>
+            <h2 data-lang="en">Autonomy levels ask one question: <span style="color: var(--cyan);">who controls the surgical step?</span></h2>
             
             <p class="lede" data-lang="en">Real commercial systems are mostly at level 0–1 for laparoscopy, and at level 2 for narrow specialties like orthopedics. Levels 4 and 5 are far in the future — and may never be the goal for most surgical tasks.</p>
             
-            <ul class="levels" style="margin-top: 16px;" data-lang="en">
-              <li><span class="lv">Lvl 0</span> No autonomy — pure teleoperation · <strong>surgeon owns every motion</strong> · da Vinci, Versius, Hugo.</li>
-              <li><span class="lv">Lvl 1</span> Assistance — tremor filter, motion scaling · <strong>surgeon still owns failure</strong> · all commercial systems.</li>
-              <li class="amber"><span class="lv">Lvl 2</span> Task autonomy — robot does a sub‑task under direct supervision · <strong>shared liability</strong> · Mako, Ion, STAR.</li>
-              <li class="amber"><span class="lv">Lvl 3</span> Conditional autonomy — robot plans &amp; executes whole steps · <strong>manufacturer on the hook</strong> · mostly research.</li>
-              <li class="red"><span class="lv">Lvl 4</span> High autonomy — surgeon supervises · <strong>unresolved liability</strong> · not yet.</li>
-              <li class="red"><span class="lv">Lvl 5</span> Full autonomy — no human in the loop · <strong>not happening soon</strong>.</li>
-            </ul>
+            <div class="panel outline-cyan" style="padding: 10px; margin-top: 16px;">
+              <svg viewbox="0 0 1120 390" style="width: 100%; max-height: 350px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Staircase of surgical autonomy levels">
+                <defs>
+                  <marker id="autonomyArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
+                </defs>
+                <text x="58" y="46" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">MANUAL</text>
+                <text x="1034" y="46" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">AUTONOMOUS</text>
+                <line x1="198" y1="42" x2="930" y2="42" stroke="rgba(71,229,255,0.42)" stroke-width="2" marker-end="url(#autonomyArrow)" />
+
+                <g font-family="Inter, sans-serif" transform="translate(0 18)">
+                  <path d="M70 322 H220 V278 H370 V234 H520 V190 H670 V146 H820 V102 H1000" fill="none" stroke="rgba(71,229,255,0.16)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M70 322 H220 V278 H370 V234 H520 V190 H670 V146 H820 V102 H1000" fill="none" stroke="rgba(71,229,255,0.82)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#autonomyArrow)" />
+
+                  <rect x="48" y="268" width="176" height="72" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.4" />
+                  <text x="66" y="291" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">LEVEL 0</text>
+                  <text x="66" y="313" fill="#edf2ff" font-size="12">Teleoperation</text>
+                  <text x="66" y="330" fill="#aab4d2" font-size="11">surgeon moves everything</text>
+
+                  <rect x="198" y="224" width="176" height="72" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.4" />
+                  <text x="216" y="247" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">LEVEL 1</text>
+                  <text x="216" y="269" fill="#edf2ff" font-size="12">Assistance</text>
+                  <text x="216" y="286" fill="#aab4d2" font-size="11">filter, scale, stabilize</text>
+
+                  <rect x="348" y="180" width="176" height="72" rx="8" fill="#1a2c48" stroke="#93c5fd" stroke-width="1.4" />
+                  <text x="366" y="203" fill="#93c5fd" font-size="13" font-weight="900" font-family="Space Grotesk">LEVEL 2</text>
+                  <text x="366" y="225" fill="#edf2ff" font-size="12">Sub-task autonomy</text>
+                  <text x="366" y="242" fill="#aab4d2" font-size="11">robot does one narrow job</text>
+
+                  <rect x="498" y="136" width="176" height="72" rx="8" fill="#1a2c48" stroke="#93c5fd" stroke-width="1.4" />
+                  <text x="516" y="159" fill="#93c5fd" font-size="13" font-weight="900" font-family="Space Grotesk">LEVEL 3</text>
+                  <text x="516" y="181" fill="#edf2ff" font-size="12">Step autonomy</text>
+                  <text x="516" y="198" fill="#aab4d2" font-size="11">plans and executes steps</text>
+
+                  <rect x="648" y="92" width="176" height="72" rx="8" fill="#1a2c48" stroke="#93c5fd" stroke-width="1.4" />
+                  <text x="666" y="115" fill="#93c5fd" font-size="13" font-weight="900" font-family="Space Grotesk">LEVEL 4</text>
+                  <text x="666" y="137" fill="#edf2ff" font-size="12">High autonomy</text>
+                  <text x="666" y="154" fill="#aab4d2" font-size="11">surgeon supervises</text>
+
+                  <rect x="798" y="48" width="204" height="72" rx="8" fill="#1a2c48" stroke="#93c5fd" stroke-width="1.4" />
+                  <text x="816" y="71" fill="#93c5fd" font-size="13" font-weight="900" font-family="Space Grotesk">LEVEL 5</text>
+                  <text x="816" y="93" fill="#edf2ff" font-size="12">Full autonomy</text>
+                  <text x="816" y="110" fill="#aab4d2" font-size="11">no human in the loop</text>
+                </g>
+              </svg>
+            </div>
             
           </div>
           <div class="footerline">
@@ -1498,13 +1503,11 @@
       <section>
         <div class="section-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Part 2 — The Tasks</div>
+            <div class="kicker" data-lang="en">Part II: The Tasks</div>
             
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div class="section-hero">
-            <span class="kicker" data-lang="en">From "hold the camera" to "cut soft tissue"</span>
-            
             <h1 data-lang="en">Think of surgery as an <span style="color: var(--cyan);">algorithm made of steps</span>.</h1>
             
             <p class="lede" data-lang="en">Each procedure is a different step sequence. Some steps are already commercially assisted or semi-automated in narrow use-cases, some are active research with promising prototypes, and some are still not automated at all — which is where the next wave of research and innovation sits.</p>
@@ -2313,6 +2316,8 @@
       </aside>
       </section>
 
+      </section>
+
       <!-- ============================================================
            PHASE 4 — THE STACK
            ============================================================ -->
@@ -2322,12 +2327,11 @@
       <section>
         <div class="section-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Part 3 — The Stack</div>
+            <div class="kicker" data-lang="en">Part III: The Stack</div>
             
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div class="section-hero">
-            <span class="kicker" data-lang="en">Simulators first</span>
             
             <h1 data-lang="en">Before a robot touches tissue, the policy lives in <span style="color: var(--cyan);">simulation</span>.</h1>
             
@@ -2358,9 +2362,7 @@
             <span class="brand-text">Surgical Robotics</span>
           </div>
         </div>
-      </section>
-
-      <aside class="notes">
+        <aside class="notes">
         
         (~55 сек)
         След задачите идва стека, защото без него няма какво да се внедрява. Това е инженерната част, която превръща идеята в работеща система.
@@ -2919,16 +2921,15 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="section-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Part 4 — The Techniques</div>
+            <div class="kicker" data-lang="en">Part IV: The Techniques</div>
             
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div class="section-hero">
-            <span class="kicker" data-lang="en">Forty years, layered like sediment</span>
             
-            <h1 data-lang="en">The methods that turn pixels and joint angles into <span style="color: var(--cyan);">intelligent motion</span>.</h1>
+            <h1 data-lang="en">The techniques used to <span style="color: var(--cyan);">automate surgical tasks</span>.</h1>
             
-            <p class="lede" data-lang="en">None of the old stuff went away. It just got a new layer on top — and modern systems use four or five of these together in one pipeline.</p>
+            <p class="lede" data-lang="en">We move from classical control and motion planning to imitation learning, reinforcement learning, deep RL, and newer diffusion / transformer policies. Modern systems usually combine several of these techniques in one pipeline.</p>
             
           </div>
           <div class="footerline">
@@ -2999,7 +3000,27 @@ model.save("best_policy")</code></pre>
             
             <p class="lede" data-lang="en">Underneath every learned policy is a stack of decades‑old controllers that nobody plans to replace.</p>
             
-            <div class="grid-2" style="margin-top: 16px;">
+            <div class="hero-layout" style="align-items: start; grid-template-columns: 1.05fr 0.95fr; margin-top: 14px;">
+              <div class="panel outline-cyan" style="padding: 12px;">
+                <h3 data-lang="en">Closed-loop control</h3>
+                <svg viewbox="0 0 720 300" style="width: 100%; max-height: 270px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Classical control closed loop diagram">
+                  <defs><marker id="ctrlArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker></defs>
+                  <rect x="48" y="96" width="130" height="70" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="113" y="125" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Target</text>
+                  <text x="113" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">desired pose/force</text>
+                  <line x1="180" y1="131" x2="230" y2="131" stroke="#47e5ff" stroke-width="1.6" marker-end="url(#ctrlArrow)" />
+                  <rect x="234" y="96" width="150" height="70" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="309" y="125" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="800" font-family="Space Grotesk">Controller</text>
+                  <text x="309" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">PID / impedance</text>
+                  <line x1="386" y1="131" x2="436" y2="131" stroke="#47e5ff" stroke-width="1.6" marker-end="url(#ctrlArrow)" />
+                  <rect x="440" y="96" width="130" height="70" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="505" y="125" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Robot</text>
+                  <text x="505" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">small motion</text>
+                  <path d="M505 168 C505 236, 113 236, 113 168" fill="none" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="6 6" marker-end="url(#ctrlArrow)" />
+                  <text x="310" y="256" text-anchor="middle" fill="#aab4d2" font-size="12">measure error, correct, repeat</text>
+                </svg>
+              </div>
+              <div class="grid-2">
               <div class="panel outline-cyan">
                 <h3>PID + impedance</h3>
                 <p data-lang="en">Joint‑level setpoint tracking, plus a programmable spring at the tool tip. Why surgical robots feel compliant instead of stiff.</p>
@@ -3022,6 +3043,7 @@ model.save("best_policy")</code></pre>
                 
                 <p data-lang="en">Learned policies output <em>references</em>. Classical control tracks them and clamps them. The safety case lives here, not in the network.</p>
                 
+              </div>
               </div>
             </div>
           </div>
@@ -3051,7 +3073,30 @@ model.save("best_policy")</code></pre>
             
             <p class="lede" data-lang="en">Classical control gets you precise but rigid behavior. The next step is to learn what "good surgery" looks like from somebody who already knows how to do it.</p>
             
-            <div class="grid-3" style="margin-top: 16px;">
+            <div class="hero-layout" style="align-items: start; grid-template-columns: 1.08fr 0.92fr; margin-top: 14px;">
+              <div class="panel outline-cyan" style="padding: 12px;">
+                <h3 data-lang="en">Learning from demonstrations</h3>
+                <svg viewbox="0 0 720 300" style="width: 100%; max-height: 270px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Imitation learning demonstration pipeline">
+                  <defs><marker id="ilArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker></defs>
+                  <rect x="32" y="95" width="132" height="76" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="98" y="124" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Expert</text>
+                  <text x="98" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">teleoperates task</text>
+                  <line x1="166" y1="133" x2="216" y2="133" stroke="#47e5ff" stroke-width="1.6" marker-end="url(#ilArrow)" />
+                  <rect x="220" y="95" width="132" height="76" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="286" y="124" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="800" font-family="Space Grotesk">Dataset</text>
+                  <text x="286" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">obs + actions</text>
+                  <line x1="354" y1="133" x2="404" y2="133" stroke="#47e5ff" stroke-width="1.6" marker-end="url(#ilArrow)" />
+                  <rect x="408" y="95" width="132" height="76" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="474" y="124" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Policy</text>
+                  <text x="474" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">imitates expert</text>
+                  <line x1="542" y1="133" x2="592" y2="133" stroke="#47e5ff" stroke-width="1.6" marker-end="url(#ilArrow)" />
+                  <rect x="596" y="95" width="92" height="76" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="642" y="124" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="800" font-family="Space Grotesk">Robot</text>
+                  <text x="642" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">executes</text>
+                  <text x="360" y="226" text-anchor="middle" fill="#aab4d2" font-size="12">problem: when the robot drifts off-demo, it may not know how to recover</text>
+                </svg>
+              </div>
+              <div class="grid-3" style="grid-template-columns: 1fr; gap: 10px;">
               <div class="panel outline-cyan">
                 <h3>Behavior cloning</h3>
                 <p data-lang="en">Record (observation, action) pairs from a teacher and train a network to mimic them. Simple, but brittle: as soon as the policy drifts even slightly off the demonstrations, errors compound — the network has never seen those states.</p>
@@ -3067,6 +3112,7 @@ model.save("best_policy")</code></pre>
                 
                 <p data-lang="en"><strong>JIGSAWS</strong> remains the canonical benchmark: 103 trials of suturing and knot‑tying on dVRK, with synced kinematic and video data plus expert skill scores. The whole imitation literature is calibrated against it — and against how tiny it is.</p>
                 
+              </div>
               </div>
             </div>
             <div class="pullquote" style="margin-top: 16px;" data-lang="en">
@@ -3101,10 +3147,21 @@ model.save("best_policy")</code></pre>
             <p class="lede" data-lang="en">Then you let the agent discover the policy itself, by trial and error against a simulator and a reward.</p>
             
             <div class="hero-layout" style="margin-top: 14px;">
-              <div class="figure-frame dark" style="justify-self: start;">
-                <img src="images/thesis/agent_vs_environment.png" alt="agent-env loop" />
-                <div class="figure-caption" data-lang="en">Agent ↔ environment loop</div>
-                
+              <div class="panel outline-cyan" style="padding: 12px;">
+                <h3 data-lang="en">Trial-and-error loop</h3>
+                <svg viewbox="0 0 640 300" style="width: 100%; max-height: 270px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Reinforcement learning agent environment loop">
+                  <defs><marker id="rlArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker></defs>
+                  <rect x="58" y="105" width="160" height="82" rx="10" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="138" y="137" text-anchor="middle" fill="#47e5ff" font-size="16" font-weight="800" font-family="Space Grotesk">Agent</text>
+                  <text x="138" y="162" text-anchor="middle" fill="#edf2ff" font-size="12">policy π(a|s)</text>
+                  <rect x="420" y="105" width="160" height="82" rx="10" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="500" y="137" text-anchor="middle" fill="#93c5fd" font-size="16" font-weight="800" font-family="Space Grotesk">Environment</text>
+                  <text x="500" y="162" text-anchor="middle" fill="#edf2ff" font-size="12">simulator task</text>
+                  <path d="M220 128 C285 78, 354 78, 418 128" fill="none" stroke="#47e5ff" stroke-width="1.6" marker-end="url(#rlArrow)" />
+                  <text x="320" y="84" text-anchor="middle" fill="#edf2ff" font-size="12">action</text>
+                  <path d="M418 166 C350 236, 288 236, 220 166" fill="none" stroke="#93c5fd" stroke-width="1.6" marker-end="url(#rlArrow)" />
+                  <text x="320" y="238" text-anchor="middle" fill="#edf2ff" font-size="12">state + reward</text>
+                </svg>
               </div>
               <div>
                 <p class="lede" data-lang="en">Agent picks <strong>actions</strong>, observes <strong>states</strong>, receives <strong>rewards</strong>.</p>
@@ -3150,7 +3207,29 @@ model.save("best_policy")</code></pre>
           <div>
             <h2 data-lang="en">Domain randomization. <span style="color: var(--cyan);">Train across worlds.</span></h2>
             
-            <div class="grid-2" style="margin-top: 14px;">
+            <div class="hero-layout" style="align-items: start; grid-template-columns: 1.1fr 0.9fr; margin-top: 14px;">
+              <div class="panel outline-cyan" style="padding: 12px;">
+                <h3 data-lang="en">Bridge from sim to real</h3>
+                <svg viewbox="0 0 720 300" style="width: 100%; max-height: 270px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sim-to-real domain randomization diagram">
+                  <defs><marker id="simArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker></defs>
+                  <rect x="34" y="78" width="128" height="70" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="98" y="107" text-anchor="middle" fill="#47e5ff" font-size="13" font-weight="800" font-family="Space Grotesk">Sim world A</text>
+                  <text x="98" y="128" text-anchor="middle" fill="#edf2ff" font-size="10">friction low</text>
+                  <rect x="34" y="164" width="128" height="70" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="98" y="193" text-anchor="middle" fill="#47e5ff" font-size="13" font-weight="800" font-family="Space Grotesk">Sim world B</text>
+                  <text x="98" y="214" text-anchor="middle" fill="#edf2ff" font-size="10">lighting changes</text>
+                  <rect x="220" y="120" width="150" height="70" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="295" y="148" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="800" font-family="Space Grotesk">Policy</text>
+                  <text x="295" y="170" text-anchor="middle" fill="#edf2ff" font-size="11">learns invariance</text>
+                  <rect x="470" y="120" width="170" height="70" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="555" y="148" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Real robot</text>
+                  <text x="555" y="170" text-anchor="middle" fill="#edf2ff" font-size="11">another variation</text>
+                  <line x1="164" y1="113" x2="216" y2="143" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#simArrow)" />
+                  <line x1="164" y1="199" x2="216" y2="167" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#simArrow)" />
+                  <line x1="372" y1="155" x2="466" y2="155" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#simArrow)" />
+                </svg>
+              </div>
+              <div>
               <div class="callout amber">
                 <strong data-lang="en">The problem</strong>
                 
@@ -3163,19 +3242,7 @@ model.save("best_policy")</code></pre>
                 <span data-lang="en">Randomize physics, lighting, geometry, sensor noise <em>every episode</em>. The policy learns to generalize across worlds — including the real one it has never seen.</span>
                 
               </div>
-            </div>
-            <div class="panel" style="margin-top: 14px; padding: 4px;">
-              <table class="tech-table" data-lang="en">
-                <thead><tr><th>Randomized parameter</th><th>Typical range (clip‑application example)</th></tr></thead>
-                <tbody>
-                  <tr><td class="era">Vessel radius</td><td>1.5 – 3.0 mm</td></tr>
-                  <tr><td class="era">Friction coefficient</td><td>0.3 – 1.2</td></tr>
-                  <tr><td class="era">Damping</td><td>0.02 – 0.10</td></tr>
-                  <tr><td class="era">Sensing noise</td><td>σ ≈ 0.002 rad</td></tr>
-                  <tr><td class="era">Pose tilt</td><td>± 1.1°</td></tr>
-                </tbody>
-              </table>
-              
+              </div>
             </div>
           </div>
           <div class="footerline">
@@ -3204,7 +3271,25 @@ model.save("best_policy")</code></pre>
             
             <p class="lede" data-lang="en">Pre‑train one giant model on every endoscopic video and kinematic trace ever recorded, then fine‑tune it for whatever you actually need. Same playbook that took NLP from 2017 to ChatGPT.</p>
             
-            <div class="grid-3" style="margin-top: 16px;">
+            <div class="hero-layout" style="align-items: start; grid-template-columns: 1.08fr 0.92fr; margin-top: 14px;">
+              <div class="panel outline-cyan" style="padding: 12px;">
+                <h3 data-lang="en">Pre-train, then adapt</h3>
+                <svg viewbox="0 0 720 300" style="width: 100%; max-height: 270px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Foundation model pretrain fine-tune diagram">
+                  <defs><marker id="fmArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker></defs>
+                  <rect x="36" y="102" width="150" height="80" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="111" y="132" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Large data</text>
+                  <text x="111" y="154" text-anchor="middle" fill="#edf2ff" font-size="11">videos · labels</text>
+                  <line x1="188" y1="142" x2="248" y2="142" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#fmArrow)" />
+                  <rect x="252" y="88" width="170" height="108" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="337" y="126" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="800" font-family="Space Grotesk">Foundation model</text>
+                  <text x="337" y="148" text-anchor="middle" fill="#edf2ff" font-size="11">general surgical features</text>
+                  <line x1="424" y1="142" x2="484" y2="142" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#fmArrow)" />
+                  <rect x="488" y="102" width="150" height="80" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="563" y="132" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Fine-tune</text>
+                  <text x="563" y="154" text-anchor="middle" fill="#edf2ff" font-size="11">specific task</text>
+                </svg>
+              </div>
+              <div class="grid-3" style="grid-template-columns: 1fr; gap: 10px;">
               <div class="panel outline-cyan">
                 <h3>RT‑2 / OpenVLA</h3>
                 <p data-lang="en">Vision‑language‑action models pre‑trained on millions of robot trajectories from many embodiments. Give them an image and a sentence — "pick up the green clip" — they output joint commands. The first credible attempt at a generalist robot brain.</p>
@@ -3219,6 +3304,7 @@ model.save("best_policy")</code></pre>
                 <h3>CholecT45 / EndoVis</h3>
                 <p data-lang="en">Public datasets that fuel the pre‑training era — tens of thousands of annotated cholecystectomy and laparoscopy videos. Still many orders of magnitude smaller than ImageNet, which is the field's structural problem.</p>
                 
+              </div>
               </div>
             </div>
             <div class="pullquote" style="margin-top: 16px;" data-lang="en">
@@ -3250,14 +3336,13 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="section-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Part 5 — A Concrete Example</div>
+            <div class="kicker" data-lang="en">Part V: Case Study</div>
             
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div class="section-hero">
-            <span class="kicker" data-lang="en">Enough surveys — pick one task</span>
             
-            <h1 data-lang="en">From procedure picture to <span style="color: var(--cyan);">trained policy</span> to deployment envelope.</h1>
+            <h1 data-lang="en">Case Study: <span style="color: var(--cyan);">Vascular Clip Application</span></h1>
             
             <p class="lede" data-lang="en">Everything we've talked about — PPO, SurRoL, reward shaping, runtime monitors — applied to one job: vascular clip application.</p>
             
@@ -3284,9 +3369,9 @@ model.save("best_policy")</code></pre>
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div>
-            <h2 data-lang="en">Dissect → plan → approach → center → <span style="color: var(--cyan);">squeeze</span> → fire.</h2>
+            <h2 data-lang="en"><span style="color: var(--cyan);">Squeeze</span> sub-task.</h2>
             
-            <p class="lede" data-lang="en">We zoom into one step — the pre‑firing <strong>squeeze</strong>. Sub‑mm precision, narrow safety window, must hold steady before the clip is fired.</p>
+            <p class="lede" data-lang="en">Vascular clip application can be broken into six sub-tasks. In this case study, I automate one of them: the pre-firing <strong>squeeze</strong>, where the tool must compress the vessel safely before the clip is fired.</p>
             
             <div class="grid-3" style="margin-top: 18px; justify-items: center;">
               <div class="figure-frame"><img src="images/thesis/procedure/step_1.png" alt="step 1" style="max-height: 130px;" /><div class="figure-caption">01</div></div>
@@ -3304,7 +3389,7 @@ model.save("best_policy")</code></pre>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">Six steps. We learn one. Sub‑mm precision, tight safety window.</span>
+            <span data-lang="en">Vascular clip application has six sub-tasks. This case study automates one: squeeze.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -3325,11 +3410,40 @@ model.save("best_policy")</code></pre>
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div>
-            <h2 data-lang="en">The hardest part of applying RL is rarely training — <span style="color: var(--cyan);">it's the four boxes below.</span></h2>
+            <h2 data-lang="en">First, translate the surgical task into an <span style="color: var(--cyan);">RL problem</span>.</h2>
             
-            <p class="lede" data-lang="en"><em>What does the agent see, what does it do, what counts as good, and where does it learn?</em> Get those wrong and no algorithm will save you.</p>
+            <p class="lede" data-lang="en">Training only works after the basic interface is clear: what the agent observes, what action it controls, and which simulator it learns in.</p>
             
-            <div class="grid-2" style="margin-top: 16px;">
+            <div class="hero-layout" style="align-items: start; grid-template-columns: 1.1fr 0.9fr; margin-top: 14px;">
+              <div class="panel outline-cyan" style="padding: 12px;">
+                <h3 data-lang="en">RL framing loop</h3>
+                <svg viewbox="0 0 740 310" style="width: 100%; max-height: 280px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RL problem framing diagram">
+                  <defs><marker id="frameArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker></defs>
+                  <rect x="36" y="120" width="132" height="72" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="102" y="148" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Surgical task</text>
+                  <text x="102" y="170" text-anchor="middle" fill="#edf2ff" font-size="11">squeeze safely</text>
+                  <line x1="170" y1="156" x2="220" y2="156" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#frameArrow)" />
+                  <rect x="224" y="60" width="132" height="58" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="290" y="84" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">State</text>
+                  <text x="290" y="103" text-anchor="middle" fill="#edf2ff" font-size="10">what agent sees</text>
+                  <rect x="224" y="136" width="132" height="58" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="290" y="160" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Action</text>
+                  <text x="290" y="179" text-anchor="middle" fill="#edf2ff" font-size="10">what it controls</text>
+                  <rect x="224" y="212" width="132" height="58" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="290" y="236" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Reward</text>
+                  <text x="290" y="255" text-anchor="middle" fill="#edf2ff" font-size="10">objective signal</text>
+                  <line x1="358" y1="156" x2="408" y2="156" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#frameArrow)" />
+                  <rect x="412" y="96" width="132" height="120" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="478" y="128" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Simulator</text>
+                  <text x="478" y="152" text-anchor="middle" fill="#edf2ff" font-size="11">SurRoL / PyBullet</text>
+                  <text x="478" y="174" text-anchor="middle" fill="#aab4d2" font-size="10">safe trial-and-error</text>
+                  <line x1="546" y1="156" x2="596" y2="156" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#frameArrow)" />
+                  <rect x="600" y="120" width="108" height="72" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="654" y="148" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="800" font-family="Space Grotesk">PPO</text>
+                  <text x="654" y="170" text-anchor="middle" fill="#edf2ff" font-size="11">learn policy</text>
+                </svg>
+              </div>
+              <div class="grid-2" style="gap: 10px;">
               <div class="panel outline-cyan">
                 <h3>State (4‑D)</h3>
                 <div class="formula" style="margin: 6px 0;">$[\,\theta,\; u_{\text{prev}},\; r,\; \tau\,]$</div>
@@ -3343,20 +3457,6 @@ model.save("best_policy")</code></pre>
                 <p data-lang="en">A single continuous knob that sets the commanded jaw angle.</p>
                 
               </div>
-              <div class="panel outline-cyan">
-                <h3 data-lang="en">Reward (sculpted)</h3>
-                
-                <ul style="margin-top: 6px;">
-                  <li data-lang="en"><strong>+ accuracy.</strong> Quadratic penalty on (θ − θ*)².</li>
-                  
-                  <li data-lang="en"><strong>− safety.</strong> Large penalty near the damage threshold.</li>
-                  
-                  <li data-lang="en"><strong>− smoothness.</strong> Penalty on |Δu|.</li>
-                  
-                  <li data-lang="en"><strong>+ success bonus</strong> for a stable hold.</li>
-                  
-                </ul>
-              </div>
               <div class="panel outline-amber">
                 <h3>Setup</h3>
                 <ul style="margin-top: 6px;">
@@ -3368,17 +3468,333 @@ model.save("best_policy")</code></pre>
                   
                 </ul>
               </div>
+              </div>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">State · action · reward · setup. The four boxes that decide everything.</span>
+            <span data-lang="en">State · action · simulator setup. The interface the policy learns through.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
           <aside class="notes">
         
         (~55 сек)
-        Четирите кутии — state, action, reward, setup — решават качеството на целия резултат. Правилната формулировка е по-важна от избора между два сходни алгоритъма.
+        Тук оставяме state, action и setup, а reward design отделяме на следващ слайд, защото точно там влиза safety логиката.
+      </aside>
+        </div>
+      </section>
+
+      <!-- 29a. DRL with PPO learning model -->
+      <section>
+        <div class="slide-shell">
+          <div class="slide-header">
+            <div class="kicker" data-lang="en">Learning Model</div>
+            
+            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+          </div>
+          <div>
+            <h2 data-lang="en">DRL with PPO: a neural policy improved by <span style="color: var(--cyan);">small trusted updates</span>.</h2>
+            
+            <p class="lede" data-lang="en">Deep reinforcement learning means the control rule is a neural network. PPO trains it by trying actions in simulation, measuring reward, and changing the network only a little at a time.</p>
+            
+            <div class="hero-layout" style="align-items: start; grid-template-columns: 1.08fr 0.92fr; margin-top: 14px;">
+              <div class="panel outline-cyan" style="padding: 12px;">
+                <h3 data-lang="en">What PPO updates</h3>
+                <svg viewbox="0 0 740 330" style="width: 100%; max-height: 292px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Deep reinforcement learning with PPO diagram">
+                  <defs>
+                    <marker id="ppoArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
+                    <marker id="ppoAmberArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#f59e0b" /></marker>
+                  </defs>
+                  <rect x="40" y="112" width="130" height="78" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="105" y="140" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">state</text>
+                  <text x="105" y="162" text-anchor="middle" fill="#edf2ff" font-size="10">jaw angle</text>
+                  <text x="105" y="177" text-anchor="middle" fill="#edf2ff" font-size="10">radius, thickness</text>
+
+                  <line x1="172" y1="151" x2="220" y2="151" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#ppoArrow)" />
+
+                  <rect x="226" y="70" width="176" height="160" rx="10" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.6" />
+                  <text x="314" y="98" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">neural network</text>
+                  <circle cx="272" cy="130" r="7" fill="#93c5fd" />
+                  <circle cx="272" cy="156" r="7" fill="#93c5fd" />
+                  <circle cx="272" cy="182" r="7" fill="#93c5fd" />
+                  <circle cx="314" cy="118" r="7" fill="#47e5ff" />
+                  <circle cx="314" cy="144" r="7" fill="#47e5ff" />
+                  <circle cx="314" cy="170" r="7" fill="#47e5ff" />
+                  <circle cx="314" cy="196" r="7" fill="#47e5ff" />
+                  <circle cx="356" cy="140" r="7" fill="#c4b5fd" />
+                  <circle cx="356" cy="176" r="7" fill="#c4b5fd" />
+                  <line x1="279" y1="130" x2="307" y2="118" stroke="rgba(237,242,255,0.28)" />
+                  <line x1="279" y1="156" x2="307" y2="144" stroke="rgba(237,242,255,0.28)" />
+                  <line x1="279" y1="182" x2="307" y2="196" stroke="rgba(237,242,255,0.28)" />
+                  <line x1="321" y1="118" x2="349" y2="140" stroke="rgba(237,242,255,0.28)" />
+                  <line x1="321" y1="170" x2="349" y2="176" stroke="rgba(237,242,255,0.28)" />
+                  <text x="314" y="218" text-anchor="middle" fill="#aab4d2" font-size="10">two 32-unit hidden layers</text>
+
+                  <line x1="404" y1="151" x2="452" y2="151" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#ppoArrow)" />
+
+                  <rect x="458" y="78" width="112" height="62" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="514" y="102" text-anchor="middle" fill="#47e5ff" font-size="13" font-weight="800" font-family="Space Grotesk">actor</text>
+                  <text x="514" y="122" text-anchor="middle" fill="#edf2ff" font-size="10">jaw command u</text>
+                  <rect x="458" y="162" width="112" height="62" rx="8" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1.5" />
+                  <text x="514" y="186" text-anchor="middle" fill="#c4b5fd" font-size="13" font-weight="800" font-family="Space Grotesk">critic</text>
+                  <text x="514" y="206" text-anchor="middle" fill="#edf2ff" font-size="10">how good is this?</text>
+
+                  <line x1="572" y1="109" x2="620" y2="109" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#ppoArrow)" />
+                  <rect x="626" y="76" width="84" height="66" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="668" y="103" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">SurRoL</text>
+                  <text x="668" y="123" text-anchor="middle" fill="#edf2ff" font-size="10">next state</text>
+
+                  <path d="M668 144 C668 264 322 266 322 232" fill="none" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#ppoAmberArrow)" />
+                  <rect x="224" y="250" width="196" height="48" rx="8" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" stroke-width="1.5" />
+                  <text x="322" y="271" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="800" font-family="Space Grotesk">PPO clipped update</text>
+                  <text x="322" y="289" text-anchor="middle" fill="#edf2ff" font-size="9">do not move the policy too far</text>
+                  <text x="548" y="267" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="800">rollout buffer</text>
+                  <text x="548" y="283" text-anchor="middle" fill="#aab4d2" font-size="9">1024 states, actions, rewards</text>
+                </svg>
+              </div>
+              <div>
+                <div class="panel outline-amber">
+                  <h3 data-lang="en">Why PPO</h3>
+                  <p data-lang="en">PPO compares the new policy to the old one and clips the update if the change is too large. Intuitively: improve the squeeze behavior, but avoid one bad batch causing a big jump.</p>
+                </div>
+                <div class="panel outline-violet" style="margin-top: 10px;">
+                  <h3 data-lang="en">Actor + critic</h3>
+                  <p data-lang="en">The actor chooses the jaw command. The critic estimates whether the current state is promising, helping the actor learn which actions deserve more probability next time.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footerline">
+            <span data-lang="en">PPO is a conservative policy-improvement loop: collect rollout, score outcomes, update gently, repeat.</span>
+            
+            <span class="brand-text">Surgical Robotics</span>
+          </div>
+          <aside class="notes">
+        
+        (~65 сек)
+        DRL означава, че policy-то е neural network, не ръчно написано правило. Actor-ът избира jaw command, critic-ът оценява дали state-ът е добър. PPO събира rollout-и от 1024 steps и прави clipped update, така че policy-то да се подобрява постепенно, без големи нестабилни скокове.
+      </aside>
+        </div>
+      </section>
+
+      <!-- 29a. Reward design -->
+      <section>
+        <div class="slide-shell">
+          <div class="slide-header">
+            <div class="kicker" data-lang="en">Reward Design</div>
+            
+            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+          </div>
+          <div>
+            <h2 data-lang="en">Reward design is where the <span style="color: var(--cyan);">safety logic</span> enters the RL problem.</h2>
+            
+            <p class="lede" data-lang="en">The policy should not simply close the jaws as much as possible. It must reach a target occlusion, avoid the damage region, and hold steady.</p>
+            
+            <div class="hero-layout" style="align-items: start; grid-template-columns: 1.1fr 0.9fr; margin-top: 14px;">
+              <div class="panel outline-cyan" style="padding: 12px;">
+                <h3 data-lang="en">Occlusion model</h3>
+                <svg viewbox="0 0 720 310" style="width: 100%; max-height: 280px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vessel squeeze occlusion reward model">
+                  <defs>
+                    <lineargradient id="rewardBand" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="rgba(248,113,113,0.32)" /><stop offset="0.38" stop-color="rgba(147,197,253,0.16)" /><stop offset="0.62" stop-color="rgba(34,211,238,0.34)" /><stop offset="1" stop-color="rgba(71,229,255,0.10)" /></lineargradient>
+                    <marker id="rewardArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
+                  </defs>
+                  <rect x="80" y="108" width="560" height="54" rx="27" fill="url(#rewardBand)" stroke="rgba(237,242,255,0.24)" />
+                  <text x="110" y="92" fill="#f87171" font-size="12" font-weight="700">over-squeeze / damage</text>
+                  <text x="324" y="92" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="700">too tight</text>
+                  <text x="444" y="92" text-anchor="middle" fill="#47e5ff" font-size="12" font-weight="700">target band</text>
+                  <text x="610" y="92" text-anchor="middle" fill="#aab4d2" font-size="12" font-weight="700">under-squeeze / leaking</text>
+                  <line x1="175" y1="94" x2="175" y2="172" stroke="#f87171" stroke-width="2" stroke-dasharray="6 6" />
+                  <line x1="444" y1="94" x2="444" y2="172" stroke="#47e5ff" stroke-width="2" stroke-dasharray="6 6" />
+                  <text x="444" y="194" text-anchor="middle" fill="#edf2ff" font-size="13" font-weight="800">θ*</text>
+                  <text x="360" y="232" text-anchor="middle" fill="#aab4d2" font-size="12">flow(angle) ≈ sigmoid((θ - μ) · α)</text>
+                  <text x="360" y="254" text-anchor="middle" fill="#aab4d2" font-size="12">θ* is computed from target flow, then clamped above damage</text>
+                </svg>
+              </div>
+              <div>
+                <div class="panel outline-cyan">
+                  <h3 data-lang="en">Reward terms</h3>
+                  <div class="formula" style="margin: 6px 0; font-size: 0.66em;">r = Rmax − Kθ(θ−θ*)² − KΔu|Δu| − Kdmg·risk − step_cost</div>
+                  <p data-lang="en">Reward accuracy, smooth motion, and staying away from damage.</p>
+                </div>
+                <div class="panel outline-amber" style="margin-top: 10px;">
+                  <h3 data-lang="en">Reward hacking fix</h3>
+                  <p data-lang="en">The problem: if we only reward low flow, the policy can learn the wrong shortcut — clamp too hard, hover at the edge of damage, or oscillate around the target.</p>
+                  <ul style="margin-top: 6px;">
+                    <li data-lang="en"><strong>Damage guard.</strong> End the episode with a penalty if the jaw crosses the damage angle.</li>
+                    <li data-lang="en"><strong>Safety margin.</strong> Penalize getting close to damage, not only crossing it.</li>
+                    <li data-lang="en"><strong>Stable hold.</strong> Penalize jerky Δu and count success only after consecutive steady steps.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footerline">
+            <span data-lang="en">Reward = target occlusion + safety margin + smoothness + stable hold gate.</span>
+            
+            <span class="brand-text">Surgical Robotics</span>
+          </div>
+        </div>
+        <aside class="notes">
+        
+        (~55 сек)
+        Reward hacking означава, че агентът намира shortcut в наградата, вместо хирургично правилното поведение. Ако наградим само low flow, може да стиска прекалено силно или да oscillate-ва около target-а. Fix-ът е damage termination, proximity penalty, smoothness penalty и success gate само след стабилно задържане.
+      </aside>
+      </section>
+
+      <!-- 29b. Domain randomization and training methods -->
+      <section>
+        <div class="slide-shell">
+          <div class="slide-header">
+            <div class="kicker" data-lang="en">Domain Randomization</div>
+            
+            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+          </div>
+          <div>
+            <h2 data-lang="en">We did not train on <span style="color: var(--cyan);">one perfect vessel</span>.</h2>
+            
+            <p class="lede" data-lang="en">Each episode changes the simulated vessel and contact conditions, so the policy learns a rule that works across a family of cases instead of memorizing one geometry.</p>
+            
+            <div class="hero-layout" style="align-items: start; grid-template-columns: 1.04fr 0.96fr; margin-top: 14px;">
+              <div class="panel outline-cyan" style="padding: 12px;">
+                <h3 data-lang="en">What changes at reset</h3>
+                <svg viewbox="0 0 720 330" style="width: 100%; max-height: 292px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Domain randomization implementation diagram">
+                  <defs>
+                    <marker id="drArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
+                  </defs>
+                  <rect x="42" y="112" width="146" height="86" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="115" y="142" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">reset()</text>
+                  <text x="115" y="164" text-anchor="middle" fill="#edf2ff" font-size="11">new episode</text>
+                  <text x="115" y="184" text-anchor="middle" fill="#aab4d2" font-size="10">sample parameters</text>
+                  <line x1="190" y1="155" x2="240" y2="155" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#drArrow)" />
+
+                  <rect x="248" y="40" width="170" height="66" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="333" y="66" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Anatomy</text>
+                  <text x="333" y="86" text-anchor="middle" fill="#edf2ff" font-size="10">radius 1.5-3.0 mm</text>
+                  <text x="333" y="100" text-anchor="middle" fill="#edf2ff" font-size="10">thickness 0.7-1.3x</text>
+
+                  <rect x="248" y="122" width="170" height="66" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="333" y="148" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Scene</text>
+                  <text x="333" y="168" text-anchor="middle" fill="#edf2ff" font-size="10">small pose jitter</text>
+                  <text x="333" y="182" text-anchor="middle" fill="#edf2ff" font-size="10">vessel color jitter</text>
+
+                  <rect x="248" y="204" width="170" height="66" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="333" y="230" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Contact</text>
+                  <text x="333" y="250" text-anchor="middle" fill="#edf2ff" font-size="10">friction / damping</text>
+                  <text x="333" y="264" text-anchor="middle" fill="#edf2ff" font-size="10">restitution</text>
+
+                  <line x1="420" y1="73" x2="478" y2="140" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#drArrow)" />
+                  <line x1="420" y1="155" x2="478" y2="155" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#drArrow)" />
+                  <line x1="420" y1="237" x2="478" y2="170" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#drArrow)" />
+
+                  <rect x="486" y="104" width="186" height="102" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="579" y="134" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">same PPO policy</text>
+                  <text x="579" y="157" text-anchor="middle" fill="#edf2ff" font-size="11">observes radius + thickness</text>
+                  <text x="579" y="178" text-anchor="middle" fill="#aab4d2" font-size="10">learns a robust squeeze rule</text>
+
+                  <text x="360" y="306" text-anchor="middle" fill="#aab4d2" font-size="11">The target angle and damage threshold are recomputed from the sampled vessel model.</text>
+                </svg>
+              </div>
+              <div>
+                <div class="panel outline-cyan" style="padding: 8px;">
+                  <table class="tech-table" data-lang="en">
+                    <thead><tr><th>Randomized parameter</th><th>Typical range (clip‑application example)</th></tr></thead>
+                    <tbody>
+                      <tr><td class="era">Vessel radius</td><td>1.5 – 3.0 mm</td></tr>
+                      <tr><td class="era">Friction coefficient</td><td>0.3 – 1.2</td></tr>
+                      <tr><td class="era">Damping</td><td>0.02 – 0.10</td></tr>
+                      <tr><td class="era">Sensing noise</td><td>σ ≈ 0.002 rad</td></tr>
+                      <tr><td class="era">Pose tilt</td><td>± 1.1°</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footerline">
+            <span data-lang="en">Domain randomization turns one simulator scene into a distribution of training cases.</span>
+            
+            <span class="brand-text">Surgical Robotics</span>
+          </div>
+          <aside class="notes">
+        
+        (~60 сек)
+        Тук показваме как policy-то не се учи върху една фиксирана тръбичка. При всеки reset сменяме radius, thickness, contact параметри и малко pose/color. После recompute-ваме flow модела, damage threshold-а и target angle-а. В training добавяме VecNormalize, entropy annealing, evaluation и checkpoints.
+      </aside>
+        </div>
+      </section>
+
+      <!-- 29c. Exploration vs exploitation -->
+      <section>
+        <div class="slide-shell">
+          <div class="slide-header">
+            <div class="kicker" data-lang="en">Exploration vs Exploitation</div>
+            
+            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+          </div>
+          <div>
+            <h2 data-lang="en">Early training explores. Later training <span style="color: var(--cyan);">refines the squeeze</span>.</h2>
+            
+            <p class="lede" data-lang="en">The policy is trained for 400k environment steps. Episodes are capped at 300 steps, so the run covers at least about 1.3k randomized episodes, and usually more because success or damage can end an episode early.</p>
+            
+            <div class="hero-layout" style="align-items: start; grid-template-columns: 0.96fr 1.04fr; margin-top: 14px;">
+              <div class="panel outline-cyan" style="padding: 12px;">
+                <h3 data-lang="en">Training budget split</h3>
+                <svg viewbox="0 0 700 350" style="width: 100%; max-height: 292px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Exploration exploitation training budget graphic">
+                  <defs>
+                    <marker id="exploreArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
+                  </defs>
+                  <circle cx="170" cy="145" r="86" fill="none" stroke="rgba(147,197,253,0.20)" stroke-width="34" />
+                  <circle cx="170" cy="145" r="86" fill="none" stroke="#47e5ff" stroke-width="34" stroke-dasharray="135 405" stroke-dashoffset="0" transform="rotate(-90 170 145)" />
+                  <circle cx="170" cy="145" r="56" fill="rgba(7,12,28,0.92)" stroke="rgba(237,242,255,0.16)" />
+                  <text x="170" y="137" text-anchor="middle" fill="#edf2ff" font-size="20" font-weight="800" font-family="Space Grotesk">400k</text>
+                  <text x="170" y="160" text-anchor="middle" fill="#aab4d2" font-size="11">env steps</text>
+                  <rect x="310" y="72" width="324" height="52" rx="8" fill="rgba(71,229,255,0.12)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="326" y="94" fill="#47e5ff" font-size="13" font-weight="800" font-family="Space Grotesk">0-100k steps: explore</text>
+                  <text x="326" y="113" fill="#edf2ff" font-size="10">entropy bonus anneals from 0.01 to 0</text>
+                  <rect x="310" y="142" width="324" height="52" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="326" y="164" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">100k-400k steps: exploit/refine</text>
+                  <text x="326" y="183" fill="#edf2ff" font-size="10">use reward signal to stabilize near θ*</text>
+                  <rect x="310" y="212" width="324" height="52" rx="8" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1.5" />
+                  <text x="326" y="234" fill="#c4b5fd" font-size="13" font-weight="800" font-family="Space Grotesk">every episode: new randomized case</text>
+                  <text x="326" y="253" fill="#edf2ff" font-size="10">radius, thickness, target angle, contact vary</text>
+                  <line x1="64" y1="292" x2="620" y2="292" stroke="rgba(237,242,255,0.22)" stroke-width="10" stroke-linecap="round" />
+                  <line x1="64" y1="292" x2="203" y2="292" stroke="#47e5ff" stroke-width="10" stroke-linecap="round" />
+                  <text x="64" y="322" text-anchor="middle" fill="#aab4d2" font-size="10">0</text>
+                  <text x="203" y="322" text-anchor="middle" fill="#47e5ff" font-size="10" font-weight="800">100k</text>
+                  <text x="620" y="322" text-anchor="middle" fill="#aab4d2" font-size="10">400k</text>
+                  <text x="134" y="278" text-anchor="middle" fill="#47e5ff" font-size="10" font-weight="800">25% exploration</text>
+                  <text x="410" y="278" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="800">75% exploitation/refinement</text>
+                </svg>
+              </div>
+              <div>
+                <div class="panel outline-cyan">
+                  <h3 data-lang="en">How exploration is encouraged</h3>
+                  <ul style="margin-top: 6px;">
+                    <li data-lang="en"><strong>Entropy bonus.</strong> Early on, PPO is nudged to try different jaw commands instead of collapsing to one behavior.</li>
+                    <li data-lang="en"><strong>Randomized episodes.</strong> Exploration is not just random action noise; the agent also sees different vessel cases.</li>
+                    <li data-lang="en"><strong>Rollout updates.</strong> PPO collects 1024 steps, then updates using a clipped objective so policy changes stay controlled.</li>
+                  </ul>
+                </div>
+                <div class="panel outline-amber" style="margin-top: 10px;">
+                  <h3 data-lang="en">When we prefer exploitation</h3>
+                  <ul style="margin-top: 6px;">
+                    <li data-lang="en"><strong>After 100k steps.</strong> Entropy has faded, so learning focuses on the best discovered squeeze behavior.</li>
+                    <li data-lang="en"><strong>Near the target band.</strong> The policy should reduce action changes and hold steady, not keep experimenting.</li>
+                    <li data-lang="en"><strong>During evaluation.</strong> Eval runs are deterministic every 20k steps; checkpoints save progress every 10k.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footerline">
+            <span data-lang="en">Explore broadly first, then exploit the stable, safe squeeze behavior.</span>
+            
+            <span class="brand-text">Surgical Robotics</span>
+          </div>
+          <aside class="notes">
+        
+        (~60 сек)
+        Тук balance-ът е практичен: първите 100k steps имат entropy bonus, който насърчава exploration. След това ent_coef става 0 и policy-то основно refine-ва вече намерената стратегия. Общо имаме 400k environment steps, max 300 steps на episode, тоест минимум около 1333 пълни episodes, а при ранно success/damage episodes са повече.
       </aside>
         </div>
       </section>
@@ -3392,41 +3808,20 @@ model.save("best_policy")</code></pre>
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div>
-            <h2 data-lang="en">Approach fast → freeze. <span style="color: var(--cyan);">Two phases emerged, untouched by hand.</span></h2>
+            <h2 data-lang="en">The policy learned a <span style="color: var(--cyan);">two-phase squeeze strategy</span>.</h2>
             
-            <p class="lede" data-lang="en">Four frames of the policy squeezing a vessel. Nobody programmed these two phases — they <strong>emerged</strong> from the reward function.</p>
+            <p class="lede" data-lang="en">Use the live policy demo to vary vessel radius and wall thickness. The first moves close the gap quickly; later moves settle into a stable hold.</p>
             
-            <div class="grid-4" style="margin-top: 18px;">
-              <div>
-                <div class="figure-frame"><img src="images/thesis/experiment/vessel_squeeze_step0_jaw.png" alt="step 0" /></div>
-                <div class="figure-caption" data-lang="en">t = 0 · jaws open</div>
-                
-              </div>
-              <div>
-                <div class="figure-frame"><img src="images/thesis/experiment/vessel_squeeze_step5_jaw.png" alt="step 5" /></div>
-                <div class="figure-caption" data-lang="en">t = 5 · approaching</div>
-                
-              </div>
-              <div>
-                <div class="figure-frame"><img src="images/thesis/experiment/vessel_squeeze_step10_jaw.png" alt="step 10" /></div>
-                <div class="figure-caption" data-lang="en">t = 10 · entering band</div>
-                
-              </div>
-              <div>
-                <div class="figure-frame"><img src="images/thesis/experiment/vessel_squeeze_step19_jaw.png" alt="step 19" /></div>
-                <div class="figure-caption" data-lang="en">t = 19 · held steady</div>
-                
-              </div>
-            </div>
-            <div class="callout" style="margin-top: 16px;">
-              <strong data-lang="en">Emergent structure</strong>
-              
-              <span data-lang="en">Phase 1 — large error, large action. Phase 2 — tiny error, near‑zero action. Both phases came out of one scalar reward, not a hand‑written state machine.</span>
-              
+            <div class="panel outline-cyan" style="padding: 8px; margin-top: 12px; max-width: 1120px;">
+              <iframe
+                title="Interactive vessel squeeze policy demo"
+                src="../clip-application-surrol/demo.html?embed=1"
+                style="width: 100%; height: 390px; border: 1px solid rgba(237,242,255,0.18); border-radius: 8px; background: #fff;"
+                loading="lazy"></iframe>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">A scalar reward, four state dims, and a two‑phase strategy fell out.</span>
+            <span data-lang="en">Interactive demo: policy server must be running at http://127.0.0.1:5000.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -3438,119 +3833,44 @@ model.save("best_policy")</code></pre>
         </div>
       </section>
 
-      <!-- 31. Deployment envelope -->
+      <!-- 31. Result simulation -->
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Deployment Envelope</div>
+            <div class="kicker" data-lang="en">Result Simulation</div>
             
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div>
-            <h2 data-lang="en">A learned policy <span style="color: var(--cyan);">never reaches a patient on its own</span>.</h2>
+            <h2 data-lang="en">Simulation result: the learned policy <span style="color: var(--cyan);">executes the squeeze</span>.</h2>
             
-            <p class="lede" data-lang="en">It sits inside a deterministic envelope. The interesting engineering isn't the network — it's the three boxes around it.</p>
+            <p class="lede" data-lang="en">This is the trained policy running in the simulated vessel-squeeze setup: close quickly, avoid over-compression, then hold the target region.</p>
             
-            <div class="grid-4" style="margin-top: 16px;">
-              <div class="panel outline-cyan">
-                <h3>Policy</h3>
-                <p data-lang="en">PPO network. Outputs a <em>reference</em> jaw angle, not a torque or a velocity. Runs at 50 Hz — fast enough to keep up with the surgeon, slow enough that the supervisor below can sanity‑check every step.</p>
-                
-              </div>
-              <div class="panel outline-cyan">
-                <h3 data-lang="en">Geometric guard</h3>
-                
-                <p data-lang="en">A pure‑code clamp on θ<sub>cmd</sub>: never inside the damage band, never outside the workspace, never moving faster than the actuator allows. No ML, ~50 lines, easy to certify under IEC 62304.</p>
-                
-              </div>
-              <div class="panel outline-amber">
-                <h3 data-lang="en">Runtime monitor</h3>
-                
-                <p data-lang="en">Watches |Δu|, action entropy, and prediction confidence in real time. If the policy starts thrashing or its confidence collapses, the monitor trips it out of the loop — the network is treated as a fallible component, not a source of truth.</p>
-                
-              </div>
-              <div class="panel outline-red">
-                <h3 data-lang="en">Watchdog &amp; safe state</h3>
-                
-                <p data-lang="en">If inference misses even one frame, a hardware watchdog timer fires: the controller servos to the last‑good reference, the surgeon gets an audible alert, manual control is handed back. Failure‑tolerant by design, not by hope.</p>
-                
-              </div>
+            <div class="panel outline-cyan" style="padding: 8px; margin-top: 14px; max-width: 980px; margin-left: auto; margin-right: auto;">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/hsO9aynRFPo?si=i9jrXY6BAV0a2svH"
+                title="Vessel squeeze result simulation"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+                style="width: 100%; aspect-ratio: 16 / 9; height: auto; border: 1px solid rgba(237,242,255,0.18); border-radius: 8px; background: #000;"></iframe>
             </div>
-            <p class="lede" style="margin-top: 14px; text-align: center;" data-lang="en">
-              The interesting engineering isn't the network. <strong>It's the three boxes around it.</strong>
-            </p>
-            
           </div>
           <div class="footerline">
-            <span data-lang="en">Policy + clamp + monitor + watchdog = a learned model you can deploy.</span>
+            <span data-lang="en">The learned controller is still a simulation result, not a clinical deployment.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
           <aside class="notes">
         
-        (~55 сек)
-        Деплоймънтът не е „пусни модела и готово“. Политиката трябва да е обвита в guard, monitor и watchdog, които гарантират безопасен отказ.
+        (~45 сек)
+        Тук показваме резултата в симулация: policy-то изпълнява squeeze поведението, което видяхме интерактивно. Важно е да подчертаем, че това е simulation result, не клинична deployment демонстрация.
       </aside>
         </div>
       </section>
-
-      <!-- 32. The result -->
-      <section>
-        <div class="slide-shell">
-          <div class="slide-header">
-            <div class="kicker" data-lang="en">The Result</div>
-            
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
-          </div>
-          <div>
-            <h2 data-lang="en">Two clusters, untouched by hand. <span style="color: var(--cyan);">~86% success in held‑out evals.</span></h2>
-            
-            <div class="hero-layout" style="margin-top: 14px;">
-              <div class="figure-frame dark tall" style="justify-self: start;">
-                <img src="images/thesis/ppo/abs_error_vs_delta_u.png" alt="hexbin two-phase plot" />
-                <div class="figure-caption" data-lang="en">|Δu| vs. |θ − θ*| · two clusters emerged</div>
-                
-              </div>
-              <div>
-                <p class="lede" data-lang="en">Two clusters emerged, untouched by hand:</p>
-                
-                <p class="lede" style="margin-top: 10px;" data-lang="en">
-                  <strong>Approach</strong> — large error, large action.<br />
-                  <strong>Hold</strong> — tiny error, near‑zero action.
-                </p>
-                
-                <div class="grid-2" style="margin-top: 16px;">
-                  <div class="metric panel">
-                    <span class="num">~86%</span>
-                    <span class="lbl" data-lang="en">success rate on held‑out evals</span>
-                    
-                  </div>
-                  <div class="metric panel">
-                    <span class="num">4–5°</span>
-                    <span class="lbl" data-lang="en">final angular error</span>
-                    
-                  </div>
-                </div>
-                <p class="lede" style="margin-top: 12px; font-style: italic;" data-lang="en">
-                  Sim only. Never touched a real robot. <strong>One narrow sub‑task done well.</strong>
-                </p>
-                
-              </div>
-            </div>
-          </div>
-          <div class="footerline">
-            <span data-lang="en">Sim‑only proof of concept · one narrow task · strong, structured behavior.</span>
-            
-            <span class="brand-text">Surgical Robotics</span>
-          </div>
-          <aside class="notes">
-        
-        (~55 сек)
-        Резултатът е proof of concept за тесен, но реален субпроблем. Най-важното е предвидимостта, защото тя е основа за следваща клинична стъпка.
-      </aside>
-        </div>
-      </section>
-
       </section>
 
       <!-- ============================================================
@@ -3562,20 +3882,19 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="section-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Part 6 — The Road Ahead</div>
+            <div class="kicker" data-lang="en">Part VI: The Road Ahead</div>
             
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div class="section-hero">
-            <span class="kicker" data-lang="en">From prototype to a real patient</span>
             
-            <h1 data-lang="en">What's still hard, <span style="color: var(--cyan);">where the field is going</span>, and the V&amp;V ladder that gets you to the OR.</h1>
+            <h1 data-lang="en">What still blocks surgical autonomy, <span style="color: var(--cyan);">what comes next</span>, and how we prove it is safe enough.</h1>
             
             <p class="lede" data-lang="en">We just trained one policy for one sub‑task in simulation. The honest next question is: what would it take to get a policy like this to a real patient?</p>
             
           </div>
           <div class="footerline">
-            <span data-lang="en">Open challenges · where the field is heading · the V&amp;V ladder.</span>
+            <span data-lang="en">Open challenges · future directions · validation before the OR.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -3600,51 +3919,26 @@ model.save("best_policy")</code></pre>
             
             <p class="lede" data-lang="en">None of these are research curiosities — each one is a project plan for the next decade.</p>
             
-            <div class="problem-stack" style="margin-top: 14px;">
-              <div class="problem-row">
-                <div class="icon-box" style="background: linear-gradient(135deg, var(--red), var(--amber));">01</div>
-                <div>
-                  <strong data-lang="en">Sim‑to‑real gap</strong>
-                  
-                  <p data-lang="en">Soft tissue deforms, organs slip on each other, blood and smoke obscure vision. Almost none of this matches the simulator. Domain randomization helps; it doesn't close the gap.</p>
-                  
-                </div>
+            <div class="grid-3" style="margin-top: 16px; align-items: stretch;">
+              <div class="panel outline-cyan">
+                <h3 data-lang="en">Sim-to-real gap</h3>
+                <p data-lang="en">Soft tissue deforms, organs slip, blood and smoke obscure vision. Domain randomization helps, but simulation still misses real OR physics.</p>
               </div>
-              <div class="problem-row">
-                <div class="icon-box" style="background: linear-gradient(135deg, var(--red), var(--amber));">02</div>
-                <div>
-                  <strong data-lang="en">Force / haptic sensing</strong>
-                  
-                  <p data-lang="en">Most surgical robots have <strong>no real force feedback</strong> at the tool tip — cable‑driven mechanisms hide it. You can't safely squeeze, pull, or suture without knowing the force you're applying.</p>
-                  
-                </div>
+              <div class="panel outline-amber">
+                <h3 data-lang="en">Force sensing</h3>
+                <p data-lang="en">Most systems do not measure true tool-tip force. Without force, safe squeezing, pulling, and suturing remain hard to automate.</p>
               </div>
-              <div class="problem-row">
-                <div class="icon-box" style="background: linear-gradient(135deg, var(--red), var(--amber));">03</div>
-                <div>
-                  <strong data-lang="en">Generalization across patients</strong>
-                  
-                  <p data-lang="en">A policy trained on one anatomy can fail on another — organ size, position, fat thickness, prior surgery all change the picture. Big, diverse datasets fix it; we don't have them yet.</p>
-                  
-                </div>
+              <div class="panel outline-violet">
+                <h3 data-lang="en">Patient variation</h3>
+                <p data-lang="en">Organ size, position, fat thickness, and prior surgery change the scene. A policy must work across anatomy, not one clean case.</p>
               </div>
-              <div class="problem-row">
-                <div class="icon-box" style="background: linear-gradient(135deg, var(--red), var(--amber));">04</div>
-                <div>
-                  <strong data-lang="en">Verification &amp; regulation</strong>
-                  
-                  <p data-lang="en">How do you certify a learned controller under IEC 62304 / FDA SaMD when the function is a 50M‑parameter network? Guidance is still being written. Today's early answers: SBOMs, model cards, and runtime monitors that <em>are</em> certifiable.</p>
-                  
-                </div>
+              <div class="panel outline-cyan" style="grid-column: span 2;">
+                <h3 data-lang="en">Verification &amp; regulation</h3>
+                <p data-lang="en">A learned controller is not certified just because it works in a demo. It needs traceable requirements, test evidence, runtime monitors, and a validation path regulators can inspect.</p>
               </div>
-              <div class="problem-row">
-                <div class="icon-box" style="background: linear-gradient(135deg, var(--red), var(--amber));">05</div>
-                <div>
-                  <strong data-lang="en">Data scarcity</strong>
-                  
-                  <p data-lang="en">JIGSAWS = 103 demonstrations. ImageNet had 14M. The gap is <em>five orders of magnitude</em>. Surgical recordings are also sensitive personal health data — hard to share, even between hospitals.</p>
-                  
-                </div>
+              <div class="panel outline-amber">
+                <h3 data-lang="en">Data scarcity</h3>
+                <p data-lang="en">JIGSAWS has 103 demonstrations; ImageNet had 14M images. Surgical data is also private, sensitive, and hard to share across hospitals.</p>
               </div>
             </div>
           </div>
@@ -3670,9 +3964,9 @@ model.save("best_policy")</code></pre>
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div>
-            <h2 data-lang="en">Don't expect a robot that performs an operation. <span style="color: var(--cyan);">Expect one that watches the surgeon</span>.</h2>
+            <h2 data-lang="en">Near-term autonomy will look less like a robot surgeon and more like <span style="color: var(--cyan);">an assistant that understands the operation</span>.</h2>
             
-            <p class="lede" data-lang="en">…takes over the boring parts, and uses the same kind of pre‑trained models we use elsewhere in AI today.</p>
+            <p class="lede" data-lang="en">It follows the procedure in real time, helps with routine subtasks, and uses the same kind of pre‑trained models we use elsewhere in AI today.</p>
             
             <div class="grid-2" style="margin-top: 16px;">
               <div class="panel outline-cyan">
@@ -3718,27 +4012,61 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">The Road to the OR</div>
+            <div class="kicker" data-lang="en">Path to Clinical Use</div>
             
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div>
-            <h2 data-lang="en">No shortcut from simulation to the OR. <span style="color: var(--cyan);">Just a ladder.</span></h2>
+            <h2 data-lang="en">A simulation result is only the start. <span style="color: var(--cyan);">Clinical use requires step-by-step validation.</span></h2>
             
             <p class="lede" data-lang="en">Every rung filters out things you didn't think you'd missed. Skipping rungs is how patients get hurt.</p>
             
-            <ul class="levels" style="margin-top: 18px;" data-lang="en">
-              <li><span class="lv">Step 1</span> Simulation and unit tests.</li>
-              <li><span class="lv">Step 2</span> Hardware‑in‑the‑loop with realistic latency.</li>
-              <li><span class="lv">Step 3</span> Benchtop tissue analogs with force and flow sensors.</li>
-              <li class="amber"><span class="lv">Step 4</span> Cadaver and animal preclinical labs.</li>
-              <li class="amber"><span class="lv">Step 5</span> IRB‑supervised limited clinical trial.</li>
-              <li class="red"><span class="lv">Step 6</span> Deployment under strict stop rules.</li>
-            </ul>
-            
-            <p class="lede" style="margin-top: 16px; text-align: center;" data-lang="en">
-              Years of engineering. <strong>And that's the right pace.</strong>
-            </p>
+            <div class="panel outline-cyan" style="padding: 10px; margin-top: 18px;">
+              <svg viewbox="0 0 1120 420" style="width: 100%; max-height: 360px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Staircase from simulation testing to operating room deployment">
+                <defs>
+                  <marker id="orArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
+                </defs>
+                <text x="58" y="52" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">SIMULATION</text>
+                <text x="1040" y="52" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">CLINICAL USE</text>
+                <line x1="154" y1="48" x2="975" y2="48" stroke="rgba(71,229,255,0.42)" stroke-width="2" marker-end="url(#orArrow)" />
+
+                <g font-family="Inter, sans-serif" transform="translate(0 26)">
+                  <path d="M70 322 H220 V278 H370 V234 H520 V190 H670 V146 H820 V118 H1000" fill="none" stroke="rgba(71,229,255,0.16)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M70 322 H220 V278 H370 V234 H520 V190 H670 V146 H820 V118 H1000" fill="none" stroke="rgba(71,229,255,0.82)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#orArrow)" />
+
+                  <rect x="48" y="268" width="176" height="72" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.4" />
+                  <text x="66" y="291" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">STEP 1</text>
+                  <text x="66" y="313" fill="#edf2ff" font-size="12">Simulation</text>
+                  <text x="66" y="330" fill="#aab4d2" font-size="11">unit tests</text>
+
+                  <rect x="198" y="224" width="176" height="72" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.4" />
+                  <text x="216" y="247" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">STEP 2</text>
+                  <text x="216" y="269" fill="#edf2ff" font-size="12">Hardware-in-loop</text>
+                  <text x="216" y="286" fill="#aab4d2" font-size="11">realistic latency</text>
+
+                  <rect x="348" y="180" width="176" height="72" rx="8" fill="#1a2c48" stroke="#93c5fd" stroke-width="1.4" />
+                  <text x="366" y="203" fill="#93c5fd" font-size="13" font-weight="900" font-family="Space Grotesk">STEP 3</text>
+                  <text x="366" y="225" fill="#edf2ff" font-size="12">Benchtop tissue</text>
+                  <text x="366" y="242" fill="#aab4d2" font-size="11">force + flow sensors</text>
+
+                  <rect x="498" y="136" width="176" height="72" rx="8" fill="#1a2c48" stroke="#93c5fd" stroke-width="1.4" />
+                  <text x="516" y="159" fill="#93c5fd" font-size="13" font-weight="900" font-family="Space Grotesk">STEP 4</text>
+                  <text x="516" y="181" fill="#edf2ff" font-size="12">Preclinical labs</text>
+                  <text x="516" y="198" fill="#aab4d2" font-size="11">cadaver + animal</text>
+
+                  <rect x="648" y="92" width="176" height="72" rx="8" fill="#2b2c3e" stroke="#f59e0b" stroke-width="1.4" />
+                  <text x="666" y="115" fill="#fbbf24" font-size="13" font-weight="900" font-family="Space Grotesk">STEP 5</text>
+                  <text x="666" y="137" fill="#edf2ff" font-size="12">Limited trial</text>
+                  <text x="666" y="154" fill="#aab4d2" font-size="11">IRB supervised</text>
+
+                  <rect x="798" y="64" width="204" height="72" rx="8" fill="#32243b" stroke="#f87171" stroke-width="1.4" />
+                  <text x="816" y="87" fill="#f87171" font-size="13" font-weight="900" font-family="Space Grotesk">STEP 6</text>
+                  <text x="816" y="109" fill="#edf2ff" font-size="12">Deployment</text>
+                  <text x="816" y="126" fill="#aab4d2" font-size="11">strict stop rules</text>
+                </g>
+
+              </svg>
+            </div>
             
           </div>
           <div class="footerline">
@@ -3761,59 +4089,6 @@ model.save("best_policy")</code></pre>
            ============================================================ -->
       <section data-part="8">
 
-      <!-- 37. Takeaways -->
-      <section>
-        <div class="slide-shell">
-          <div class="slide-header">
-            <div class="kicker" data-lang="en">Takeaways</div>
-            
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
-          </div>
-          <div>
-            <h2 data-lang="en">If only three things stay with you from the last hour, <span style="color: var(--cyan);">let it be these</span>.</h2>
-            
-            <p class="lede" data-lang="en">The answers to "what does autonomy in surgery actually look like in 2026," "do I need a new tech stack to build it," and "where does the safety actually live."</p>
-            
-            <div class="grid-3" style="margin-top: 18px;">
-              <div class="timeline" style="grid-template-columns: 1fr; gap: 0;">
-                <div class="milestone">
-                  <h3 data-lang="en">1 · Narrow and deep</h3>
-                  
-                  <p data-lang="en">Surgical autonomy is narrow and deep, not broad. Mako, Ion, STAR each automate <em>one</em> thing — and that's where the wins are.</p>
-                  
-                </div>
-              </div>
-              <div class="timeline" style="grid-template-columns: 1fr; gap: 0;">
-                <div class="milestone future">
-                  <h3 data-lang="en">2 · Familiar stack</h3>
-                  
-                  <p data-lang="en">The stack is mostly tools you already know. PyTorch, ROS, Flask, Jetson — plus a few surgical‑specific simulators and datasets.</p>
-                  
-                </div>
-              </div>
-              <div class="timeline" style="grid-template-columns: 1fr; gap: 0;">
-                <div class="milestone risk">
-                  <h3 data-lang="en">3 · Safety is plumbing</h3>
-                  
-                  <p data-lang="en">Safety isn't a feature. It's the <em>reward function</em>, the <em>runtime monitor</em>, and the <em>V&amp;V ladder</em>. Build all three.</p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="footerline">
-            <span data-lang="en">Narrow &amp; deep · familiar stack · safety is plumbing.</span>
-            
-            <span class="brand-text">Surgical Robotics</span>
-          </div>
-          <aside class="notes">
-        
-        (~55 сек)
-        Трите извода са прости: автономията е тясна и дълбока, стекът е познат, безопасността е инженерна инфраструктура. Ако липсва някой от тези елементи, системата не е готова за реална среда.
-      </aside>
-        </div>
-      </section>
-
       <!-- 38. Thank you -->
       <section>
         <div class="slide-shell">
@@ -3823,13 +4098,10 @@ model.save("best_policy")</code></pre>
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div class="hero-title">
-            <span class="eyebrow" data-lang="en">End of talk</span>
             
             <h1 data-lang="en"><span class="accent-cyan">Thank you.</span><br />Questions?</h1>
             
             <p class="lede" data-lang="en">If a single message survives the next hour, let it be this: surgical autonomy is narrow, deep, and built from the same tools you already use — wrapped in a safety envelope you build yourself.</p>
-            
-            <div class="by-line" data-lang="en">David Mavrodiev · github.com/David-Mavrodiev</div>
             
           </div>
           <div class="footerline">
