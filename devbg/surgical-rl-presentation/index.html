@@ -563,7 +563,7 @@
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div>
-            <h2 data-lang="en">Hardware is mature, cost is falling, ML is finally good enough.</h2>
+            <h2 data-lang="en">Surgical robotics is moving from better hardware to smarter, verified autonomy.</h2>
             
             <p class="lede" data-lang="en">The bottleneck has moved from mechanics to <strong>software, data, and verification</strong>. Ten commercial platforms now compete. Cost per procedure is falling. Machine learning is reliable enough for narrow safety-critical tasks. What's left to figure out is the integration — and the regulation that comes with it.</p>
             
@@ -639,7 +639,7 @@
                     <path d="M28 78 L52 78 L40 86 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
                     <text x="-19" y="27" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">The robots</text>
                     <text x="-19" y="49" fill="#c7d2ee" font-size="11">hardware in</text>
-                    <text x="-19" y="64" fill="#c7d2ee" font-size="11">real operating rooms</text>
+                    <text x="-19" y="64" fill="#c7d2ee" font-size="11">operating rooms</text>
                   </g>
                   <g transform="translate(226 200)">
                     <circle cx="40" cy="-30" r="24" fill="#47e5ff" />
@@ -647,8 +647,8 @@
                     <rect x="-35" y="0" width="150" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
                     <path d="M28 0 L52 0 L40 -8 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
                     <text x="-19" y="27" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">The tasks</text>
-                    <text x="-19" y="49" fill="#c7d2ee" font-size="11">what can be</text>
-                    <text x="-19" y="64" fill="#c7d2ee" font-size="11">automated safely</text>
+                    <text x="-19" y="49" fill="#c7d2ee" font-size="11">automation</text>
+                    <text x="-19" y="64" fill="#c7d2ee" font-size="11">research</text>
                   </g>
                   <g transform="translate(386 62)">
                     <circle cx="40" cy="108" r="24" fill="#47e5ff" />
@@ -720,7 +720,7 @@
           </div>
           <div class="section-hero">
             
-            <h1 data-lang="en">Before we automate, we have to know <span style="color: var(--cyan);">what we're automating on</span>.</h1>
+            <h1 data-lang="en">Types of surgical robots <span style="color: var(--cyan);">used today</span>.</h1>
             
             <p class="lede" data-lang="en">The hardware in real operating rooms today — the teleoperated giants, the specialty robots, and the open research kits that academia actually publishes on.</p>
             
@@ -777,6 +777,24 @@
                 <h3>Asensus Senhance</h3>
               </div>
             </div>
+            <div class="panel outline-cyan" style="padding: 8px 12px; margin-top: 10px;">
+              <svg viewbox="0 0 930 94" style="width: 100%; max-height: 86px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Teleoperated surgical robot control flow">
+                <defs>
+                  <marker id="teleopArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
+                </defs>
+                <rect x="24" y="16" width="188" height="58" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                <text x="118" y="40" text-anchor="middle" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">Surgeon console</text>
+                <text x="118" y="58" text-anchor="middle" fill="#c7d2ee" font-size="11">hands, eyes, foot pedals</text>
+                <line x1="216" y1="45" x2="286" y2="45" stroke="#47e5ff" stroke-width="1.7" marker-end="url(#teleopArrow)" />
+                <rect x="294" y="16" width="210" height="58" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                <text x="399" y="40" text-anchor="middle" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">Computer-assisted motion</text>
+                <text x="399" y="58" text-anchor="middle" fill="#c7d2ee" font-size="11">scale, filter tremor, clutch</text>
+                <line x1="508" y1="45" x2="578" y2="45" stroke="#47e5ff" stroke-width="1.7" marker-end="url(#teleopArrow)" />
+                <rect x="586" y="16" width="188" height="58" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                <text x="680" y="40" text-anchor="middle" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">Robot arms</text>
+                <text x="680" y="58" text-anchor="middle" fill="#c7d2ee" font-size="11">copy the surgeon's motion</text>
+              </svg>
+            </div>
           </div>
           <div class="footerline">
             <span data-lang="en">Teleop = pure motion mapping. Foundation everything else is built on.</span>
@@ -791,200 +809,6 @@
         </div>
       </section>
 
-      <!-- 6a. Intuitive da Vinci · teleop detail -->
-      <section>
-        <div class="slide-shell">
-          <div class="slide-header">
-            <div class="kicker" data-lang="en">da Vinci · Teleop Giant</div>
-            
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
-          </div>
-          <div>
-            <h2 data-lang="en">Four wristed arms, stereo HD, <span style="color: var(--cyan);">zero autonomy</span>.</h2>
-            
-            <div class="robot-detail">
-              <div class="robot-video">
-                <div class="video-frame" data-src="images/robots/da-vinci.jpg">
-                  <img src="images/robots/da-vinci.jpg" alt="Intuitive da Vinci" loading="lazy" onerror="this.remove()">
-                </div>
-                <div class="figure-caption" data-lang="en">Intuitive da Vinci · console + patient cart</div>
-                
-              </div>
-              <div class="robot-info">
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">Capabilities</h3>
-                  
-                  <ul data-lang="en">
-                    <li>Four robotic arms through 8 mm ports (one 2.5 cm port on SP)</li>
-                    <li>Stereoscopic HD vision, motion scaling 3:1–5:1, tremor filtering</li>
-                    <li>EndoWrist instruments — 7 DoF at the tip</li>
-                    <li>Variants: <strong>SP</strong> (single-port) · <strong>5</strong> (tip-level force feedback)</li>
-                    <li>~9 500 systems · &gt;14M procedures since 2000</li>
-                  </ul>
-                  
-                </div>
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">How it's operated</h3>
-                  
-                  <p data-lang="en">Surgeon sits at a closed console, hands in master grips, eyes in the stereo viewer. Foot pedals control the camera, the clutch, and energy. The robot is a <strong>pure slave</strong> — every motion comes from the surgeon's hands, scaled and tremor-filtered. Nothing happens autonomously.</p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-            <aside class="notes">
-        
-        (~55 сек)
-        da Vinci е най-познатият и най-зрелият пример в тази категория. Огромният клиничен успех идва от прецизен control loop между човек и машина, не от автономно поведение.
-      </aside>
-      </section>
-
-      <!-- 6b. CMR Versius · teleop detail -->
-      <section>
-        <div class="slide-shell">
-          <div class="slide-header">
-            <div class="kicker" data-lang="en">Versius · Teleop Giant</div>
-            
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
-          </div>
-          <div>
-            <h2 data-lang="en">Modular cart per arm — the OR <span style="color: var(--cyan);">reconfigures per case</span>.</h2>
-            
-            <div class="robot-detail">
-              <div class="robot-video">
-                <div class="video-frame" data-src="images/robots/versius.jpg">
-                  <img src="images/robots/versius.jpg" alt="CMR Versius" loading="lazy" onerror="this.remove()">
-                </div>
-                <div class="figure-caption" data-lang="en">CMR Versius · modular bedside arms</div>
-                
-              </div>
-              <div class="robot-info">
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">Capabilities</h3>
-                  
-                  <ul data-lang="en">
-                    <li>Each arm rides on its own wheeled cart</li>
-                    <li>Biomechanically anthropomorphic 8-DoF design</li>
-                    <li>Open 3D monitor + passive glasses (no immersive eyepieces)</li>
-                    <li>Fits in a standard OR — no dedicated robotic room</li>
-                    <li>UK-built · aggressive global rollout from 2022</li>
-                  </ul>
-                  
-                </div>
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">How it's operated</h3>
-                  
-                  <p data-lang="en">Surgeon sits at an open console with passive 3D glasses, hands on joystick-style controllers. The team rolls in only the arms needed — typically 3–4, each with its own port. Same teleop model as da Vinci; the differentiation is hardware <strong>flexibility</strong>, not autonomy.</p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-            <aside class="notes">
-        
-        (~55 сек)
-        Versius следва същия телеоперативен модел, но печели с модулна подредба и по-гъвкава логистика в залата. Предимството е организационно и ергономично, не автономно.
-      </aside>
-      </section>
-
-      <!-- 6c. Medtronic Hugo RAS · teleop detail -->
-      <section>
-        <div class="slide-shell">
-          <div class="slide-header">
-            <div class="kicker" data-lang="en">Hugo RAS · Teleop Giant</div>
-            
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
-          </div>
-          <div>
-            <h2 data-lang="en">Open architecture, <span style="color: var(--cyan);">every case in the cloud</span>.</h2>
-            
-            <div class="robot-detail">
-              <div class="robot-video">
-                <div class="video-frame" data-src="images/robots/hugo.jpg">
-                  <img src="images/robots/hugo.jpg" alt="Medtronic Hugo RAS" loading="lazy" onerror="this.remove()">
-                </div>
-                <div class="figure-caption" data-lang="en">Medtronic Hugo RAS · modular cart system</div>
-                
-              </div>
-              <div class="robot-info">
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">Capabilities</h3>
-                  
-                  <ul data-lang="en">
-                    <li>Modular cart-based arms — independent footprints</li>
-                    <li>Open-architecture visualization tower (intentionally third-party)</li>
-                    <li>Touch Surgery cloud platform — analytics, training, replay</li>
-                    <li>CE-marked, expanding clinical use across EU + Asia 2024–26</li>
-                  </ul>
-                  
-                </div>
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">How it's operated</h3>
-                  
-                  <p data-lang="en">Console layout similar to da Vinci, but the imaging stack is a separate box — hospitals can swap the visualization tower without swapping the robot. Every case uploads to Touch Surgery for analytics and surgeon-training playback. Still pure teleoperation at the joints; the differentiation is <strong>data</strong>.</p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-            <aside class="notes">
-        
-        (~55 сек)
-        Hugo добавя силен data слой около самата роботика. Освен управление на инструментите, платформата мисли и за анализ, обучение и проследимост на всяка процедура.
-      </aside>
-      </section>
-
-      <!-- 6d. Asensus Senhance · teleop detail -->
-      <section>
-        <div class="slide-shell">
-          <div class="slide-header">
-            <div class="kicker" data-lang="en">Senhance · Teleop Giant</div>
-            
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
-          </div>
-          <div>
-            <h2 data-lang="en">Reusable instruments, eye-tracked camera, <span style="color: var(--cyan);">real haptics</span>.</h2>
-            
-            <div class="robot-detail">
-              <div class="robot-video">
-                <div class="video-frame" data-src="images/robots/senhance.jpg">
-                  <img src="images/robots/senhance.jpg" alt="Asensus Senhance" loading="lazy" onerror="this.remove()">
-                </div>
-                <div class="figure-caption" data-lang="en">Asensus Senhance · open console</div>
-                
-              </div>
-              <div class="robot-info">
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">Capabilities</h3>
-                  
-                  <ul data-lang="en">
-                    <li><strong>Reusable</strong> instruments — cost play against the per-case razor model</li>
-                    <li>Real <strong>force feedback</strong> in master grips — only major platform that ships it</li>
-                    <li><strong>Eye-tracking</strong> camera follows surgeon's gaze</li>
-                    <li>Open console — 3D monitor + glasses, surgeon stays in the room</li>
-                  </ul>
-                  
-                </div>
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">How it's operated</h3>
-                  
-                  <p data-lang="en">Surgeon at an open console, hands in grips that <strong>transmit force back</strong> to the fingers — tissue feels different from suture. The camera moves automatically based on eye fixation, so no foot pedal for view changes. Otherwise standard teleop: every joint motion comes from the surgeon's hand.</p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-            <aside class="notes">
-        
-        (~55 сек)
-        Senhance показва друг важен вектор: по-богата обратна връзка към хирурга чрез haptics и eye-tracking. Дори без автономия, качеството на човешкия control може да се подобри значително.
-      </aside>
-      </section>
-
       <!-- 7. Specialty robots -->
       <section>
         <div class="slide-shell">
@@ -994,7 +818,7 @@
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div>
-            <h2 data-lang="en">Narrow but deep — and often <span style="color: var(--cyan);">already semi‑autonomous</span>.</h2>
+            <h2 data-lang="en">Built for one procedure, with autonomy already inside.</h2>
             
             <p class="lede" data-lang="en">The teleoperated giants are general but dumb. The next class is the opposite — each robot solves <em>one</em> domain so well that it can do part of the procedure on its own. The trick: when the geometry is rigid and the plan comes from a CT scan, the robot can be trusted with motions a teleoperated arm cannot.</p>
             
@@ -1024,6 +848,34 @@
                 <h3>Preceyes / ForSight</h3>
               </div>
             </div>
+            <div class="panel outline-cyan" style="padding: 8px 10px; margin-top: 12px; overflow: hidden;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.43em; line-height: 1.22;">
+                <thead>
+                  <tr style="color: var(--cyan); text-align: left; border-bottom: 1px solid rgba(71,229,255,0.28);">
+                    <th style="padding: 6px 8px; width: 30%;">Robot</th>
+                    <th style="padding: 6px 8px; width: 70%;">Specialized procedure</th>
+                  </tr>
+                </thead>
+                <tbody style="color: var(--muted);">
+                  <tr style="border-bottom: 1px solid rgba(237,242,255,0.10);">
+                    <td style="padding: 7px 8px;"><strong style="color: var(--text);">Stryker Mako</strong></td>
+                    <td style="padding: 7px 8px;">Knee and hip replacement bone preparation</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(237,242,255,0.10);">
+                    <td style="padding: 7px 8px;"><strong style="color: var(--text);">ROSA / CORI</strong></td>
+                    <td style="padding: 7px 8px;">Spine navigation, knee planning, handheld bone milling</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(237,242,255,0.10);">
+                    <td style="padding: 7px 8px;"><strong style="color: var(--text);">Ion / Monarch</strong></td>
+                    <td style="padding: 7px 8px;">Robotic bronchoscopy to reach lung nodules</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 7px 8px;"><strong style="color: var(--text);">Preceyes / ForSight</strong></td>
+                    <td style="padding: 7px 8px;">Retinal microsurgery and eye procedures</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
           <div class="footerline">
             <span data-lang="en">Rigid geometry + imaging plan = trusted with autonomy.</span>
@@ -1038,199 +890,6 @@
         </div>
       </section>
 
-      <!-- 7a. Stryker Mako · specialty detail -->
-      <section>
-        <div class="slide-shell">
-          <div class="slide-header">
-            <div class="kicker" data-lang="en">Mako · Specialty</div>
-            
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
-          </div>
-          <div>
-            <h2 data-lang="en">Knee &amp; hip replacement — the robot <span style="color: var(--cyan);">resists, not cuts</span>.</h2>
-            
-            <div class="robot-detail">
-              <div class="robot-video">
-                <div class="video-frame" data-src="images/robots/mako.jpg">
-                  <img src="images/robots/mako.jpg" alt="Stryker Mako" loading="lazy" onerror="this.remove()">
-                </div>
-                <div class="figure-caption" data-lang="en">Stryker Mako · haptic cut envelope</div>
-                
-              </div>
-              <div class="robot-info">
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">Capabilities</h3>
-                  
-                  <ul data-lang="en">
-                    <li>CT-based pre-op plan defines the cut envelope</li>
-                    <li>Active haptic boundary keeps the cut inside the plan</li>
-                    <li>Optical tracking on bone-mounted markers → sub-mm registration</li>
-                    <li>~1M procedures · FDA-cleared</li>
-                    <li>Closest thing to level-2 autonomy in routine clinical use</li>
-                  </ul>
-                  
-                </div>
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">How it's operated</h3>
-                  
-                  <p data-lang="en">Surgeon holds a powered handpiece with the cutting burr. As they move it, the robot's arm <strong>pushes back</strong> against any motion outside the CT-planned envelope — a virtual fence around the safe cut volume. The surgeon does the work; the robot stops them from doing damage.</p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-            <aside class="notes">
-        
-        (~55 сек)
-        Mako е класически пример за робот, който пази безопасни граници. Хирургът работи активно, но системата ограничава отклоненията извън плана.
-      </aside>
-      </section>
-
-      <!-- 7b. Zimmer ROSA / Smith+Nephew CORI · specialty detail -->
-      <section>
-        <div class="slide-shell">
-          <div class="slide-header">
-            <div class="kicker" data-lang="en">ROSA / CORI · Specialty</div>
-            
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
-          </div>
-          <div>
-            <h2 data-lang="en">Spine &amp; orthopedic navigation, <span style="color: var(--cyan);">same virtual-fixture trick</span>.</h2>
-            
-            <div class="robot-detail">
-              <div class="robot-video">
-                <div class="video-frame" data-src="images/robots/rosa.jpg">
-                  <img src="images/robots/rosa.jpg" alt="Zimmer ROSA" loading="lazy" onerror="this.remove()">
-                </div>
-                <div class="figure-caption" data-lang="en">Zimmer ROSA · pedicle-screw navigation</div>
-                
-              </div>
-              <div class="robot-info">
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">Capabilities</h3>
-                  
-                  <ul data-lang="en">
-                    <li><strong>ROSA</strong>: pedicle-screw navigation + knee replacement</li>
-                    <li><strong>CORI</strong>: hand-held burr with active stop when leaving plan</li>
-                    <li>Pre-op CT plan + intra-op optical tracking</li>
-                    <li>Sub-mm registration via bone-mounted markers</li>
-                  </ul>
-                  
-                </div>
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">How it's operated</h3>
-                  
-                  <p data-lang="en">Pre-op CT defines the cut or screw trajectory; intra-op tracking aligns it to the patient. ROSA's arm guides a drill or saw within the plan. CORI is smaller — surgeon holds the burr directly, and a tiny actuator <strong>retracts the cutting tip</strong> when it strays. Both stay at level 2: surgeon does the cut, robot enforces the boundary.</p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-            <aside class="notes">
-        
-        (~55 сек)
-        ROSA и CORI прилагат същата философия в ортопедията и гръбначната хирургия. Образът задава траекторията, а роботът налага дисциплина в изпълнението.
-      </aside>
-      </section>
-
-      <!-- 7c. Intuitive Ion / Auris Monarch · specialty detail -->
-      <section>
-        <div class="slide-shell">
-          <div class="slide-header">
-            <div class="kicker" data-lang="en">Ion / Monarch · Specialty</div>
-            
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
-          </div>
-          <div>
-            <h2 data-lang="en">Robotic bronchoscopy — <span style="color: var(--cyan);">autonomy in navigation</span>.</h2>
-            
-            <div class="robot-detail">
-              <div class="robot-video">
-                <div class="video-frame" data-src="images/robots/ion.jpg">
-                  <img src="images/robots/ion.jpg" alt="Intuitive Ion" loading="lazy" onerror="this.remove()">
-                </div>
-                <div class="figure-caption" data-lang="en">Intuitive Ion · catheter inside the airway tree</div>
-                
-              </div>
-              <div class="robot-info">
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">Capabilities</h3>
-                  
-                  <ul data-lang="en">
-                    <li>Pre-op CT → 3D airway map of the lung</li>
-                    <li>Catheter drives itself to a surgeon-picked target deep in the lung</li>
-                    <li>Surgeon then takes the biopsy through the working channel</li>
-                    <li>First commercial example of <strong>autonomous navigation inside the body</strong></li>
-                  </ul>
-                  
-                </div>
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">How it's operated</h3>
-                  
-                  <p data-lang="en">Surgeon picks the lesion on the 3D airway map, then commits with a controller (Ion: PS4-style, Monarch: dual joystick). The catheter advances <strong>autonomously</strong> through dozens of branching airways. Surgeon supervises the screen and can stop at any time. When the tip reaches the target, the surgeon takes over for the biopsy.</p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-            <aside class="notes">
-        
-        (~55 сек)
-        Ion е силен пример за реална автономия в навигация вътре в тялото. Човекът избира целта, системата извършва сложното придвижване, а контролът остава под наблюдение.
-      </aside>
-      </section>
-
-      <!-- 7d. Preceyes / ForSight · specialty detail -->
-      <section>
-        <div class="slide-shell">
-          <div class="slide-header">
-            <div class="kicker" data-lang="en">Preceyes / ForSight · Specialty</div>
-            
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
-          </div>
-          <div>
-            <h2 data-lang="en">Microsurgery — <span style="color: var(--cyan);">100× tremor scaling, sub-10 µm</span>.</h2>
-            
-            <div class="robot-detail">
-              <div class="robot-video">
-                <div class="video-frame" data-src="images/robots/preceyes.jpg">
-                  <img src="images/robots/preceyes.jpg" alt="Preceyes" loading="lazy" onerror="this.remove()">
-                </div>
-                <div class="figure-caption" data-lang="en">Preceyes · retinal microsurgery</div>
-                
-              </div>
-              <div class="robot-info">
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">Capabilities</h3>
-                  
-                  <ul data-lang="en">
-                    <li>Motion scaling 1:100 — surgeon moves 100 mm, robot moves 1 mm</li>
-                    <li>Sub-10 µm positional precision</li>
-                    <li>Mounted to OR table or floor; surgeon stays seated</li>
-                    <li>Retinal vein cannulation, lymphatic surgery, deep-brain micro-tasks</li>
-                  </ul>
-                  
-                </div>
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">How it's operated</h3>
-                  
-                  <p data-lang="en">Surgeon's hands in scaled-down master controls — like the da Vinci console but at a fraction of the scale. The robot mirrors every motion at <strong>1/100th</strong>. Tasks that lie below the limit of an unaided human hand — puncturing a 100 µm retinal vein — become routine. Pure teleoperation, no autonomy at all.</p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-            <aside class="notes">
-        
-        (~55 сек)
-        При микрохирургията роботът не е удобство, а необходимост. Прецизността е отвъд естествените възможности на ръката и машината прави задачата изпълнима.
-      </aside>
-      </section>
-
       <!-- 8. Open research platforms -->
       <section>
         <div class="slide-shell">
@@ -1242,21 +901,30 @@
           <div>
             <h2 data-lang="en">Without these, the academic field <span style="color: var(--cyan);">does not exist</span>.</h2>
             
-            <p class="lede" data-lang="en">The commercial systems are sealed boxes — you don't get to write a control loop for da Vinci. So if you want to publish, fine‑tune, or break things, you need an open robot. These three platforms are why nearly every surgical RL or imitation paper you read can be reproduced at all.</p>
+            <p class="lede" data-lang="en">Commercial robots are closed products. Research needs platforms where labs can command joints, read sensors, change controllers, and connect learning code to real hardware.</p>
             
-            <ul style="margin: 14px 0 0; padding-left: 1.1em;">
-              <li data-lang="en"><a href="#dvrk-platform">dVRK</a> — open research platform, not a commercial robot</li>
-              
-              <li data-lang="en"><a href="#raven-platform">RAVEN II</a> — open research platform from UW</li>
-              
-              <li data-lang="en"><a href="#star-platform">STAR</a> — research system for autonomous soft-tissue tasks</li>
-              
-            </ul>
-            <div class="callout" style="margin-top: 16px;">
-              <strong data-lang="en">Without these platforms the academic field does not exist.</strong>
-              
-              <span data-lang="en">Almost every paper cited later in this deck runs on dVRK or in a simulator that mimics dVRK kinematics.</span>
-              
+            <div style="display: grid; gap: 10px; margin-top: 14px;">
+              <div class="panel outline-cyan" style="display: grid; grid-template-columns: 170px 1fr; gap: 14px; align-items: center; padding: 10px;">
+                <div class="figure-frame" style="height: 92px; margin: 0;"><img src="./images/robots/dvrk.png" alt="dVRK lab setup" referrerpolicy="no-referrer" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+                <div>
+                  <h3 style="margin-bottom: 4px;"><a href="https://github.com/jhu-dvrk/sawIntuitiveResearchKit/wiki" target="_blank" rel="noreferrer">dVRK</a></h3>
+                  <p data-lang="en"><strong>Hardware:</strong> retired first-generation da Vinci arms, PSM patient-side manipulators, ECM camera arm, optional master console.<br /><strong>Software:</strong> Johns Hopkins open stack with cisst/SAW, CRTK API, ROS bridge, Python/C++ control. It is the reference platform for surgical imitation learning and RL because policies can command the robot directly.</p>
+                </div>
+              </div>
+              <div class="panel outline-cyan" style="display: grid; grid-template-columns: 170px 1fr; gap: 14px; align-items: center; padding: 10px;">
+                <div class="figure-frame" style="height: 92px; margin: 0;"><img src="./images/robots/raven2.jpg" alt="RAVEN II" referrerpolicy="no-referrer" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+                <div>
+                  <h3 style="margin-bottom: 4px;"><a href="https://github.com/uw-biorobotics/raven2" target="_blank" rel="noreferrer">RAVEN II</a></h3>
+                  <p data-lang="en"><strong>Hardware:</strong> open, cable-driven 7-DoF surgical arms designed for research and teleoperation experiments.<br /><strong>Software:</strong> open ROS-based control stack for joint-space and Cartesian commands. It is useful when researchers need to modify the robot itself, inject latency, test networked tele-surgery, or study control under communication limits.</p>
+                </div>
+              </div>
+              <div class="panel outline-cyan" style="display: grid; grid-template-columns: 170px 1fr; gap: 14px; align-items: center; padding: 10px;">
+                <div class="figure-frame" style="height: 92px; margin: 0;"><img src="./images/robots/star.jpeg" alt="STAR autonomous suturing system" referrerpolicy="no-referrer" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+                <div>
+                  <h3 style="margin-bottom: 4px;"><a href="https://www.science.org/doi/10.1126/scirobotics.abj2908" target="_blank" rel="noreferrer">STAR</a></h3>
+                  <p data-lang="en"><strong>Hardware:</strong> custom soft-tissue suturing system with near-infrared marker tracking and force-aware tooling.<br /><strong>Software:</strong> perception, motion planning, closed-loop replanning, and safety supervision for autonomous bowel anastomosis. It matters because it demonstrated task autonomy on deformable tissue, not just rigid bone or camera movement.</p>
+                </div>
+              </div>
             </div>
           </div>
           <div class="footerline">
@@ -1270,153 +938,6 @@
         Академичният прогрес зависи от отворени платформи, не от затворени комерсиални кутии. Без такива системи няма възпроизводими експерименти и стабилна изследователска екосистема.
       </aside>
         </div>
-      </section>
-
-      <!-- 8a. dVRK · research detail -->
-      <section id="dvrk-platform">
-        <div class="slide-shell">
-          <div class="slide-header">
-            <div class="kicker" data-lang="en">dVRK · Open Research</div>
-            
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
-          </div>
-          <div>
-            <h2 data-lang="en">First-gen da Vinci hardware + open stack — <span style="color: var(--cyan);">the research reference</span>.</h2>
-            
-            <div class="robot-detail">
-              <div class="robot-video">
-                <div class="video-frame" data-src="dvrk · burgos lab">
-                  <img src="https://headneckroboticsurgery.com/wp-content/uploads/2023/05/dv-x-burgos-1.jpg?w=640" alt="dVRK · PSM + ECM in a lab setup" referrerpolicy="no-referrer" loading="lazy">
-                </div>
-                <div class="figure-caption" data-lang="en">dVRK · PSM + ECM in a lab setup</div>
-                
-              </div>
-              <div class="robot-info">
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">Capabilities</h3>
-                  
-                  <ul data-lang="en">
-                    <li>First-gen da Vinci hardware donated by Intuitive (since ~2014)</li>
-                    <li>Johns Hopkins open stack: <strong>cisst-saw</strong> low-level control, <strong>CRTK</strong> kinematics API</li>
-                    <li>ROS bridge on top — Python and C++ access</li>
-                    <li>PSM (patient-side) + ECM (camera) + optional master console</li>
-                    <li>~50 labs worldwide — the de-facto reference platform</li>
-                  </ul>
-                  
-                </div>
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">How it's operated</h3>
-                  
-                  <p data-lang="en">Researchers send joint or Cartesian setpoints over the <strong>CRTK API</strong> at ~200 Hz. Either teleoperated from the master console (for imitation-learning data collection) or fully <strong>autonomous</strong> for policy execution. Almost every published surgical-RL paper runs on dVRK or in a simulator that mimics its kinematics.</p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-            <aside class="notes">
-        
-        (~55 сек)
-        dVRK е практичният стандарт в много лаборатории. Отвореният стек позволява бързи експерименти с контрол, събиране на демонстрации и обучение на политики.
-      </aside>
-      </section>
-
-      <!-- 8b. RAVEN II · research detail -->
-      <section id="raven-platform">
-        <div class="slide-shell">
-          <div class="slide-header">
-            <div class="kicker" data-lang="en">RAVEN II · Open Research</div>
-            
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
-          </div>
-          <div>
-            <h2 data-lang="en">7-DoF cable-driven, <span style="color: var(--cyan);">fully open hardware</span>.</h2>
-            
-            <div class="robot-detail">
-              <div class="robot-video">
-                <div class="video-frame" data-src="raven ii thumbnail">
-                  <img src="https://img.youtube.com/vi/JZJfGHPTsVU/hqdefault.jpg" alt="RAVEN II" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">
-                </div>
-                <div class="figure-caption" data-lang="en">RAVEN II · UW open-hardware platform</div>
-                
-              </div>
-              <div class="robot-info">
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">Capabilities</h3>
-                  
-                  <ul data-lang="en">
-                    <li>7-DoF cable-driven arms</li>
-                    <li>Fully published schematics, firmware, and motor specs</li>
-                    <li>Open ROS stack — joint-space or Cartesian commands</li>
-                    <li>Heavy use in sim-to-real and tele-surgery-under-latency studies</li>
-                    <li>Designed at the University of Washington</li>
-                  </ul>
-                  
-                </div>
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">How it's operated</h3>
-                  
-                  <p data-lang="en">Researchers command joints or Cartesian poses through a ROS interface. Common experimental setup: a master grip teleoperates the slave arm over a network with <strong>injected latency, packet loss, or jitter</strong> — letting groups study how surgical telepresence behaves over real satellite or 5G links.</p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-            <aside class="notes">
-        
-        (~55 сек)
-        RAVEN II е ценен с отворения хардуер и гъвкавостта за експерименти. Подходящ е за изследвания при latency, мрежови ограничения и телеприсъствие.
-      </aside>
-      </section>
-
-      <!-- 8c. STAR · research detail -->
-      <section id="star-platform">
-        <div class="slide-shell">
-          <div class="slide-header">
-            <div class="kicker" data-lang="en">STAR · Open Research</div>
-            
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
-          </div>
-          <div>
-            <h2 data-lang="en">First <span style="color: var(--cyan);">autonomous soft-tissue suturing</span> in vivo.</h2>
-            
-            <div class="robot-detail">
-              <div class="robot-video">
-                <div class="video-frame" data-src="star thumbnail">
-                  <img src="https://img.youtube.com/vi/M0am3-yCdHA/hqdefault.jpg" alt="STAR" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">
-                </div>
-                <div class="figure-caption" data-lang="en">STAR · autonomous bowel anastomosis</div>
-                
-              </div>
-              <div class="robot-info">
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">Capabilities</h3>
-                  
-                  <ul data-lang="en">
-                    <li>3D NIR fluorescent marker tracking</li>
-                    <li>Force-sensing suturing tool</li>
-                    <li>Custom motion planner with closed-loop replanning</li>
-                    <li>Science Robotics 2022 — autonomous bowel anastomosis on live pigs</li>
-                    <li>Children's National Hospital + JHU</li>
-                  </ul>
-                  
-                </div>
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">How it's operated</h3>
-                  
-                  <p data-lang="en">Surgeon places NIR fluorescent markers along the target tissue — the future suture line. On <strong>"go"</strong>, the robot tracks the markers and sequences stitch placement <strong>autonomously</strong>, replanning if the tissue deforms between passes. Force sensing keeps tension consistent. Surgeon supervises and can stop. First public demonstration of level-3 autonomy on soft tissue.</p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-            <aside class="notes">
-        
-        (~55 сек)
-        STAR показа, че автономни действия върху мека тъкан са възможни в реалистични условия. Това е преход от „асистиране“ към истинска task autonomy.
-      </aside>
       </section>
 
       <!-- 9. Levels of autonomy -->
@@ -1536,43 +1057,15 @@
           </div>
           <div>
             <h2 data-lang="en">Autonomous camera control is <span style="color: var(--cyan);">low risk and high impact</span>.</h2>
+            
+            <p class="lede" data-lang="en">If the camera points to the wrong area, the surgeon can correct it immediately: the typical failure is poor visibility, not direct tissue harm. That makes this function much easier to validate and certify than cutting or suturing.</p>
           </div>
-          <div class="hero-layout" style="align-items: start; grid-template-columns: 0.92fr 1.08fr;">
-            <div class="robot-video" style="margin-top: 4px;">
+          <div style="margin-top: 18px;">
+            <div class="robot-video" style="margin: 0 auto; width: 100%; max-width: 880px;">
               <div class="video-frame" data-src="youtube · 2aaWz_aroOE">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/2aaWz_aroOE?si=ifQEpVyxKxsEqwpu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               </div>
               <div class="figure-caption" data-lang="en">Example video · autonomous camera control</div>
-            </div>
-            <div>
-              <p class="lede" data-lang="en">If the camera points to the wrong area, the surgeon can correct it immediately: the typical failure is poor visibility, not direct tissue harm. That makes this function much easier to validate and certify than cutting or suturing.</p>
-              
-              <div class="flow" style="grid-template-columns: repeat(3, 1fr);">
-                <div class="flow-step">
-                  <div><span class="step-no" data-lang="en">01 · Problem</span>
-                    <h3 data-lang="en">Hold the endoscope for hours</h3>
-                    
-                  </div>
-                  <p data-lang="en">An assistant holds the endoscope for hours and must anticipate the surgeon's view.</p>
-                  
-                </div>
-                <div class="flow-step">
-                  <div><span class="step-no" data-lang="en">02 · Approach</span>
-                    <h3 data-lang="en">Visual servoing + a tip‑detector CNN</h3>
-                    
-                  </div>
-                  <p data-lang="en">Track the tools in the image and keep them centered. Visual servoing plus a small CNN to detect instrument tips.</p>
-                  
-                </div>
-                <div class="flow-step" style="border-color: rgba(147, 197, 253, 0.32); background: linear-gradient(180deg, rgba(147, 197, 253, 0.07), rgba(147, 197, 253, 0.02));">
-                  <div><span class="step-no" style="color: var(--cyan);" data-lang="en">03 · Result</span>
-                    <h3 data-lang="en">FDA‑cleared products since 2017</h3>
-                    
-                  </div>
-                  <p data-lang="en">Olympus EndoCUFF, Karl Storz Image1. Safe because the actuator is a camera, not a scalpel.</p>
-                  
-                </div>
-              </div>
             </div>
           </div>
           <div class="footerline">
@@ -1623,7 +1116,7 @@
                 </div>
                 <div class="figure-caption" style="grid-column: 1 / -1;" data-lang="en">Example frame · EndoVisSub-Instrument Grand Challenge</div>
               </div>
-              <div class="grid-2">
+              <div class="grid-2" style="grid-template-columns: 1fr; gap: 10px;">
                 <div class="panel outline-cyan">
                   <h3 data-lang="en">Images</h3>
                   
@@ -1642,12 +1135,6 @@
                     <li>Visibility flag for hidden tips</li>
                     <li>Pixel error and missed detections</li>
                   </ul>
-                  
-                </div>
-                <div class="callout" style="grid-column: 1 / -1;">
-                  <strong data-lang="en">Source</strong>
-                  
-                  <span data-lang="en"><a href="https://endovissub-instrument.grand-challenge.org/Data/" target="_blank" rel="noopener">EndoVisSub-Instrument</a> provides laparoscopic and robotic instrument sequences for segmentation and tracking.</span>
                   
                 </div>
               </div>
@@ -1867,17 +1354,11 @@
                   <p data-lang="en">The bigger the offset, the stronger the correction.</p>
                   
                 </div>
-                <div class="panel outline-amber" style="margin-top: 10px;">
-                  <h3 data-lang="en">Why it is safe</h3>
-                  
-                  <p data-lang="en">The camera moves only a small amount per frame. If detection is uncertain, the system slows down or stops.</p>
-                  
-                </div>
               </div>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">Find the tip · compare with image center · move a little · check safety · repeat.</span>
+            <span data-lang="en">Find the tip · compare with image center · move a little · repeat.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -1899,55 +1380,15 @@
           </div>
           <div>
             <h2 data-lang="en">Step by step: how an autonomous stitch is executed.</h2>
+            
+            <p class="lede" data-lang="en">A stitch is not one magic motion. The robot repeats a small sequence: know where the wound is, plan the needle arc, push through tissue, pull the thread, then hand the needle to the other arm.</p>
           </div>
-          <div class="hero-layout" style="align-items: start; grid-template-columns: 0.92fr 1.08fr; margin-top: 6px;">
-            <div class="robot-video" style="margin-top: 4px;">
+          <div style="margin-top: 18px;">
+            <div class="robot-video" style="margin: 0 auto; width: 100%; max-width: 880px;">
               <div class="video-frame" data-src="youtube · z1ehShXFToc">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/z1ehShXFToc?si=4X_Iys-v8p8eiFao" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               </div>
               <div class="figure-caption" data-lang="en">Example video · autonomous multi-throw suturing</div>
-            </div>
-            <div>
-            <p class="lede" data-lang="en">A stitch is not one magic motion. The robot repeats a small sequence: know where the wound is, plan the needle arc, push through tissue, pull the thread, then hand the needle to the other arm.</p>
-            <div class="panel outline-cyan" style="margin-top: 12px; padding: 12px;">
-              <h3 data-lang="en">One throw of the suture</h3>
-              
-              <svg viewbox="0 0 650 260" style="width: 100%; max-height: 245px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Autonomous suturing step-by-step diagram">
-                <defs>
-                  <marker id="throwArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
-                  <lineargradient id="throwBox" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(71,229,255,0.16)" /><stop offset="1" stop-color="rgba(71,229,255,0.04)" /></lineargradient>
-                  <lineargradient id="throwBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(147,197,253,0.20)" /><stop offset="1" stop-color="rgba(147,197,253,0.05)" /></lineargradient>
-                </defs>
-
-                <rect x="18" y="68" width="120" height="78" rx="8" fill="url(#throwBox)" stroke="#47e5ff" stroke-width="1.5" />
-                <text x="78" y="96" text-anchor="middle" fill="#47e5ff" font-size="13" font-weight="800" font-family="Space Grotesk">1 · Wound</text>
-                <text x="78" y="120" text-anchor="middle" fill="#edf2ff" font-size="11">given + registered</text>
-                <line x1="140" y1="107" x2="178" y2="107" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#throwArrow)" />
-
-                <rect x="182" y="68" width="120" height="78" rx="8" fill="url(#throwBox)" stroke="#47e5ff" stroke-width="1.5" />
-                <text x="242" y="96" text-anchor="middle" fill="#47e5ff" font-size="13" font-weight="800" font-family="Space Grotesk">2 · Plan</text>
-                <text x="242" y="120" text-anchor="middle" fill="#edf2ff" font-size="11">entry → exit arc</text>
-                <line x1="304" y1="107" x2="342" y2="107" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#throwArrow)" />
-
-                <rect x="346" y="68" width="120" height="78" rx="8" fill="url(#throwBlue)" stroke="#93c5fd" stroke-width="1.5" />
-                <text x="406" y="96" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">3 · Insert</text>
-                <text x="406" y="120" text-anchor="middle" fill="#edf2ff" font-size="11">push curved needle</text>
-                <line x1="468" y1="107" x2="506" y2="107" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#throwArrow)" />
-
-                <rect x="510" y="68" width="120" height="78" rx="8" fill="url(#throwBlue)" stroke="#93c5fd" stroke-width="1.5" />
-                <text x="570" y="96" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">4 · Pull</text>
-                <text x="570" y="120" text-anchor="middle" fill="#edf2ff" font-size="11">grasp + thread</text>
-
-                <path d="M570 148 C570 205, 242 205, 242 150" fill="none" stroke="#93c5fd" stroke-width="1.4" stroke-dasharray="6 6" marker-end="url(#throwArrow)" />
-                <text x="406" y="224" text-anchor="middle" fill="#aab4d2" font-size="11">hand off the needle, update tracking, plan the next throw</text>
-              </svg>
-            </div>
-            <div class="callout amber" style="margin-top: 10px;">
-              <strong data-lang="en">Important assumption</strong>
-              
-              <span data-lang="en">The wound position is provided and registered. This demo automates repeated throws; it does not do final knot tying or full clinical suturing.</span>
-              
-            </div>
             </div>
           </div>
           <div class="footerline">
@@ -2367,6 +1808,74 @@
         (~55 сек)
         След задачите идва стека, защото без него няма какво да се внедрява. Това е инженерната част, която превръща идеята в работеща система.
       </aside>
+      </section>
+
+      <!-- 15a. SurRoL examples: PSM fundamental actions -->
+      <section>
+        <div class="slide-shell">
+          <div class="slide-header">
+            <div class="kicker" data-lang="en">SurRoL Examples · PSM</div>
+            
+            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+          </div>
+          <div>
+            <h2 data-lang="en">PSM fundamental actions: <span style="color: var(--cyan);">reach, grasp, pick, regrasp</span>.</h2>
+            <p class="lede" data-lang="en">These tasks isolate the Patient Side Manipulator tool arm: move the jaw tip, open or close the gripper, pick a small object, or hand it to the other arm.</p>
+            <div class="grid-2" style="max-width: 980px; margin: 10px auto 0; gap: 8px;">
+              <div class="panel outline-cyan" style="padding: 6px 8px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Needle Reach</h3><div class="video-frame" data-src="SurRoL · Needle Reach" style="padding-top: 42%;"><iframe src="https://www.youtube-nocookie.com/embed/0H_BnyPVa1s?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Needle Reach" frameborder="0" allowfullscreen></iframe></div></div>
+              <div class="panel outline-cyan" style="padding: 6px 8px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Gauze Retrieve</h3><div class="video-frame" data-src="SurRoL · Gauze Retrieve" style="padding-top: 42%;"><iframe src="https://www.youtube-nocookie.com/embed/SNUR4TPG68o?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Gauze Retrieve" frameborder="0" allowfullscreen></iframe></div></div>
+              <div class="panel outline-cyan" style="padding: 6px 8px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Needle Pick</h3><div class="video-frame" data-src="SurRoL · Needle Pick" style="padding-top: 42%;"><iframe src="https://www.youtube-nocookie.com/embed/p1Qbuv5NrhQ?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Needle Pick" frameborder="0" allowfullscreen></iframe></div></div>
+              <div class="panel outline-cyan" style="padding: 6px 8px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Needle Regrasp</h3><div class="video-frame" data-src="SurRoL · Needle Regrasp" style="padding-top: 42%;"><iframe src="https://www.youtube-nocookie.com/embed/7nLh_qWQj-E?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Needle Regrasp" frameborder="0" allowfullscreen></iframe></div></div>
+            </div>
+          </div>
+          <div class="footerline"><span data-lang="en">PSM = Patient Side Manipulator: the tool arm used for surgical instruments.</span><span class="brand-text">Surgical Robotics</span></div>
+        </div>
+      </section>
+
+      <!-- 15b. SurRoL examples: ECM control -->
+      <section>
+        <div class="slide-shell">
+          <div class="slide-header">
+            <div class="kicker" data-lang="en">SurRoL Examples · ECM</div>
+            
+            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+          </div>
+          <div>
+            <h2 data-lang="en">ECM control: <span style="color: var(--cyan);">move and stabilize the camera view</span>.</h2>
+            <p class="lede" data-lang="en">These tasks isolate the Endoscopic Camera Manipulator: move the camera, correct orientation, or keep a target in view.</p>
+            <div class="grid-2" style="max-width: 980px; margin: 10px auto 0; gap: 8px;">
+              <div class="panel outline-cyan" style="padding: 6px 8px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">ECM Reach</h3><div class="video-frame" data-src="SurRoL · ECM Reach" style="padding-top: 42%;"><iframe src="https://www.youtube-nocookie.com/embed/qnmyF2iWVlo?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL ECM Reach" frameborder="0" allowfullscreen></iframe></div></div>
+              <div class="panel outline-cyan" style="padding: 6px 8px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Misorient</h3><div class="video-frame" data-src="SurRoL · Misorient" style="padding-top: 42%;"><iframe src="https://www.youtube-nocookie.com/embed/MA9nxLOXD7I?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Misorient" frameborder="0" allowfullscreen></iframe></div></div>
+              <div class="panel outline-cyan" style="padding: 6px 8px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Static Track</h3><div class="video-frame" data-src="SurRoL · Static Track" style="padding-top: 42%;"><iframe src="https://www.youtube-nocookie.com/embed/5-W8bf4MMHs?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Static Track" frameborder="0" allowfullscreen></iframe></div></div>
+              <div class="panel outline-cyan" style="padding: 6px 8px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Active Track</h3><div class="video-frame" data-src="SurRoL · Active Track" style="padding-top: 42%;"><iframe src="https://www.youtube-nocookie.com/embed/uOFwTVnUEuM?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Active Track" frameborder="0" allowfullscreen></iframe></div></div>
+            </div>
+          </div>
+          <div class="footerline"><span data-lang="en">ECM = Endoscopic Camera Manipulator: the robot arm that holds and moves the camera.</span><span class="brand-text">Surgical Robotics</span></div>
+        </div>
+      </section>
+
+      <!-- 15c. SurRoL examples: basic surgical skills -->
+      <section>
+        <div class="slide-shell">
+          <div class="slide-header">
+            <div class="kicker" data-lang="en">SurRoL Examples · Skills</div>
+            
+            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+          </div>
+          <div>
+            <h2 data-lang="en">Basic surgical skill training: <span style="color: var(--cyan);">longer manipulation tasks</span>.</h2>
+            <p class="lede" data-lang="en">These tasks combine reach, grasp, hand-off, collision avoidance, and sequencing into longer manipulation problems.</p>
+            <div class="grid-3" style="margin-top: 9px; gap: 7px;">
+              <div class="panel outline-cyan" style="padding: 5px 7px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Peg Transfer</h3><div class="video-frame" data-src="SurRoL · Peg Transfer" style="padding-top: 45%;"><iframe src="https://www.youtube-nocookie.com/embed/Ipq6Xyyo9bw?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Peg Transfer" frameborder="0" allowfullscreen></iframe></div></div>
+              <div class="panel outline-cyan" style="padding: 5px 7px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Bimanual Peg Transfer</h3><div class="video-frame" data-src="SurRoL · Bimanual Peg Transfer" style="padding-top: 45%;"><iframe src="https://www.youtube-nocookie.com/embed/uWJihp7XSjE?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Bimanual Peg Transfer" frameborder="0" allowfullscreen></iframe></div></div>
+              <div class="panel outline-cyan" style="padding: 5px 7px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Needle the Rings</h3><div class="video-frame" data-src="SurRoL · Needle the Rings" style="padding-top: 45%;"><iframe src="https://www.youtube-nocookie.com/embed/SgUPKURW66w?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Needle the Rings" frameborder="0" allowfullscreen></iframe></div></div>
+              <div class="panel outline-cyan" style="padding: 5px 7px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Pick and Place</h3><div class="video-frame" data-src="SurRoL · Pick and Place" style="padding-top: 45%;"><iframe src="https://www.youtube-nocookie.com/embed/fFxTsBaN4MA?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Pick and Place" frameborder="0" allowfullscreen></iframe></div></div>
+              <div class="panel outline-cyan" style="padding: 5px 7px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Peg Board</h3><div class="video-frame" data-src="SurRoL · Peg Board" style="padding-top: 45%;"><iframe src="https://www.youtube-nocookie.com/embed/fve4GqzUf9A?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Peg Board" frameborder="0" allowfullscreen></iframe></div></div>
+              <div class="panel outline-cyan" style="padding: 5px 7px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Match Board</h3><div class="video-frame" data-src="SurRoL · Match Board" style="padding-top: 45%;"><iframe src="https://www.youtube-nocookie.com/embed/8tQeOE9u1DM?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Match Board" frameborder="0" allowfullscreen></iframe></div></div>
+            </div>
+          </div>
+          <div class="footerline"><span data-lang="en">Basic skill tasks combine reach, grasp, hand-off, sequencing, and collision avoidance.</span><span class="brand-text">Surgical Robotics</span></div>
+        </div>
       </section>
 
       <!-- 15a. SurRoL architecture -->
@@ -2958,20 +2467,75 @@ model.save("best_policy")</code></pre>
             
             <p class="lede" data-lang="en">Modern systems use 4 or 5 of these in one pipeline. None of the older tools went away — you just stack them.</p>
             
-            <div class="panel" style="margin-top: 16px; padding: 4px 4px 4px 4px;">
-              <table class="tech-table" data-lang="en">
-                <thead><tr><th>Era</th><th>Approach</th><th>Where it shines</th></tr></thead>
-                <tbody>
-                  <tr><td class="era">1980s+</td><td>Classical control (PID, impedance)</td><td>Position holding, force regulation</td></tr>
-                  <tr><td class="era">1990s+</td><td>Visual servoing</td><td>Camera centering, tool tracking</td></tr>
-                  <tr><td class="era">2000s+</td><td>Motion planning (RRT, CHOMP)</td><td>Collision‑free trajectories</td></tr>
-                  <tr><td class="era">2010s+</td><td>Learning from demonstration</td><td>Knot tying, suturing primitives</td></tr>
-                  <tr><td class="era">2015+</td><td>Reinforcement learning (PPO, SAC)</td><td>Closed‑loop skills with shaped rewards</td></tr>
-                  <tr><td class="era">2020+</td><td>Diffusion / transformer policies</td><td>Multi‑modal demonstrations, long horizons</td></tr>
-                  <tr class="highlight"><td class="era">2024+</td><td>Surgical foundation models / VLAs</td><td>Generalist task understanding</td></tr>
-                </tbody>
-              </table>
-              
+            <div class="panel outline-cyan" style="padding: 12px 14px; margin-top: 16px;">
+              <svg viewbox="0 0 1120 310" style="width: 100%; max-height: 290px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Timeline of surgical robotics automation techniques">
+                <line x1="78" y1="170" x2="1042" y2="170" stroke="rgba(71,229,255,0.34)" stroke-width="5" stroke-linecap="round" />
+                <g font-family="Inter, sans-serif">
+                  <g transform="translate(44 62)">
+                    <circle cx="40" cy="108" r="29" fill="#47e5ff" />
+                    <text x="40" y="113" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">1980s+</text>
+                    <rect x="-38" y="0" width="156" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 78 L52 78 L40 86 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="-22" y="27" fill="#47e5ff" font-size="12" font-weight="900" font-family="Space Grotesk">Classical control</text>
+                    <text x="-22" y="49" fill="#c7d2ee" font-size="10">PID, impedance</text>
+                    <text x="-22" y="64" fill="#c7d2ee" font-size="10">position + force</text>
+                  </g>
+                  <g transform="translate(188 200)">
+                    <circle cx="40" cy="-30" r="29" fill="#47e5ff" />
+                    <text x="40" y="-25" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">1990s+</text>
+                    <rect x="-38" y="0" width="156" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 0 L52 0 L40 -8 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="-22" y="27" fill="#47e5ff" font-size="12" font-weight="900" font-family="Space Grotesk">Visual servoing</text>
+                    <text x="-22" y="49" fill="#c7d2ee" font-size="10">camera centering</text>
+                    <text x="-22" y="64" fill="#c7d2ee" font-size="10">tool tracking</text>
+                  </g>
+                  <g transform="translate(332 62)">
+                    <circle cx="40" cy="108" r="29" fill="#47e5ff" />
+                    <text x="40" y="113" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">2000s+</text>
+                    <rect x="-38" y="0" width="156" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 78 L52 78 L40 86 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="-22" y="27" fill="#47e5ff" font-size="12" font-weight="900" font-family="Space Grotesk">Motion planning</text>
+                    <text x="-22" y="49" fill="#c7d2ee" font-size="10">RRT, CHOMP</text>
+                    <text x="-22" y="64" fill="#c7d2ee" font-size="10">collision-free paths</text>
+                  </g>
+                  <g transform="translate(476 200)">
+                    <circle cx="40" cy="-30" r="29" fill="#47e5ff" />
+                    <text x="40" y="-25" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">2010s+</text>
+                    <rect x="-38" y="0" width="156" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 0 L52 0 L40 -8 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="-22" y="27" fill="#47e5ff" font-size="12" font-weight="900" font-family="Space Grotesk">Imitation learning</text>
+                    <text x="-22" y="49" fill="#c7d2ee" font-size="10">human demos</text>
+                    <text x="-22" y="64" fill="#c7d2ee" font-size="10">suturing primitives</text>
+                  </g>
+                  <g transform="translate(620 62)">
+                    <circle cx="40" cy="108" r="29" fill="#47e5ff" />
+                    <text x="40" y="113" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">2015+</text>
+                    <rect x="-38" y="0" width="156" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 78 L52 78 L40 86 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="-22" y="27" fill="#47e5ff" font-size="12" font-weight="900" font-family="Space Grotesk">RL / deep RL</text>
+                    <text x="-22" y="49" fill="#c7d2ee" font-size="10">PPO, SAC</text>
+                    <text x="-22" y="64" fill="#c7d2ee" font-size="10">closed-loop skills</text>
+                  </g>
+                  <g transform="translate(764 200)">
+                    <circle cx="40" cy="-30" r="29" fill="#47e5ff" />
+                    <text x="40" y="-25" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">2020+</text>
+                    <rect x="-38" y="0" width="156" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 0 L52 0 L40 -8 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="-22" y="27" fill="#47e5ff" font-size="12" font-weight="900" font-family="Space Grotesk">Diffusion policies</text>
+                    <text x="-22" y="49" fill="#c7d2ee" font-size="10">transformers</text>
+                    <text x="-22" y="64" fill="#c7d2ee" font-size="10">long-horizon demos</text>
+                  </g>
+                  <g transform="translate(908 62)">
+                    <circle cx="40" cy="108" r="29" fill="#47e5ff" />
+                    <text x="40" y="113" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">2024+</text>
+                    <rect x="-38" y="0" width="176" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 78 L52 78 L40 86 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="-22" y="27" fill="#47e5ff" font-size="12" font-weight="900" font-family="Space Grotesk">Foundation models</text>
+                    <text x="-22" y="49" fill="#c7d2ee" font-size="10">VLAs, generalists</text>
+                    <text x="-22" y="64" fill="#c7d2ee" font-size="10">task understanding</text>
+                  </g>
+                </g>
+              </svg>
             </div>
           </div>
           <div class="footerline">
@@ -3069,7 +2633,7 @@ model.save("best_policy")</code></pre>
             <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
           </div>
           <div>
-            <h2 data-lang="en">Learn from humans. <span style="color: var(--cyan);">An expensive, high‑quality source of demos.</span></h2>
+            <h2 data-lang="en">Learn from surgeons</h2>
             
             <p class="lede" data-lang="en">Classical control gets you precise but rigid behavior. The next step is to learn what "good surgery" looks like from somebody who already knows how to do it.</p>
             
@@ -3110,15 +2674,11 @@ model.save("best_policy")</code></pre>
               <div class="panel outline-amber">
                 <h3 data-lang="en">Datasets matter most</h3>
                 
-                <p data-lang="en"><strong>JIGSAWS</strong> remains the canonical benchmark: 103 trials of suturing and knot‑tying on dVRK, with synced kinematic and video data plus expert skill scores. The whole imitation literature is calibrated against it — and against how tiny it is.</p>
+                <p data-lang="en">In imitation learning the model is the easy part. The data collection is the entire problem.</p>
                 
               </div>
               </div>
             </div>
-            <div class="pullquote" style="margin-top: 16px;" data-lang="en">
-              "In imitation learning the model is the easy part. The data collection is the entire problem."
-            </div>
-            
           </div>
           <div class="footerline">
             <span data-lang="en">BC · ACT · Diffusion Policy — model is easy, data is the problem.</span>
@@ -3207,10 +2767,12 @@ model.save("best_policy")</code></pre>
           <div>
             <h2 data-lang="en">Domain randomization. <span style="color: var(--cyan);">Train across worlds.</span></h2>
             
-            <div class="hero-layout" style="align-items: start; grid-template-columns: 1.1fr 0.9fr; margin-top: 14px;">
+            <p class="lede" data-lang="en">You cannot iterate RL directly on real tissue, but policies trained in one simulator rarely transfer cleanly to real robots. Domain randomization changes physics, lighting, geometry, and sensor noise every episode so the policy learns behavior that survives many worlds, including the real one.</p>
+            
+            <div style="margin-top: 16px;">
               <div class="panel outline-cyan" style="padding: 12px;">
                 <h3 data-lang="en">Bridge from sim to real</h3>
-                <svg viewbox="0 0 720 300" style="width: 100%; max-height: 270px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sim-to-real domain randomization diagram">
+                <svg viewbox="0 0 720 300" style="width: 100%; max-height: 320px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sim-to-real domain randomization diagram">
                   <defs><marker id="simArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker></defs>
                   <rect x="34" y="78" width="128" height="70" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
                   <text x="98" y="107" text-anchor="middle" fill="#47e5ff" font-size="13" font-weight="800" font-family="Space Grotesk">Sim world A</text>
@@ -3228,20 +2790,6 @@ model.save("best_policy")</code></pre>
                   <line x1="164" y1="199" x2="216" y2="167" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#simArrow)" />
                   <line x1="372" y1="155" x2="466" y2="155" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#simArrow)" />
                 </svg>
-              </div>
-              <div>
-              <div class="callout amber">
-                <strong data-lang="en">The problem</strong>
-                
-                <span data-lang="en">You can't iterate RL on real tissue. But policies trained in simulation rarely work on real robots.</span>
-                
-              </div>
-              <div class="callout">
-                <strong data-lang="en">The trick</strong>
-                
-                <span data-lang="en">Randomize physics, lighting, geometry, sensor noise <em>every episode</em>. The policy learns to generalize across worlds — including the real one it has never seen.</span>
-                
-              </div>
               </div>
             </div>
           </div>
