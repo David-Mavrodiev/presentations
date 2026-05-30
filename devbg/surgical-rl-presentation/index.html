@@ -44,6 +44,43 @@
       font-size: 24px;
     }
 
+    .reveal::before,
+    .reveal::after {
+      position: fixed;
+      z-index: 30;
+      pointer-events: none;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .reveal::before {
+      content: "Sponsored by";
+      left: 32px;
+      bottom: 24px;
+      width: 210px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.34em;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background-image: url("images/brands/wiser.png");
+      background-position: right center;
+      background-size: 112px auto;
+    }
+
+    .reveal::after {
+      content: "";
+      right: 110px;
+      bottom: 24px;
+      width: 126px;
+      height: 30px;
+      background-position: right center;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 196 48'%3E%3Ctext x='0' y='38' fill='%234554dc' font-family='Arial Black, Arial, sans-serif' font-size='43' font-weight='900' letter-spacing='-2'%3EDEV%3C/text%3E%3Ccircle cx='106' cy='31' r='6' fill='%2347e5ff'/%3E%3Ctext x='117' y='38' fill='%234554dc' font-family='Arial Black, Arial, sans-serif' font-size='43' font-weight='900' letter-spacing='-2'%3EBG%3C/text%3E%3C/svg%3E");
+    }
+
     .reveal .slides { text-align: left; }
     .reveal section { padding: 16px 10px; overflow: hidden; }
 
@@ -71,6 +108,7 @@
 
     .slide-shell {
       --fit-scale: 1;
+      position: relative;
       display: grid;
       grid-template-rows: auto 1fr auto;
       min-height: 630px;
@@ -98,16 +136,10 @@
     }
 
     .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 0.54em;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      white-space: nowrap;
+      display: none;
     }
+    .brand .brand-mark,
+    .brand .brand-text { display: none; }
     .brand-mark {
       display: inline-grid;
       place-items: center;
@@ -263,6 +295,7 @@
 
     /* Section header */
     .section-shell {
+      position: relative;
       display: grid;
       grid-template-rows: auto 1fr auto;
       min-height: 630px;
@@ -524,9 +557,9 @@
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">devbg IoT · 2026</div>
+            <div class="kicker" data-lang="en"></div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div class="hero-layout" style="grid-template-columns: 1.06fr 0.94fr; align-items: center;">
             <div class="hero-title">
@@ -554,18 +587,18 @@
       </aside>
       </section>
 
-      <!-- 3. Why now -->
+      <!-- 3. Surgical robotics field -->
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Why Now</div>
+            <div class="kicker" data-lang="en">The Surgical Robotics Field</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Surgical robotics is moving from better hardware to smarter, verified autonomy.</h2>
+            <h2 data-lang="en">The state of surgical robotics today.</h2>
             
-            <p class="lede" data-lang="en">The bottleneck has moved from mechanics to <strong>software, data, and verification</strong>. Ten commercial platforms now compete. Cost per procedure is falling. Machine learning is reliable enough for narrow safety-critical tasks. What's left to figure out is the integration — and the regulation that comes with it.</p>
+            <p class="lede" data-lang="en">The bottleneck has moved from mechanics to <strong>software, data, and verification</strong>. Ten commercial platforms now compete. Cost per procedure is falling. Machine learning is reliable enough for narrow safety-critical tasks. The hard part now is proving these systems work safely across real surgical variation.</p>
             
             <div class="metric-grid" style="margin-top: 18px;">
               <div class="metric panel chart-panel">
@@ -603,7 +636,7 @@
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">Why now: hardware ready, ML ready, software & verification still hard.</span>
+            <span data-lang="en">Field status: hardware ready, ML ready, software & verification still hard.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -621,7 +654,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">Roadmap</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">We will build the picture piece by piece.</h2>
@@ -716,7 +749,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">Part I: The Robots</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div class="section-hero">
             
@@ -744,7 +777,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">Teleoperated Giants</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Surgeon at a console, robot at the table. <span style="color: var(--cyan);">Zero autonomy.</span></h2>
@@ -815,10 +848,10 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">Specialty Robots</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Built for one procedure, with autonomy already inside.</h2>
+            <h2 data-lang="en">Built for one procedure</h2>
             
             <p class="lede" data-lang="en">The teleoperated giants are general but dumb. The next class is the opposite — each robot solves <em>one</em> domain so well that it can do part of the procedure on its own. The trick: when the geometry is rigid and the plan comes from a CT scan, the robot can be trusted with motions a teleoperated arm cannot.</p>
             
@@ -896,10 +929,10 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">Open Research Platforms</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Without these, the academic field <span style="color: var(--cyan);">does not exist</span>.</h2>
+            <h2 data-lang="en">Platforms built for <span style="color: var(--cyan);">surgical research</span>.</h2>
             
             <p class="lede" data-lang="en">Commercial robots are closed products. Research needs platforms where labs can command joints, read sensors, change controllers, and connect learning code to real hardware.</p>
             
@@ -907,7 +940,7 @@
               <div class="panel outline-cyan" style="display: grid; grid-template-columns: 170px 1fr; gap: 14px; align-items: center; padding: 10px;">
                 <div class="figure-frame" style="height: 92px; margin: 0;"><img src="./images/robots/dvrk.png" alt="dVRK lab setup" referrerpolicy="no-referrer" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" /></div>
                 <div>
-                  <h3 style="margin-bottom: 4px;"><a href="https://github.com/jhu-dvrk/sawIntuitiveResearchKit/wiki" target="_blank" rel="noreferrer">dVRK</a></h3>
+                  <h3 style="margin-bottom: 4px;"><a href="https://github.com/jhu-dvrk/sawIntuitiveResearchKit/wiki" target="_blank" rel="noreferrer">da Vinci Research Kit (dVRK)</a></h3>
                   <p data-lang="en"><strong>Hardware:</strong> retired first-generation da Vinci arms, PSM patient-side manipulators, ECM camera arm, optional master console.<br /><strong>Software:</strong> Johns Hopkins open stack with cisst/SAW, CRTK API, ROS bridge, Python/C++ control. It is the reference platform for surgical imitation learning and RL because policies can command the robot directly.</p>
                 </div>
               </div>
@@ -946,10 +979,10 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">Levels of Autonomy</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Autonomy levels ask one question: <span style="color: var(--cyan);">who controls the surgical step?</span></h2>
+            <h2 data-lang="en">From manual control to <span style="color: var(--cyan);">full autonomy</span>.</h2>
             
             <p class="lede" data-lang="en">Real commercial systems are mostly at level 0–1 for laparoscopy, and at level 2 for narrow specialties like orthopedics. Levels 4 and 5 are far in the future — and may never be the goal for most surgical tasks.</p>
             
@@ -1026,7 +1059,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">Part II: The Tasks</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div class="section-hero">
             <h1 data-lang="en">Think of surgery as an <span style="color: var(--cyan);">algorithm made of steps</span>.</h1>
@@ -1053,7 +1086,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">Autonomous Camera Control</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Autonomous camera control is <span style="color: var(--cyan);">low risk and high impact</span>.</h2>
@@ -1087,7 +1120,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">Camera Control · Data</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Step 1: collect frames and mark the tool tips.</h2>
@@ -1159,7 +1192,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">Camera Control · CNN</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Step 2: a lightweight CNN predicts tip location in real time.</h2>
@@ -1270,7 +1303,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">Camera Control · Visual Servoing</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Step 3: move the camera to keep the tool in view.</h2>
@@ -1376,7 +1409,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">Suturing &amp; Knot Tying</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Step by step: how an autonomous stitch is executed.</h2>
@@ -1410,7 +1443,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">dVRK Suturing · Pipeline</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">This system turns suturing into a <span style="color: var(--cyan);">state machine plus optimizer</span>.</h2>
@@ -1503,7 +1536,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">dVRK Suturing · Needle Tracking</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">First problem: know <span style="color: var(--cyan);">where the needle is</span>.</h2>
@@ -1582,7 +1615,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">dVRK Suturing · Planning &amp; Insertion</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Second problem: push a curved needle through tissue <span style="color: var(--cyan);">without tearing it</span>.</h2>
@@ -1645,7 +1678,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">dVRK Suturing · Grasp, Pull, Hand-off</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Third problem: switch arms without losing the needle.</h2>
@@ -1707,7 +1740,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">Automation Criteria</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en"><span style="color: var(--cyan);">Latency vs Accuracy</span> tradeoff.</h2>
@@ -1770,7 +1803,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">Part III: The Stack</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div class="section-hero">
             
@@ -1816,7 +1849,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">SurRoL Examples · PSM</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">PSM fundamental actions: <span style="color: var(--cyan);">reach, grasp, pick, regrasp</span>.</h2>
@@ -1838,7 +1871,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">SurRoL Examples · ECM</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">ECM control: <span style="color: var(--cyan);">move and stabilize the camera view</span>.</h2>
@@ -1860,7 +1893,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">SurRoL Examples · Skills</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Basic surgical skill training: <span style="color: var(--cyan);">longer manipulation tasks</span>.</h2>
@@ -1884,7 +1917,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">SurRoL Architecture</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">SurRoL exposes surgical tasks through a <span style="color: var(--cyan);">Gym API</span>.</h2>
@@ -1956,7 +1989,7 @@
           <div class="slide-header">
             <div class="kicker" data-lang="en">Using SurRoL · Step 1</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Define the surgical subtask as a small <span style="color: var(--cyan);">environment contract</span>.</h2>
@@ -2024,7 +2057,7 @@ class MySurgicalTask(PsmEnv):
           <div class="slide-header">
             <div class="kicker" data-lang="en">Using SurRoL · Step 2</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Build the simulated scene and attach the dVRK-style robot.</h2>
@@ -2086,7 +2119,7 @@ class MySurgicalTask(PsmEnv):
           <div class="slide-header">
             <div class="kicker" data-lang="en">Using SurRoL · Step 3</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Register it, then run the standard Gym loop.</h2>
@@ -2146,7 +2179,7 @@ for t in range(300):
           <div class="slide-header">
             <div class="kicker" data-lang="en">Using SurRoL · Step 4</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Choose a policy algorithm, train, then evaluate deterministically.</h2>
@@ -2212,7 +2245,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">System Architecture</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">What does a surgical robotic system <span style="color: var(--cyan);">look like?</span></h2>
@@ -2293,7 +2326,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Software Layers</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">The <span style="color: var(--cyan);">software stack</span>.</h2>
@@ -2350,7 +2383,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Real‑Time Constraints</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">The model must answer <span style="color: var(--cyan);">before the robot needs to move</span>.</h2>
@@ -2432,7 +2465,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Part IV: The Techniques</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div class="section-hero">
             
@@ -2460,7 +2493,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">The Technique Map</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Forty years of methods, <span style="color: var(--cyan);">stacked not replaced</span>.</h2>
@@ -2557,7 +2590,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Classical Control</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Still the workhorse. <span style="color: var(--cyan);">Under every learned policy.</span></h2>
@@ -2630,7 +2663,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Imitation Learning</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Learn from surgeons</h2>
@@ -2699,7 +2732,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Reinforcement Learning</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Imitation needs an expert. <span style="color: var(--cyan);">What if you don't have one?</span></h2>
@@ -2762,7 +2795,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Sim‑to‑Real</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Domain randomization. <span style="color: var(--cyan);">Train across worlds.</span></h2>
@@ -2812,7 +2845,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Foundation Models</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">The new wave. <span style="color: var(--cyan);">Stop training from scratch.</span></h2>
@@ -2886,7 +2919,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Part V: Case Study</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div class="section-hero">
             
@@ -2914,7 +2947,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Vascular Clip Application</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en"><span style="color: var(--cyan);">Squeeze</span> sub-task.</h2>
@@ -2955,7 +2988,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">How We Frame It</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">First, translate the surgical task into an <span style="color: var(--cyan);">RL problem</span>.</h2>
@@ -3038,7 +3071,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Learning Model</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">DRL with PPO: a neural policy improved by <span style="color: var(--cyan);">small trusted updates</span>.</h2>
@@ -3131,7 +3164,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Reward Design</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Reward design is where the <span style="color: var(--cyan);">safety logic</span> enters the RL problem.</h2>
@@ -3195,7 +3228,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Domain Randomization</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">We did not train on <span style="color: var(--cyan);">one perfect vessel</span>.</h2>
@@ -3277,7 +3310,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Exploration vs Exploitation</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Early training explores. Later training <span style="color: var(--cyan);">refines the squeeze</span>.</h2>
@@ -3353,7 +3386,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">The Learned Behavior</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">The policy learned a <span style="color: var(--cyan);">two-phase squeeze strategy</span>.</h2>
@@ -3387,7 +3420,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Result Simulation</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Simulation result: the learned policy <span style="color: var(--cyan);">executes the squeeze</span>.</h2>
@@ -3432,7 +3465,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Part VI: The Road Ahead</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div class="section-hero">
             
@@ -3460,7 +3493,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Open Challenges</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Scale the problem either direction and you hit the <span style="color: var(--cyan);">same five walls</span>.</h2>
@@ -3509,7 +3542,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Where the Field is Heading</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">Near-term autonomy will look less like a robot surgeon and more like <span style="color: var(--cyan);">an assistant that understands the operation</span>.</h2>
@@ -3562,7 +3595,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Path to Clinical Use</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
             <h2 data-lang="en">A simulation result is only the start. <span style="color: var(--cyan);">Clinical use requires step-by-step validation.</span></h2>
@@ -3643,7 +3676,7 @@ model.save("best_policy")</code></pre>
           <div class="slide-header">
             <div class="kicker" data-lang="en">Thank You</div>
             
-            <div class="brand"><span class="brand-mark">SR</span><span class="brand-text">Surgical Robotics</span></div>
+            <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div class="hero-title">
             
@@ -3653,7 +3686,7 @@ model.save("best_policy")</code></pre>
             
           </div>
           <div class="footerline">
-            <span data-lang="en">devbg IoT · 2026 · David Mavrodiev</span>
+            <span data-lang="en">David Mavrodiev</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -3731,7 +3764,7 @@ model.save("best_policy")</code></pre>
       }
     }
 
-    // --- Why Now charts (Chart.js) ---
+    // --- Surgical robotics field charts (Chart.js) ---
     const __chartRegistry = [];
     function initWhyNowCharts() {
       if (typeof Chart === 'undefined') return;
