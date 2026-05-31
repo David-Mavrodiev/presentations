@@ -54,7 +54,7 @@
     }
 
     .reveal::before {
-      content: "Sponsored by";
+      content: "Supported by";
       left: 32px;
       bottom: 24px;
       width: 210px;
@@ -72,12 +72,20 @@
     }
 
     .reveal::after {
-      content: "";
-      right: 110px;
+      content: "Organized by";
+      right: 128px;
       bottom: 24px;
-      width: 126px;
+      width: 222px;
       height: 30px;
+      display: flex;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.34em;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
       background-position: right center;
+      background-size: 112px auto;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 196 48'%3E%3Ctext x='0' y='38' fill='%234554dc' font-family='Arial Black, Arial, sans-serif' font-size='43' font-weight='900' letter-spacing='-2'%3EDEV%3C/text%3E%3Ccircle cx='106' cy='31' r='6' fill='%2347e5ff'/%3E%3Ctext x='117' y='38' fill='%234554dc' font-family='Arial Black, Arial, sans-serif' font-size='43' font-weight='900' letter-spacing='-2'%3EBG%3C/text%3E%3C/svg%3E");
     }
 
@@ -571,7 +579,7 @@
             </div>
             <div class="figure-frame dark tall">
               <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cmglee_Cambridge_Science_Festival_2015_da_Vinci.jpg?width=900" alt="da Vinci surgical system" />
-              <div class="figure-caption" data-lang="en">da Vinci · Wikimedia Commons</div>
+              <div class="figure-caption" data-lang="en">da Vinci</div>
             </div>
           </div>
           <div class="footerline">
@@ -652,7 +660,7 @@
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Roadmap</div>
+            <div class="kicker" data-lang="en">Agenda</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
@@ -755,7 +763,7 @@
             
             <h1 data-lang="en">Types of surgical robots <span style="color: var(--cyan);">used today</span>.</h1>
             
-            <p class="lede" data-lang="en">The hardware in real operating rooms today — the teleoperated giants, the specialty robots, and the open research kits that academia actually publishes on.</p>
+            <p class="lede" data-lang="en">The hardware in operating rooms today — the teleoperated giants, the specialty robots, and the open research kits that academia actually publishes on.</p>
             
           </div>
           <div class="footerline">
@@ -780,9 +788,9 @@
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Surgeon at a console, robot at the table. <span style="color: var(--cyan);">Zero autonomy.</span></h2>
+            <h2 data-lang="en">Robots fully controlled <span style="color: var(--cyan);"> by the surgeon</span>.</h2>
             
-            <p class="lede" data-lang="en">The platforms most people picture when they hear "surgical robot." The robot does <em>nothing</em> on its own — every motion is the surgeon's. What you buy is wristed instruments through a 1 cm port, stereo HD, motion scaling, and tremor filtering. A huge clinical win — and the foundation everything else sits on top of.</p>
+            <p class="lede" data-lang="en">These are master-slave teleoperation systems used for minimally invasive procedures such as urology, gynecology, colorectal surgery, thoracic surgery, and general laparoscopy. The robot does not decide or act independently: the surgeon controls every instrument motion from the console. The system provides wristed instruments through small ports, stereo vision, tremor filtering, and motion scaling.</p>
             
             <div class="robot-grid" style="margin-top: 14px;">
               <div class="robot-card">
@@ -1062,7 +1070,7 @@
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div class="section-hero">
-            <h1 data-lang="en">Think of surgery as an <span style="color: var(--cyan);">algorithm made of steps</span>.</h1>
+            <h1 data-lang="en">Think of surgery as an <span style="color: var(--cyan);">algorithm</span>.</h1>
             
             <p class="lede" data-lang="en">Each procedure is a different step sequence. Some steps are already commercially assisted or semi-automated in narrow use-cases, some are active research with promising prototypes, and some are still not automated at all — which is where the next wave of research and innovation sits.</p>
             
@@ -1127,20 +1135,20 @@
             
             <p class="lede" data-lang="en">Start with surgical video. Pick frames where the tool is visible, then label the tip position. These labeled frames train the detector used by the camera controller.</p>
             
-            <div class="hero-layout" style="align-items: start; grid-template-columns: 0.98fr 1.02fr; margin-top: 14px;">
-              <div class="grid-2" style="gap: 10px; align-items: start;">
+            <div style="max-width: 980px; margin: 18px auto 0;">
+              <div class="grid-2" style="gap: 14px; align-items: start;">
                 <div>
-                  <div class="figure-frame dark" style="aspect-ratio: 1 / 1; width: 100%; padding: 0; overflow: hidden; display: grid; place-items: center;">
-                    <div style="position: relative; width: 100%; aspect-ratio: 4 / 3;">
-                      <img src="https://public.grand-challenge-user-content.org/f/challenge/51/24408ba4-2278-42a7-8f43-4a9b3e9a854f/endo1.bmp" alt="Unlabeled endoscopic frame with surgical instruments" referrerpolicy="no-referrer" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                  <div class="figure-frame dark" style="aspect-ratio: 16 / 9; width: 100%; padding: 0; overflow: hidden; display: grid; place-items: center;">
+                    <div style="position: relative; width: 100%; aspect-ratio: 16 / 9;">
+                      <img src="https://public.grand-challenge-user-content.org/f/challenge/51/24408ba4-2278-42a7-8f43-4a9b3e9a854f/endo1.bmp" alt="Unlabeled endoscopic frame with surgical instruments" referrerpolicy="no-referrer" loading="lazy" style="width: 100%; height: 100%; max-height: none; object-fit: cover; display: block;" />
                     </div>
                   </div>
                   <div class="figure-caption" data-lang="en">Unlabeled frame</div>
                 </div>
                 <div>
-                  <div class="figure-frame dark" style="aspect-ratio: 1 / 1; width: 100%; padding: 0; overflow: hidden; display: grid; place-items: center;">
-                    <div style="position: relative; width: 100%; aspect-ratio: 4 / 3;">
-                      <img src="https://public.grand-challenge-user-content.org/f/challenge/51/24408ba4-2278-42a7-8f43-4a9b3e9a854f/endo1.bmp" alt="Labeled endoscopic frame with tool annotations" referrerpolicy="no-referrer" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                  <div class="figure-frame dark" style="aspect-ratio: 16 / 9; width: 100%; padding: 0; overflow: hidden; display: grid; place-items: center;">
+                    <div style="position: relative; width: 100%; aspect-ratio: 16 / 9;">
+                      <img src="https://public.grand-challenge-user-content.org/f/challenge/51/24408ba4-2278-42a7-8f43-4a9b3e9a854f/endo1.bmp" alt="Labeled endoscopic frame with tool annotations" referrerpolicy="no-referrer" loading="lazy" style="width: 100%; height: 100%; max-height: none; object-fit: cover; display: block;" />
                       <div style="position: absolute; left: 16.9%; top: 25.8%; width: 38.6%; height: 31.7%; border: 3px solid #16a34a;"></div>
                       <div style="position: absolute; left: 55.1%; top: 24.2%; width: 17.8%; height: 24.2%; border: 3px solid #16a34a;"></div>
                     </div>
@@ -1148,28 +1156,6 @@
                   <div class="figure-caption" data-lang="en">Labeled tool regions</div>
                 </div>
                 <div class="figure-caption" style="grid-column: 1 / -1;" data-lang="en">Example frame · EndoVisSub-Instrument Grand Challenge</div>
-              </div>
-              <div class="grid-2" style="grid-template-columns: 1fr; gap: 10px;">
-                <div class="panel outline-cyan">
-                  <h3 data-lang="en">Images</h3>
-                  
-                  <ul data-lang="en">
-                    <li>Frames from endoscopic video</li>
-                    <li>Tools centered, near edges, or partly hidden</li>
-                    <li>Blur, smoke, blood, glare, zoom changes</li>
-                  </ul>
-                  
-                </div>
-                <div class="panel outline-amber">
-                  <h3 data-lang="en">Labels</h3>
-                  
-                  <ul data-lang="en">
-                    <li>Tip point $(x_{tip}, y_{tip})$ or small tip box</li>
-                    <li>Visibility flag for hidden tips</li>
-                    <li>Pixel error and missed detections</li>
-                  </ul>
-                  
-                </div>
               </div>
             </div>
           </div>
@@ -1370,12 +1356,6 @@
               </div>
               <div>
                 <div class="panel outline-cyan">
-                  <h3 data-lang="en">Plain version</h3>
-                  
-                  <p data-lang="en">If the tool tip is right of center, move the camera right. If it is too high, move the camera up. The goal is to keep the working area near the middle of the image.</p>
-                  
-                </div>
-                <div class="panel outline-cyan" style="margin-top: 10px;">
                   <h3 data-lang="en">Math view</h3>
                   
                   <div class="formula" style="margin: 6px 0; font-size: 0.78em;">
@@ -1807,26 +1787,18 @@
           </div>
           <div class="section-hero">
             
-            <h1 data-lang="en">Before a robot touches tissue, the policy lives in <span style="color: var(--cyan);">simulation</span>.</h1>
+            <h1 data-lang="en"><span style="color: var(--cyan);">Simulation frameworks</span> for surgical robotics.</h1>
             
-            <p class="lede" data-lang="en">The main choices are <strong>SurRoL</strong> for lightweight dVRK/Gym tasks, <strong>AMBF</strong> for deformable simulation, <strong>ORBIT‑Surgical</strong> for GPU-scale Isaac Lab training, and general engines like <strong>MuJoCo/MJX</strong> or <strong>Genesis</strong>. For the case study, we zoom into SurRoL.</p>
+            <p class="lede" data-lang="en">Two popular choices: <strong>SurRoL</strong> for lightweight, reproducible surgical-RL tasks, and <strong>ORBIT-Surgical</strong> for GPU-scale simulation and modern robot-learning pipelines. For the case study, we zoom into SurRoL.</p>
             
             <div class="grid-2" style="margin-top: 18px;">
               <div class="panel outline-cyan">
                 <h3 data-lang="en">SurRoL</h3>
-                <p data-lang="en">PyBullet, dVRK-compatible robots, Gym-style tasks. Best for fast surgical-RL prototypes and reproducible papers.</p>
-              </div>
-              <div class="panel outline-cyan">
-                <h3 data-lang="en">AMBF</h3>
-                <p data-lang="en">Bullet-based surgical simulation with support for richer scene/soft-tissue workflows.</p>
+                <p data-lang="en">PyBullet, dVRK-compatible robots, Gym-style tasks. Best for explaining surgical RL concepts, building fast prototypes, and reproducing small task environments.</p>
               </div>
               <div class="panel outline-amber">
                 <h3 data-lang="en">ORBIT-Surgical</h3>
-                <p data-lang="en">Isaac Lab / PhysX style GPU-parallel training when you need thousands of environments.</p>
-              </div>
-              <div class="panel outline-amber">
-                <h3 data-lang="en">MuJoCo / Genesis</h3>
-                <p data-lang="en">General physics engines: useful when speed, differentiability, or custom control matters more than surgical assets.</p>
+                <p data-lang="en">Isaac Lab / PhysX style GPU-parallel simulation. Useful when the goal is high-throughput training, many environments, and scalable robot-learning experiments.</p>
               </div>
             </div>
           </div>
@@ -1852,7 +1824,7 @@
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">PSM fundamental actions: <span style="color: var(--cyan);">reach, grasp, pick, regrasp</span>.</h2>
+            <h2 data-lang="en">PSM fundamental actions.</h2>
             <p class="lede" data-lang="en">These tasks isolate the Patient Side Manipulator tool arm: move the jaw tip, open or close the gripper, pick a small object, or hand it to the other arm.</p>
             <div class="grid-2" style="max-width: 980px; margin: 10px auto 0; gap: 8px;">
               <div class="panel outline-cyan" style="padding: 6px 8px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Needle Reach</h3><div class="video-frame" data-src="SurRoL · Needle Reach" style="padding-top: 42%;"><iframe src="https://www.youtube-nocookie.com/embed/0H_BnyPVa1s?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Needle Reach" frameborder="0" allowfullscreen></iframe></div></div>
@@ -1874,7 +1846,7 @@
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">ECM control: <span style="color: var(--cyan);">move and stabilize the camera view</span>.</h2>
+            <h2 data-lang="en">ECM control actions.</h2>
             <p class="lede" data-lang="en">These tasks isolate the Endoscopic Camera Manipulator: move the camera, correct orientation, or keep a target in view.</p>
             <div class="grid-2" style="max-width: 980px; margin: 10px auto 0; gap: 8px;">
               <div class="panel outline-cyan" style="padding: 6px 8px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">ECM Reach</h3><div class="video-frame" data-src="SurRoL · ECM Reach" style="padding-top: 42%;"><iframe src="https://www.youtube-nocookie.com/embed/qnmyF2iWVlo?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL ECM Reach" frameborder="0" allowfullscreen></iframe></div></div>
@@ -1896,7 +1868,7 @@
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Basic surgical skill training: <span style="color: var(--cyan);">longer manipulation tasks</span>.</h2>
+            <h2 data-lang="en">Basic surgical skills.</h2>
             <p class="lede" data-lang="en">These tasks combine reach, grasp, hand-off, collision avoidance, and sequencing into longer manipulation problems.</p>
             <div class="grid-3" style="margin-top: 9px; gap: 7px;">
               <div class="panel outline-cyan" style="padding: 5px 7px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Peg Transfer</h3><div class="video-frame" data-src="SurRoL · Peg Transfer" style="padding-top: 45%;"><iframe src="https://www.youtube-nocookie.com/embed/Ipq6Xyyo9bw?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Peg Transfer" frameborder="0" allowfullscreen></iframe></div></div>
@@ -2292,7 +2264,7 @@ model.save("best_policy")</code></pre>
                 <text x="560" y="358" text-anchor="middle" fill="#aab4d2" font-size="12">All time-critical code runs here, inside the OR.</text>
 
                 <line x1="792" y1="195" x2="853" y2="195" stroke="#47e5ff" stroke-width="1.8" marker-end="url(#archArrow)" />
-                <text x="823" y="178" text-anchor="middle" fill="#aab4d2" font-size="11">safe command</text>
+                <text x="823" y="178" text-anchor="middle" fill="#aab4d2" font-size="11">commands</text>
 
                 <rect x="855" y="70" width="230" height="250" rx="10" fill="url(#archBox)" stroke="#47e5ff" stroke-width="1.5" />
                 <text x="970" y="105" text-anchor="middle" fill="#47e5ff" font-size="18" font-weight="800" font-family="Space Grotesk">Robot arms</text>
@@ -2354,7 +2326,7 @@ model.save("best_policy")</code></pre>
 
                 <polygon points="160,264 100,336 720,336 660,264" fill="url(#stackBlue)" stroke="#93c5fd" stroke-width="1.5" />
                 <text x="410" y="304" text-anchor="middle" fill="#edf2ff" font-size="18" font-weight="800" font-family="Space Grotesk">Robot + simulator APIs</text>
-                <text x="410" y="324" text-anchor="middle" fill="#aab4d2" font-size="12">ROS 2 · dVRK API · URDF · SurRoL · PyBullet · AMBF</text>
+                <text x="410" y="324" text-anchor="middle" fill="#aab4d2" font-size="12">ROS 2 · dVRK API · URDF · SurRoL · PyBullet · Isaac Lab</text>
               </svg>
             </div>
           </div>
@@ -2496,7 +2468,7 @@ model.save("best_policy")</code></pre>
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Forty years of methods, <span style="color: var(--cyan);">stacked not replaced</span>.</h2>
+            <h2 data-lang="en">Modern surgical autonomy <span style="color: var(--cyan);">combines decades of methods</span>.</h2>
             
             <p class="lede" data-lang="en">Modern systems use 4 or 5 of these in one pipeline. None of the older tools went away — you just stack them.</p>
             
