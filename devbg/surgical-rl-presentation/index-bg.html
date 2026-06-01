@@ -2418,19 +2418,19 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="section-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Part IV: The Techniques</div>
+            <div class="kicker" data-lang="bg">Част IV: Техники</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div class="section-hero">
             
-            <h1 data-lang="en">The techniques used to <span style="color: var(--cyan);">automate surgical tasks</span>.</h1>
+            <h1 data-lang="bg">Техники за <span style="color: var(--cyan);">автоматизация на хирургични задачи</span>.</h1>
             
-            <p class="lede" data-lang="en">We move from classical control and motion planning to imitation learning, reinforcement learning, deep RL, and newer diffusion / transformer policies. Modern systems usually combine several of these techniques in one pipeline.</p>
+            <p class="lede" data-lang="bg">Преминаваме от класически контрол и планиране на движения към обучение чрез имитация, дълбоко самообучение и по-нови diffusion / transformer policies. Съвременните системи обикновено комбинират няколко от тези техники.</p>
             
           </div>
           <div class="footerline">
-            <span data-lang="en">From PID controllers to foundation models — stacked, not replaced.</span>
+            <span data-lang="bg">От PID controllers до foundation models - надграждане, а не замяна.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -2446,88 +2446,74 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">The Technique Map</div>
+            <div class="kicker" data-lang="bg">Карта на техниките</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Modern surgical autonomy <span style="color: var(--cyan);">combines decades of methods</span>.</h2>
+            <h2 data-lang="bg">Съвременните автономни хирургични системи <span style="color: var(--cyan);">стъпват върху методи, развивани в продължение на десетилетия</span>.</h2>
             
-            <p class="lede" data-lang="en">Modern systems use 4 or 5 of these in one pipeline. None of the older tools went away — you just stack them.</p>
+            <p class="lede" data-lang="bg">Съвременните системи използват 4 или 5 от тези подходи едновременно.</p>
             
-            <div class="panel outline-cyan" style="padding: 12px 14px; margin-top: 16px;">
-              <svg viewbox="0 0 1120 310" style="width: 100%; max-height: 290px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Timeline of surgical robotics automation techniques">
-                <line x1="78" y1="170" x2="1042" y2="170" stroke="rgba(71,229,255,0.34)" stroke-width="5" stroke-linecap="round" />
+            <div class="panel outline-cyan" style="padding: 10px 12px; margin-top: 12px;">
+              <svg viewbox="0 0 1120 220" style="width: 100%; max-height: 210px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Хронология на техники за автоматизация в хирургичната роботика">
+                <line x1="78" y1="110" x2="1042" y2="110" stroke="rgba(71,229,255,0.34)" stroke-width="5" stroke-linecap="round" />
                 <g font-family="Inter, sans-serif">
-                  <g transform="translate(44 62)">
-                    <circle cx="40" cy="108" r="29" fill="#47e5ff" />
-                    <text x="40" y="113" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">1980s+</text>
-                    <rect x="-38" y="0" width="156" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
-                    <path d="M28 78 L52 78 L40 86 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
-                    <text x="-22" y="27" fill="#47e5ff" font-size="12" font-weight="900" font-family="Space Grotesk">Classical control</text>
-                    <text x="-22" y="49" fill="#c7d2ee" font-size="10">PID, impedance</text>
-                    <text x="-22" y="64" fill="#c7d2ee" font-size="10">position + force</text>
+                  <g transform="translate(44 18)">
+                    <circle cx="40" cy="92" r="29" fill="#47e5ff" />
+                    <text x="40" y="96" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">1980s+</text>
+                    <rect x="-35" y="0" width="150" height="42" rx="7" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 42 L52 42 L40 50 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="40" y="26" text-anchor="middle" fill="#47e5ff" font-size="11" font-weight="900" font-family="Space Grotesk">Класически контрол</text>
                   </g>
-                  <g transform="translate(188 200)">
-                    <circle cx="40" cy="-30" r="29" fill="#47e5ff" />
-                    <text x="40" y="-25" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">1990s+</text>
-                    <rect x="-38" y="0" width="156" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                  <g transform="translate(188 152)">
+                    <circle cx="40" cy="-42" r="29" fill="#47e5ff" />
+                    <text x="40" y="-38" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">1990s+</text>
+                    <rect x="-35" y="0" width="150" height="42" rx="7" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
                     <path d="M28 0 L52 0 L40 -8 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
-                    <text x="-22" y="27" fill="#47e5ff" font-size="12" font-weight="900" font-family="Space Grotesk">Visual servoing</text>
-                    <text x="-22" y="49" fill="#c7d2ee" font-size="10">camera centering</text>
-                    <text x="-22" y="64" fill="#c7d2ee" font-size="10">tool tracking</text>
+                    <text x="40" y="26" text-anchor="middle" fill="#47e5ff" font-size="11" font-weight="900" font-family="Space Grotesk">Визуален анализ</text>
                   </g>
-                  <g transform="translate(332 62)">
-                    <circle cx="40" cy="108" r="29" fill="#47e5ff" />
-                    <text x="40" y="113" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">2000s+</text>
-                    <rect x="-38" y="0" width="156" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
-                    <path d="M28 78 L52 78 L40 86 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
-                    <text x="-22" y="27" fill="#47e5ff" font-size="12" font-weight="900" font-family="Space Grotesk">Motion planning</text>
-                    <text x="-22" y="49" fill="#c7d2ee" font-size="10">RRT, CHOMP</text>
-                    <text x="-22" y="64" fill="#c7d2ee" font-size="10">collision-free paths</text>
+                  <g transform="translate(332 18)">
+                    <circle cx="40" cy="92" r="29" fill="#47e5ff" />
+                    <text x="40" y="96" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">2000s+</text>
+                    <rect x="-35" y="0" width="150" height="42" rx="7" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 42 L52 42 L40 50 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="40" y="26" text-anchor="middle" fill="#47e5ff" font-size="11" font-weight="900" font-family="Space Grotesk">Планиране на движение</text>
                   </g>
-                  <g transform="translate(476 200)">
-                    <circle cx="40" cy="-30" r="29" fill="#47e5ff" />
-                    <text x="40" y="-25" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">2010s+</text>
-                    <rect x="-38" y="0" width="156" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                  <g transform="translate(476 152)">
+                    <circle cx="40" cy="-42" r="29" fill="#47e5ff" />
+                    <text x="40" y="-38" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">2010s+</text>
+                    <rect x="-35" y="0" width="150" height="42" rx="7" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
                     <path d="M28 0 L52 0 L40 -8 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
-                    <text x="-22" y="27" fill="#47e5ff" font-size="12" font-weight="900" font-family="Space Grotesk">Imitation learning</text>
-                    <text x="-22" y="49" fill="#c7d2ee" font-size="10">human demos</text>
-                    <text x="-22" y="64" fill="#c7d2ee" font-size="10">suturing primitives</text>
+                    <text x="40" y="26" text-anchor="middle" fill="#47e5ff" font-size="11" font-weight="900" font-family="Space Grotesk">Обучение чрез имитация</text>
                   </g>
-                  <g transform="translate(620 62)">
-                    <circle cx="40" cy="108" r="29" fill="#47e5ff" />
-                    <text x="40" y="113" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">2015+</text>
-                    <rect x="-38" y="0" width="156" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
-                    <path d="M28 78 L52 78 L40 86 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
-                    <text x="-22" y="27" fill="#47e5ff" font-size="12" font-weight="900" font-family="Space Grotesk">RL / deep RL</text>
-                    <text x="-22" y="49" fill="#c7d2ee" font-size="10">PPO, SAC</text>
-                    <text x="-22" y="64" fill="#c7d2ee" font-size="10">closed-loop skills</text>
+                  <g transform="translate(620 18)">
+                    <circle cx="40" cy="92" r="29" fill="#47e5ff" />
+                    <text x="40" y="96" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">2015+</text>
+                    <rect x="-35" y="0" width="150" height="42" rx="7" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 42 L52 42 L40 50 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="40" y="26" text-anchor="middle" fill="#47e5ff" font-size="11" font-weight="900" font-family="Space Grotesk">Дълбоко самообучение</text>
                   </g>
-                  <g transform="translate(764 200)">
-                    <circle cx="40" cy="-30" r="29" fill="#47e5ff" />
-                    <text x="40" y="-25" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">2020+</text>
-                    <rect x="-38" y="0" width="156" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                  <g transform="translate(764 152)">
+                    <circle cx="40" cy="-42" r="29" fill="#47e5ff" />
+                    <text x="40" y="-38" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">2020+</text>
+                    <rect x="-35" y="0" width="150" height="42" rx="7" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
                     <path d="M28 0 L52 0 L40 -8 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
-                    <text x="-22" y="27" fill="#47e5ff" font-size="12" font-weight="900" font-family="Space Grotesk">Diffusion policies</text>
-                    <text x="-22" y="49" fill="#c7d2ee" font-size="10">transformers</text>
-                    <text x="-22" y="64" fill="#c7d2ee" font-size="10">long-horizon demos</text>
+                    <text x="40" y="26" text-anchor="middle" fill="#47e5ff" font-size="11" font-weight="900" font-family="Space Grotesk">Diffusion policies</text>
                   </g>
-                  <g transform="translate(908 62)">
-                    <circle cx="40" cy="108" r="29" fill="#47e5ff" />
-                    <text x="40" y="113" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">2024+</text>
-                    <rect x="-38" y="0" width="176" height="78" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
-                    <path d="M28 78 L52 78 L40 86 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
-                    <text x="-22" y="27" fill="#47e5ff" font-size="12" font-weight="900" font-family="Space Grotesk">Foundation models</text>
-                    <text x="-22" y="49" fill="#c7d2ee" font-size="10">VLAs, generalists</text>
-                    <text x="-22" y="64" fill="#c7d2ee" font-size="10">task understanding</text>
+                  <g transform="translate(908 18)">
+                    <circle cx="40" cy="92" r="29" fill="#47e5ff" />
+                    <text x="40" y="96" text-anchor="middle" fill="#07101f" font-size="10" font-weight="900" font-family="Space Grotesk">2024+</text>
+                    <rect x="-35" y="0" width="150" height="42" rx="7" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <path d="M28 42 L52 42 L40 50 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
+                    <text x="40" y="26" text-anchor="middle" fill="#47e5ff" font-size="11" font-weight="900" font-family="Space Grotesk">Foundation models</text>
                   </g>
                 </g>
               </svg>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">Sedimentary — each layer still load‑bearing under the next.</span>
+            <span data-lang="bg">Наслагване - всеки слой остава носещ за следващия.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -2543,64 +2529,40 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Classical Control</div>
+            <div class="kicker" data-lang="bg">Класически контрол</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Still the workhorse. <span style="color: var(--cyan);">Under every learned policy.</span></h2>
+            <h2 data-lang="bg">Класическият контрол остава основата, <span style="color: var(--cyan);">върху която стъпват обучените модели</span>.</h2>
             
-            <p class="lede" data-lang="en">Underneath every learned policy is a stack of decades‑old controllers that nobody plans to replace.</p>
+            <p class="lede" data-lang="bg">Обученият модел може да избере цел или посока на движение, но класическият контрол превръща това решение в плавно, ограничено и безопасно движение на робота.</p>
             
-            <div class="hero-layout" style="align-items: start; grid-template-columns: 1.05fr 0.95fr; margin-top: 14px;">
-              <div class="panel outline-cyan" style="padding: 12px;">
-                <h3 data-lang="en">Closed-loop control</h3>
-                <svg viewbox="0 0 720 300" style="width: 100%; max-height: 270px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Classical control closed loop diagram">
+            <div class="panel outline-cyan" style="padding: 12px; margin-top: 14px;">
+                <h3 data-lang="bg">Контрол със затворен цикъл</h3>
+                <svg viewbox="0 0 900 255" style="width: 100%; max-height: 245px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Диаграма на класически контрол със затворен цикъл">
                   <defs><marker id="ctrlArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker></defs>
-                  <rect x="48" y="96" width="130" height="70" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
-                  <text x="113" y="125" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Target</text>
-                  <text x="113" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">desired pose/force</text>
-                  <line x1="180" y1="131" x2="230" y2="131" stroke="#47e5ff" stroke-width="1.6" marker-end="url(#ctrlArrow)" />
-                  <rect x="234" y="96" width="150" height="70" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
-                  <text x="309" y="125" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="800" font-family="Space Grotesk">Controller</text>
-                  <text x="309" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">PID / impedance</text>
-                  <line x1="386" y1="131" x2="436" y2="131" stroke="#47e5ff" stroke-width="1.6" marker-end="url(#ctrlArrow)" />
-                  <rect x="440" y="96" width="130" height="70" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
-                  <text x="505" y="125" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Robot</text>
-                  <text x="505" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">small motion</text>
-                  <path d="M505 168 C505 236, 113 236, 113 168" fill="none" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="6 6" marker-end="url(#ctrlArrow)" />
-                  <text x="310" y="256" text-anchor="middle" fill="#aab4d2" font-size="12">measure error, correct, repeat</text>
+                  <rect x="92" y="28" width="150" height="70" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="167" y="57" text-anchor="middle" fill="#47e5ff" font-size="15" font-weight="800" font-family="Space Grotesk">Цел</text>
+                  <text x="167" y="79" text-anchor="middle" fill="#edf2ff" font-size="12">желана поза</text>
+                  <line x1="244" y1="63" x2="330" y2="63" stroke="#47e5ff" stroke-width="1.7" marker-end="url(#ctrlArrow)" />
+                  <rect x="334" y="28" width="170" height="70" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="419" y="57" text-anchor="middle" fill="#93c5fd" font-size="15" font-weight="800" font-family="Space Grotesk">Контролер</text>
+                  <text x="419" y="79" text-anchor="middle" fill="#edf2ff" font-size="12">PID</text>
+                  <line x1="506" y1="63" x2="592" y2="63" stroke="#47e5ff" stroke-width="1.7" marker-end="url(#ctrlArrow)" />
+                  <rect x="596" y="28" width="150" height="70" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="671" y="57" text-anchor="middle" fill="#47e5ff" font-size="15" font-weight="800" font-family="Space Grotesk">Робот</text>
+                  <text x="671" y="79" text-anchor="middle" fill="#edf2ff" font-size="12">движение</text>
+                  <path d="M671 100 C671 151, 167 151, 167 100" fill="none" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="6 6" marker-end="url(#ctrlArrow)" />
+                  <text x="419" y="168" text-anchor="middle" fill="#aab4d2" font-size="13">измерване на грешка и коригиране</text>
+                  <text x="450" y="207" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">PID</text>
+                  <text x="450" y="226" text-anchor="middle" fill="#edf2ff" font-size="12">Контролерът сравнява желаното и реалното положение на ставите</text>
+                  <text x="450" y="241" text-anchor="middle" fill="#edf2ff" font-size="12">и коригира движението.</text>
                 </svg>
-              </div>
-              <div class="grid-2">
-              <div class="panel outline-cyan">
-                <h3>PID + impedance</h3>
-                <p data-lang="en">Joint‑level setpoint tracking, plus a programmable spring at the tool tip. Why surgical robots feel compliant instead of stiff.</p>
-                
-              </div>
-              <div class="panel outline-cyan">
-                <h3>Visual servoing</h3>
-                <div class="formula" style="margin: 6px 0;">$\dot q = J^{+}(s_{*} - s)$</div>
-                <p data-lang="en">Image error → joint velocity. Powers every autonomous camera holder shipping today.</p>
-                
-              </div>
-              <div class="panel outline-cyan">
-                <h3 data-lang="en">Constraint enforcement</h3>
-                
-                <p data-lang="en">Virtual fixtures. "You may move here, not there." How Mako keeps the saw inside the planned bone region.</p>
-                
-              </div>
-              <div class="panel outline-amber">
-                <h3 data-lang="en">Why it matters for ML</h3>
-                
-                <p data-lang="en">Learned policies output <em>references</em>. Classical control tracks them and clamps them. The safety case lives here, not in the network.</p>
-                
-              </div>
-              </div>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">PID · impedance · visual servoing · virtual fixtures — load‑bearing.</span>
+            <span data-lang="bg">PID - основна техника за прецизно движение.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -2616,67 +2578,67 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Imitation Learning</div>
+            <div class="kicker" data-lang="bg">Обучение чрез имитация</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Learn from surgeons</h2>
+            <h2 data-lang="bg">Обучение чрез демонстрация от експерти.</h2>
             
-            <p class="lede" data-lang="en">Classical control gets you precise but rigid behavior. The next step is to learn what "good surgery" looks like from somebody who already knows how to do it.</p>
+            <p class="lede" data-lang="bg">Вместо да описваме всяко движение с правила, записваме как експерт изпълнява задачата и обучаваме модел да възпроизвежда тези действия.</p>
             
             <div class="hero-layout" style="align-items: start; grid-template-columns: 1.08fr 0.92fr; margin-top: 14px;">
               <div class="panel outline-cyan" style="padding: 12px;">
-                <h3 data-lang="en">Learning from demonstrations</h3>
-                <svg viewbox="0 0 720 300" style="width: 100%; max-height: 270px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Imitation learning demonstration pipeline">
+                <h3 data-lang="bg"></h3>
+                <svg viewbox="0 0 720 300" style="width: 100%; max-height: 270px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Пайплайн за обучение чрез имитация от демонстрации">
                   <defs><marker id="ilArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker></defs>
                   <rect x="32" y="95" width="132" height="76" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
-                  <text x="98" y="124" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Expert</text>
-                  <text x="98" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">teleoperates task</text>
+                  <text x="98" y="124" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Експерт</text>
+                  <text x="98" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">демонстрира</text>
                   <line x1="166" y1="133" x2="216" y2="133" stroke="#47e5ff" stroke-width="1.6" marker-end="url(#ilArrow)" />
                   <rect x="220" y="95" width="132" height="76" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
-                  <text x="286" y="124" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="800" font-family="Space Grotesk">Dataset</text>
-                  <text x="286" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">obs + actions</text>
+                  <text x="286" y="124" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="800" font-family="Space Grotesk">Данни</text>
+                  <text x="286" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">набл. + действия</text>
                   <line x1="354" y1="133" x2="404" y2="133" stroke="#47e5ff" stroke-width="1.6" marker-end="url(#ilArrow)" />
                   <rect x="408" y="95" width="132" height="76" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
-                  <text x="474" y="124" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Policy</text>
-                  <text x="474" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">imitates expert</text>
+                  <text x="474" y="124" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Модел</text>
+                  <text x="474" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">имитира експерта</text>
                   <line x1="542" y1="133" x2="592" y2="133" stroke="#47e5ff" stroke-width="1.6" marker-end="url(#ilArrow)" />
                   <rect x="596" y="95" width="92" height="76" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
-                  <text x="642" y="124" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="800" font-family="Space Grotesk">Robot</text>
-                  <text x="642" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">executes</text>
-                  <text x="360" y="226" text-anchor="middle" fill="#aab4d2" font-size="12">problem: when the robot drifts off-demo, it may not know how to recover</text>
+                  <text x="642" y="124" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="800" font-family="Space Grotesk">Робот</text>
+                  <text x="642" y="146" text-anchor="middle" fill="#edf2ff" font-size="11">изпълнява</text>
+                  <text x="360" y="226" text-anchor="middle" fill="#aab4d2" font-size="12">При нова ситуация моделът може да не знае какво действие да избере</text>
                 </svg>
               </div>
               <div class="grid-3" style="grid-template-columns: 1fr; gap: 10px;">
               <div class="panel outline-cyan">
-                <h3>Behavior cloning</h3>
-                <p data-lang="en">Record (observation, action) pairs from a teacher and train a network to mimic them. Simple, but brittle: as soon as the policy drifts even slightly off the demonstrations, errors compound — the network has never seen those states.</p>
+                <h3 data-lang="bg">Клониране на поведение</h3>
+                <p data-lang="bg">Записват се двойки „наблюдение + действие“ от експерт и се обучава мрежа да ги възпроизвежда. Подходът е прост, но крехък: ако моделът се отклони дори малко от демонстрациите, грешките започват да се натрупват.</p>
                 
               </div>
               <div class="panel outline-cyan">
                 <h3>ACT &amp; Diffusion Policy</h3>
-                <p data-lang="en">Predict <em>chunks</em> of future actions instead of single steps, using a transformer or a diffusion model. The chunked output is robust to noise and — since 2023 — the strongest non‑RL approach on most surgical benchmarks.</p>
+                <p data-lang="bg">Моделът не избира само следващото движение, а планира кратка последователност от действия напред. Така изпълнението става по-плавно и по-малко чувствително към шум в данните.</p>
                 
               </div>
               <div class="panel outline-amber">
-                <h3 data-lang="en">Datasets matter most</h3>
+                <h3 data-lang="bg">Данните са най-важни</h3>
                 
-                <p data-lang="en">In imitation learning the model is the easy part. The data collection is the entire problem.</p>
+                <p data-lang="bg">При обучението чрез имитация моделът е лесната част. Истинският проблем е събирането на качествени демонстрации.</p>
                 
               </div>
               </div>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">BC · ACT · Diffusion Policy — model is easy, data is the problem.</span>
+            <span data-lang="bg">BC · ACT · Diffusion Policy - моделът е лесната част, данните са трудната.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
           <aside class="notes">
         
         (~55 сек)
-        Imitation learning е естествен начин да прехвърлим експертно поведение към модел. Най-скъпият ресурс не е compute, а качествените демонстрации.
+        Обучението чрез имитация е естествен начин да прехвърлим експертно поведение към модел. Най-скъпият ресурс не е изчислителната мощност, а качествените демонстрации.
       </aside>
         </div>
       </section>
@@ -2685,61 +2647,61 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Reinforcement Learning</div>
+            <div class="kicker" data-lang="bg">Дълбоко самообучение</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Imitation needs an expert. <span style="color: var(--cyan);">What if you don't have one?</span></h2>
+            <h2 data-lang="bg">Имитацията изисква експерт. <span style="color: var(--cyan);">А ако няма такъв?</span></h2>
             
-            <p class="lede" data-lang="en">Then you let the agent discover the policy itself, by trial and error against a simulator and a reward.</p>
+            <p class="lede" data-lang="bg">Тогава агентът търси решение сам: пробва действия в симулатор, получава награда и постепенно намира поведение, което работи.</p>
             
             <div class="hero-layout" style="margin-top: 14px;">
               <div class="panel outline-cyan" style="padding: 12px;">
-                <h3 data-lang="en">Trial-and-error loop</h3>
-                <svg viewbox="0 0 640 300" style="width: 100%; max-height: 270px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Reinforcement learning agent environment loop">
+                <h3 data-lang="bg"></h3>
+                <svg viewbox="0 0 640 300" style="width: 100%; max-height: 270px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Цикъл агент среда при reinforcement learning">
                   <defs><marker id="rlArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker></defs>
                   <rect x="58" y="105" width="160" height="82" rx="10" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
-                  <text x="138" y="137" text-anchor="middle" fill="#47e5ff" font-size="16" font-weight="800" font-family="Space Grotesk">Agent</text>
-                  <text x="138" y="162" text-anchor="middle" fill="#edf2ff" font-size="12">policy π(a|s)</text>
+                  <text x="138" y="137" text-anchor="middle" fill="#47e5ff" font-size="16" font-weight="800" font-family="Space Grotesk">Агент</text>
+                  <text x="138" y="162" text-anchor="middle" fill="#edf2ff" font-size="12">модел π(a|s)</text>
                   <rect x="420" y="105" width="160" height="82" rx="10" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
-                  <text x="500" y="137" text-anchor="middle" fill="#93c5fd" font-size="16" font-weight="800" font-family="Space Grotesk">Environment</text>
-                  <text x="500" y="162" text-anchor="middle" fill="#edf2ff" font-size="12">simulator task</text>
+                  <text x="500" y="137" text-anchor="middle" fill="#93c5fd" font-size="16" font-weight="800" font-family="Space Grotesk">Среда</text>
+                  <text x="500" y="162" text-anchor="middle" fill="#edf2ff" font-size="12">задача в симулатор</text>
                   <path d="M220 128 C285 78, 354 78, 418 128" fill="none" stroke="#47e5ff" stroke-width="1.6" marker-end="url(#rlArrow)" />
-                  <text x="320" y="84" text-anchor="middle" fill="#edf2ff" font-size="12">action</text>
+                  <text x="320" y="84" text-anchor="middle" fill="#edf2ff" font-size="12">действие</text>
                   <path d="M418 166 C350 236, 288 236, 220 166" fill="none" stroke="#93c5fd" stroke-width="1.6" marker-end="url(#rlArrow)" />
-                  <text x="320" y="238" text-anchor="middle" fill="#edf2ff" font-size="12">state + reward</text>
+                  <text x="320" y="238" text-anchor="middle" fill="#edf2ff" font-size="12">състояние + награда</text>
                 </svg>
               </div>
               <div>
-                <p class="lede" data-lang="en">Agent picks <strong>actions</strong>, observes <strong>states</strong>, receives <strong>rewards</strong>.</p>
+                <p class="lede" data-lang="bg">Агентът избира <strong>действия</strong>, наблюдава <strong>състояния</strong> и получава <strong>награди</strong>.</p>
                 
                 <div class="formula" style="margin-top: 14px; font-size: 0.78em;">
                   $\pi^* = \arg\max_\pi \mathbb{E}\bigl[\textstyle\sum_t \gamma^t r_t\bigr]$
                 </div>
-                <p class="lede" style="margin-top: 12px;" data-lang="en">
-                  <strong>Model‑free</strong> (PPO, SAC, DQN) — learn from trial &amp; error.<br />
-                  <strong>Model‑based</strong> (Dreamer, MuZero) — learn a world model, plan inside it.
+                <p class="lede" style="margin-top: 12px;" data-lang="bg">
+                  <strong>Model-free</strong> (PPO, SAC, DQN) - учене директно чрез проби и грешки.<br />
+                  <strong>Model-based</strong> (Dreamer, MuZero) - първо се учи модел на средата, после се планира в него.
                 </p>
                 
                 <div class="callout" style="margin-top: 12px;">
-                  <strong data-lang="en">Surgical RL today is dominated by PPO</strong>
+                  <strong data-lang="bg">В хирургичния RL днес доминира PPO</strong>
                   
-                  <span data-lang="en">Stable, continuous control, well‑understood. <strong>HER</strong> shows up for goal‑conditioned tasks with sparse rewards.</span>
+                  <span data-lang="bg">Стабилен алгоритъм за непрекъснат контрол, добре изучен и широко използван.
                   
                 </div>
               </div>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">PPO is the default · HER for sparse rewards · model‑based still niche.</span>
+            <span data-lang="bg">PPO е стандартният избор · HER при редки награди · model-based подходите още са нишови.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
           <aside class="notes">
         
         (~55 сек)
-        RL е полезен, когато липсват достатъчно експертни демонстрации или средата е силно динамична. Ключът е добре формулиран reward и стабилен симулатор.
+        RL е полезен, когато липсват достатъчно експертни демонстрации или средата е силно динамична. Ключът е добре формулирана награда и стабилен симулатор.
       </aside>
         </div>
       </section>
@@ -2748,32 +2710,32 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Sim‑to‑Real</div>
+            <div class="kicker" data-lang="bg">Sim-to-Real</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Domain randomization. <span style="color: var(--cyan);">Train across worlds.</span></h2>
+            <h2 data-lang="bg">Domain randomization. <span style="color: var(--cyan);">Обучение в много варианти на света.</span></h2>
             
-            <p class="lede" data-lang="en">You cannot iterate RL directly on real tissue, but policies trained in one simulator rarely transfer cleanly to real robots. Domain randomization changes physics, lighting, geometry, and sensor noise every episode so the policy learns behavior that survives many worlds, including the real one.</p>
+            <p class="lede" data-lang="bg">Не можем да оставим робот да се учи с проби и грешки върху реална тъкан. Затова тренираме в симулатор, но не само в една фиксирана версия. При всяко обучение променяме параметри като триене, форма, осветление и шум, за да може моделът да работи и когато реалността се различава от симулацията.</p>
             
             <div style="margin-top: 16px;">
               <div class="panel outline-cyan" style="padding: 12px;">
-                <h3 data-lang="en">Bridge from sim to real</h3>
-                <svg viewbox="0 0 720 300" style="width: 100%; max-height: 320px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sim-to-real domain randomization diagram">
+                <h3 data-lang="bg">Преход от симулация към реалност</h3>
+                <svg viewbox="0 0 720 300" style="width: 100%; max-height: 320px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Диаграма за domain randomization при sim-to-real">
                   <defs><marker id="simArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker></defs>
                   <rect x="34" y="78" width="128" height="70" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
-                  <text x="98" y="107" text-anchor="middle" fill="#47e5ff" font-size="13" font-weight="800" font-family="Space Grotesk">Sim world A</text>
-                  <text x="98" y="128" text-anchor="middle" fill="#edf2ff" font-size="10">friction low</text>
+                  <text x="98" y="107" text-anchor="middle" fill="#47e5ff" font-size="13" font-weight="800" font-family="Space Grotesk">Симулация 1</text>
+                  <text x="98" y="128" text-anchor="middle" fill="#edf2ff" font-size="10">ниско триене</text>
                   <rect x="34" y="164" width="128" height="70" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
-                  <text x="98" y="193" text-anchor="middle" fill="#47e5ff" font-size="13" font-weight="800" font-family="Space Grotesk">Sim world B</text>
-                  <text x="98" y="214" text-anchor="middle" fill="#edf2ff" font-size="10">lighting changes</text>
+                  <text x="98" y="193" text-anchor="middle" fill="#47e5ff" font-size="13" font-weight="800" font-family="Space Grotesk">Симулация 2</text>
+                  <text x="98" y="214" text-anchor="middle" fill="#edf2ff" font-size="10">различна светлина</text>
                   <rect x="220" y="120" width="150" height="70" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
-                  <text x="295" y="148" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="800" font-family="Space Grotesk">Policy</text>
-                  <text x="295" y="170" text-anchor="middle" fill="#edf2ff" font-size="11">learns invariance</text>
+                  <text x="295" y="148" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="800" font-family="Space Grotesk">Модел</text>
+                  <text x="295" y="170" text-anchor="middle" fill="#edf2ff" font-size="11">устойчивост</text>
                   <rect x="470" y="120" width="170" height="70" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
-                  <text x="555" y="148" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Real robot</text>
-                  <text x="555" y="170" text-anchor="middle" fill="#edf2ff" font-size="11">another variation</text>
+                  <text x="555" y="148" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Реален робот</text>
+                  <text x="555" y="170" text-anchor="middle" fill="#edf2ff" font-size="11">още една вариация</text>
                   <line x1="164" y1="113" x2="216" y2="143" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#simArrow)" />
                   <line x1="164" y1="199" x2="216" y2="167" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#simArrow)" />
                   <line x1="372" y1="155" x2="466" y2="155" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#simArrow)" />
@@ -2782,14 +2744,14 @@ model.save("best_policy")</code></pre>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">Randomize the simulator until reality is just "one more world".</span>
+            <span data-lang="bg">Променяме симулатора, докато реалността стане просто „още един вариант“.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
           <aside class="notes">
         
         (~55 сек)
-        Sim-to-real минава през разнообразие, а не през една „перфектна“ симулация. Колкото повече светове вижда политиката, толкова по-устойчива става на реални вариации.
+        Sim-to-real минава през разнообразие, а не през една „перфектна“ симулация. Колкото повече варианти вижда моделът, толкова по-устойчив става на реални промени.
       </aside>
         </div>
       </section>
@@ -2798,54 +2760,54 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Foundation Models</div>
+            <div class="kicker" data-lang="bg">Foundation Models</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">The new wave. <span style="color: var(--cyan);">Stop training from scratch.</span></h2>
+            <h2 data-lang="bg">Следващият етап. <span style="color: var(--cyan);">Предварително обучение вместо старт от нула.</span></h2>
             
-            <p class="lede" data-lang="en">Pre‑train one giant model on every endoscopic video and kinematic trace ever recorded, then fine‑tune it for whatever you actually need. Same playbook that took NLP from 2017 to ChatGPT.</p>
+            <p class="lede" data-lang="bg">Идеята е първо да обучим голям модел върху много ендоскопски видеа, движения на инструменти и хирургични данни, а след това да го адаптираме към конкретна задача. Това е същият подход, който промени NLP: първо широко предварително обучение, после fine-tuning.</p>
             
             <div class="hero-layout" style="align-items: start; grid-template-columns: 1.08fr 0.92fr; margin-top: 14px;">
               <div class="panel outline-cyan" style="padding: 12px;">
-                <h3 data-lang="en">Pre-train, then adapt</h3>
-                <svg viewbox="0 0 720 300" style="width: 100%; max-height: 270px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Foundation model pretrain fine-tune diagram">
+                <h3 data-lang="bg">Първо предварително обучение, после адаптация</h3>
+                <svg viewbox="0 0 720 300" style="width: 100%; max-height: 270px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Диаграма за предварително обучение и fine-tuning на foundation model">
                   <defs><marker id="fmArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker></defs>
                   <rect x="36" y="102" width="150" height="80" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
-                  <text x="111" y="132" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Large data</text>
-                  <text x="111" y="154" text-anchor="middle" fill="#edf2ff" font-size="11">videos · labels</text>
+                  <text x="111" y="132" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Масиви от данни</text>
+                  <text x="111" y="154" text-anchor="middle" fill="#edf2ff" font-size="11">видео · етикети</text>
                   <line x1="188" y1="142" x2="248" y2="142" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#fmArrow)" />
                   <rect x="252" y="88" width="170" height="108" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
                   <text x="337" y="126" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="800" font-family="Space Grotesk">Foundation model</text>
-                  <text x="337" y="148" text-anchor="middle" fill="#edf2ff" font-size="11">general surgical features</text>
+                  <text x="337" y="148" text-anchor="middle" fill="#edf2ff" font-size="11">общи хирургични признаци</text>
                   <line x1="424" y1="142" x2="484" y2="142" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#fmArrow)" />
                   <rect x="488" y="102" width="150" height="80" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
                   <text x="563" y="132" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Fine-tune</text>
-                  <text x="563" y="154" text-anchor="middle" fill="#edf2ff" font-size="11">specific task</text>
+                  <text x="563" y="154" text-anchor="middle" fill="#edf2ff" font-size="11">конкретна задача</text>
                 </svg>
               </div>
               <div class="grid-3" style="grid-template-columns: 1fr; gap: 10px;">
               <div class="panel outline-cyan">
                 <h3>RT‑2 / OpenVLA</h3>
-                <p data-lang="en">Vision‑language‑action models pre‑trained on millions of robot trajectories from many embodiments. Give them an image and a sentence — "pick up the green clip" — they output joint commands. The first credible attempt at a generalist robot brain.</p>
+                <p data-lang="bg">Vision-language-action модели, предварително обучени върху милиони роботизирани траектории от различни роботи. Даваме им изображение и инструкция, например „премести инструмента към зеления маркер“, а те връщат команди за движение. Това е първият убедителен опит за по-общ роботизиран модел.</p>
                 
               </div>
               <div class="panel outline-cyan">
                 <h3>SurgicalSAM, EndoFM</h3>
-                <p data-lang="en">Domain‑specific foundation models for instrument and tissue segmentation in endoscopic video. Fine‑tuned from generic vision foundations (SAM, DINO) on tens of thousands of annotated surgical frames.</p>
+                <p data-lang="bg">Foundation models, специализирани за сегментация на инструменти и тъкани в ендоскопско видео. Обикновено тръгват от общи vision модели като SAM и DINO и се дообучават върху хиляди анотирани хирургични кадри.</p>
                 
               </div>
               <div class="panel outline-amber">
                 <h3>CholecT45 / EndoVis</h3>
-                <p data-lang="en">Public datasets that fuel the pre‑training era — tens of thousands of annotated cholecystectomy and laparoscopy videos. Still many orders of magnitude smaller than ImageNet, which is the field's structural problem.</p>
+                <p data-lang="bg">Публични datasets, които захранват ерата на предварителното обучение: хиляди анотирани видеа от холецистектомии и лапароскопски процедури. Те обаче са много по-малки от ImageNet, което остава структурен проблем за областта.</p>
                 
               </div>
               </div>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">VLAs · surgical FMs · pre‑train then fine‑tune.</span>
+            <span data-lang="bg">VLA модели · surgical FMs · първо предварително обучение, после fine-tuning.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -2868,26 +2830,26 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="section-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Part V: Case Study</div>
+            <div class="kicker" data-lang="bg">Част V: Казус</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div class="section-hero">
             
-            <h1 data-lang="en">Case Study: <span style="color: var(--cyan);">Vascular Clip Application</span></h1>
+            <h1 data-lang="bg">Казус: <span style="color: var(--cyan);">поставяне на съдова щипка</span></h1>
             
-            <p class="lede" data-lang="en">Everything we've talked about — PPO, SurRoL, reward shaping, runtime monitors — applied to one job: vascular clip application.</p>
+            <p class="lede" data-lang="bg">Всичко дотук - PPO, SurRoL, reward shaping - приложено към една конкретна задача: поставяне на съдова щипка.</p>
             
           </div>
           <div class="footerline">
-            <span data-lang="en">Problem · framing · behavior · deployment · result.</span>
+            <span data-lang="bg">Проблем · формулиране · поведение · внедряване · резултат.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
           <aside class="notes">
         
         (~55 сек)
-        Case study частта свързва теорията с реален инженерeн процес. Вече говорим с конкретни state, action, reward и deployment ограничения.
+        Казусът свързва теорията с реален инженерен процес. Вече говорим с конкретни state, action, reward и deployment ограничения.
       </aside>
         </div>
       </section>
@@ -2896,32 +2858,26 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Vascular Clip Application</div>
+            <div class="kicker" data-lang="bg">Поставяне на съдова щипка</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en"><span style="color: var(--cyan);">Squeeze</span> sub-task.</h2>
+            <h2 data-lang="bg">Подзадача: <span style="color: var(--cyan);">притискане на кръвоносния съд</span>.</h2>
             
-            <p class="lede" data-lang="en">Vascular clip application can be broken into six sub-tasks. In this case study, I automate one of them: the pre-firing <strong>squeeze</strong>, where the tool must compress the vessel safely before the clip is fired.</p>
+            <p class="lede" data-lang="bg">Процедурата включва няколко последователни стъпки: позициониране на инструмента, захващане на съда, притискане и поставяне на щипката. В този казус автоматизираме стъпката, в която инструментът притиска кръвоносния съд достатъчно, но без да го увреди.</p>
             
             <div class="grid-3" style="margin-top: 18px; justify-items: center;">
               <div class="figure-frame"><img src="images/thesis/procedure/step_1.png" alt="step 1" style="max-height: 130px;" /><div class="figure-caption">01</div></div>
               <div class="figure-frame"><img src="images/thesis/procedure/step_2.png" alt="step 2" style="max-height: 130px;" /><div class="figure-caption">02</div></div>
               <div class="figure-frame"><img src="images/thesis/procedure/step_3.png" alt="step 3" style="max-height: 130px;" /><div class="figure-caption">03</div></div>
               <div class="figure-frame"><img src="images/thesis/procedure/step_4.png" alt="step 4" style="max-height: 130px;" /><div class="figure-caption">04</div></div>
-              <div class="figure-frame"><img src="images/thesis/procedure/step_5.png" alt="step 5" style="max-height: 130px;" /><div class="figure-caption">05</div></div>
+              <div class="figure-frame" style="border: 3px solid var(--cyan); box-shadow: 0 0 0 4px rgba(71,229,255,0.18), 0 0 24px rgba(71,229,255,0.32);"><img src="images/thesis/procedure/step_5.png" alt="step 5" style="max-height: 130px;" /><div class="figure-caption">05</div></div>
               <div class="figure-frame"><img src="images/thesis/procedure/step_6.png" alt="step 6" style="max-height: 130px;" /><div class="figure-caption">06</div></div>
-            </div>
-            <div class="callout amber" style="margin-top: 14px;">
-              <strong data-lang="en">Why this step?</strong>
-              
-              <span data-lang="en">Over‑squeeze damages the vessel wall. Under‑squeeze leaks. The safety window is narrow, and that's exactly what makes it interesting for a learned policy.</span>
-              
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">Vascular clip application has six sub-tasks. This case study automates one: squeeze.</span>
+            <span data-lang="bg">Поставянето на съдова щипка има шест подзадачи. Този казус автоматизира една от тях: squeeze.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -2937,74 +2893,62 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">How We Frame It</div>
+            <div class="kicker" data-lang="bg">Формулиране на задачата</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">First, translate the surgical task into an <span style="color: var(--cyan);">RL problem</span>.</h2>
+            <h2 data-lang="bg">Първата стъпка е формулиране на задачата като <span style="color: var(--cyan);">RL проблем</span>.</h2>
             
-            <p class="lede" data-lang="en">Training only works after the basic interface is clear: what the agent observes, what action it controls, and which simulator it learns in.</p>
+            <p class="lede" data-lang="bg">Обучението работи едва когато интерфейсът е ясен: какво наблюдава агентът, какво действие управлява и в кой симулатор се учи.</p>
             
             <div class="hero-layout" style="align-items: start; grid-template-columns: 1.1fr 0.9fr; margin-top: 14px;">
               <div class="panel outline-cyan" style="padding: 12px;">
-                <h3 data-lang="en">RL framing loop</h3>
+                <h3 data-lang="bg"></h3>
                 <svg viewbox="0 0 740 310" style="width: 100%; max-height: 280px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RL problem framing diagram">
                   <defs><marker id="frameArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker></defs>
                   <rect x="36" y="120" width="132" height="72" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
-                  <text x="102" y="148" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Surgical task</text>
-                  <text x="102" y="170" text-anchor="middle" fill="#edf2ff" font-size="11">squeeze safely</text>
+                  <text x="102" y="148" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Хирургична задача</text>
+                  <text x="102" y="170" text-anchor="middle" fill="#edf2ff" font-size="11">безопасно притискане</text>
                   <line x1="170" y1="156" x2="220" y2="156" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#frameArrow)" />
                   <rect x="224" y="60" width="132" height="58" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
-                  <text x="290" y="84" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">State</text>
-                  <text x="290" y="103" text-anchor="middle" fill="#edf2ff" font-size="10">what agent sees</text>
+                  <text x="290" y="84" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Състояние</text>
+                  <text x="290" y="103" text-anchor="middle" fill="#edf2ff" font-size="10">какво вижда агентът</text>
                   <rect x="224" y="136" width="132" height="58" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
-                  <text x="290" y="160" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Action</text>
-                  <text x="290" y="179" text-anchor="middle" fill="#edf2ff" font-size="10">what it controls</text>
+                  <text x="290" y="160" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Действие</text>
+                  <text x="290" y="179" text-anchor="middle" fill="#edf2ff" font-size="10">какво управлява</text>
                   <rect x="224" y="212" width="132" height="58" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
-                  <text x="290" y="236" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Reward</text>
-                  <text x="290" y="255" text-anchor="middle" fill="#edf2ff" font-size="10">objective signal</text>
+                  <text x="290" y="236" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Награда</text>
+                  <text x="290" y="255" text-anchor="middle" fill="#edf2ff" font-size="10">сигнал за целта</text>
                   <line x1="358" y1="156" x2="408" y2="156" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#frameArrow)" />
-                  <rect x="412" y="96" width="132" height="120" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
-                  <text x="478" y="128" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Simulator</text>
-                  <text x="478" y="152" text-anchor="middle" fill="#edf2ff" font-size="11">SurRoL / PyBullet</text>
-                  <text x="478" y="174" text-anchor="middle" fill="#aab4d2" font-size="10">safe trial-and-error</text>
+                  <rect x="412" y="120" width="132" height="72" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
+                  <text x="478" y="149" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Симулатор</text>
+                  <text x="478" y="171" text-anchor="middle" fill="#edf2ff" font-size="11">SurRoL</text>
                   <line x1="546" y1="156" x2="596" y2="156" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#frameArrow)" />
                   <rect x="600" y="120" width="108" height="72" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
                   <text x="654" y="148" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="800" font-family="Space Grotesk">PPO</text>
-                  <text x="654" y="170" text-anchor="middle" fill="#edf2ff" font-size="11">learn policy</text>
+                  <text x="654" y="170" text-anchor="middle" fill="#edf2ff" font-size="11">алгоритъм</text>
                 </svg>
               </div>
               <div class="grid-2" style="gap: 10px;">
               <div class="panel outline-cyan">
-                <h3>State (4‑D)</h3>
+                <h3 data-lang="bg">Състояние (4‑D)</h3>
                 <div class="formula" style="margin: 6px 0;">$[\,\theta,\; u_{\text{prev}},\; r,\; \tau\,]$</div>
-                <p data-lang="en">Jaw angle, last action, vessel radius, wall thickness.</p>
+                <p data-lang="bg">Моделът получава четири числа: колко са отворени челюстите, каква е била предишната команда, какъв е радиусът на кръвоносния съд и колко дебела е стената му.</p>
                 
               </div>
               <div class="panel outline-amber">
-                <h3 data-lang="en">Action (1‑D continuous)</h3>
+                <h3 data-lang="bg">Действие (1‑D непрекъснато)</h3>
                 
                 <div class="formula" style="margin: 6px 0;">$u \in [-1, +1] \;\to\; \theta_{\text{cmd}}$</div>
-                <p data-lang="en">A single continuous knob that sets the commanded jaw angle.</p>
+                <p data-lang="bg">Една непрекъсната стойност, която задава командвания ъгъл на челюстите.</p>
                 
-              </div>
-              <div class="panel outline-amber">
-                <h3>Setup</h3>
-                <ul style="margin-top: 6px;">
-                  <li data-lang="en"><strong>Algorithm.</strong> PPO, model‑free policy gradient.</li>
-                  
-                  <li data-lang="en"><strong>Simulator.</strong> SurRoL / PyBullet.</li>
-                  
-                  <li data-lang="en"><strong>Training.</strong> ~400k steps on a laptop GPU.</li>
-                  
-                </ul>
               </div>
               </div>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">State · action · simulator setup. The interface the policy learns through.</span>
+            <span data-lang="bg">Състояние · действие · симулатор. Интерфейсът, през който моделът се учи.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -3020,32 +2964,33 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Learning Model</div>
+            <div class="kicker" data-lang="bg">Модел за обучение</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">DRL with PPO: a neural policy improved by <span style="color: var(--cyan);">small trusted updates</span>.</h2>
+            <h2 data-lang="bg">DRL с PPO: невронен модел, който се подобрява чрез <span style="color: var(--cyan);">малки контролирани актуализации</span>.</h2>
             
-            <p class="lede" data-lang="en">Deep reinforcement learning means the control rule is a neural network. PPO trains it by trying actions in simulation, measuring reward, and changing the network only a little at a time.</p>
+            <p class="lede" data-lang="bg">При дълбокото самообучение управлението се представя чрез невронна мрежа. PPO оптимизира този модел чрез последователни симулационни епизоди, оценка на получената награда и ограничени по размер актуализации.</p>
             
             <div class="hero-layout" style="align-items: start; grid-template-columns: 1.08fr 0.92fr; margin-top: 14px;">
               <div class="panel outline-cyan" style="padding: 12px;">
-                <h3 data-lang="en">What PPO updates</h3>
+                <h3 data-lang="bg">PPO актуализации</h3>
                 <svg viewbox="0 0 740 330" style="width: 100%; max-height: 292px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Deep reinforcement learning with PPO diagram">
                   <defs>
                     <marker id="ppoArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
                     <marker id="ppoAmberArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#f59e0b" /></marker>
                   </defs>
-                  <rect x="40" y="112" width="130" height="78" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
-                  <text x="105" y="140" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">state</text>
-                  <text x="105" y="162" text-anchor="middle" fill="#edf2ff" font-size="10">jaw angle</text>
-                  <text x="105" y="177" text-anchor="middle" fill="#edf2ff" font-size="10">radius, thickness</text>
+                  <rect x="28" y="108" width="156" height="86" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
+                  <text x="106" y="136" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">състояние</text>
+                  <text x="106" y="158" text-anchor="middle" fill="#edf2ff" font-size="10">ъгъл на челюстите</text>
+                  <text x="106" y="173" text-anchor="middle" fill="#edf2ff" font-size="10">радиус, дебелина</text>
+                  <text x="106" y="188" text-anchor="middle" fill="#edf2ff" font-size="10">на кръвоносния съд</text>
 
-                  <line x1="172" y1="151" x2="220" y2="151" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#ppoArrow)" />
+                  <line x1="186" y1="151" x2="220" y2="151" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#ppoArrow)" />
 
                   <rect x="226" y="70" width="176" height="160" rx="10" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.6" />
-                  <text x="314" y="98" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">neural network</text>
+                  <text x="314" y="98" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">невронна мрежа</text>
                   <circle cx="272" cy="130" r="7" fill="#93c5fd" />
                   <circle cx="272" cy="156" r="7" fill="#93c5fd" />
                   <circle cx="272" cy="182" r="7" fill="#93c5fd" />
@@ -3060,44 +3005,44 @@ model.save("best_policy")</code></pre>
                   <line x1="279" y1="182" x2="307" y2="196" stroke="rgba(237,242,255,0.28)" />
                   <line x1="321" y1="118" x2="349" y2="140" stroke="rgba(237,242,255,0.28)" />
                   <line x1="321" y1="170" x2="349" y2="176" stroke="rgba(237,242,255,0.28)" />
-                  <text x="314" y="218" text-anchor="middle" fill="#aab4d2" font-size="10">two 32-unit hidden layers</text>
+                  <text x="314" y="218" text-anchor="middle" fill="#aab4d2" font-size="10">2 скрити слоя по 32 неврона</text>
 
                   <line x1="404" y1="151" x2="452" y2="151" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#ppoArrow)" />
 
                   <rect x="458" y="78" width="112" height="62" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
                   <text x="514" y="102" text-anchor="middle" fill="#47e5ff" font-size="13" font-weight="800" font-family="Space Grotesk">actor</text>
-                  <text x="514" y="122" text-anchor="middle" fill="#edf2ff" font-size="10">jaw command u</text>
+                  <text x="514" y="122" text-anchor="middle" fill="#edf2ff" font-size="10">команда</text>
                   <rect x="458" y="162" width="112" height="62" rx="8" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1.5" />
                   <text x="514" y="186" text-anchor="middle" fill="#c4b5fd" font-size="13" font-weight="800" font-family="Space Grotesk">critic</text>
-                  <text x="514" y="206" text-anchor="middle" fill="#edf2ff" font-size="10">how good is this?</text>
+                  <text x="514" y="206" text-anchor="middle" fill="#edf2ff" font-size="10">оценка</text>
 
                   <line x1="572" y1="109" x2="620" y2="109" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#ppoArrow)" />
                   <rect x="626" y="76" width="84" height="66" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
                   <text x="668" y="103" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">SurRoL</text>
-                  <text x="668" y="123" text-anchor="middle" fill="#edf2ff" font-size="10">next state</text>
+                  <text x="668" y="123" text-anchor="middle" fill="#edf2ff" font-size="10">ново състояние</text>
 
                   <path d="M668 144 C668 264 322 266 322 232" fill="none" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#ppoAmberArrow)" />
                   <rect x="224" y="250" width="196" height="48" rx="8" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" stroke-width="1.5" />
-                  <text x="322" y="271" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="800" font-family="Space Grotesk">PPO clipped update</text>
-                  <text x="322" y="289" text-anchor="middle" fill="#edf2ff" font-size="9">do not move the policy too far</text>
+                  <text x="322" y="271" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="800" font-family="Space Grotesk">PPO update</text>
+                  <text x="322" y="289" text-anchor="middle" fill="#edf2ff" font-size="9">без рязка промяна на модела</text>
                   <text x="548" y="267" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="800">rollout buffer</text>
-                  <text x="548" y="283" text-anchor="middle" fill="#aab4d2" font-size="9">1024 states, actions, rewards</text>
+                  <text x="548" y="283" text-anchor="middle" fill="#aab4d2" font-size="9">1024 състояния, действия, награди</text>
                 </svg>
               </div>
               <div>
                 <div class="panel outline-amber">
-                  <h3 data-lang="en">Why PPO</h3>
-                  <p data-lang="en">PPO compares the new policy to the old one and clips the update if the change is too large. Intuitively: improve the squeeze behavior, but avoid one bad batch causing a big jump.</p>
+                  <h3 data-lang="bg">Защо PPO</h3>
+                  <p data-lang="bg">PPO сравнява новия модел със стария и ограничава актуализацията, ако промяната е твърде голяма. Идеята е поведението да се подобрява, без една лоша серия от проби да предизвика рязък скок.</p>
                 </div>
                 <div class="panel outline-violet" style="margin-top: 10px;">
-                  <h3 data-lang="en">Actor + critic</h3>
-                  <p data-lang="en">The actor chooses the jaw command. The critic estimates whether the current state is promising, helping the actor learn which actions deserve more probability next time.</p>
+                  <h3 data-lang="bg">Actor + critic</h3>
+                  <p data-lang="bg">Actor определя управляващото действие, което се подава към челюстите на инструмента. Critic оценява очакваното качество на това действие в текущото състояние и подава сигнал, по който actor се подобрява.</p>
                 </div>
               </div>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">PPO is a conservative policy-improvement loop: collect rollout, score outcomes, update gently, repeat.</span>
+            <span data-lang="bg">PPO е консервативен цикъл за подобряване на модела: събиране на rollout, оценка на резултатите, плавна актуализация и повторение.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -3113,55 +3058,55 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Reward Design</div>
+            <div class="kicker" data-lang="bg">Дизайн на наградата</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Reward design is where the <span style="color: var(--cyan);">safety logic</span> enters the RL problem.</h2>
+            <h2 data-lang="bg">Дизайнът на наградата е мястото, където <span style="color: var(--cyan);">логиката за безопасност</span> се вгражда в RL проблема.</h2>
             
-            <p class="lede" data-lang="en">The policy should not simply close the jaws as much as possible. It must reach a target occlusion, avoid the damage region, and hold steady.</p>
+            <p class="lede" data-lang="bg">Целта на модела не е максимално затваряне на челюстите, а достигане на предварително зададена степен на оклузия, избягване на зоната на увреждане и поддържане на стабилно притискане.</p>
             
             <div class="hero-layout" style="align-items: start; grid-template-columns: 1.1fr 0.9fr; margin-top: 14px;">
               <div class="panel outline-cyan" style="padding: 12px;">
-                <h3 data-lang="en">Occlusion model</h3>
+                <h3 data-lang="bg">Модел на оклузията</h3>
                 <svg viewbox="0 0 720 310" style="width: 100%; max-height: 280px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vessel squeeze occlusion reward model">
                   <defs>
                     <lineargradient id="rewardBand" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="rgba(248,113,113,0.32)" /><stop offset="0.38" stop-color="rgba(147,197,253,0.16)" /><stop offset="0.62" stop-color="rgba(34,211,238,0.34)" /><stop offset="1" stop-color="rgba(71,229,255,0.10)" /></lineargradient>
                     <marker id="rewardArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
                   </defs>
                   <rect x="80" y="108" width="560" height="54" rx="27" fill="url(#rewardBand)" stroke="rgba(237,242,255,0.24)" />
-                  <text x="110" y="92" fill="#f87171" font-size="12" font-weight="700">over-squeeze / damage</text>
-                  <text x="324" y="92" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="700">too tight</text>
-                  <text x="444" y="92" text-anchor="middle" fill="#47e5ff" font-size="12" font-weight="700">target band</text>
-                  <text x="610" y="92" text-anchor="middle" fill="#aab4d2" font-size="12" font-weight="700">under-squeeze / leaking</text>
+                  <text x="110" y="92" fill="#f87171" font-size="12" font-weight="700">увреждане</text>
+                  <text x="324" y="92" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="700">твърде силно</text>
+                  <text x="444" y="92" text-anchor="middle" fill="#47e5ff" font-size="12" font-weight="700">целева зона</text>
+                  <text x="610" y="92" text-anchor="middle" fill="#aab4d2" font-size="12" font-weight="700">недостатъчно притискане</text>
                   <line x1="175" y1="94" x2="175" y2="172" stroke="#f87171" stroke-width="2" stroke-dasharray="6 6" />
                   <line x1="444" y1="94" x2="444" y2="172" stroke="#47e5ff" stroke-width="2" stroke-dasharray="6 6" />
                   <text x="444" y="194" text-anchor="middle" fill="#edf2ff" font-size="13" font-weight="800">θ*</text>
-                  <text x="360" y="232" text-anchor="middle" fill="#aab4d2" font-size="12">flow(angle) ≈ sigmoid((θ - μ) · α)</text>
-                  <text x="360" y="254" text-anchor="middle" fill="#aab4d2" font-size="12">θ* is computed from target flow, then clamped above damage</text>
+                  <text x="360" y="232" text-anchor="middle" fill="#aab4d2" font-size="12">поток(ъгъл) ≈ sigmoid((θ - μ) · α)</text>
+                  <text x="360" y="254" text-anchor="middle" fill="#aab4d2" font-size="12">θ* се изчислява от целевия поток и се ограничава преди увреждане</text>
                 </svg>
               </div>
               <div>
                 <div class="panel outline-cyan">
-                  <h3 data-lang="en">Reward terms</h3>
+                  <h3 data-lang="bg">Компоненти на наградата</h3>
                   <div class="formula" style="margin: 6px 0; font-size: 0.66em;">r = Rmax − Kθ(θ−θ*)² − KΔu|Δu| − Kdmg·risk − step_cost</div>
-                  <p data-lang="en">Reward accuracy, smooth motion, and staying away from damage.</p>
+                  <p data-lang="bg">Функцията за награда оптимизира точността спрямо целевата оклузия, плавността на управлението и поддържането на безопасна дистанция от зоната на увреждане.</p>
                 </div>
                 <div class="panel outline-amber" style="margin-top: 10px;">
-                  <h3 data-lang="en">Reward hacking fix</h3>
-                  <p data-lang="en">The problem: if we only reward low flow, the policy can learn the wrong shortcut — clamp too hard, hover at the edge of damage, or oscillate around the target.</p>
+                  <h3 data-lang="bg">Защита срещу reward hacking</h3>
+                  <p data-lang="bg">Ако наградата отчита само намаления поток, моделът може да избере опасно решение: прекомерно притискане или нестабилно движение около целта.</p>
                   <ul style="margin-top: 6px;">
-                    <li data-lang="en"><strong>Damage guard.</strong> End the episode with a penalty if the jaw crosses the damage angle.</li>
-                    <li data-lang="en"><strong>Safety margin.</strong> Penalize getting close to damage, not only crossing it.</li>
-                    <li data-lang="en"><strong>Stable hold.</strong> Penalize jerky Δu and count success only after consecutive steady steps.</li>
+                    <li data-lang="bg"><strong>Граница за увреждане.</strong> Ако челюстите се затворят отвъд безопасния ъгъл, епизодът се прекратява и моделът получава наказание.</li>
+                    <li data-lang="bg"><strong>Безопасен резерв.</strong> Моделът се наказва още при приближаване до опасната зона, а не чак след преминаването й.</li>
+                    <li data-lang="bg"><strong>Стабилно задържане.</strong> Успехът се отчита само ако целевото притискане се задържи плавно в няколко последователни стъпки.</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">Reward = target occlusion + safety margin + smoothness + stable hold gate.</span>
+            <span data-lang="bg">Награда = целева оклузия + безопасен резерв + плавност + условие за стабилно задържане.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -3169,7 +3114,7 @@ model.save("best_policy")</code></pre>
         <aside class="notes">
         
         (~55 сек)
-        Reward hacking означава, че агентът намира shortcut в наградата, вместо хирургично правилното поведение. Ако наградим само low flow, може да стиска прекалено силно или да oscillate-ва около target-а. Fix-ът е damage termination, proximity penalty, smoothness penalty и success gate само след стабилно задържане.
+        Reward hacking означава, че агентът намира shortcut в наградата, вместо хирургично правилното поведение. Ако награждаваме само нисък поток, моделът може да притиска прекалено силно или да осцилира около целта. Затова добавяме прекратяване при риск от увреждане, наказание за приближаване до опасната зона, наказание за резки движения и успех само след стабилно задържане.
       </aside>
       </section>
 
@@ -3177,65 +3122,65 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Domain Randomization</div>
+            <div class="kicker" data-lang="bg">Domain Randomization</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">We did not train on <span style="color: var(--cyan);">one perfect vessel</span>.</h2>
+            <h2 data-lang="bg">Обучението не се извършва върху <span style="color: var(--cyan);">един идеален кръвоносен съд</span>.</h2>
             
-            <p class="lede" data-lang="en">Each episode changes the simulated vessel and contact conditions, so the policy learns a rule that works across a family of cases instead of memorizing one geometry.</p>
+            <p class="lede" data-lang="bg">Във всеки епизод симулираният кръвоносен съд и контактните условия се променят. Така моделът научава правило, което работи за група от случаи, вместо да запомни една конкретна конфигурация.</p>
             
             <div class="hero-layout" style="align-items: start; grid-template-columns: 1.04fr 0.96fr; margin-top: 14px;">
               <div class="panel outline-cyan" style="padding: 12px;">
-                <h3 data-lang="en">What changes at reset</h3>
+                <h3 data-lang="bg"></h3>
                 <svg viewbox="0 0 720 330" style="width: 100%; max-height: 292px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Domain randomization implementation diagram">
                   <defs>
                     <marker id="drArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
                   </defs>
                   <rect x="42" y="112" width="146" height="86" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
                   <text x="115" y="142" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">reset()</text>
-                  <text x="115" y="164" text-anchor="middle" fill="#edf2ff" font-size="11">new episode</text>
-                  <text x="115" y="184" text-anchor="middle" fill="#aab4d2" font-size="10">sample parameters</text>
+                  <text x="115" y="164" text-anchor="middle" fill="#edf2ff" font-size="11">нов епизод</text>
+                  <text x="115" y="184" text-anchor="middle" fill="#aab4d2" font-size="10">избор на параметри</text>
                   <line x1="190" y1="155" x2="240" y2="155" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#drArrow)" />
 
                   <rect x="248" y="40" width="170" height="66" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
-                  <text x="333" y="66" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Anatomy</text>
-                  <text x="333" y="86" text-anchor="middle" fill="#edf2ff" font-size="10">radius 1.5-3.0 mm</text>
-                  <text x="333" y="100" text-anchor="middle" fill="#edf2ff" font-size="10">thickness 0.7-1.3x</text>
+                  <text x="333" y="66" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Анатомия</text>
+                  <text x="333" y="86" text-anchor="middle" fill="#edf2ff" font-size="10">радиус 1.5-3.0 mm</text>
+                  <text x="333" y="100" text-anchor="middle" fill="#edf2ff" font-size="10">дебелина 0.7-1.3x</text>
 
                   <rect x="248" y="122" width="170" height="66" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
-                  <text x="333" y="148" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Scene</text>
-                  <text x="333" y="168" text-anchor="middle" fill="#edf2ff" font-size="10">small pose jitter</text>
-                  <text x="333" y="182" text-anchor="middle" fill="#edf2ff" font-size="10">vessel color jitter</text>
+                  <text x="333" y="148" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Сцена</text>
+                  <text x="333" y="168" text-anchor="middle" fill="#edf2ff" font-size="10">малка промяна на позата</text>
+                  <text x="333" y="182" text-anchor="middle" fill="#edf2ff" font-size="10">вариация в цвета</text>
 
                   <rect x="248" y="204" width="170" height="66" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
-                  <text x="333" y="230" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Contact</text>
-                  <text x="333" y="250" text-anchor="middle" fill="#edf2ff" font-size="10">friction / damping</text>
-                  <text x="333" y="264" text-anchor="middle" fill="#edf2ff" font-size="10">restitution</text>
+                  <text x="333" y="230" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">Контакт</text>
+                  <text x="333" y="250" text-anchor="middle" fill="#edf2ff" font-size="10">триене</text>
+                  <text x="333" y="264" text-anchor="middle" fill="#edf2ff" font-size="10">еластичност</text>
 
                   <line x1="420" y1="73" x2="478" y2="140" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#drArrow)" />
                   <line x1="420" y1="155" x2="478" y2="155" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#drArrow)" />
                   <line x1="420" y1="237" x2="478" y2="170" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#drArrow)" />
 
                   <rect x="486" y="104" width="186" height="102" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
-                  <text x="579" y="134" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">same PPO policy</text>
-                  <text x="579" y="157" text-anchor="middle" fill="#edf2ff" font-size="11">observes radius + thickness</text>
-                  <text x="579" y="178" text-anchor="middle" fill="#aab4d2" font-size="10">learns a robust squeeze rule</text>
+                  <text x="579" y="134" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">същият PPO модел</text>
+                  <text x="579" y="157" text-anchor="middle" fill="#edf2ff" font-size="11">вижда радиус + дебелина</text>
+                  <text x="579" y="178" text-anchor="middle" fill="#aab4d2" font-size="10">учи устойчиво правило</text>
 
-                  <text x="360" y="306" text-anchor="middle" fill="#aab4d2" font-size="11">The target angle and damage threshold are recomputed from the sampled vessel model.</text>
+                  <text x="360" y="306" text-anchor="middle" fill="#aab4d2" font-size="11">За всеки нов съд се изчислява колко да се притисне и къде започва рискът от увреждане.</text>
                 </svg>
               </div>
               <div>
                 <div class="panel outline-cyan" style="padding: 8px;">
-                  <table class="tech-table" data-lang="en">
-                    <thead><tr><th>Randomized parameter</th><th>Typical range (clip‑application example)</th></tr></thead>
+                  <table class="tech-table" data-lang="bg">
+                    <thead><tr><th>Параметър</th><th>Диапазон</th></tr></thead>
                     <tbody>
-                      <tr><td class="era">Vessel radius</td><td>1.5 – 3.0 mm</td></tr>
-                      <tr><td class="era">Friction coefficient</td><td>0.3 – 1.2</td></tr>
-                      <tr><td class="era">Damping</td><td>0.02 – 0.10</td></tr>
-                      <tr><td class="era">Sensing noise</td><td>σ ≈ 0.002 rad</td></tr>
-                      <tr><td class="era">Pose tilt</td><td>± 1.1°</td></tr>
+                      <tr><td class="era">Радиус на кръвоносния съд</td><td>1.5 – 3.0 mm</td></tr>
+                      <tr><td class="era">Коефициент на триене</td><td>0.3 – 1.2</td></tr>
+                      <tr><td class="era">Съпротивление при движение</td><td>0.02 – 0.10</td></tr>
+                      <tr><td class="era">Шум в измерването</td><td>σ ≈ 0.002 rad</td></tr>
+                      <tr><td class="era">Малко завъртане на сцената</td><td>± 1.1°</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -3243,14 +3188,14 @@ model.save("best_policy")</code></pre>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">Domain randomization turns one simulator scene into a distribution of training cases.</span>
+            <span data-lang="bg">Domain randomization превръща една симулационна сцена в множество различни тренировъчни случаи.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
           <aside class="notes">
         
         (~60 сек)
-        Тук показваме как policy-то не се учи върху една фиксирана тръбичка. При всеки reset сменяме radius, thickness, contact параметри и малко pose/color. После recompute-ваме flow модела, damage threshold-а и target angle-а. В training добавяме VecNormalize, entropy annealing, evaluation и checkpoints.
+        Тук показваме, че моделът не се обучава върху един фиксиран кръвоносен съд. При всеки reset променяме радиуса, дебелината, контактните параметри и малки вариации в позата и цвета. След това преизчисляваме модела на потока, прага за увреждане и целевия ъгъл. В обучението добавяме VecNormalize, entropy annealing, evaluation и checkpoints.
       </aside>
         </div>
       </section>
@@ -3259,74 +3204,67 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Exploration vs Exploitation</div>
+            <div class="kicker" data-lang="bg">Експериментиране срещу стабилизиране</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Early training explores. Later training <span style="color: var(--cyan);">refines the squeeze</span>.</h2>
+            <h2 data-lang="bg">Обучението започва с експериментиране и постепенно преминава към <span style="color: var(--cyan);">стабилно притискане</span>.</h2>
             
-            <p class="lede" data-lang="en">The policy is trained for 400k environment steps. Episodes are capped at 300 steps, so the run covers at least about 1.3k randomized episodes, and usually more because success or damage can end an episode early.</p>
+            <p class="lede" data-lang="bg">Обучението използва бюджет от 400k симулационни стъпки. Тъй като един епизод може да продължи най-много 300 стъпки, това гарантира минимум около 1.3k различни епизода; реалният брой обикновено е по-голям, защото епизодът може да приключи по-рано при успех или риск от увреждане.</p>
             
             <div class="hero-layout" style="align-items: start; grid-template-columns: 0.96fr 1.04fr; margin-top: 14px;">
               <div class="panel outline-cyan" style="padding: 12px;">
-                <h3 data-lang="en">Training budget split</h3>
+                <h3 data-lang="bg">Разпределение на обучението</h3>
                 <svg viewbox="0 0 700 350" style="width: 100%; max-height: 292px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Exploration exploitation training budget graphic">
                   <defs>
                     <marker id="exploreArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
                   </defs>
-                  <circle cx="170" cy="145" r="86" fill="none" stroke="rgba(147,197,253,0.20)" stroke-width="34" />
-                  <circle cx="170" cy="145" r="86" fill="none" stroke="#47e5ff" stroke-width="34" stroke-dasharray="135 405" stroke-dashoffset="0" transform="rotate(-90 170 145)" />
-                  <circle cx="170" cy="145" r="56" fill="rgba(7,12,28,0.92)" stroke="rgba(237,242,255,0.16)" />
-                  <text x="170" y="137" text-anchor="middle" fill="#edf2ff" font-size="20" font-weight="800" font-family="Space Grotesk">400k</text>
-                  <text x="170" y="160" text-anchor="middle" fill="#aab4d2" font-size="11">env steps</text>
-                  <rect x="310" y="72" width="324" height="52" rx="8" fill="rgba(71,229,255,0.12)" stroke="#47e5ff" stroke-width="1.5" />
-                  <text x="326" y="94" fill="#47e5ff" font-size="13" font-weight="800" font-family="Space Grotesk">0-100k steps: explore</text>
-                  <text x="326" y="113" fill="#edf2ff" font-size="10">entropy bonus anneals from 0.01 to 0</text>
-                  <rect x="310" y="142" width="324" height="52" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
-                  <text x="326" y="164" fill="#93c5fd" font-size="13" font-weight="800" font-family="Space Grotesk">100k-400k steps: exploit/refine</text>
-                  <text x="326" y="183" fill="#edf2ff" font-size="10">use reward signal to stabilize near θ*</text>
-                  <rect x="310" y="212" width="324" height="52" rx="8" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1.5" />
-                  <text x="326" y="234" fill="#c4b5fd" font-size="13" font-weight="800" font-family="Space Grotesk">every episode: new randomized case</text>
-                  <text x="326" y="253" fill="#edf2ff" font-size="10">radius, thickness, target angle, contact vary</text>
-                  <line x1="64" y1="292" x2="620" y2="292" stroke="rgba(237,242,255,0.22)" stroke-width="10" stroke-linecap="round" />
-                  <line x1="64" y1="292" x2="203" y2="292" stroke="#47e5ff" stroke-width="10" stroke-linecap="round" />
-                  <text x="64" y="322" text-anchor="middle" fill="#aab4d2" font-size="10">0</text>
-                  <text x="203" y="322" text-anchor="middle" fill="#47e5ff" font-size="10" font-weight="800">100k</text>
-                  <text x="620" y="322" text-anchor="middle" fill="#aab4d2" font-size="10">400k</text>
-                  <text x="134" y="278" text-anchor="middle" fill="#47e5ff" font-size="10" font-weight="800">25% exploration</text>
-                  <text x="410" y="278" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="800">75% exploitation/refinement</text>
+                  <circle cx="350" cy="150" r="118" fill="none" stroke="rgba(37,99,235,0.44)" stroke-width="48" />
+                  <circle cx="350" cy="150" r="118" fill="none" stroke="#38bdf8" stroke-width="48" stroke-dasharray="185 556" stroke-dashoffset="0" transform="rotate(-90 350 150)" />
+                  <circle cx="350" cy="150" r="72" fill="rgba(7,12,28,0.94)" stroke="rgba(237,242,255,0.16)" />
+                  <text x="432" y="76" text-anchor="middle" fill="#082f49" font-size="18" font-weight="900" font-family="Space Grotesk">25%</text>
+                  <text x="432" y="97" text-anchor="middle" fill="#082f49" font-size="12" font-weight="800">експерим.</text>
+                  <text x="260" y="246" text-anchor="middle" fill="#dbeafe" font-size="18" font-weight="900" font-family="Space Grotesk">75%</text>
+                  <text x="260" y="267" text-anchor="middle" fill="#dbeafe" font-size="12" font-weight="800">стабилизиране</text>
+                  <text x="350" y="141" text-anchor="middle" fill="#edf2ff" font-size="24" font-weight="800" font-family="Space Grotesk">400k</text>
+                  <text x="350" y="168" text-anchor="middle" fill="#aab4d2" font-size="13">стъпки</text>
+                  <line x1="90" y1="315" x2="610" y2="315" stroke="rgba(37,99,235,0.36)" stroke-width="10" stroke-linecap="round" />
+                  <line x1="90" y1="315" x2="220" y2="315" stroke="#38bdf8" stroke-width="10" stroke-linecap="round" />
+                  <text x="90" y="340" text-anchor="middle" fill="#aab4d2" font-size="10">0</text>
+                  <text x="220" y="340" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="800">100k</text>
+                  <text x="610" y="340" text-anchor="middle" fill="#aab4d2" font-size="10">400k</text>
                 </svg>
               </div>
               <div>
                 <div class="panel outline-cyan">
-                  <h3 data-lang="en">How exploration is encouraged</h3>
+                  <h3 data-lang="bg">Как насърчаваме експериментирането</h3>
                   <ul style="margin-top: 6px;">
-                    <li data-lang="en"><strong>Entropy bonus.</strong> Early on, PPO is nudged to try different jaw commands instead of collapsing to one behavior.</li>
-                    <li data-lang="en"><strong>Randomized episodes.</strong> Exploration is not just random action noise; the agent also sees different vessel cases.</li>
-                    <li data-lang="en"><strong>Rollout updates.</strong> PPO collects 1024 steps, then updates using a clipped objective so policy changes stay controlled.</li>
+                    <li data-lang="bg"><strong>Entropy bonus.</strong> В началото PPO се насочва да пробва различни команди към челюстите, вместо веднага да избере едно поведение.</li>
+                    <li data-lang="bg"><strong>Различни епизоди.</strong> Експериментирането не е само случаен шум в действията; агентът вижда и различни варианти на кръвоносния съд.</li>
+                    <li data-lang="bg"><strong>Rollout актуализации.</strong> PPO събира 1024 стъпки и след това актуализира модела ограничено, за да не се променя поведението рязко.</li>
                   </ul>
                 </div>
                 <div class="panel outline-amber" style="margin-top: 10px;">
-                  <h3 data-lang="en">When we prefer exploitation</h3>
+                  <h3 data-lang="bg">Кога стабилизираме поведението</h3>
                   <ul style="margin-top: 6px;">
-                    <li data-lang="en"><strong>After 100k steps.</strong> Entropy has faded, so learning focuses on the best discovered squeeze behavior.</li>
-                    <li data-lang="en"><strong>Near the target band.</strong> The policy should reduce action changes and hold steady, not keep experimenting.</li>
-                    <li data-lang="en"><strong>During evaluation.</strong> Eval runs are deterministic every 20k steps; checkpoints save progress every 10k.</li>
+                    <li data-lang="bg"><strong>След 100k стъпки.</strong> Entropy bonus вече е намалял, затова обучението се фокусира върху най-доброто намерено поведение.</li>
+                    <li data-lang="bg"><strong>Близо до целевата зона.</strong> Моделът трябва да намали промените в действията и да задържи стабилно, а не да продължава да експериментира.</li>
+                    <li data-lang="bg"><strong>При оценка.</strong> Eval епизодите са детерминистични на всеки 20k стъпки, а checkpoints запазват напредъка на всеки 10k.</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">Explore broadly first, then exploit the stable, safe squeeze behavior.</span>
+            <span data-lang="bg">Първо широко експериментиране, после стабилизиране на безопасното притискане.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
           <aside class="notes">
         
         (~60 сек)
-        Тук balance-ът е практичен: първите 100k steps имат entropy bonus, който насърчава exploration. След това ent_coef става 0 и policy-то основно refine-ва вече намерената стратегия. Общо имаме 400k environment steps, max 300 steps на episode, тоест минимум около 1333 пълни episodes, а при ранно success/damage episodes са повече.
+        Тук балансът е практичен: първите 100k стъпки имат entropy bonus, който насърчава експериментирането с различни действия. След това ent_coef става 0 и моделът основно стабилизира вече намерената стратегия. Общо имаме 400k стъпки на средата и максимум 300 стъпки на епизод, тоест минимум около 1333 пълни епизода. При ранно достигане на успех или риск от увреждане епизодите стават повече.
       </aside>
         </div>
       </section>
@@ -3335,25 +3273,25 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">The Learned Behavior</div>
+            <div class="kicker" data-lang="bg">Научено поведение</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">The policy learned a <span style="color: var(--cyan);">two-phase squeeze strategy</span>.</h2>
+            <h2 data-lang="bg">Обученият модел формира <span style="color: var(--cyan);">двуфазна стратегия за притискане</span>.</h2>
             
-            <p class="lede" data-lang="en">Use the live policy demo to vary vessel radius and wall thickness. The first moves close the gap quickly; later moves settle into a stable hold.</p>
+            <p class="lede" data-lang="bg">Интерактивната демонстрация позволява промяна на радиуса на кръвоносния съд и дебелината на стената. В началото моделът бързо намалява разстоянието между челюстите, а след това преминава към стабилно задържане.</p>
             
             <div class="panel outline-cyan" style="padding: 8px; margin-top: 12px; max-width: 1120px;">
               <iframe
-                title="Interactive vessel squeeze policy demo"
+                title="Интерактивна демонстрация на модел за притискане на кръвоносен съд"
                 src="../clip-application-surrol/demo.html?embed=1"
                 style="width: 100%; height: 390px; border: 1px solid rgba(237,242,255,0.18); border-radius: 8px; background: #fff;"
                 loading="lazy"></iframe>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">Interactive demo: policy server must be running at http://127.0.0.1:5000.</span>
+            <span data-lang="bg">Интерактивна демонстрация: policy server трябва да работи на http://127.0.0.1:5000.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -3369,21 +3307,21 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Result Simulation</div>
+            <div class="kicker" data-lang="bg">Резултат в симулация</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Simulation result: the learned policy <span style="color: var(--cyan);">executes the squeeze</span>.</h2>
+            <h2 data-lang="bg">Резултатът в симулация показва, че обученият модел <span style="color: var(--cyan);">изпълнява притискането</span>.</h2>
             
-            <p class="lede" data-lang="en">This is the trained policy running in the simulated vessel-squeeze setup: close quickly, avoid over-compression, then hold the target region.</p>
+            <p class="lede" data-lang="bg">Това е обученият модел, изпълнен в симулирана среда за притискане на кръвоносен съд: бързо затваряне, избягване на прекомерно притискане и стабилно задържане в целевата зона.</p>
             
             <div class="panel outline-cyan" style="padding: 8px; margin-top: 14px; max-width: 980px; margin-left: auto; margin-right: auto;">
               <iframe
                 width="560"
                 height="315"
                 src="https://www.youtube.com/embed/hsO9aynRFPo?si=i9jrXY6BAV0a2svH"
-                title="Vessel squeeze result simulation"
+                title="Резултат от симулация на притискане на кръвоносен съд"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin"
@@ -3392,7 +3330,7 @@ model.save("best_policy")</code></pre>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">The learned controller is still a simulation result, not a clinical deployment.</span>
+            <span data-lang="bg">Обученият контролер е резултат от симулация, а не клинично внедряване.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -3414,19 +3352,19 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="section-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Part VI: The Road Ahead</div>
+            <div class="kicker" data-lang="bg">Част VI: Бъдеще</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div class="section-hero">
             
-            <h1 data-lang="en">What still blocks surgical autonomy, <span style="color: var(--cyan);">what comes next</span>, and how we prove it is safe enough.</h1>
+            <h1 data-lang="bg">Основните ограничения пред хирургичната автономия и <span style="color: var(--cyan);">следващите посоки на развитие</span>.</h1>
             
-            <p class="lede" data-lang="en">We just trained one policy for one sub‑task in simulation. The honest next question is: what would it take to get a policy like this to a real patient?</p>
+            <p class="lede" data-lang="bg">След демонстрация на модел за отделна подзадача в симулационна среда следва ключовият въпрос: какви технически, клинични и регулаторни условия трябва да бъдат изпълнени преди приложение при реален пациент?</p>
             
           </div>
           <div class="footerline">
-            <span data-lang="en">Open challenges · future directions · validation before the OR.</span>
+            <span data-lang="bg">Отворени предизвикателства · бъдещи посоки · валидиране преди операционната.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -3442,40 +3380,40 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Open Challenges</div>
+            <div class="kicker" data-lang="bg">Предизвикателства</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Scale the problem either direction and you hit the <span style="color: var(--cyan);">same five walls</span>.</h2>
+            <h2 data-lang="bg">Преди клинична употреба трябва да бъдат решени <span style="color: var(--cyan);">пет основни проблема</span>.</h2>
             
-            <p class="lede" data-lang="en">None of these are research curiosities — each one is a project plan for the next decade.</p>
+            <p class="lede" data-lang="bg">Всеки от тях засяга пряко безопасността: доколко симулацията отговаря на реалността, как измерваме сила, как моделът работи при различни пациенти, как се валидира и с какви данни се обучава.</p>
             
             <div class="grid-3" style="margin-top: 16px; align-items: stretch;">
               <div class="panel outline-cyan">
-                <h3 data-lang="en">Sim-to-real gap</h3>
-                <p data-lang="en">Soft tissue deforms, organs slip, blood and smoke obscure vision. Domain randomization helps, but simulation still misses real OR physics.</p>
+                <h3 data-lang="bg">Sim-to-real разлика</h3>
+                <p data-lang="bg">Меките тъкани се деформират, органите се изместват, а кръв и дим затрудняват видимостта. Domain Randomization помага, но симулацията все още не покрива напълно физиката в реална операционна.</p>
               </div>
               <div class="panel outline-amber">
-                <h3 data-lang="en">Force sensing</h3>
-                <p data-lang="en">Most systems do not measure true tool-tip force. Without force, safe squeezing, pulling, and suturing remain hard to automate.</p>
+                <h3 data-lang="bg">Измерване на сила</h3>
+                <p data-lang="bg">Повечето системи не измерват директно силата във върха на инструмента. Без такава обратна връзка безопасното притискане, дърпане и зашиване остават трудни за автоматизация.</p>
               </div>
               <div class="panel outline-violet">
-                <h3 data-lang="en">Patient variation</h3>
-                <p data-lang="en">Organ size, position, fat thickness, and prior surgery change the scene. A policy must work across anatomy, not one clean case.</p>
+                <h3 data-lang="bg">Вариации между пациенти</h3>
+                <p data-lang="bg">Размерът и позицията на органите, дебелината на мастната тъкан и предишни операции променят сцената. Моделът трябва да работи при различна анатомия, а не само в един изчистен случай.</p>
               </div>
               <div class="panel outline-cyan" style="grid-column: span 2;">
-                <h3 data-lang="en">Verification &amp; regulation</h3>
-                <p data-lang="en">A learned controller is not certified just because it works in a demo. It needs traceable requirements, test evidence, runtime monitors, and a validation path regulators can inspect.</p>
+                <h3 data-lang="bg">Верификация и регулация</h3>
+                <p data-lang="bg">Обучен контролер не е готов за сертифициране само защото работи в демонстрация. Необходими са проследими изисквания, доказателства от тестове, runtime мониторинг и валидиращ процес, който регулаторите могат да проверят.</p>
               </div>
               <div class="panel outline-amber">
-                <h3 data-lang="en">Data scarcity</h3>
-                <p data-lang="en">JIGSAWS has 103 demonstrations; ImageNet had 14M images. Surgical data is also private, sensitive, and hard to share across hospitals.</p>
+                <h3 data-lang="bg">Недостиг на данни</h3>
+                <p data-lang="bg">JIGSAWS съдържа 103 демонстрации, докато ImageNet има 14 милиона изображения. Хирургичните данни са поверителни, чувствителни и трудни за споделяне между болници.</p>
               </div>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">Five walls: sim‑to‑real · force · generalization · regulation · data.</span>
+            <span data-lang="bg">Пет ограничения: sim-to-real · сила · обобщение · регулация · данни.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -3491,44 +3429,44 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Where the Field is Heading</div>
+            <div class="kicker" data-lang="bg">Посока на развитие</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">Near-term autonomy will look less like a robot surgeon and more like <span style="color: var(--cyan);">an assistant that understands the operation</span>.</h2>
+            <h2 data-lang="bg">Краткосрочното развитие е насочено към <span style="color: var(--cyan);">системи за подпомагане на хирурга</span>, а не към пълна автономия.</h2>
             
-            <p class="lede" data-lang="en">It follows the procedure in real time, helps with routine subtasks, and uses the same kind of pre‑trained models we use elsewhere in AI today.</p>
+            <p class="lede" data-lang="bg">Целта е системата да разпознава етапа на процедурата, да подпомага ограничени и повторяеми действия и да използва предварително обучени модели, адаптирани към хирургичния контекст.</p>
             
             <div class="grid-2" style="margin-top: 16px;">
               <div class="panel outline-cyan">
-                <h3 data-lang="en">Surgical copilots</h3>
+                <h3 data-lang="bg">Хирургични copilots</h3>
                 
-                <p data-lang="en">Models that watch the procedure live, name the anatomy in real time, suggest the next step, and offer to take over routine actions. Think Copilot for code — except the editor is an OR.</p>
+                <p data-lang="bg">Модели, които наблюдават процедурата на живо, разпознават анатомични структури в реално време, предлагат следваща стъпка и могат да поемат рутинни действия под контрол.</p>
                 
               </div>
               <div class="panel outline-cyan">
-                <h3 data-lang="en">Generalist foundation models</h3>
+                <h3 data-lang="bg">Общи foundation models</h3>
                 
-                <p data-lang="en">Pre‑trained on every endoscopic video and kinematic trace ever recorded, then fine‑tuned per task. The same playbook that took NLP from 2017 to ChatGPT — just with five fewer orders of magnitude of data, for now.</p>
-                
-              </div>
-              <div class="panel outline-amber">
-                <h3 data-lang="en">Multi‑modal sensing</h3>
-                
-                <p data-lang="en">Force, vision, intra‑op ultrasound, and ICG fluorescence fused into one perception stack. Each modality answers a question the others can't — force tells you what tissue is doing, fluorescence tells you where the blood goes.</p>
+                <p data-lang="bg">Предварително обучени върху големи масиви от ендоскопско видео и кинематични траектории, след което адаптирани към конкретна задача чрез fine-tuning. Подходът е познат от NLP, но хирургичните данни все още са много по-малко.</p>
                 
               </div>
               <div class="panel outline-amber">
-                <h3 data-lang="en">Last‑foot autonomy</h3>
+                <h3 data-lang="bg">Мултимодални сензори</h3>
                 
-                <p data-lang="en">The realistic near‑term: the surgeon does the surgery, the robot does the boring 80%. Suction, retraction, camera holding, irrigation, simple closure — all good targets that don't require <em>solving</em> surgery.</p>
+                <p data-lang="bg">Комбиниране на сила, видео, интраоперативен ултразвук и ICG флуоресценция в един perception stack. Всяка модалност дава различна информация: силата показва как реагира тъканта, а флуоресценцията показва кръвоснабдяването.</p>
+                
+              </div>
+              <div class="panel outline-amber">
+                <h3 data-lang="bg">Автономия в ограничени подзадачи</h3>
+                
+                <p data-lang="bg">Реалистичният краткосрочен сценарий е хирургът да води операцията, а роботът да поема повтаряеми действия като аспирация, ретракция, управление на камерата, промиване и прости затваряния.</p>
                 
               </div>
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="en">Copilots · foundation models · multi‑modal sensing · last‑foot autonomy.</span>
+            <span data-lang="bg">Copilots · foundation models · мултимодални сензори · автономия в ограничени подзадачи.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -3544,57 +3482,57 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Path to Clinical Use</div>
+            <div class="kicker" data-lang="bg">Път към клинична употреба</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="en">A simulation result is only the start. <span style="color: var(--cyan);">Clinical use requires step-by-step validation.</span></h2>
+            <h2 data-lang="bg">Резултатът в симулация е само началото. <span style="color: var(--cyan);">Клиничната употреба изисква поетапна валидация.</span></h2>
             
-            <p class="lede" data-lang="en">Every rung filters out things you didn't think you'd missed. Skipping rungs is how patients get hurt.</p>
+            <p class="lede" data-lang="bg">Всеки етап намалява различен вид риск: първо в симулация, след това с реален хардуер, тъканни модели, предклинични тестове и ограничени клинични изпитвания.</p>
             
             <div class="panel outline-cyan" style="padding: 10px; margin-top: 18px;">
-              <svg viewbox="0 0 1120 420" style="width: 100%; max-height: 360px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Staircase from simulation testing to operating room deployment">
+              <svg viewbox="0 0 1120 420" style="width: 100%; max-height: 360px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Стълба от симулационно тестване към клинична употреба">
                 <defs>
                   <marker id="orArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
                 </defs>
-                <text x="58" y="52" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">SIMULATION</text>
-                <text x="1040" y="52" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">CLINICAL USE</text>
-                <line x1="154" y1="48" x2="975" y2="48" stroke="rgba(71,229,255,0.42)" stroke-width="2" marker-end="url(#orArrow)" />
+                <text x="58" y="52" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">СИМУЛАЦИЯ</text>
+                <text x="1018" y="52" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">КЛИНИЧНА УПОТРЕБА</text>
+                <line x1="154" y1="48" x2="928" y2="48" stroke="rgba(71,229,255,0.42)" stroke-width="2" marker-end="url(#orArrow)" />
 
                 <g font-family="Inter, sans-serif" transform="translate(0 26)">
-                  <path d="M70 322 H220 V278 H370 V234 H520 V190 H670 V146 H820 V118 H1000" fill="none" stroke="rgba(71,229,255,0.16)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
-                  <path d="M70 322 H220 V278 H370 V234 H520 V190 H670 V146 H820 V118 H1000" fill="none" stroke="rgba(71,229,255,0.82)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#orArrow)" />
+                  <path d="M70 322 H220 V278 H370 V234 H520 V190 H670 V146 H840 V118 H1040" fill="none" stroke="rgba(71,229,255,0.16)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M70 322 H220 V278 H370 V234 H520 V190 H670 V146 H840 V118 H1040" fill="none" stroke="rgba(71,229,255,0.82)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#orArrow)" />
 
                   <rect x="48" y="268" width="176" height="72" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.4" />
-                  <text x="66" y="291" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">STEP 1</text>
-                  <text x="66" y="313" fill="#edf2ff" font-size="12">Simulation</text>
-                  <text x="66" y="330" fill="#aab4d2" font-size="11">unit tests</text>
+                  <text x="66" y="291" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">ЕТАП 1</text>
+                  <text x="66" y="313" fill="#edf2ff" font-size="12">Симулация</text>
+                  <text x="66" y="330" fill="#aab4d2" font-size="11">модулни тестове</text>
 
                   <rect x="198" y="224" width="176" height="72" rx="8" fill="#172b44" stroke="#47e5ff" stroke-width="1.4" />
-                  <text x="216" y="247" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">STEP 2</text>
-                  <text x="216" y="269" fill="#edf2ff" font-size="12">Hardware-in-loop</text>
-                  <text x="216" y="286" fill="#aab4d2" font-size="11">realistic latency</text>
+                  <text x="216" y="247" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">ЕТАП 2</text>
+                  <text x="216" y="269" fill="#edf2ff" font-size="12">HIL тест</text>
+                  <text x="216" y="286" fill="#aab4d2" font-size="11">реална латентност</text>
 
                   <rect x="348" y="180" width="176" height="72" rx="8" fill="#1a2c48" stroke="#93c5fd" stroke-width="1.4" />
-                  <text x="366" y="203" fill="#93c5fd" font-size="13" font-weight="900" font-family="Space Grotesk">STEP 3</text>
-                  <text x="366" y="225" fill="#edf2ff" font-size="12">Benchtop tissue</text>
-                  <text x="366" y="242" fill="#aab4d2" font-size="11">force + flow sensors</text>
+                  <text x="366" y="203" fill="#93c5fd" font-size="13" font-weight="900" font-family="Space Grotesk">ЕТАП 3</text>
+                  <text x="366" y="225" fill="#edf2ff" font-size="12">Тъканен модел</text>
+                  <text x="366" y="242" fill="#aab4d2" font-size="11">сила + поток</text>
 
                   <rect x="498" y="136" width="176" height="72" rx="8" fill="#1a2c48" stroke="#93c5fd" stroke-width="1.4" />
-                  <text x="516" y="159" fill="#93c5fd" font-size="13" font-weight="900" font-family="Space Grotesk">STEP 4</text>
-                  <text x="516" y="181" fill="#edf2ff" font-size="12">Preclinical labs</text>
-                  <text x="516" y="198" fill="#aab4d2" font-size="11">cadaver + animal</text>
+                  <text x="516" y="159" fill="#93c5fd" font-size="13" font-weight="900" font-family="Space Grotesk">ЕТАП 4</text>
+                  <text x="516" y="181" fill="#edf2ff" font-size="12">Предклинични тестове</text>
+                  <text x="516" y="198" fill="#aab4d2" font-size="11">кадавър + животно</text>
 
-                  <rect x="648" y="92" width="176" height="72" rx="8" fill="#2b2c3e" stroke="#f59e0b" stroke-width="1.4" />
-                  <text x="666" y="115" fill="#fbbf24" font-size="13" font-weight="900" font-family="Space Grotesk">STEP 5</text>
-                  <text x="666" y="137" fill="#edf2ff" font-size="12">Limited trial</text>
-                  <text x="666" y="154" fill="#aab4d2" font-size="11">IRB supervised</text>
+                  <rect x="666" y="92" width="176" height="72" rx="8" fill="#2b2c3e" stroke="#f59e0b" stroke-width="1.4" />
+                  <text x="684" y="115" fill="#fbbf24" font-size="13" font-weight="900" font-family="Space Grotesk">ЕТАП 5</text>
+                  <text x="684" y="137" fill="#edf2ff" font-size="12">Пилотно изпитване</text>
+                  <text x="684" y="154" fill="#aab4d2" font-size="11">етична комисия</text>
 
-                  <rect x="798" y="64" width="204" height="72" rx="8" fill="#32243b" stroke="#f87171" stroke-width="1.4" />
-                  <text x="816" y="87" fill="#f87171" font-size="13" font-weight="900" font-family="Space Grotesk">STEP 6</text>
-                  <text x="816" y="109" fill="#edf2ff" font-size="12">Deployment</text>
-                  <text x="816" y="126" fill="#aab4d2" font-size="11">strict stop rules</text>
+                  <rect x="856" y="64" width="204" height="72" rx="8" fill="#32243b" stroke="#f87171" stroke-width="1.4" />
+                  <text x="874" y="87" fill="#f87171" font-size="13" font-weight="900" font-family="Space Grotesk">ЕТАП 6</text>
+                  <text x="874" y="109" fill="#edf2ff" font-size="12">Внедряване</text>
+                  <text x="874" y="126" fill="#aab4d2" font-size="11">правила за спиране</text>
                 </g>
 
               </svg>
@@ -3602,14 +3540,14 @@ model.save("best_policy")</code></pre>
             
           </div>
           <div class="footerline">
-            <span data-lang="en">Sim → HIL → bench → cadaver → IRB → deploy. Skip nothing.</span>
+            <span data-lang="bg">Симулация → HIL → тъканен модел → кадавър/животно → етична комисия → внедряване. Без пропускане на етапи.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
           <aside class="notes">
         
         (~55 сек)
-        Пътят до операционната е стълба, не shortcut. Всяко стъпало във V&V; намалява неизвестните и повишава безопасността.
+        Пътят до операционната е стълба, не пряк път. Всяко стъпало във V&V; намалява неизвестните и повишава безопасността.
       </aside>
         </div>
       </section>
@@ -3625,19 +3563,17 @@ model.save("best_policy")</code></pre>
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="en">Thank You</div>
+            <div class="kicker" data-lang="bg"></div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div class="hero-title">
             
-            <h1 data-lang="en"><span class="accent-cyan">Thank you.</span><br />Questions?</h1>
-            
-            <p class="lede" data-lang="en">If a single message survives the next hour, let it be this: surgical autonomy is narrow, deep, and built from the same tools you already use — wrapped in a safety envelope you build yourself.</p>
+            <h1 data-lang="bg"><span class="accent-cyan">Благодаря.</span><br />Въпроси?</h1>
             
           </div>
           <div class="footerline">
-            <span data-lang="en">David Mavrodiev</span>
+            <span data-lang="bg">Давид Мавродиев</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
