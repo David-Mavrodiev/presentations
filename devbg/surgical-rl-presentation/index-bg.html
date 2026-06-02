@@ -54,38 +54,40 @@
     }
 
     .reveal::before {
-      content: "Supported by";
+      content: "Подкрепено от";
       left: 32px;
       bottom: 24px;
-      width: 210px;
+      width: 166px;
       height: 30px;
       display: flex;
       align-items: center;
       color: var(--muted);
-      font-size: 0.34em;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
+      font-size: 0.42em;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
       background-image: url("images/brands/wiser.png");
-      background-position: right center;
-      background-size: 112px auto;
+      background-position: 78px center;
+      background-size: 88px auto;
     }
 
     .reveal::after {
-      content: "Organized by";
-      right: 128px;
+      content: "Организирано от";
+      right: 126px;
       bottom: 24px;
-      width: 222px;
+      width: 194px;
       height: 30px;
       display: flex;
       align-items: center;
       color: var(--muted);
-      font-size: 0.34em;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      background-position: right center;
-      background-size: 112px auto;
+      font-size: 0.42em;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
+      font-style: normal;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-position: 104px center;
+      background-size: 90px auto;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 196 48'%3E%3Ctext x='0' y='38' fill='%234554dc' font-family='Arial Black, Arial, sans-serif' font-size='43' font-weight='900' letter-spacing='-2'%3EDEV%3C/text%3E%3Ccircle cx='106' cy='31' r='6' fill='%2347e5ff'/%3E%3Ctext x='117' y='38' fill='%234554dc' font-family='Arial Black, Arial, sans-serif' font-size='43' font-weight='900' letter-spacing='-2'%3EBG%3C/text%3E%3C/svg%3E");
     }
 
@@ -300,6 +302,11 @@
     .hero-title .accent-amber { color: var(--text); }
     .hero-title .accent-violet { color: var(--text); }
     .hero-title .by-line { color: var(--faint); font-size: 0.56em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+    .title-meta { display: grid; gap: 8px; margin-top: 6px; }
+    .title-name { color: var(--text); font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 0.72em; font-weight: 700; letter-spacing: 0.02em; text-transform: none; }
+    .title-role,
+    .title-degree { color: var(--muted); font-size: 0.58em; line-height: 1.32; }
+    .title-slide-heading { font-size: 1.9em !important; max-width: none !important; }
 
     /* Section header */
     .section-shell {
@@ -571,27 +578,23 @@
           </div>
           <div class="hero-layout" style="grid-template-columns: 1.06fr 0.94fr; align-items: center;">
             <div class="hero-title">
-              <h1 data-lang="bg"><span class="accent-cyan">Дълбока автоматизация</span> в <span class="accent-amber">хирургичната роботика</span></h1>
-              
-              <p class="lede" data-lang="bg">Хирургията започва като ръчен занаят, преминава през телеуправление с роботизирани системи и днес се движи към компютърно подпомагана автономност за ясно дефинирани задачи.</p>
-              <p class="lede" data-lang="bg">Хирургията се превръща в <strong>софтуерен проблем</strong>...</p>
+              <h1 class="title-slide-heading" data-lang="bg"><span class="accent-cyan">Дълбока автоматизация</span><br /><span class="accent-amber">в хирургическата роботика</span></h1>
+              <div class="title-meta" data-lang="bg">
+                <div class="title-name">Давид Мавродиев</div>
+                <div class="title-role">Софтуерен инженер в Microsoft - CoreAI екип</div>
+                <div class="title-degree">Магистър по роботика и изкуствен интелект от UCL.</div>
+              </div>
               
             </div>
             <div class="figure-frame dark tall">
               <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cmglee_Cambridge_Science_Festival_2015_da_Vinci.jpg?width=900" alt="da Vinci surgical system" />
-              <div class="figure-caption" data-lang="bg">da Vinci</div>
             </div>
-          </div>
-          <div class="footerline">
-            <span data-lang="bg">Шест части: роботи · задачи · стек · техники · case study · какво следва</span>
-            
-            <span class="brand-text">Surgical Robotics</span>
           </div>
         </div>
         <aside class="notes">
         
         (~56 сек)
-        Здравейте. Днес говорим за автоматизация в хирургичната роботика: какво вече работи в операционната, какво още е в изследователска фаза и как се изгражда целият път от робот до модел. Накрая ще видите и конкретен пример как една задача се формулира, обучава и валидира.
+        Здравейте. Днес говорим за автоматизация в хирургическата роботика: какво вече работи в операционната, какво още е в изследователска фаза и как се изгражда целият път от робот до модел. Накрая ще видите и конкретен пример как една задача се формулира, обучава и валидира.
       </aside>
       </section>
 
@@ -599,14 +602,14 @@
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="bg">Състоянието на областа</div>
+            <div class="kicker" data-lang="bg">Въведение в сферата</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="bg">Хирургичната роботика днес.</h2>
+            <h2 data-lang="bg">Роботизираната хирургия в статистически данни</h2>
             
-            <p class="lede" data-lang="bg">Дефицитът вече не е хардуерът, а <strong>софтуерът, данните и верификацията</strong>. На пазара се конкурират десетина комерсиални платформи. Цената на процедура постепенно пада. Машинното самообучение вече е достатъчно надеждно за специализирани задачи. Трудната част днес е да докажем, че тези системи работят безопасно при голямото разнообразие в хирургията.</p>
+            <p class="lede" data-lang="bg">Дефицитен вече не е хардуерът, а са софтуерът, данните и верификацията. На пазара се конкурират десетина комерсиални платформи. Цената на процедурите постепенно пада. Машинното самообучение бива достатъчно надеждно за специализирани задачи. Най-трудно и сложно е да се докаже, че системите работят напълно безопасно. Хирургията се превръща в софтуерен проблем.</p>
             
             <div class="metric-grid" style="margin-top: 18px;">
               <div class="metric panel chart-panel">
@@ -614,7 +617,7 @@
                 <span class="lbl" data-lang="bg">общ брой роботизирани процедури от 2000 г. насам</span>
                 
                 <div class="chart-wrap"><canvas id="chartProcedures"></canvas></div>
-                <span class="chart-source" data-lang="bg">Източник: годишни отчети на Intuitive Surgical (процедури с da Vinci, 2024)</span>
+                <span class="chart-source" data-lang="bg">Източник: Годишни отчети на Intuitive Surgical (процедури с da Vinci, 2024)</span>
                 
               </div>
               <div class="metric panel chart-panel">
@@ -630,7 +633,7 @@
                 <span class="lbl" data-lang="bg">прогнозиран пазар до 2030 г.</span>
                 
                 <div class="chart-wrap"><canvas id="chartMarket"></canvas></div>
-                <span class="chart-source" data-lang="bg">Източник: пазарни прогнози на Grand View Research / Mordor Intelligence (2024)</span>
+                <span class="chart-source" data-lang="bg">Източник: Пазарни прогнози на Grand View Research / Mordor Intelligence (2024)</span>
                 
               </div>
               <div class="metric panel chart-panel">
@@ -638,7 +641,7 @@
                 <span class="lbl" data-lang="bg">публикации за Surgical AI на годишна база спрямо 2015 г.</span>
                 
                 <div class="chart-wrap"><canvas id="chartPapers"></canvas></div>
-                <span class="chart-source" data-lang="bg">Източник: търсения в PubMed / IEEE Xplore (“surgical” + ML/AI/deep learning)</span>
+                <span class="chart-source" data-lang="bg">Източник: Търсения в PubMed / IEEE Xplore (“surgical” + ML/AI/deep learning)</span>
                 
               </div>
             </div>
@@ -660,14 +663,14 @@
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="bg">План</div>
+            <div class="kicker" data-lang="bg">Съдържание на презентацията</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="bg">Части на презентацията</h2>
+            <h2 data-lang="bg">Ключови направления</h2>
             
-            <p class="lede" data-lang="bg">Първо ще разгледаме съществуващите роботизирани системи и задачите, които вече се автоматизират. След това ще преминем към software stack-а, методите за обучение, конкретен case study и пътя към клинична употреба.</p>
+            <p class="lede" data-lang="bg">Представяне на съществуващите роботизирани системи и задачите, които вече се автоматизират. Разглеждане на software stack-а и методите за обучение. Акцентиране върху конкретен case study и пътя към клинично приложение.</p>
             
             <div class="panel outline-cyan" style="padding: 14px; margin-top: 18px;">
               <svg viewbox="0 0 1120 360" style="width: 100%; max-height: 330px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Пътна карта на презентацията">
@@ -680,7 +683,7 @@
                     <path d="M28 78 L52 78 L40 86 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
                     <text x="-19" y="27" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">Роботи</text>
                     <text x="-19" y="49" fill="#c7d2ee" font-size="11">хардуерът в</text>
-                    <text x="-19" y="64" fill="#c7d2ee" font-size="11">операционната зала</text>
+                    <text x="-19" y="64" fill="#c7d2ee" font-size="11">операционна зала</text>
                   </g>
                   <g transform="translate(226 200)">
                     <circle cx="40" cy="-30" r="24" fill="#47e5ff" />
@@ -725,7 +728,7 @@
                     <path d="M28 0 L52 0 L40 -8 Z" fill="#172b44" stroke="#47e5ff" stroke-width="1.3" />
                     <text x="-30" y="27" fill="#47e5ff" font-size="13" font-weight="900" font-family="Space Grotesk">Бъдеще</text>
                     <text x="-30" y="49" fill="#c7d2ee" font-size="11">препятствия</text>
-                    <text x="-30" y="64" fill="#c7d2ee" font-size="11">пред клинична употреба</text>
+                    <text x="-30" y="64" fill="#c7d2ee" font-size="11">пред клиничната употреба</text>
                   </g>
                 </g>
               </svg>
@@ -761,9 +764,9 @@
           </div>
           <div class="section-hero">
             
-            <h1 data-lang="bg">Типове хирургични роботи, <span style="color: var(--cyan);">използвани днес</span>.</h1>
+            <h1 data-lang="bg">Видове хирургически роботи, <span style="color: var(--cyan);">използвани днес</span>.</h1>
             
-            <p class="lede" data-lang="bg">Големи телеуправляеми системи, специализирани роботи и отворени изследователски платформи, които се използват активно в научни разработки.</p>
+            <p class="lede" data-lang="bg">Съобразно функционалната класификация, те биват големи телеуправляеми системи, специализирани роботи и отворени изследователски платформи, които се ползват активно в научните разработки.</p>
             
           </div>
           <div class="footerline">
@@ -790,7 +793,7 @@
           <div>
             <h2 data-lang="bg">Роботи, изцяло управлявани <span style="color: var(--cyan);">от хирурга</span>.</h2>
             
-            <p class="lede" data-lang="bg">Това са master-slave системи за телеуправление, използвани при минимално инвазивни процедури в урологията, гинекологията, колоректалната хирургия, гръдната хирургия и общата лапароскопия. Роботът не взема решения и не действа самостоятелно: хирургът управлява всяко движение на инструментите от конзолата. Системата осигурява инструменти с киткова подвижност през малки портове, стерео зрение, филтриране на тремор и мащабиране на движенията.</p>
+            <p class="lede" data-lang="bg">Master-slave системи за телеуправление, използвани при минимално инвазивни процедури в урологията, гинекологията, колоректалната хирургия, гръдната хирургия и общата лапароскопия. Роботът не взема решения и не действа самостоятелно - хирургът управлява всяко движение на инструментите от конзолата. Системата осигурява инструменти с киткова подвижност през малки портове, стерео зрение, филтриране на тремор и мащабиране на движенията.</p>
             
             <div class="robot-grid" style="margin-top: 14px;">
               <div class="robot-card">
@@ -818,8 +821,8 @@
                 <h3>Asensus Senhance</h3>
               </div>
             </div>
-            <div class="panel outline-cyan" style="padding: 8px 12px; margin-top: 10px;">
-              <svg viewbox="0 0 930 94" style="width: 100%; max-height: 86px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Поток на управление при телеуправляем хирургичен робот">
+            <div class="panel outline-cyan" style="padding: 10px 12px; margin-top: 10px;">
+              <svg viewbox="0 0 930 94" style="width: 100%; max-height: 112px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Поток на управление при телеуправляем хирургичен робот">
                 <defs>
                   <marker id="teleopArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
                 </defs>
@@ -859,9 +862,9 @@
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="bg">Роботи за конкретна процедура</h2>
+            <h2 data-lang="bg">Роботи за <span style="color: var(--cyan);">специфична процедура</span></h2>
             
-            <p class="lede" data-lang="bg">Големите телеуправляеми системи са универсални, но не вземат самостоятелни решения. В този клас всеки робот е оптимизиран за <em>една</em> процедура до степен, в която може да изпълнява част от процедурата самостоятелно. Ключът е в това, че при стабилна геометрия и план, изграден от CT изследване, роботът може да поеме движения, които не са подходящи за телеуправляем манипулатор.</p>
+            <p class="lede" data-lang="bg">Големите телеуправляеми системи са универсални, но не вземат самостоятелни решения. В този клас всеки робот е оптимизиран за конкретна нишова манипулация до степен, в която може да изпълнява част от процедурата самостоятелно. Ключът е в това, че при стабилна геометрия и план, изграден от компютърна томография, роботът може да поеме движения, които не са подходящи за телеуправляем манипулатор.</p>
             
             <div class="robot-grid" style="margin-top: 14px;">
               <div class="robot-card">
@@ -942,24 +945,28 @@
           <div>
             <h2 data-lang="bg">Платформи, създадени за <span style="color: var(--cyan);">научни изследвания</span>.</h2>
             
-            <p class="lede" data-lang="bg">Комерсиалните роботи са затворени продукти. За изследвания са нужни платформи, при които лабораториите могат изцяло да променят хардуера, да инсталират допълнителни сензори и да програмират робота директно.</p>
+            <p class="lede" data-lang="bg">Комерсиалните роботи имат консервативни характеристики, правещи ги затворени продукти. За изследвания са нужни платформи, при които лабораториите могат напълно да променят хардуера, да инсталират допълнителни сензори и да програмират робота директно.</p>
             
             <div style="display: grid; gap: 10px; margin-top: 14px;">
               <div class="panel outline-cyan" style="display: grid; grid-template-columns: 170px 1fr; gap: 14px; align-items: center; padding: 10px;">
                 <div class="figure-frame" style="height: 92px; margin: 0;"><img src="./images/robots/dvrk.png" alt="dVRK lab setup" referrerpolicy="no-referrer" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" /></div>
                 <div>
                   <h3 style="margin-bottom: 4px;"><a href="https://github.com/jhu-dvrk/sawIntuitiveResearchKit/wiki" target="_blank" rel="noreferrer">da Vinci Research Kit (dVRK)</a></h3>
-                  <p data-lang="bg"><strong>Хардуер:</strong> Първо поколение da Vinci робот (PSM манипулатори и ECM камера).<br /><strong>Софтуер:</strong> API за директен control, imitation learning и RL.</p>
+                  <p data-lang="bg"><strong>Хардуер:</strong> Първо поколение da Vinci робот: PSM манипулатори, ECM камера и изследователска конзола.<br /><strong>Софтуер:</strong> Отворен API за директен control, imitation learning и RL.</p>
                 </div>
               </div>
-              <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
-                <div class="panel outline-cyan" style="display: grid; grid-template-columns: 150px 1fr; gap: 12px; align-items: center; padding: 8px 10px;">
-                  <div class="figure-frame" style="height: 72px; margin: 0;"><img src="./images/robots/raven2.jpg" alt="RAVEN II" referrerpolicy="no-referrer" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" /></div>
-                  <h3 style="margin: 0; font-size: 0.72em;"><a href="https://github.com/uw-biorobotics/raven2" target="_blank" rel="noreferrer">RAVEN II</a></h3>
+              <div class="panel outline-cyan" style="display: grid; grid-template-columns: 170px 1fr; gap: 14px; align-items: center; padding: 10px;">
+                <div class="figure-frame" style="height: 92px; margin: 0;"><img src="./images/robots/raven2.jpg" alt="RAVEN II" referrerpolicy="no-referrer" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+                <div>
+                  <h3 style="margin-bottom: 4px;"><a href="https://github.com/uw-biorobotics/raven2" target="_blank" rel="noreferrer">RAVEN II</a></h3>
+                  <p data-lang="bg"><strong>Хардуер:</strong> Отворени 7-DoF хирургични манипулатори с кабелно задвижване, създадени за изследвания и експерименти с телеуправление.<br /><strong>Софтуер:</strong> Отворен ROS-базиран control stack за команди в joint-space и Cartesian space. Полезен е, когато изследователите трябва да променят самия робот, да въвеждат латентност, да тестват мрежова телехирургия или да изследват контрол при комуникационни ограничения.</p>
                 </div>
-                <div class="panel outline-cyan" style="display: grid; grid-template-columns: 150px 1fr; gap: 12px; align-items: center; padding: 8px 10px;">
-                  <div class="figure-frame" style="height: 72px; margin: 0;"><img src="./images/robots/star.jpeg" alt="STAR autonomous suturing system" referrerpolicy="no-referrer" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" /></div>
-                  <h3 style="margin: 0; font-size: 0.72em;"><a href="https://www.science.org/doi/10.1126/scirobotics.abj2908" target="_blank" rel="noreferrer">STAR</a></h3>
+              </div>
+              <div class="panel outline-cyan" style="display: grid; grid-template-columns: 170px 1fr; gap: 14px; align-items: center; padding: 10px;">
+                <div class="figure-frame" style="height: 92px; margin: 0;"><img src="./images/robots/star.jpeg" alt="STAR autonomous suturing system" referrerpolicy="no-referrer" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+                <div>
+                  <h3 style="margin-bottom: 4px;"><a href="https://www.science.org/doi/10.1126/scirobotics.abj2908" target="_blank" rel="noreferrer">STAR</a></h3>
+                  <p data-lang="bg"><strong>Хардуер:</strong> Специализирана система за зашиване на мека тъкан с near-infrared проследяване на маркери и инструменти с обратна връзка за сила.<br /><strong>Софтуер:</strong> Perception, motion planning, closed-loop replanning и safety supervision за автономна чревна анастомоза. Важна е, защото демонстрира автономност върху деформируема тъкан, а не само върху твърда кост или движение на камера.</p>
                 </div>
               </div>
             </div>
@@ -986,12 +993,12 @@
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="bg">От ръчно управление до <span style="color: var(--cyan);">пълна автономност</span>.</h2>
+            <h2 data-lang="bg">От ръчно управление към <span style="color: var(--cyan);">пълна автономност</span>.</h2>
             
-            <p class="lede" data-lang="bg">Съществуващите комерсиални системи са основно на ниво 0–1 при лапароскопията и на ниво 2 в тесни специалности като ортопедията. Нива 4 и 5 са далеч в бъдещето и може никога да не бъдат цел за повечето хирургични задачи.</p>
+            <p class="lede" data-lang="bg">Съществуващите комерсиални системи са основно на ниво 0–1 при лапароскопията и на ниво 2 в тесни специалности, като ортопедията например. Нива 4 и 5 са далеч в бъдещето и може никога да не бъдат цел за повечето хирургични задачи, ако на практика липсво подобна необходимост.</p>
             
             <div class="panel outline-cyan" style="padding: 10px; margin-top: 16px;">
-              <svg viewbox="0 0 1120 390" style="width: 100%; max-height: 350px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Стълбица на нивата на хирургична автономност">
+              <svg viewbox="0 0 1120 390" style="width: 100%; max-height: 350px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Стълбица на нивата на хирургическа автономност">
                 <defs>
                   <marker id="autonomyArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
                 </defs>
@@ -1016,7 +1023,7 @@
                   <rect x="348" y="180" width="176" height="72" rx="8" fill="#1a2c48" stroke="#93c5fd" stroke-width="1.4" />
                   <text x="366" y="203" fill="#93c5fd" font-size="13" font-weight="900" font-family="Space Grotesk">НИВО 2</text>
                   <text x="366" y="225" fill="#edf2ff" font-size="12">Подзадача</text>
-                  <text x="366" y="242" fill="#aab4d2" font-size="11">роботът върши тясна задача</text>
+                  <text x="366" y="242" fill="#aab4d2" font-size="11">изпълнява тясна задача</text>
 
                   <rect x="498" y="136" width="176" height="72" rx="8" fill="#1a2c48" stroke="#93c5fd" stroke-width="1.4" />
                   <text x="516" y="159" fill="#93c5fd" font-size="13" font-weight="900" font-family="Space Grotesk">НИВО 3</text>
@@ -1068,7 +1075,7 @@
           <div class="section-hero">
             <h1 data-lang="bg">Хирургията като <span style="color: var(--cyan);">алгоритъм</span>.</h1>
             
-            <p class="lede" data-lang="bg">Всяка процедура е различна последователност от стъпки. Някои такива стъпки вече са частично или напълно автоматизирани, по други се работи активно, а трети все още остават отворени за автоматизация. Именно там е следващата вълна от изследвания и иновации.</p>
+            <p class="lede" data-lang="bg">Всяка процедура е съставена от различни в последователността си стъпки. Някои от тях вече са частично или напълно автоматизирани задачи, по други се работи активно, а трети все още остават отворени за автоматизация манипулации и точно те са във фокуса на новата вълна от иновации в изследванията на роботизираните хирургични жестове.</p>
             
           </div>
           <div class="footerline">
@@ -1088,12 +1095,12 @@
       <section>
         <div class="slide-shell">
           <div class="slide-header">
-            <div class="kicker" data-lang="bg">Управление на камера</div>
+            <div class="kicker" data-lang="bg">Камерно управление</div>
             
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="bg">Автономно управление на <span style="color: var(--cyan);">хирургическа камера</span>.</h2>
+            <h2 data-lang="bg">Автономно управление на <span style="color: var(--cyan);">хирургическата камера</span>.</h2>
             
             <p class="lede" data-lang="bg">По време на операция камерата трябва постоянно да следи работното поле, за да може хирургът да оперира. Това е ключова част от всяка роботизирана процедура.</p>
           </div>
@@ -1127,9 +1134,9 @@
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="bg">1. Събиране на кадри и маркиране на върха на инструмента.</h2>
+            <h2 data-lang="bg">1. Събиране на кадри и маркиране на <span style="color: var(--cyan);">върха на инструмента</span>.</h2>
             
-            <p class="lede" data-lang="bg">Записват се видеа от стотици операции, след което от тях се извличат кадри, в които инструментите се виждат ясно. После се анотира позицията на върховете им. Тези маркирани кадри се използват за обучение на детектора, върху който стъпва контролерът на камерата.</p>
+            <p class="lede" data-lang="bg">Записват се видеа от стотици операции и от тях се извличат кадри, в които инструментите се виждат най-ясно, след което се анотира позицията на върховете им. Маркираните кадри се използват за обучение на детектора, върху който стъпва контролерът на камерата.</p>
             
             <div style="max-width: 980px; margin: 18px auto 0;">
               <div class="grid-2" style="gap: 14px; align-items: start;">
@@ -1177,9 +1184,9 @@
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="bg">2. Конволюционна невронна мрежа предсказва позицията на върха в реално време.</h2>
+            <h2 data-lang="bg">2. Конволюционна невронна мрежа предсказва <span style="color: var(--cyan);">позицията на върха</span> в реално време.</h2>
             
-            <p class="lede" data-lang="bg">Конволюционната невронна мрежа се обучава върху анотираните кадри и след това предсказва позициите на инструментите в реално време върху всеки нов видео кадър.</p>
+            <p class="lede" data-lang="bg">Конволюционната невронна мрежа се обучава върху анотираните кадри, на база на които предвижда позициите на инструментите в реално време за всеки нов видео кадър.</p>
             
             <div style="margin-top: 14px;">
               <div class="panel outline-cyan" style="padding: 14px;">
@@ -1313,9 +1320,9 @@
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="bg">3. Камерата се движи, за да държи инструмента в кадър.</h2>
+            <h2 data-lang="bg">3. Камерата се движи, за да държи <span style="color: var(--cyan);">инструмента в кадър</span>.</h2>
             
-            <p class="lede" data-lang="bg">Контролерът сравнява открития връх на инструмента с центъра на изображението. Ако върхът е извън центъра, ендоскопът се премества леко в тази посока. Всяко движение се забавя, ограничава и проверява, преди да бъде изпратено към робота.</p>
+            <p class="lede" data-lang="bg">Контролерът сравнява открития връх на инструмента с центъра на изображението. Ако върхът е извън центъра, ендоскопът се премества леко в тази посока. Всяко движение се забавя, ограничава и проверява, преди да бъде изпратено към робота за изпълнение.</p>
             
             <div style="margin-top: 12px;">
               <div class="panel outline-cyan" style="padding: 12px;">
@@ -1410,7 +1417,7 @@
           <div>
             <h2 data-lang="bg">Автономно зашиване.</h2>
             
-            <p class="lede" data-lang="bg">Един шев не е едно магическо движение. Роботът повтаря кратка последователност: знае къде е раната, планира траекторията на иглата, прекарва я през тъканта, издърпва конеца и после предава иглата на другия манипулатор.</p>
+            <p class="lede" data-lang="bg">Извършването на телесен шев не се случва с едно магическо движение. Роботът повтаря кратка последователност от действия: знае къде е раната, планира траекторията на иглата, прекарва я през тъканта, издърпва конеца и после предава иглата на другия манипулатор. Тоест, налична е комбинация от реални жестови движения.</p>
           </div>
           <div style="margin-top: 18px;">
             <div class="robot-video" style="margin: 0 auto; width: 100%; max-width: 880px;">
@@ -1778,7 +1785,7 @@
           </div>
           <div class="section-hero">
             
-            <h1 data-lang="bg"><span style="color: var(--cyan);">Симулатори</span> за хирургична роботика.</h1>
+            <h1 data-lang="bg"><span style="color: var(--cyan);">Симулатори</span> за хирургическа роботика.</h1>
             
             <p class="lede" data-lang="bg">Два популярни избора: <strong>SurRoL</strong> за леки и възпроизводими surgical-RL задачи и <strong>ORBIT-Surgical</strong> за GPU-мащабна симулация.</p>
             
@@ -1955,7 +1962,7 @@
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="bg">Описване на <span style="color: var(--cyan);">хирургична задача</span>.</h2>
+            <h2 data-lang="bg">Описване на <span style="color: var(--cyan);">хирургическа задача</span>.</h2>
             
             <p class="lede" data-lang="bg">Преди избора на алгоритъм трябва да се дефинира какво вижда агентът, какви действия може да изпълнява, как се оценява доброто поведение и кога епизодът приключва.</p>
             
@@ -1969,7 +1976,7 @@ class MySurgicalTask(PsmEnv):
 
     def _env_setup(self):
         super()._env_setup()
-        # зарежда обекти, рандомизира сцената, нулира робота
+        # подготвя началното състояние: добавя обектите, задава позиции и връща робота в изходна поза
 
     def _get_obs(self):
         # връща observation / achieved_goal / desired_goal
@@ -1980,9 +1987,11 @@ class MySurgicalTask(PsmEnv):
         self.psm1.move(target_pose)
 
     def compute_reward(self, achieved, desired, info):
+        # изчислява наградата според това колко близо е текущото състояние до целта
         return reward
 
     def _is_success(self, achieved, desired):
+        # проверява дали задачата е изпълнена достатъчно точно според зададения праг
         return success</code></pre>
               </div>
               <div>
@@ -2121,7 +2130,7 @@ for t in range(300):
             </div>
           </div>
           <div class="footerline">
-            <span data-lang="bg">След регистрация хирургичната задача се държи като всяка друга среда.</span>
+            <span data-lang="bg">След регистрация хирургическата задача се държи като всяка друга среда.</span>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
@@ -2208,12 +2217,12 @@ model.save("best_policy")</code></pre>
             <div class="brand" aria-label="Wiser and DEV.BG"></div>
           </div>
           <div>
-            <h2 data-lang="bg">Как изглежда една <span style="color: var(--cyan);">хирургична роботизирана система?</span></h2>
+            <h2 data-lang="bg">Как изглежда една <span style="color: var(--cyan);">хирургическа роботизирана система?</span></h2>
             
             <p class="lede" data-lang="bg">Базовата структура е следната: хирургът работи от конзола, локален компютърен модул обработва данни и команди и изпълнява проверки за сигурност, а роботизираните манипулатори движат инструментите при пациента.</p>
             
             <div style="text-align: center; margin-top: 14px;">
-              <svg viewbox="0 0 1120 430" style="width: 100%; max-height: 410px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Диаграма на базова архитектура на хирургична роботизирана система">
+              <svg viewbox="0 0 1120 430" style="width: 100%; max-height: 410px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Диаграма на базова архитектура на хирургическа роботизирана система">
                 <defs>
                   <marker id="archArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker>
                   <lineargradient id="archBox" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(71,229,255,0.13)" /><stop offset="1" stop-color="rgba(71,229,255,0.04)" /></lineargradient>
@@ -2456,7 +2465,7 @@ model.save("best_policy")</code></pre>
             <p class="lede" data-lang="bg">Съвременните системи използват 4 или 5 от тези подходи едновременно.</p>
             
             <div class="panel outline-cyan" style="padding: 10px 12px; margin-top: 12px;">
-              <svg viewbox="0 0 1120 220" style="width: 100%; max-height: 210px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Хронология на техники за автоматизация в хирургичната роботика">
+              <svg viewbox="0 0 1120 220" style="width: 100%; max-height: 210px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Хронология на техники за автоматизация в хирургическата роботика">
                 <line x1="78" y1="110" x2="1042" y2="110" stroke="rgba(71,229,255,0.34)" stroke-width="5" stroke-linecap="round" />
                 <g font-family="Inter, sans-serif">
                   <g transform="translate(44 18)">
@@ -2908,7 +2917,7 @@ model.save("best_policy")</code></pre>
                 <svg viewbox="0 0 740 310" style="width: 100%; max-height: 280px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RL problem framing diagram">
                   <defs><marker id="frameArrow" markerwidth="10" markerheight="10" refx="8" refy="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#47e5ff" /></marker></defs>
                   <rect x="36" y="120" width="132" height="72" rx="8" fill="rgba(71,229,255,0.10)" stroke="#47e5ff" stroke-width="1.5" />
-                  <text x="102" y="148" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Хирургична задача</text>
+                  <text x="102" y="148" text-anchor="middle" fill="#47e5ff" font-size="14" font-weight="800" font-family="Space Grotesk">Хирургическа задача</text>
                   <text x="102" y="170" text-anchor="middle" fill="#edf2ff" font-size="11">безопасно притискане</text>
                   <line x1="170" y1="156" x2="220" y2="156" stroke="#47e5ff" stroke-width="1.5" marker-end="url(#frameArrow)" />
                   <rect x="224" y="60" width="132" height="58" rx="8" fill="rgba(147,197,253,0.12)" stroke="#93c5fd" stroke-width="1.5" />
@@ -3358,7 +3367,7 @@ model.save("best_policy")</code></pre>
           </div>
           <div class="section-hero">
             
-            <h1 data-lang="bg">Основните ограничения пред хирургичната автономия и <span style="color: var(--cyan);">следващите посоки на развитие</span>.</h1>
+            <h1 data-lang="bg">Основните ограничения пред хирургическата автономия и <span style="color: var(--cyan);">следващите посоки на развитие</span>.</h1>
             
             <p class="lede" data-lang="bg">След демонстрация на модел за отделна подзадача в симулационна среда следва ключовият въпрос: какви технически, клинични и регулаторни условия трябва да бъдат изпълнени преди приложение при реален пациент?</p>
             
@@ -3580,7 +3589,7 @@ model.save("best_policy")</code></pre>
           <aside class="notes">
         
         (~55 сек)
-        Благодаря за вниманието. Основното послание е, че практичната хирургична автономия е постепенна, измерима и изградена върху строга безопасност. С удоволствие ще обсъдим въпроси по технологии, регулация и реално внедряване.
+        Благодаря за вниманието. Основното послание е, че практичната хирургическа автономия е постепенна, измерима и изградена върху строга безопасност. С удоволствие ще обсъдим въпроси по технологии, регулация и реално внедряване.
       </aside>
         </div>
       </section>
