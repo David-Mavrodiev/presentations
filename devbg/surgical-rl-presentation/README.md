@@ -1,6 +1,33 @@
 # Surgical RL Presentation - Local Web Server
 
-This presentation is a static site and is easiest to run with `live-server`.
+This presentation is a static site. `start-presentation.ps1` serves the deck and, when the Python policy dependencies are installed, also starts the vessel-squeeze policy API used by the interactive demo.
+
+## Start on Windows
+
+From the repository root:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\start-presentation.ps1
+```
+
+Then open:
+
+- http://127.0.0.1:8000/index-bg.html
+
+If the policy Python dependencies are missing, the deck still stays online, but the interactive policy demo will not call `http://127.0.0.1:5000` until those dependencies are installed.
+
+## Optional policy demo dependencies
+
+Use a virtual environment so the policy server dependencies stay local to the project:
+
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install -r .\clip-application-surrol\requirements.txt
+powershell -ExecutionPolicy Bypass -File .\start-presentation.ps1
+```
+
+When `.venv` exists, the launcher uses `.\.venv\Scripts\python.exe` automatically; activating the environment is not required.
 
 ## Start (with file watching + auto reload)
 
