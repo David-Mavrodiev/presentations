@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vessel Squeeze – Policy Simulation</title>
+  <script>
+    if (new URLSearchParams(window.location.search).get('embed') === '1') {
+      document.documentElement.classList.add('embed');
+    }
+  </script>
+  <style>
+    body { font-family: sans-serif; margin: 16px; }
+    .row { display: flex; gap: 24px; align-items: flex-start; }
+    .col { display: flex; flex-direction: column; gap: 12px; }
+    .panel { min-width: 340px; }
+    label { display: block; margin: 8px 0 4px; }
+    input[type=range] { width: 100%; }
+    canvas { border: 1px solid #ccc; }
+    .small { color: #666; font-size: 12px; }
+    button { margin-right: 8px; }
+    html.embed body { margin: 10px; overflow: hidden; font-size: 14px; }
+    html.embed h3 { margin: 0 0 10px; font-size: 18px; }
+    html.embed .row { gap: 18px; align-items: flex-start; justify-content: flex-start; }
+    html.embed .panel { min-width: 0; }
+    html.embed .controls { width: 270px; max-width: 270px !important; gap: 8px; }
+    html.embed label { margin: 6px 0 3px; }
+    html.embed button { padding: 4px 10px; }
+    html.embed .server-control,
+    html.embed #serverUrl,
+    html.embed .save-control,
+    html.embed .export-control,
+    html.embed .small,
+    html.embed #state { display: none; }
+    html.embed #jaw { width: 330px; height: 330px; }
+    html.embed #traj { display: block; width: 330px; height: 220px; }
+    html.embed .traj-panel { width: 330px; }
+    html.embed .embed-plot-title { margin: 0 0 8px; color: #333; font-size: 14px; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h3>Vessel Squeeze – Neural Policy Monte Carlo</h3>
+  <div class="row">
+    <div class="panel col controls" style="max-width:380px;">
+      <label class="server-control">Model server URL</label>
+      <input id="serverUrl" type="text" value="http://127.0.0.1:5000" />
+
+      <label>Vessel radius (m): <span id="radiusLabel"></span></label>
+      <input id="radius" type="range" min="0.0015" max="0.0030" step="0.00005" value="0.0020" />
+
+      <label>Thickness factor: <span id="thickLabel"></span></label>
+      <input id="thickness" type="range" min="0.7" max="1.3" step="0.01" value="1.0" />
+
+      <div>
+        <button id="startBtn">Start</button>
+        <button id="stepBtn">Step</button>
+        <button id="resetBtn">Reset</button>
+        <button id="stopBtn">Stop</button>
+      </div>
+
+      <label>Step interval (ms): <span id="speedLabel"></span></label>
+      <input id="speed" type="range" min="50" max="800" step="10" value="200" />
+      <label><input id="deterministic" type="checkbox" checked /> Deterministic</label>
+      <label class="save-control"><input id="saveOnStop" type="checkbox" /> Save canvas images each step</label>
+      <div class="export-control">
+        <button id="exportCsvBtn">Export CSV</button>
+      </div>
+
+      <div class="small">Left: NN inputs → output at each step; angle trace below. Right: 2D vessel with current (red) and next (gray) jaws.</div>
+
+      <canvas id="state" width="360" height="180"></canvas>
+      <canvas id="traj" width="360" height="220"></canvas>
+    </div>
+
+    <div class="panel">
+      <canvas id="jaw" width="420" height="420"></canvas>
+    </div>
+  </div>
+
+  <script>
+    const JAW_OPEN_RAD = Math.PI / 3; // 60 deg
+    const $ = id => document.getElementById(id);
+
+    // Controls
+    const radius = $('radius'), thickness = $('thickness');
+    const radiusLabel = $('radiusLabel'), thickLabel = $('thickLabel');
+    const speed = $('speed'), speedLabel = $('speedLabel');
+    const deterministic = $('deterministic');
+    const saveOnStop = $('saveOnStop');
+    const startBtn = $('startBtn'), stepBtn = $('stepBtn'), resetBtn = $('resetBtn'), stopBtn = $('stopBtn');
+    const exportCsvBtn = $('exportCsvBtn');
+
+    // Canvases
+    const jawCanvas = $('jaw'), ctxJ = jawCanvas.getContext('2d');
+    const stateCanvas = $('state'), ctxS = stateCanvas.getContext('2d');
+    const trajCanvas = $('traj'), ctxT = trajCanvas.getContext('2d');
+
+    if (document.documentElement.classList.contains('embed')) {
+      const trajPanel = document.createElement('div');
+      trajPanel.className = 'panel traj-panel';
+      const title = document.createElement('div');
+      title.className = 'embed-plot-title';
+      title.textContent = 'Jaw angle vs step';
+      trajPanel.appendChild(title);
+      trajPanel.appendChild(trajCanvas);
+      document.querySelector('.row').appendChild(trajPanel);
+    }
+
+    // Sim state
+    let stepIdx = 0;
+    let currDeg = 60.0;            // start fully open
+    let prevU = +1.0;              // corresponds to ~60°
+    let nextDeg = 60.0;            // placeholder for preview
+    let traj = [];                 // degrees over time
+    let timer = null;
+    let statesLog = [];
+
+    function uToAngleDeg(u){
+      const u01 = 0.5 * (u + 1.0);
+      return u01 * (JAW_OPEN_RAD * 180/Math.PI);
+    }
+    function angleDegToU(deg){
+      const u01 = Math.max(0, Math.min(1, deg / (JAW_OPEN_RAD * 180/Math.PI)));
+      return 2*u01 - 1;
+    }
+
+    function layoutLabels(){
+      radiusLabel.textContent = parseFloat(radius.value).toFixed(6);
+      thickLabel.textContent = parseFloat(thickness.value).toFixed(2);
+      speedLabel.textContent = speed.value;
+    }
+
+    async function predictNext(deg){
+      const url = $('serverUrl').value.trim();
+      const payload = {
+        jaw_angle: deg * Math.PI/180,
+        prev_action: prevU,
+        radius_m: parseFloat(radius.value),
+        thickness_factor: parseFloat(thickness.value),
+        deterministic: deterministic.checked
+      };
+      const res = await fetch(`${url}/predict`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+      if (!res.ok) throw new Error('predict failed');
+      return await res.json(); // { action, target_jaw_angle_rad, ... }
+    }
+
+    function logState(rec){ statesLog.push(rec); }
+
+    function exportCsv(){
+      const header = [
+        'step',
+        'obs.jaw_angle_deg',
+        'obs.jaw_angle_rad',
+        'obs.prev_action_u',
+        'obs.radius_m',
+        'obs.thickness',
+        'policy.u',
+        'policy.target_angle_deg',
+        'policy.target_angle_rad'
+      ];
+      const lines = [header.join(',')];
+      for (const r of statesLog){
+        lines.push([
+          r.step,
+          r.jaw_deg,
+          r.jaw_rad,
+          r.prevU,
+          r.radius,
+          r.thickness,
+          r.policy_u,
+          r.policy_target_deg,
+          r.policy_target_rad
+        ].join(','));
+      }
+      const csv = lines.join('\n');
+      const blob = new Blob([csv], {type:'text/csv'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const ts = new Date().toISOString().replace(/[:.]/g, '-');
+      a.href = url; a.download = `vessel_squeeze_states_${ts}.csv`;
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function drawVessel(currentDeg, targetDeg){
+      const W = jawCanvas.width, H = jawCanvas.height;
+      ctxJ.clearRect(0,0,W,H);
+      ctxJ.fillStyle = '#fff'; ctxJ.fillRect(0,0,W,H);
+      const m = 16, cx = W/2, cy = H/2, R = Math.min(W,H)/2 - m;
+
+      // Thickness factor from UI (0.7..1.3)
+      const t = parseFloat(thickness.value);
+      const tNorm = Math.max(0, Math.min(1, (t - 0.7) / 0.6)); // 0..1
+      // Helper: interpolate colors between thin and thick vessel walls
+      function lerp(a,b,u){ return a + (b - a) * u; }
+      function lerpColor(c1, c2, u){
+        const r = Math.round(lerp(c1[0], c2[0], u));
+        const g = Math.round(lerp(c1[1], c2[1], u));
+        const b = Math.round(lerp(c1[2], c2[2], u));
+        return `rgb(${r},${g},${b})`;
+      }
+      const wallThin = [196, 68, 68];   // #c44444
+      const wallThick= [113, 17, 17];   // #711111
+      const vesselStroke = lerpColor(wallThin, wallThick, tNorm);
+      const vesselLineW  = 1.5 + 3.0 * tNorm; // thicker wall for thicker vessel
+
+      // Helper: rounded rectangle
+      function roundRect(x,y,w,h,r){
+        const rr = Math.min(r, Math.abs(w)/2, Math.abs(h)/2);
+        ctxJ.beginPath();
+        ctxJ.moveTo(x+rr, y);
+        ctxJ.arcTo(x+w, y, x+w, y+h, rr);
+        ctxJ.arcTo(x+w, y+h, x, y+h, rr);
+        ctxJ.arcTo(x, y+h, x, y, rr);
+        ctxJ.arcTo(x, y, x+w, y, rr);
+        ctxJ.closePath();
+      }
+
+      // Squeeze ratio s in [0,1]: 0 = fully open (60°), 1 = fully closed (0°)
+      const s = 1 - Math.max(0, Math.min(1, currentDeg/60.0));
+
+      // Base (unclamped) vessel deformation radii
+      const rx0 = R * (0.85 - 0.55*s);       // from ~0.85R down to ~0.30R
+      const ry0 = R * (0.85 + 0.20*s);       // from ~0.85R up to ~1.05R
+
+      // Compute jaw geometry for currentDeg once
+      const openFrac = Math.max(0, Math.min(1, currentDeg/60.0));
+      const gap = openFrac * R * 1.6;
+      const halfGap = gap/2;
+      const padW = Math.max(8, R*0.12);
+      const padH = Math.max(20, ry0*1.6);
+      const yTop = cy - padH/2;
+      const xL = cx - halfGap - padW;
+      const xR = cx + halfGap;
+
+      // Clamp vessel so it stays within jaws: rx <= halfGap - margin
+      const margin = padW * 0.22;
+      const rx_clamped = Math.max(4, Math.min(rx0, Math.max(4, halfGap - margin)));
+      // Approximately conserve area: A ~ rx*ry → ry = A0 / rx
+      const area0 = Math.max(16, rx0 * ry0);
+      const ry_clamped = Math.max(4, Math.min(R*1.15, area0 / rx_clamped));
+      const rx = rx_clamped;
+      const ry = ry_clamped;
+
+      // Draw vessel as filled ellipse with subtle radial gradient
+      const grad = ctxJ.createRadialGradient(cx, cy, Math.min(rx,ry)*0.2, cx, cy, Math.max(rx,ry));
+      grad.addColorStop(0.0, '#fbeaea');
+      grad.addColorStop(1.0, '#e8b5b5');
+      ctxJ.fillStyle = grad;
+      ctxJ.beginPath();
+      ctxJ.ellipse(cx, cy, Math.max(4, rx), Math.max(4, ry), 0, 0, Math.PI*2);
+      ctxJ.fill();
+      ctxJ.strokeStyle = vesselStroke;
+      ctxJ.lineWidth = vesselLineW;
+      ctxJ.beginPath();
+      ctxJ.ellipse(cx, cy, Math.max(4, rx), Math.max(4, ry), 0, 0, Math.PI*2);
+      ctxJ.stroke();
+
+      // Jaws as steel rounded paddles; gap based on currentDeg and targetDeg
+      function drawJawSet(deg, color, lw, alpha=1.0){
+        const of = Math.max(0, Math.min(1, deg/60.0));
+        const g = of * R * 1.6;     // total gap ~ [-g/2, +g/2]
+        const hg = g/2;
+        const pW = Math.max(8, R*0.12);
+        const pH = Math.max(20, ry*1.6);
+        const yT = cy - pH/2;
+        const xLeft = cx - hg - pW;
+        const xRight = cx + hg;
+        ctxJ.globalAlpha = alpha;
+        ctxJ.fillStyle = color;
+        ctxJ.strokeStyle = '#333';
+        ctxJ.lineWidth = lw + 1.5 * tNorm; // slightly thicker outline for thicker tissue
+        roundRect(xLeft, yT, pW, pH, pW*0.35);
+        ctxJ.fill(); ctxJ.stroke();
+        roundRect(xRight, yT, pW, pH, pW*0.35);
+        ctxJ.fill(); ctxJ.stroke();
+        ctxJ.globalAlpha = 1.0;
+
+        // Contact shading where paddles compress vessel: draw overlay clipped to ellipse
+        ctxJ.save();
+        ctxJ.beginPath();
+        ctxJ.ellipse(cx, cy, Math.max(4, rx), Math.max(4, ry), 0, 0, Math.PI*2);
+        ctxJ.clip();
+        const shade = ctxJ.createLinearGradient(cx-hg, cy, cx+hg, cy);
+        shade.addColorStop(0.0, 'rgba(0,0,0,0.06)');
+        shade.addColorStop(0.5, 'rgba(0,0,0,0.12)');
+        shade.addColorStop(1.0, 'rgba(0,0,0,0.06)');
+        ctxJ.fillStyle = shade;
+        ctxJ.fillRect(cx-hg-pW*1.2, cy-ry, (hg+pW*1.2)*2, ry*2);
+        ctxJ.restore();
+      }
+
+      // Draw target paddles faintly (ghost), then current on top
+      drawJawSet(targetDeg, '#888', 1.5, 0.35);
+      drawJawSet(currentDeg, '#c9c9cf', 2.0, 1.0);
+
+      // Caption
+      ctxJ.fillStyle = '#444'; ctxJ.font = '13px sans-serif';
+      ctxJ.fillText(`current=${currentDeg.toFixed(2)}°  →  next=${targetDeg.toFixed(2)}°  | thickness=${t.toFixed(2)}`, 12, 20);
+    }
+
+    function drawStatePanel(inputs, output){
+      const W = stateCanvas.width, H = stateCanvas.height;
+      ctxS.clearRect(0,0,W,H);
+      ctxS.fillStyle = '#fff'; ctxS.fillRect(0,0,W,H);
+      ctxS.fillStyle = '#222'; ctxS.font = '14px monospace';
+      ctxS.fillText('NN step I/O', 8, 20);
+      ctxS.fillStyle = '#444'; ctxS.font = '12px monospace';
+      const lines = [
+        `step: ${stepIdx}`,
+        `obs.jaw_angle: ${inputs.deg.toFixed(4)}° (${inputs.rad.toFixed(5)} rad)`,
+        `obs.prev_action u: ${inputs.prevU.toFixed(3)} (≈ ${uToAngleDeg(inputs.prevU).toFixed(2)}°)`,
+        `obs.radius_m: ${inputs.radius.toFixed(6)}`,
+        `obs.thickness: ${inputs.thickness.toFixed(3)}`,
+        `policy.u: ${output.u.toFixed(3)}`,
+        `policy.target_angle: ${output.targetDeg.toFixed(4)}° (${output.targetRad.toFixed(5)} rad)`
+      ];
+      let y = 40; for (const s of lines){ ctxS.fillText(s, 8, y); y += 18; }
+    }
+
+    function drawTrajectory(){
+      const W = trajCanvas.width, H = trajCanvas.height;
+      ctxT.clearRect(0,0,W,H);
+      ctxT.fillStyle = '#fff'; ctxT.fillRect(0,0,W,H);
+      const m = 36, x0 = m, y0 = m, w = W - 2*m, h = H - 2*m;
+      ctxT.strokeStyle = '#999'; ctxT.strokeRect(x0, y0, w, h);
+      ctxT.fillStyle = '#666'; ctxT.font = '12px sans-serif';
+      ctxT.fillText('step', x0 + w/2 - 14, y0 + h + 24);
+      ctxT.save(); ctxT.translate(10, y0 + h/2); ctxT.rotate(-Math.PI/2); ctxT.fillText('jaw angle (deg)', -40, 0); ctxT.restore();
+      const n = Math.max(1, traj.length);
+      const xAt = i => x0 + (i/(Math.max(1,n-1))) * w;
+      const yAt = deg => y0 + (1 - (deg/60)) * h;
+      // grid
+      ctxT.strokeStyle = '#eee';
+      for (let g=0; g<=6; g++){ const Y = yAt(g*10); ctxT.beginPath(); ctxT.moveTo(x0, Y); ctxT.lineTo(x0+w, Y); ctxT.stroke(); }
+      // trace
+      ctxT.strokeStyle = '#1f77b4'; ctxT.lineWidth = 2;
+      ctxT.beginPath();
+      for (let i=0;i<traj.length;i++){
+        const X = xAt(i), Y = yAt(traj[i]);
+        if (i===0) ctxT.moveTo(X,Y); else ctxT.lineTo(X,Y);
+      }
+      ctxT.stroke();
+      // points
+      ctxT.fillStyle = '#d62728';
+      const i = traj.length-1; if (i>=0){ const X=xAt(i), Y=yAt(traj[i]); ctxT.beginPath(); ctxT.arc(X,Y,3,0,Math.PI*2); ctxT.fill(); }
+    }
+
+    // Helpers: white background export and sequential downloads
+    function toDataURLWithBG(canvas, bg='#fff'){
+      const c = document.createElement('canvas');
+      c.width = canvas.width; c.height = canvas.height;
+      const cx = c.getContext('2d');
+      cx.fillStyle = bg; cx.fillRect(0,0,c.width,c.height);
+      cx.drawImage(canvas, 0, 0);
+      return c.toDataURL('image/png');
+    }
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    function saveCanvasImageAsync(canvas, filename){
+      return new Promise(resolve => {
+        const url = toDataURLWithBG(canvas, '#fff');
+        const a = document.createElement('a');
+        a.href = url; a.download = filename;
+        document.body.appendChild(a);
+        // small timeout to ensure multiple downloads are honored
+        setTimeout(()=>{ a.click(); a.remove(); resolve(); }, 0);
+      });
+    }
+    async function saveAllCanvases(){
+      const ts = new Date().toISOString().replace(/[:.]/g, '-');
+      const base = `vessel_squeeze_${ts}_step${stepIdx}`;
+      await saveCanvasImageAsync(stateCanvas, `${base}_state.png`);
+      await delay(120);
+      await saveCanvasImageAsync(trajCanvas, `${base}_traj.png`);
+      await delay(120);
+      await saveCanvasImageAsync(jawCanvas, `${base}_jaw.png`);
+    }
+
+    async function stepOnce(){
+      const res = await predictNext(currDeg);
+      const u = Number(res.action);
+      const targetRad = Number(res.target_jaw_angle_rad);
+      nextDeg = targetRad * 180/Math.PI;
+      drawStatePanel({ deg: currDeg, rad: currDeg*Math.PI/180, prevU, radius: parseFloat(radius.value), thickness: parseFloat(thickness.value) },
+                     { u, targetDeg: nextDeg, targetRad });
+      // Apply move (one-step policy update)
+      prevU = u;
+      currDeg = Math.max(0, Math.min(60, nextDeg));
+      traj.push(currDeg);
+      stepIdx += 1;
+      drawTrajectory();
+      drawVessel(currDeg, nextDeg);
+      // Optionally save images each step
+      if (saveOnStop && saveOnStop.checked){
+        try { await saveAllCanvases(); } catch(e){ console.error(e); }
+      }
+      // Log this step's state (0-indexed step number before increment)
+      logState({
+        step: stepIdx,
+        jaw_deg: (currDeg),
+        jaw_rad: (currDeg*Math.PI/180),
+        prevU: prevU,
+        radius: parseFloat(radius.value),
+        thickness: parseFloat(thickness.value),
+        policy_u: u,
+        policy_target_deg: nextDeg,
+        policy_target_rad: targetRad
+      });
+    }
+
+    function resetSim(){
+      stepIdx = 0; currDeg = 60.0; prevU = +1.0; nextDeg = 60.0; traj = [currDeg];
+      statesLog = [];
+      layoutLabels();
+      drawStatePanel({ deg: currDeg, rad: currDeg*Math.PI/180, prevU, radius: parseFloat(radius.value), thickness: parseFloat(thickness.value) },
+                     { u: prevU, targetDeg: currDeg, targetRad: currDeg*Math.PI/180 });
+      drawTrajectory();
+      drawVessel(currDeg, nextDeg);
+      // Log initial 0-indexed state
+      logState({
+        step: 0,
+        jaw_deg: currDeg,
+        jaw_rad: currDeg*Math.PI/180,
+        prevU: prevU,
+        radius: parseFloat(radius.value),
+        thickness: parseFloat(thickness.value),
+        policy_u: prevU,
+        policy_target_deg: currDeg,
+        policy_target_rad: currDeg*Math.PI/180
+      });
+    }
+
+    function startLoop(){ if (timer) return; timer = setInterval(async ()=>{ try{ await stepOnce(); }catch(e){ console.error(e); stopLoop(); } }, Number(speed.value)); }
+    function stopLoop(){
+      if (timer){
+        clearInterval(timer);
+        timer = null;
+        if (saveOnStop && saveOnStop.checked){
+          try { saveAllCanvases(); } catch(e){ console.error(e); }
+        }
+      }
+    }
+
+    // Wire controls
+    startBtn.addEventListener('click', startLoop);
+    stopBtn.addEventListener('click', stopLoop);
+    stepBtn.addEventListener('click', async ()=>{ stopLoop(); try{ await stepOnce(); }catch(e){ console.error(e); } });
+    resetBtn.addEventListener('click', ()=>{ stopLoop(); resetSim(); });
+    radius.addEventListener('input', ()=>{ layoutLabels(); });
+    thickness.addEventListener('input', ()=>{ layoutLabels(); });
+    speed.addEventListener('input', ()=>{ layoutLabels(); if (timer){ stopLoop(); startLoop(); } });
+    deterministic.addEventListener('change', ()=>{});
+    exportCsvBtn.addEventListener('click', exportCsv);
+
+    // Init
+    layoutLabels();
+    resetSim();
+  </script>
+</body>
+</html>
