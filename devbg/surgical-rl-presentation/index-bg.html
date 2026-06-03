@@ -748,10 +748,6 @@
         
         <p>(~56 сек)</p>
         <p>Презентацията е разделена на шест части.</p>
-        <p>Първо ще започнем с хардуера: какви хирургически роботи се използват днес и как се различават един от друг.</p>
-        <p>След това ще минем към задачите, които вече се автоматизират или са активна тема.</p>
-        <p>После ще разгледаме софтуерния стек.</p>
-        <p>Накрая ще стигнем до конкретен казус и до по-големия въпрос: какво още липсва, за да могат такива системи да стигнат надеждно до клинична употреба.</p>
       </aside>
         </div>
       </section>
@@ -1193,12 +1189,7 @@
           </div>
         </div>
         <aside class="notes">
-        
-        <p>(~45 сек)</p>
-        <p>Първата стъпка е да съберем добри данни.</p>
-        <p>За автономен контрол на камерата системата трябва да знае къде се намират инструментите в кадъра. Затова се записват видеа от операции, извличат се ясни кадри и върху тях се маркират позициите на инструментите.</p>
-        <p>Тези анотации после служат като обучителни примери за модела. Ако маркировките са неточни или непоследователни, моделът ще научи същия шум, а след това контролът на камерата също ще стане нестабилен.</p>
-      </aside>
+        </aside>
       </section>
 
       <!-- 11b. Camera control: CNN tip detector -->
@@ -1870,12 +1861,12 @@
               <div class="panel outline-cyan" style="padding: 6px 8px;"><h3 style="font-size: 0.58em; margin-bottom: 4px;">Active Track</h3><div class="video-frame" data-src="SurRoL · Active Track" style="padding-top: 42%;"><iframe src="https://www.youtube-nocookie.com/embed/uOFwTVnUEuM?autoplay=0&amp;controls=0&amp;rel=0&amp;enablejsapi=1&amp;wmode=transparent&amp;mute=1" title="SurRoL Active Track" frameborder="0" allowfullscreen></iframe></div></div>
             </div>
           </div>
-          <div class="footerline"><span data-lang="bg">ECM = Endoscopic Camera Manipulator: манипулаторът, който държи и движи ендоскопската камера.</span><span class="brand-text">Surgical Robotics</span></div>
+          <div class="footerline"><span data-lang="bg">ECM = Endoscopic Camera Manipulator: манипулаторът, който държи и движи камерата.</span><span class="brand-text">Surgical Robotics</span></div>
         </div>
         <aside class="notes">
         
         <p>(~35 сек)</p>
-        <p>След PSM задачите имаме и отделни задачи за ECM, тоест манипулатора, който движи ендоскопската камера.</p>
+        <p>След PSM задачите имаме и отделни задачи за ECM, тоест манипулатора, който движи камерата.</p>
         <p>Тук целта не е да хванем обект, а да управляваме изгледа: да преместим камерата, да коригираме ориентацията и да задържим важната цел в зрителното поле.</p>
       </aside>
       </section>
@@ -3054,11 +3045,6 @@ model.save("best_policy")</code></pre>
             
             <span class="brand-text">Surgical Robotics</span>
           </div>
-          <aside class="notes">
-        
-        (~65 сек)
-        DRL означава, че policy-то е neural network, не ръчно написано правило. Actor-ът избира jaw command, critic-ът оценява дали state-ът е добър. PPO събира rollout-и от 1024 steps и прави clipped update, така че policy-то да се подобрява постепенно, без големи нестабилни скокове.
-      </aside>
         </div>
       </section>
 
@@ -3121,8 +3107,6 @@ model.save("best_policy")</code></pre>
         </div>
         <aside class="notes">
         
-        (~55 сек)
-        Reward hacking означава, че агентът намира shortcut в наградата, вместо хирургически правилното поведение. Ако награждаваме само нисък поток, моделът може да притиска прекалено силно или да осцилира около целта. Затова добавяме прекратяване при риск от увреждане, наказание за приближаване до опасната зона, наказание за резки движения и успех само след стабилно задържане.
       </aside>
       </section>
 

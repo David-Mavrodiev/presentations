@@ -1,0 +1,7 @@
+numpy
+flask
+flask-cors
+gym
+shimmy>=0.2.1
+stable-baselines3
+cloudpickle
